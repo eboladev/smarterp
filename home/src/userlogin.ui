@@ -14,8 +14,8 @@
    <string>User Login</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../smartpay/src/rc.qrc">
-    <normaloff>:/images/Icon_65.ico</normaloff>:/images/Icon_65.ico</iconset>
+   <iconset resource="res.qrc">
+    <normaloff>:/letter-M-PNG</normaloff>:/letter-M-PNG</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -111,7 +111,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="../../smartpay/src/rc.qrc"/>
+  <include location="res.qrc"/>
  </resources>
  <connections>
   <connection>

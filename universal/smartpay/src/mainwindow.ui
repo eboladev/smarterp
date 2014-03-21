@@ -15,14 +15,23 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../smartpay/main_res.qrc">
-    <normaloff>:/main/group_32.png</normaloff>:/main/group_32.png</iconset>
+    <normaloff>:/main/Letter-S-icon.png</normaloff>:/main/Letter-S-icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>0</number>
     </property>
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>

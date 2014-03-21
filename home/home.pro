@@ -17,7 +17,7 @@ INCLUDEPATH +=  ../universal/ManhattanStyle ../universal/DataPublics ../universa
 
 LIBS += -L../build -lmanhattanstyle  -ldatapublics -lrenderer -lcommon -lcustommodels
 
-unix:QMAKE_RPATHDIR += /usr/smarterp/lib
+QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/\''
 
 TEMPLATE = app
 SOURCES += src/main.cpp\

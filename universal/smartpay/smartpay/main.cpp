@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     QString dbName = "smartpay-master";
 
 
+
     QFile file(qApp->applicationDirPath() + QDir::separator() + "smartpay.ini");
     if (file.exists()) {
         if (file.open(QIODevice::ReadOnly)) {

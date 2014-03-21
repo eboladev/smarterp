@@ -6,6 +6,8 @@ SUBDIRS += \
     OpenRPT/wrtembed \
     ManhattanStyle \
     DataPublics \
+    qcustomplot \
+    custom_widgets \
     xlslib \
     qtxlsx/src/xlsx \
     CustomModels \
@@ -14,12 +16,10 @@ SUBDIRS += \
     smartpay \
     zchat \
     Leva \
-    qcustomplot \
     ##helper \
     #ScheduledReports \
     #erp_reports_processor \
     smartpay-launcher \
     sqlitestudio \
-    debtcollection\
-    custom_widgets
+    debtcollection
 

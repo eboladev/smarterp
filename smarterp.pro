@@ -4,9 +4,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     universal \
-    #school \
-    megvel \
     home \
-    #queue_server \
+    megvel \
     other_projects
 

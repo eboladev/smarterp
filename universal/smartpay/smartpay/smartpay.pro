@@ -20,7 +20,7 @@ DESTDIR = ../../../build
 LIBS += -L../../../build -lxlslib
 LIBS += -L../../../build -lcustom_widgets -lmanhattanstyle -lrenderer  -lcommon -lqcustomplot
 LIBS += -L../../../build -ldatapublics -lcustommodels
-
+QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/\''
 SOURCES +=    main.cpp
 
 

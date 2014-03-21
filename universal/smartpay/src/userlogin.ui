@@ -14,8 +14,8 @@
    <string>User Login</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../home/src/res.qrc">
-    <normaloff>:/images/SecurityLock.png</normaloff>:/images/SecurityLock.png</iconset>
+   <iconset resource="../smartpay/main_res.qrc">
+    <normaloff>:/main/Letter-S-icon.png</normaloff>:/main/Letter-S-icon.png</iconset>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
@@ -143,6 +143,8 @@ background-color: rgb(255, 0, 0);</string>
  </widget>
  <resources>
   <include location="../../../home/src/res.qrc"/>
+  <include location="rc.qrc"/>
+  <include location="../smartpay/main_res.qrc"/>
   <include location="rc.qrc"/>
  </resources>
  <connections/>
