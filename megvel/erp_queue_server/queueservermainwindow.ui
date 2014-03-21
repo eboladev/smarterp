@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Joseph W Joshua</author>
+ <class>QueueServerMainWindow</class>
+ <widget class="QMainWindow" name="QueueServerMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>691</width>
+    <height>416</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Queue Server</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../universal/SmartPay/src/payroll_resources.qrc">
+    <normaloff>:/payroll/otherimages/Gear.png</normaloff>:/payroll/otherimages/Gear.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_5">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/images/UtilityText.ico</normaloff>:/images/UtilityText.ico</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Log</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTextBrowser" name="txtLog"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="icon">
+        <iconset resource="../../home/src/res.qrc">
+         <normaloff>:/images/Network_Map.png</normaloff>:/images/Network_Map.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Connected Clients</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTreeWidget" name="treeWidget">
+          <column>
+           <property name="text">
+            <string>Ip Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>OS</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>First Contact</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Last Contact</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/images/error.png</normaloff>:/images/error.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Errors</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTreeWidget" name="treeWidget_2">
+          <column>
+           <property name="text">
+            <string>IP Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Error Type</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Date</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="icon">
+        <iconset resource="../../home/src/res.qrc">
+         <normaloff>:/images/base_cog_32.png</normaloff>:/images/base_cog_32.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Requisition Processor</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTreeWidget" name="trvRequisitionQueue">
+          <column>
+           <property name="text">
+            <string>No.</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Supplier</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Date Booked</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Last Attempt</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Last Result</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Current Status</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Next Attempt</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>691</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionMinimize"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuRequisitionQueue">
+    <property name="title">
+     <string>Requisitions</string>
+    </property>
+    <addaction name="actionProcess_Now"/>
+    <addaction name="actionView_Scheduled_Actions"/>
+    <addaction name="separator"/>
+    <addaction name="actionGet_Quickbooks_Items"/>
+    <addaction name="actionGet_Quickbooks_Suppliers"/>
+    <addaction name="separator"/>
+    <addaction name="actionPost_Items_to_Quickbooks"/>
+    <addaction name="actionPost_Suppliers_to_Quickbooks"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionIndex"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuRequisitionQueue"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionPreferences"/>
+   <addaction name="actionProcess_Now"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionMinimize">
+   <property name="text">
+    <string>Minimize</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="../../update-server/update-server-gui/tlm_res.qrc">
+     <normaloff>:/images/Icon_80.ico</normaloff>:/images/Icon_80.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/Favorites.png</normaloff>:/images/Favorites.png</iconset>
+   </property>
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionProcess_Now">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/Gear.png</normaloff>:/images/Gear.png</iconset>
+   </property>
+   <property name="text">
+    <string>Process Now</string>
+   </property>
+  </action>
+  <action name="actionView_Scheduled_Actions">
+   <property name="text">
+    <string>View Scheduled Actions</string>
+   </property>
+  </action>
+  <action name="actionGet_Quickbooks_Items">
+   <property name="text">
+    <string>Get Quickbooks Items</string>
+   </property>
+  </action>
+  <action name="actionGet_Quickbooks_Suppliers">
+   <property name="text">
+    <string>Get Quickbooks Suppliers</string>
+   </property>
+  </action>
+  <action name="actionPost_Items_to_Quickbooks">
+   <property name="text">
+    <string>Post Items to Quickbooks</string>
+   </property>
+  </action>
+  <action name="actionPost_Suppliers_to_Quickbooks">
+   <property name="text">
+    <string>Post Suppliers to Quickbooks</string>
+   </property>
+  </action>
+  <action name="actionIndex">
+   <property name="icon">
+    <iconset resource="../../home/src/res.qrc">
+     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Index</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../../home/src/res.qrc"/>
+  <include location="res.qrc"/>
+  <include location="../../universal/SmartPay/src/payroll_resources.qrc"/>
+  <include location="../../update-server/update-server-gui/tlm_res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

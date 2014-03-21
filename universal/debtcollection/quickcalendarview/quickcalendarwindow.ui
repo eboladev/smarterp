@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QuickCalendarWindow</class>
+ <widget class="QMainWindow" name="QuickCalendarWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QuickCalendar</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="mainMenu">
+    <property name="title">
+     <string>QuickCalendar</string>
+    </property>
+    <addaction name="monthAction"/>
+    <addaction name="weekAction"/>
+    <addaction name="rangeAction"/>
+   </widget>
+   <addaction name="mainMenu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="monthAction">
+   <property name="text">
+    <string>Month based</string>
+   </property>
+   <property name="toolTip">
+    <string>Manage user accounts.</string>
+   </property>
+  </action>
+  <action name="weekAction">
+   <property name="text">
+    <string>Week based</string>
+   </property>
+   <property name="toolTip">
+    <string>Manage user gorups.</string>
+   </property>
+  </action>
+  <action name="dayAction">
+   <property name="text">
+    <string>Day based</string>
+   </property>
+   <property name="toolTip">
+    <string>Manage calendars.</string>
+   </property>
+  </action>
+  <action name="rangeAction">
+   <property name="text">
+    <string>Range based</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

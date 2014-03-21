@@ -1,0 +1,79 @@
+/* skip-name-resolve */
+
+/*DB Changes
+
+Created table - roles
+Created table - rolegroups
+Created table - userroles
+
+copied payroll db contents to cartons db
+*/
+CREATE TABLE  `megvel`.`roles` (
+  `RoleID` int(11) NOT NULL AUTO_INCREMENT,
+  `RoleGroupID` int(11) DEFAULT NULL,
+  `RoleName` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`RoleID`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8
+
+CREATE TABLE  `megvel`.`rolegroups` (
+  `RoleGroupID` int(11) NOT NULL AUTO_INCREMENT,
+  `RoleGroupName` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`RoleGroupID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8
+\
+
+CREATE TABLE  `megvel`.`userroles` (
+  `UserRoleID` int(11) NOT NULL AUTO_INCREMENT,
+  `UserID` int(11) DEFAULT NULL,
+  `RoleID` int(11) DEFAULT NULL,
+  `DateAssigned` date DEFAULT NULL,
+  `AssignedBy` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`UserRoleID`)
+) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=utf8
+
+
+/*
+Added date column (OrderDate) to vw_qc
+*/
+select `qc`.`QcID` AS `QcID`,`qc`.`TicketNo` AS `TicketNo`,`newreport`.`Date` AS `OrderDate`,`qc`.`CustomerName` AS `CustomerName`,`qc`.`Product` AS `Product`,`qc`.`CartonWeight` AS `CartonWeight`,`qc`.`OrderQty` AS `OrderQty`,`qc`.`Run` AS `Run` from (`qc` join `newreport`) where (`qc`.`TicketNo` = `newreport`.`TicketNo`) order by `qc`.`TicketNo` DESC
+
+/*Added ORDER BY clause to vw_customers*/
+
+
+/*Created view vw_qt_products*/
+CREATE OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `vw_qt_products` as SELECT products.* ,`PL` as 'Type', `RetailPrice` as `RP`,  round(WT, 3) as 'Weight' FROM `products` WHERE hidden='no';
+
+
+/*Added OrderDate column to vw_production*/
+date_format(`newreport`.`Date`,'%d %b %Y') AS `OrderDate`
+
+/*
+Table Shifts: Renamed Column SiftName to ShiftName
+
+Procedure RecalculateEmployeeMonth: In the saccos section, Renamed Column MonthlyContribution to Amount
+*/
+
+/*New View vw_payroll2*/
+DROP VIEW IF EXISTS `vw_payroll2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_payroll2` AS 
+SELECT
+  `payroll`.`MonthID`         AS `MonthID`,
+  `payroll`.`EmployeeName`    AS `EmployeeName`,
+  `payroll`.`IDNO`            AS `IDNO`,
+  `payroll`.`BasicPay`        AS `BasicPay`,
+  `payroll`.`GrossPay`        AS `GrossPay`,
+  `payroll`.`TaxablePay`      AS `TaxablePay`,
+  `payroll`.`Paye`            AS `Paye`,
+  `payroll`.`Saccos`          AS `Saccos`,
+  `payroll`.`Advances`        AS `Advances`,
+  `payroll`.`TotalDeductions` AS `TotalDeductions`,
+  `payroll`.`NetPay`          AS `NetPay`
+FROM `payroll`;
+
+
+/*Added LastChatTime to the Users Table */
+
+
+/*Added chatmessages table */
+CREATE TABLE `chatmessages` (  `EntryID` int(11) NOT NULL AUTO_INCREMENT,  `SenderID` int(11) DEFAULT NULL, `Recipent` int(11) DEFAULT NULL,  `DateSent` datetime DEFAULT NULL,  `Message` longtext,  PRIMARY KEY (`EntryID`)) ENGINE=InnoDB DEFAULT CHARSET=latin1

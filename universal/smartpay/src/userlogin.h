@@ -1,0 +1,31 @@
+#ifndef USERLOGIN_H
+#define USERLOGIN_H
+
+#include <QtSql>
+
+#include <QDialog>
+
+namespace Ui {
+class UserLogin;
+}
+
+class UserLogin : public QDialog
+{
+    Q_OBJECT
+    
+public:
+    explicit UserLogin(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+    ~UserLogin();
+    bool payrollAccess;
+    QString userID;
+    QSqlDatabase companyDb;
+    QString companyName;
+private:
+    Ui::UserLogin *ui;
+    QSqlDatabase db;
+
+private slots:
+    void tryLogin();
+};
+
+#endif // USERLOGIN_H

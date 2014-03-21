@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FreePayrollMW</class>
+ <widget class="QMainWindow" name="FreePayrollMW">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>612</width>
+    <height>529</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FreePayrollMW</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>612</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionEmployee"/>
+    <addaction name="actionPayroll"/>
+    <addaction name="separator"/>
+    <addaction name="actionEarnings"/>
+    <addaction name="actionDeductions"/>
+    <addaction name="actionBenefits"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuReport">
+    <property name="title">
+     <string>Report</string>
+    </property>
+    <widget class="QMenu" name="menuMonthly_Returns">
+     <property name="title">
+      <string>Monthly Returns</string>
+     </property>
+     <addaction name="actionPAYE"/>
+     <addaction name="actionNSSF"/>
+     <addaction name="actionNHIF"/>
+     <addaction name="actionLASC"/>
+     <addaction name="separator"/>
+     <addaction name="actionLump_Sums_tax"/>
+     <addaction name="actionFringe_Benefit_Tax"/>
+     <addaction name="actionNHIF_Stamps"/>
+     <addaction name="separator"/>
+     <addaction name="actionCo_operative"/>
+     <addaction name="actionPension"/>
+    </widget>
+    <widget class="QMenu" name="menuNominal_Roll">
+     <property name="title">
+      <string>Nominal Roll</string>
+     </property>
+     <addaction name="actionEmployees"/>
+     <addaction name="actionLeavers"/>
+    </widget>
+    <addaction name="menuNominal_Roll"/>
+    <addaction name="actionPayslips"/>
+    <addaction name="separator"/>
+    <addaction name="actionOverview"/>
+    <addaction name="actionBreakdown"/>
+    <addaction name="separator"/>
+    <addaction name="actionPayments_to_Employees"/>
+    <addaction name="separator"/>
+    <addaction name="menuMonthly_Returns"/>
+    <addaction name="actionAnnual_Returns"/>
+   </widget>
+   <widget class="QMenu" name="menuOrganization">
+    <property name="title">
+     <string>Organization</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSystem">
+    <property name="title">
+     <string>System</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuProcedure">
+    <property name="title">
+     <string>Procedure</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuReport"/>
+   <addaction name="menuOrganization"/>
+   <addaction name="menuSystem"/>
+   <addaction name="menuProcedure"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionEmployee">
+   <property name="text">
+    <string>Employee</string>
+   </property>
+  </action>
+  <action name="actionPayroll">
+   <property name="text">
+    <string>Payroll</string>
+   </property>
+  </action>
+  <action name="actionEarnings">
+   <property name="text">
+    <string>Earnings</string>
+   </property>
+  </action>
+  <action name="actionDeductions">
+   <property name="text">
+    <string>Deductions</string>
+   </property>
+  </action>
+  <action name="actionBenefits">
+   <property name="text">
+    <string>Benefits</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionPayslips">
+   <property name="text">
+    <string>Payslips...</string>
+   </property>
+  </action>
+  <action name="actionOverview">
+   <property name="text">
+    <string>Overview</string>
+   </property>
+  </action>
+  <action name="actionBreakdown">
+   <property name="text">
+    <string>Breakdown</string>
+   </property>
+  </action>
+  <action name="actionPayments_to_Employees">
+   <property name="text">
+    <string>Payments to Employees</string>
+   </property>
+  </action>
+  <action name="actionAnnual_Returns">
+   <property name="text">
+    <string>Annual Returns</string>
+   </property>
+  </action>
+  <action name="actionPAYE">
+   <property name="text">
+    <string>PAYE...</string>
+   </property>
+  </action>
+  <action name="actionNSSF">
+   <property name="text">
+    <string>NSSF...</string>
+   </property>
+  </action>
+  <action name="actionNHIF">
+   <property name="text">
+    <string>NHIF...</string>
+   </property>
+  </action>
+  <action name="actionLASC">
+   <property name="text">
+    <string>LASC...</string>
+   </property>
+  </action>
+  <action name="actionLump_Sums_tax">
+   <property name="text">
+    <string>Lump Sums tax...</string>
+   </property>
+  </action>
+  <action name="actionFringe_Benefit_Tax">
+   <property name="text">
+    <string>Fringe Benefit Tax...</string>
+   </property>
+  </action>
+  <action name="actionNHIF_Stamps">
+   <property name="text">
+    <string>NHIF Stamps...</string>
+   </property>
+  </action>
+  <action name="actionCo_operative">
+   <property name="text">
+    <string>Co-operative...</string>
+   </property>
+  </action>
+  <action name="actionPension">
+   <property name="text">
+    <string>Pension...</string>
+   </property>
+  </action>
+  <action name="actionEmployees">
+   <property name="text">
+    <string>Employees</string>
+   </property>
+  </action>
+  <action name="actionLeavers">
+   <property name="text">
+    <string>Leavers</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

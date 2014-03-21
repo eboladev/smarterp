@@ -1,0 +1,6 @@
+indian fish 245.00 1
+chinees haka 245.00 1
+chinees fish 245.00 1
+chinees noodles 245.00 1
+chinees chicken 245.00 1
+chinees mutton 245.00 1

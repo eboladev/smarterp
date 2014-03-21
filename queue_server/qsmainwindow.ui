@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QSMainWindow</class>
+ <widget class="QMainWindow" name="QSMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>716</width>
+    <height>415</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Megvel Cartons Ltd Queue Server</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="queueres.qrc">
+    <normaloff>:/images/Places-server-database-icon.png</normaloff>:/images/Places-server-database-icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Clients</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTreeWidget" name="treeWidget">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="indentation">
+           <number>0</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>Computer Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>IP Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ERP Path</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ERP Version</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Status</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>IP Scanner</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Start IP Address:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtStartAddress">
+            <property name="text">
+             <string>192.168.0.1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>End IP Address:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEndAddress">
+            <property name="text">
+             <string>192.168.0.10</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="cmdScan">
+            <property name="text">
+             <string>Scan</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTreeWidget" name="trvScanResult">
+          <property name="indentation">
+           <number>0</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Status</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Email Queue</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTextBrowser" name="txtMailQueueLog"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>OC Apportioning</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="18">
+           <widget class="QLineEdit" name="lineEdit_9"/>
+          </item>
+          <item row="1" column="13">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Gram 4:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="17">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Gram 5:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Reel Used:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="9">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Gram 3:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Gram 2:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="13">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Type 4:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="17">
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Type 5:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="18">
+           <widget class="QLineEdit" name="lineEdit_10"/>
+          </item>
+          <item row="2" column="9">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Type 3:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Qty Produced:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Enter OC:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="5">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Type 2:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Type 1:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>New Paper Spec:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Gram 1:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>Size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="5">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Reel Used:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="5">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="9">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Reel Used:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="9">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>Size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="13">
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>Reel Used:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="13">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="17">
+           <widget class="QLabel" name="label_24">
+            <property name="text">
+             <string>Reel Used:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="17">
+           <widget class="QLabel" name="label_25">
+            <property name="text">
+             <string>Size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="18">
+           <widget class="QLineEdit" name="lineEdit_19"/>
+          </item>
+          <item row="4" column="18">
+           <widget class="QLineEdit" name="lineEdit_20"/>
+          </item>
+          <item row="1" column="6" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_3"/>
+          </item>
+          <item row="2" column="6" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_4"/>
+          </item>
+          <item row="3" column="6" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_13"/>
+          </item>
+          <item row="4" column="6" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_14"/>
+          </item>
+          <item row="1" column="2" colspan="2">
+           <widget class="QLineEdit" name="lineEdit"/>
+          </item>
+          <item row="0" column="1" colspan="3">
+           <widget class="QLineEdit" name="txtOCNo"/>
+          </item>
+          <item row="2" column="2" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_2"/>
+          </item>
+          <item row="3" column="2" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_11"/>
+          </item>
+          <item row="4" column="2" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_12"/>
+          </item>
+          <item row="5" column="1" colspan="3">
+           <widget class="QLineEdit" name="txtOCQty"/>
+          </item>
+          <item row="1" column="10" colspan="3">
+           <widget class="QLineEdit" name="lineEdit_5"/>
+          </item>
+          <item row="2" column="10" colspan="3">
+           <widget class="QLineEdit" name="lineEdit_6"/>
+          </item>
+          <item row="3" column="10" colspan="3">
+           <widget class="QLineEdit" name="lineEdit_15"/>
+          </item>
+          <item row="4" column="10" colspan="3">
+           <widget class="QLineEdit" name="lineEdit_16"/>
+          </item>
+          <item row="1" column="14" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_7"/>
+          </item>
+          <item row="2" column="14" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_8"/>
+          </item>
+          <item row="3" column="14" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_17"/>
+          </item>
+          <item row="4" column="14" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_18"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Calculate</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTextBrowser" name="txtCalculationResult"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Apportions Calculator</string>
+       </attribute>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>255</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_26">
+           <property name="text">
+            <string>Production Date:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="dtpApportionDate">
+           <property name="displayFormat">
+            <string>dd MMM yyyy</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="cmdApportion">
+           <property name="text">
+            <string>Calculate</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>txtOCNo</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>lineEdit_11</tabstop>
+  <tabstop>lineEdit_12</tabstop>
+  <tabstop>lineEdit_3</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>lineEdit_13</tabstop>
+  <tabstop>lineEdit_14</tabstop>
+  <tabstop>lineEdit_5</tabstop>
+  <tabstop>lineEdit_6</tabstop>
+  <tabstop>lineEdit_15</tabstop>
+  <tabstop>lineEdit_16</tabstop>
+  <tabstop>lineEdit_7</tabstop>
+  <tabstop>lineEdit_8</tabstop>
+  <tabstop>lineEdit_17</tabstop>
+  <tabstop>lineEdit_18</tabstop>
+  <tabstop>lineEdit_9</tabstop>
+  <tabstop>lineEdit_10</tabstop>
+  <tabstop>lineEdit_19</tabstop>
+  <tabstop>lineEdit_20</tabstop>
+  <tabstop>txtOCQty</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>txtCalculationResult</tabstop>
+  <tabstop>txtStartAddress</tabstop>
+  <tabstop>txtEndAddress</tabstop>
+  <tabstop>trvScanResult</tabstop>
+  <tabstop>cmdScan</tabstop>
+  <tabstop>txtMailQueueLog</tabstop>
+  <tabstop>treeWidget</tabstop>
+ </tabstops>
+ <resources>
+  <include location="queueres.qrc"/>
+ </resources>
+ <connections/>
+</ui>

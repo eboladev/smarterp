@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Invoice footer.bmp</file>
+        <file>images/Invoice Logo.bmp</file>
+    </qresource>
+</RCC>

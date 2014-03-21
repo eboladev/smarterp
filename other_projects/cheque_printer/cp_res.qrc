@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cp_images/Button-Close-icon.png</file>
+        <file>cp_images/import-icon.png</file>
+        <file>cp_images/Impresora-icon.png</file>
+        <file>cp_images/MS-Office-2003-Excel-icon.png</file>
+        <file>cp_images/PDF-icon.png</file>
+        <file>cp_images/Print-icon.png</file>
+        <file>cp_images/fit-page-24.png</file>
+        <file>cp_images/fit-page-32.png</file>
+        <file>cp_images/fit-width-24.png</file>
+        <file>cp_images/fit-width-32.png</file>
+        <file>cp_images/go-first-24.png</file>
+        <file>cp_images/go-first-32.png</file>
+        <file>cp_images/go-last-24.png</file>
+        <file>cp_images/go-last-32.png</file>
+        <file>cp_images/go-next-24.png</file>
+        <file>cp_images/go-next-32.png</file>
+        <file>cp_images/go-previous-24.png</file>
+        <file>cp_images/go-previous-32.png</file>
+        <file>cp_images/layout-landscape-24.png</file>
+        <file>cp_images/layout-landscape-32.png</file>
+        <file>cp_images/layout-portrait-24.png</file>
+        <file>cp_images/layout-portrait-32.png</file>
+        <file>cp_images/page-setup-24.png</file>
+        <file>cp_images/page-setup-32.png</file>
+        <file>cp_images/print-24.png</file>
+        <file>cp_images/print-32.png</file>
+        <file>cp_images/qtlogo-64.png</file>
+        <file>cp_images/status-color.png</file>
+        <file>cp_images/status-gray-scale.png</file>
+        <file>cp_images/view-page-multi-24.png</file>
+        <file>cp_images/view-page-multi-32.png</file>
+        <file>cp_images/view-page-one-24.png</file>
+        <file>cp_images/view-page-one-32.png</file>
+        <file>cp_images/view-page-sided-24.png</file>
+        <file>cp_images/view-page-sided-32.png</file>
+        <file>cp_images/zoom-in-24.png</file>
+        <file>cp_images/zoom-in-32.png</file>
+        <file>cp_images/zoom-out-24.png</file>
+        <file>cp_images/zoom-out-32.png</file>
+    </qresource>
+</RCC>

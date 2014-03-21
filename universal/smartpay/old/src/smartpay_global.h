@@ -1,0 +1,12 @@
+#ifndef SMARTPAY_GLOBAL_H
+#define SMARTPAY_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(SMARTPAY_LIBRARY)
+#  define SMARTPAYSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define SMARTPAYSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // SMARTPAY_GLOBAL_H

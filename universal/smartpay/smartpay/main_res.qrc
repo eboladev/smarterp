@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/main">
+        <file>mid-month-calendar.png</file>
+        <file>group_32.png</file>
+    </qresource>
+</RCC>

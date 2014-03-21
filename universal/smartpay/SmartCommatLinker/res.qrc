@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Actions-window-close-icon.png</file>
+        <file>images/Info-icon.png</file>
+    </qresource>
+</RCC>

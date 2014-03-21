@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LevaMainWindow</class>
+ <widget class="QMainWindow" name="LevaMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>743</width>
+    <height>445</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Leva SQL</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../OpenRPT/images/OpenRPTWrtembed.qrc">
+    <normaloff>:/OpenRPT/icons/database_add_32.png</normaloff>:/OpenRPT/icons/database_add_32.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>743</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew_Connection"/>
+    <addaction name="actionOpen_Saved_Connection"/>
+    <addaction name="actionSave_Current_Connection"/>
+    <addaction name="separator"/>
+    <addaction name="actionDelete_Connection"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew_Connection">
+   <property name="text">
+    <string>New Connection</string>
+   </property>
+  </action>
+  <action name="actionOpen_Saved_Connection">
+   <property name="text">
+    <string>Open Saved Connection</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Connection">
+   <property name="text">
+    <string>Save Current Connection</string>
+   </property>
+  </action>
+  <action name="actionDelete_Connection">
+   <property name="text">
+    <string>Delete Connection</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../OpenRPT/images/OpenRPTWrtembed.qrc"/>
+ </resources>
+ <connections/>
+</ui>

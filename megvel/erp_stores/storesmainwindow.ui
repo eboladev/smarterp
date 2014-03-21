@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StoresMainWindow</class>
+ <widget class="QMainWindow" name="StoresMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>808</width>
+    <height>655</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Stores</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../universal/SmartPay/src/pngs.qrc">
+    <normaloff>:/downloads/newicons/cash_register.png</normaloff>:/downloads/newicons/cash_register.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QMdiArea" name="mdiArea"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>808</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuRequisitions">
+    <property name="title">
+     <string>Requisitions</string>
+    </property>
+    <addaction name="actionNew_Requisition"/>
+    <addaction name="separator"/>
+    <addaction name="actionView_Requisitions"/>
+   </widget>
+   <widget class="QMenu" name="menuStock">
+    <property name="title">
+     <string>Stock</string>
+    </property>
+    <addaction name="actionItem_List"/>
+   </widget>
+   <widget class="QMenu" name="menuSuppliers">
+    <property name="title">
+     <string>Suppliers</string>
+    </property>
+    <addaction name="actionManage_Suppliers"/>
+   </widget>
+   <widget class="QMenu" name="menuWindow">
+    <property name="title">
+     <string>Window</string>
+    </property>
+    <addaction name="actionTile_Icons"/>
+    <addaction name="actionCascade"/>
+    <addaction name="actionTile_Vertical"/>
+    <addaction name="actionTile_Horizontal"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose_All_Open_Windows"/>
+   </widget>
+   <addaction name="menuRequisitions"/>
+   <addaction name="menuStock"/>
+   <addaction name="menuSuppliers"/>
+   <addaction name="menuWindow"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew_Requisition"/>
+   <addaction name="actionView_Requisitions"/>
+   <addaction name="separator"/>
+   <addaction name="actionItem_List"/>
+   <addaction name="actionManage_Suppliers"/>
+   <addaction name="actionNew_Film_Requisition"/>
+  </widget>
+  <action name="actionNew_Requisition">
+   <property name="text">
+    <string>New Requisition</string>
+   </property>
+  </action>
+  <action name="actionApprove_Requisition">
+   <property name="text">
+    <string>Approve Requisition</string>
+   </property>
+  </action>
+  <action name="actionPost_Requisition_to_Quickbooks">
+   <property name="text">
+    <string>Post Requisition to Quickbooks</string>
+   </property>
+  </action>
+  <action name="actionItem_List">
+   <property name="text">
+    <string>Item List</string>
+   </property>
+  </action>
+  <action name="actionManage_Suppliers">
+   <property name="text">
+    <string>Manage Suppliers</string>
+   </property>
+  </action>
+  <action name="actionTile_Icons">
+   <property name="text">
+    <string>Tile Icons</string>
+   </property>
+  </action>
+  <action name="actionCascade">
+   <property name="text">
+    <string>Cascade</string>
+   </property>
+  </action>
+  <action name="actionTile_Vertical">
+   <property name="text">
+    <string>Tile Vertical</string>
+   </property>
+  </action>
+  <action name="actionTile_Horizontal">
+   <property name="text">
+    <string>Tile Horizontal</string>
+   </property>
+  </action>
+  <action name="actionClose_All_Open_Windows">
+   <property name="text">
+    <string>Close All Open Windows</string>
+   </property>
+  </action>
+  <action name="actionView_Requisitions">
+   <property name="text">
+    <string>View Requisitions</string>
+   </property>
+  </action>
+  <action name="actionNew_Film_Requisition">
+   <property name="text">
+    <string>New Film Requisition</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../universal/SmartPay/src/pngs.qrc"/>
+ </resources>
+ <connections/>
+</ui>

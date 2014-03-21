@@ -1,0 +1,22 @@
+#ifndef FREEPAYROLLMW_H
+#define FREEPAYROLLMW_H
+
+#include <QMainWindow>
+
+namespace Ui {
+class FreePayrollMW;
+}
+
+class FreePayrollMW : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit FreePayrollMW(QWidget *parent = 0);
+    ~FreePayrollMW();
+
+private:
+    Ui::FreePayrollMW *ui;
+};
+
+#endif // FREEPAYROLLMW_H

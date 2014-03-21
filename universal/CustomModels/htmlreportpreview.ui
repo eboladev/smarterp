@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HTMLReportPreview</class>
+ <widget class="QMainWindow" name="HTMLReportPreview">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>696</width>
+    <height>437</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Print Preview</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionPrint"/>
+   <addaction name="actionPage_Setup"/>
+   <addaction name="separator"/>
+   <addaction name="actionPortrait"/>
+   <addaction name="actionLandscape"/>
+   <addaction name="separator"/>
+   <addaction name="actionFirst_Page"/>
+   <addaction name="actionPrevious_Page"/>
+   <addaction name="actionNext_Page"/>
+   <addaction name="actionLast_Page"/>
+   <addaction name="separator"/>
+   <addaction name="actionZoom_In"/>
+   <addaction name="actionZoom_Out"/>
+   <addaction name="separator"/>
+   <addaction name="actionSingle_Page"/>
+   <addaction name="actionFacing_Pages"/>
+   <addaction name="actionAll_Pages"/>
+  </widget>
+  <action name="actionPrint">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/print-32.png</normaloff>:/images/print-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Print</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionPage_Setup">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/page-setup-32.png</normaloff>:/images/page-setup-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Page Setup</string>
+   </property>
+  </action>
+  <action name="actionFirst_Page">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/go-first-32.png</normaloff>:/images/go-first-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>First Page</string>
+   </property>
+  </action>
+  <action name="actionPrevious_Page">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/go-previous-32.png</normaloff>:/images/go-previous-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Previous Page</string>
+   </property>
+  </action>
+  <action name="actionNext_Page">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/go-next-32.png</normaloff>:/images/go-next-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Next Page</string>
+   </property>
+  </action>
+  <action name="actionLast_Page">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/go-last-32.png</normaloff>:/images/go-last-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Last Page</string>
+   </property>
+  </action>
+  <action name="actionZoom_In">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/zoom-in-32.png</normaloff>:/images/zoom-in-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom In</string>
+   </property>
+  </action>
+  <action name="actionZoom_Out">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/zoom-out-32.png</normaloff>:/images/zoom-out-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom Out</string>
+   </property>
+  </action>
+  <action name="actionSingle_Page">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/view-page-one-32.png</normaloff>:/images/view-page-one-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Single Page</string>
+   </property>
+  </action>
+  <action name="actionFacing_Pages">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/view-page-sided-32.png</normaloff>:/images/view-page-sided-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Facing Pages</string>
+   </property>
+  </action>
+  <action name="actionAll_Pages">
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/view-page-multi-32.png</normaloff>:/images/view-page-multi-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>All Pages</string>
+   </property>
+  </action>
+  <action name="actionLandscape">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/layout-landscape-32.png</normaloff>:/images/layout-landscape-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Landscape</string>
+   </property>
+  </action>
+  <action name="actionPortrait">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../smartpay/src/rc.qrc">
+     <normaloff>:/images/layout-portrait-32.png</normaloff>:/images/layout-portrait-32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Portrait</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../smartpay/src/rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

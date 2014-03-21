@@ -1,0 +1,12 @@
+#ifndef ERP_DISPATCH_GLOBAL_H
+#define ERP_DISPATCH_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(ERP_DISPATCH_LIBRARY)
+#  define ERP_DISPATCHSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define ERP_DISPATCHSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // ERP_DISPATCH_GLOBAL_H

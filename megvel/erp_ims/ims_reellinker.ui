@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ims_reellinker</class>
+ <widget class="QMainWindow" name="ims_reellinker">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Reels</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../universal/ManhattanStyle/fancyactionbar.qrc">
+    <normaloff>:/fancyactionbar/images/mode_Design.png</normaloff>:/fancyactionbar/images/mode_Design.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="CustomQueryView" name="lstReels"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomQueryView</class>
+   <extends>QTreeView</extends>
+   <header>customqueryview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../universal/ManhattanStyle/fancyactionbar.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,12 @@
+#ifndef ERP_STORES_GLOBAL_H
+#define ERP_STORES_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(ERP_STORES_LIBRARY)
+#  define ERP_STORESSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define ERP_STORESSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // ERP_STORES_GLOBAL_H

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>col_LocalInvoices</class>
+ <widget class="QMainWindow" name="col_LocalInvoices">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>675</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Transactions</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../universal/OpenRPT/images/OpenRPTWrtembed.qrc">
+    <normaloff>:/OpenRPT/icons/attribute_32.png</normaloff>:/OpenRPT/icons/attribute_32.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Date Range</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Start Date</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDateEdit" name="dtpStartDate">
+           <property name="displayFormat">
+            <string>dd MMM yyyy</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>End Date:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDateEdit" name="dtpEndDate">
+           <property name="displayFormat">
+            <string>dd MMM yyyy</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
+       <widget class="QComboBox" name="cboCustomerList"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="chkAllCustomers">
+        <property name="text">
+         <string>All Customers</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="chkAllDates">
+        <property name="text">
+         <string>All Dates</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="cmdShowTransactions">
+        <property name="text">
+         <string>Show Transactions</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="CustomQueryView" name="lstInvoices"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="cmdFetchQuickbooksData">
+        <property name="text">
+         <string>Refetch Quickbooks Data</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cmdChangeInvoiceDates">
+        <property name="text">
+         <string>Change Transaction Dates in Quickbooks</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../universal/Leva/src/res.qrc">
+          <normaloff>:/images/Icon_136.ico</normaloff>:/images/Icon_136.ico</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomQueryView</class>
+   <extends>QTreeView</extends>
+   <header>customqueryview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../universal/Leva/src/res.qrc"/>
+  <include location="../../universal/OpenRPT/images/OpenRPTWrtembed.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>chkAllCustomers</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cboCustomerList</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>122</x>
+     <y>24</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkAllDates</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>107</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,12 @@
+#include "payrollapi.h"
+
+#include <QMessageBox>
+PayrollAPI::PayrollAPI(QObject *parent) :
+    QObject(parent)
+{
+}
+
+void PayrollAPI::showError(QString error, QWidget *parent, QString title)
+{
+    QMessageBox::critical(parent, title, error);
+}

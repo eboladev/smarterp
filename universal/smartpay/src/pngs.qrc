@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/downloads">
+        <file>newicons/cash_register.png</file>
+        <file>newicons/clock_red.png</file>
+        <file>newicons/dollars.png</file>
+        <file>newicons/mid-month-calendar.png</file>
+        <file>newicons/ta.png</file>
+        <file>newicons/holiday.png</file>
+        <file>newicons/2.png</file>
+    </qresource>
+</RCC>

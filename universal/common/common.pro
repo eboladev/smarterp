@@ -1,0 +1,82 @@
+#
+# OpenRPT report writer and rendering engine
+# Copyright (C) 2001-2011 by OpenMFG, LLC
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+# Please contact info@openmfg.com with any questions on this license.
+#
+
+include( ../global.pri )
+
+TEMPLATE    = lib
+QT          += core xml sql
+CONFIG  += qt warn_on staticlib
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
+#DEFINES     += MAKELIB
+INCLUDEPATH = . ../tmp ../common/tmp ../../common/tmp ../DataPublics
+
+#LIBS += -L ../build -ldatapublics
+DESTDIR = ../../build
+OBJECTS_DIR = tmp
+MOC_DIR     = tmp
+UI_DIR      = tmp
+
+SOURCES = data.cpp \
+          parameter.cpp \
+          dbtools.cpp \
+          xsqlquery.cpp \
+          quuencode.cpp \
+          login.cpp \
+          loginOptions.cpp \
+          xvariant.cpp \
+          languageoptions.cpp \
+          parameterproperties.cpp \
+          paramlistedit.cpp \
+          parameteredit.cpp \
+          parsexmlutils.cpp \
+          querysource.cpp \
+          reportpageoptions.cpp \
+          memdbloader.cpp
+    #muselelogin.cpp
+
+          
+HEADERS = data.h \
+          parameter.h \
+          dbtools.h \
+          xsqlquery.h \
+          quuencode.h \
+          login.h \
+          loginOptions.h \
+          xvariant.h \
+          languageoptions.h \
+          parameterproperties.h \
+          paramlistedit.h \
+          parameteredit.h \
+          parsexmlutils.h \
+          querysource.h \
+          reportpageoptions.h \
+          memdbloader.h
+    #muselelogin.h
+
+          
+FORMS   =  parameterproperties.ui \
+           paramlistedit.ui \
+           login.ui \
+           loginOptions.ui \
+           parameteredit.ui
+    #muselelogin.ui
+
+RESOURCES += ../OpenRPT/images/OpenRPTCommon.qrc

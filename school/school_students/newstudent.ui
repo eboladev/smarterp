@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewStudent</class>
+ <widget class="QMainWindow" name="NewStudent">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>302</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>New Student</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../universal/smartpay/src/rc.qrc">
+    <normaloff>:/images/Annotation_New.png</normaloff>:/images/Annotation_New.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QCommandLinkButton" name="cmdFreshStudent">
+      <property name="text">
+       <string>New Student</string>
+      </property>
+      <property name="description">
+       <string>Click here to add a new student to the system.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCommandLinkButton" name="cmdTransferStudent">
+      <property name="text">
+       <string>New Transfer Student</string>
+      </property>
+      <property name="description">
+       <string>Click here to add a transfer student from another school</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>169</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../universal/smartpay/src/rc.qrc"/>
+  <include location="../../universal/smartpay/src/rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

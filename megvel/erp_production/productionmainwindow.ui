@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProductionMainWindow</class>
+ <widget class="QMainWindow" name="ProductionMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>641</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Production</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../MegvelERP/src/res.qrc">
+    <normaloff>:/images/base_cog_32.png</normaloff>:/images/base_cog_32.png</iconset>
+  </property>
+  <widget class="FancyTabWidget" name="centralwidget"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FancyTabWidget</class>
+   <extends>QWidget</extends>
+   <header>fancytabwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../MegvelERP/src/res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
