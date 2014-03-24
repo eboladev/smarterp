@@ -4,11 +4,11 @@ SUBDIRS += \
     common \
     OpenRPT/renderer \
     OpenRPT/wrtembed \
+    xlslib \
     ManhattanStyle \
     DataPublics \
     qcustomplot \
     custom_widgets \
-    xlslib \
     qtxlsx/src/xlsx \
     CustomModels \
     OpenRPT/ReportMasterGenerator \
