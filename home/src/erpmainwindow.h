@@ -2,10 +2,10 @@
 #define ERPMAINWINDOW_H
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include <QtSql>
 #include <QTcpSocket>
@@ -14,7 +14,7 @@
 #include <QLabel>
 
 namespace Ui {
-    class ERPMainWindow;
+class ERPMainWindow;
 }
 
 
@@ -22,51 +22,51 @@ class WelcomeScreen;
 
 class ERPMainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 protected:
-    void closeEvent(QCloseEvent *evt);
+	void closeEvent(QCloseEvent *evt);
 public:
-    QString projectName;
-    QString databaseName;
-    explicit ERPMainWindow(QWidget *parent = 0, QString pName = "megvel", QString dbName = "cartons",
-                           QString user_id = QString()
-            , QSqlDatabase database = QSqlDatabase()
-                           );
-    ~ERPMainWindow();
-    void init();
+	QString projectName;
+	QString databaseName;
+	explicit ERPMainWindow(QWidget *parent = 0, QString pName = "megvel", QString dbName = "cartons",
+			       QString user_id = QString()
+			, QSqlDatabase database = QSqlDatabase()
+			);
+	~ERPMainWindow();
+	void init();
 signals:
-    void emit_logOff();
+	void emit_logOff();
 public slots:
-    void userChanged(QString newUser);
+	void userChanged(QString newUser);
 private:
-    Ui::ERPMainWindow *ui;
+	Ui::ERPMainWindow *ui;
 
-    WelcomeScreen *m_fancyWelcomeScreen;
-    int tabs;
-    QSqlDatabase db;
-    QMap<int, QMainWindow *> tabWindows;
-    QList<QMainWindow *> sectionWindows;
+	WelcomeScreen *m_fancyWelcomeScreen;
+	int tabs;
+	QSqlDatabase db;
+	QMap<int, QMainWindow *> tabWindows;
+	QList<QMainWindow *> sectionWindows;
 
-    QLabel *w_dbStatusLabel;
-    QLabel *w_timeLabel;
-    QLabel *w_currentUserLabel;
-    QLabel *w_notificationsLabel;
+	QLabel *w_dbStatusLabel;
+	QLabel *w_timeLabel;
+	QLabel *w_currentUserLabel;
+	QLabel *w_notificationsLabel;
 
-    QTcpSocket *updateSocket;
+	QTcpSocket *updateSocket;
 
-    QTimer *dbTimer;
-    QSqlQuery secondQU;
+	QTimer *dbTimer;
+	QSqlQuery secondQU;
 
-    QString userID;
+	QString userID;
 private slots:
-    void addFancyWidgets();
-    void addNewTab(QMainWindow *tab);
-    void logOff();
+	void addFancyWidgets();
+	void addNewTab(QMainWindow *tab);
+	void logOff();
 
-    void tabChanged(int i);
-    void socketReadyRead();
-    void socketConnected();
-    void secondTimeOut();
+	void tabChanged(int i);
+	void socketReadyRead();
+	void socketConnected();
+	void secondTimeOut();
 
 
 };

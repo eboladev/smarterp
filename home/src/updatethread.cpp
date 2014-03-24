@@ -1,7 +1,7 @@
 #include "updatethread.h"
 
 UpdateThread::UpdateThread(QObject *parent) :
-    QThread(parent)
+	QThread(parent)
 {
 }
 

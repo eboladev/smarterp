@@ -96,6 +96,6 @@
         <file>images/Warning.png</file>
         <file>images/XAML_file.png</file>
         <file>images/zippedFile.png</file>
-        <file>letter-M-PNG</file>
+        <file>letter-M-PNG.png</file>
     </qresource>
 </RCC>
