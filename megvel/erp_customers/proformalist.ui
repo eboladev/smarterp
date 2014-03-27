@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>686</width>
-    <height>600</height>
+    <width>769</width>
+    <height>451</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Proformas</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../home/src/res.qrc">
+   <iconset>
     <normaloff>:/images/Rename.png</normaloff>:/images/Rename.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -272,8 +272,6 @@
    <header>customqueryview.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../../home/src/res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
