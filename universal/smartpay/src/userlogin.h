@@ -11,21 +11,22 @@ class UserLogin;
 
 class UserLogin : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit UserLogin(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~UserLogin();
-    bool payrollAccess;
-    QString userID;
-    QSqlDatabase companyDb;
-    QString companyName;
+	explicit UserLogin(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~UserLogin();
+	bool payrollAccess;
+	QString userID;
+	QSqlDatabase companyDb;
+	QString companyName;
+	QStringList companies;
 private:
-    Ui::UserLogin *ui;
-    QSqlDatabase db;
+	Ui::UserLogin *ui;
+	QSqlDatabase db;
 
 private slots:
-    void tryLogin();
+	void tryLogin();
 };
 
 #endif // USERLOGIN_H

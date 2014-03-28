@@ -89,7 +89,8 @@ SOURCES +=\
     ../src/postbiometricattendancewizard.cpp \
     ../src/payrollreportpreview.cpp \
     ../src/calculateattendancedialog.cpp \
-    startnewemployee.cpp
+    startnewemployee.cpp \
+    ../src/selectcompanydialog.cpp
 
 HEADERS  += \
 ../src/mainwindow.h \
@@ -182,7 +183,8 @@ HEADERS  += \
     ../src/postbiometricattendancewizard.h \
     ../src/payrollreportpreview.h \
     ../src/calculateattendancedialog.h \
-    startnewemployee.h
+    startnewemployee.h \
+    ../src/selectcompanydialog.h
 
 FORMS += \
 ../src/mainwindow.ui \
@@ -260,7 +262,8 @@ FORMS += \
     ../src/postbiometricattendancewizard.ui \
     ../src/payrollreportpreview.ui \
     ../src/calculateattendancedialog.ui \
-    startnewemployee.ui
+    startnewemployee.ui \
+    ../src/selectcompanydialog.ui
 
 RESOURCES += \
 ../src/rc.qrc \

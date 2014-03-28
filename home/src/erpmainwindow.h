@@ -34,6 +34,7 @@ public:
 			);
 	~ERPMainWindow();
 	void init();
+
 signals:
 	void emit_logOff();
 public slots:

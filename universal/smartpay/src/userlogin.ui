@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>387</width>
-    <height>204</height>
+    <width>364</width>
+    <height>219</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>User Login</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../smartpay/main_res.qrc">
+   <iconset>
     <normaloff>:/main/Letter-S-icon.png</normaloff>:/main/Letter-S-icon.png</iconset>
   </property>
   <property name="sizeGripEnabled">
@@ -41,22 +41,25 @@ background-color: rgb(255, 0, 0);</string>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>User Name:</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0" rowspan="2">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../home/src/res.qrc">:/images/SecurityLock.png</pixmap>
+        <pixmap>:/images/SecurityLock.png</pixmap>
        </property>
       </widget>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Company:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QComboBox" name="cboCompanies"/>
      </item>
      <item row="0" column="2">
       <widget class="QLineEdit" name="UserName"/>
@@ -68,22 +71,19 @@ background-color: rgb(255, 0, 0);</string>
        </property>
       </widget>
      </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>User Name:</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="2">
       <widget class="QLineEdit" name="Password">
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
       </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Company:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QComboBox" name="cboCompanies"/>
      </item>
     </layout>
    </item>
@@ -108,7 +108,7 @@ background-color: rgb(255, 0, 0);</string>
         <string>Login</string>
        </property>
        <property name="icon">
-        <iconset resource="../../../home/src/res.qrc">
+        <iconset>
          <normaloff>:/images/preferences.png</normaloff>:/images/preferences.png</iconset>
        </property>
       </widget>
@@ -132,7 +132,7 @@ background-color: rgb(255, 0, 0);</string>
         <string>Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="rc.qrc">
+        <iconset>
          <normaloff>:/images/delete.png</normaloff>:/images/delete.png</iconset>
        </property>
       </widget>
@@ -141,11 +141,6 @@ background-color: rgb(255, 0, 0);</string>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../../home/src/res.qrc"/>
-  <include location="rc.qrc"/>
-  <include location="../smartpay/main_res.qrc"/>
-  <include location="rc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

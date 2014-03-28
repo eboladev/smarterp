@@ -2,15 +2,15 @@
 #include "ui_reportdateselectwidget.h"
 
 ReportDateSelectWidget::ReportDateSelectWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ReportDateSelectWidget)
+	QWidget(parent),
+	ui(new Ui::ReportDateSelectWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 ReportDateSelectWidget::~ReportDateSelectWidget()
 {
-    delete ui;
+	delete ui;
 }
 
 void ReportDateSelectWidget::on_pushButton_clicked()

@@ -2,13 +2,13 @@
 #include "ui_reports.h"
 
 Reports::Reports(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Reports)
+	QMainWindow(parent),
+	ui(new Ui::Reports)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 Reports::~Reports()
 {
-    delete ui;
+	delete ui;
 }
