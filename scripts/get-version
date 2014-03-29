@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# $1 - os name {linux|darwin|win}
+# $2 - [optional] raw version string "vX.Y-patchN-sha1". as from `git describe'
+#      (see below)
+
+set -eu
+#set -x
+
+croak() {
+	echo "$0: $*" >&2
+	exit 1
+}
+
+[ $# -ge 1 ] || croak "missing OS argument"
+os=$1
+
+if [ $# -eq 2 ] && [ "$2" ]; then
+	v0=$2
+else
+	cmd="git describe --tags --abbrev=12"
+	v0=$($cmd) || croak "odd; command '$cmd' failed"
+fi
+
+# strip off the 'v' prefix, if any
+v0=${v0#v}
+
+case $os in
+	linux)
+		v=$v0
+		;;
+	darwin|win)
+		# just the dots in the version string - this way we can
+		# count them
+		IFS=.
+		set -- $v0		# split $v0 using $IFS separator
+		dots=$(($# - 1))	# use positional argument count
+		# split version string using a '-' separator
+		IFS=-
+		set -- $v0
+		v=$1
+		# do we need to add another digit?
+		# We know there are 1 or 2 dots in $v, so if it's just one
+		# or we are trying to get to 4, add one digit
+		if [ $dots -eq 1 ] || [ $os = win ]; then
+			if [ $# -gt 1 ]; then
+				v=$v.$2
+			else
+				v=$v.0
+			fi
+		fi
+		# and if it was just one dot and we want 4, at another 0
+		if [ $dots -eq 1 ] && [ $os = win ]; then
+			v=$v.0
+		fi
+		;;
+	*)
+		v=git.missing.please.hardcode.version
+		;;
+esac
+printf '%s' $v
