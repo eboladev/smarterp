@@ -3,7 +3,9 @@
 
 #include <QObject>
 #include <QtSql>
-
+#include <QThread>
+#include <QStringList>
+#include "smtpclient/emailaddress.h"
 class MailerParent : public QObject
 {
 	Q_OBJECT
@@ -17,8 +19,13 @@ public slots:
 private:
 	QSqlDatabase db;
 	int count;
-
-
+	void openDatabase();
+	QDateTime startTime;
+	QString table_name;
+	bool sendOc(QString ocNo);
+	bool sendEmail(QString subject, QString messageText,
+		       QStringList recepients, QStringList attachments = QStringList());
+	EmailAddress *getEmailFromString(QString email);
 };
 
 #endif // MAILERPARENT_H
