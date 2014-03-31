@@ -101,8 +101,8 @@ bool MailerParent::sendOc(QString ocNo)
 bool MailerParent::sendEmail(QString subject, QString messageText, QStringList recepients, QStringList attachments)
 {
 	qDebug() << "Starting email sender...";
-	QString host = "192.168.0.246";
-	int port = 25;
+	QString host = "192.168.0.8";
+	int port = 587;
 	bool ssl = false;
 	EmailAddress *sender = new EmailAddress("erp@megvel.me.ke", "Megvel Cartons Ltd ERP");
 
@@ -126,7 +126,7 @@ bool MailerParent::sendEmail(QString subject, QString messageText, QStringList r
 
 	if (!smtp.connectToHost()) {
 		//errorMessage = "SMTP error";
-		//emit errorOccurred(tr("Unable to connect to the mail server at %1 .").arg(host));
+		qDebug() << QString("Unable to connect to the mail server at %1").arg(host);
 		//emit failed();
 		smtp.quit();
 		return false;
@@ -134,7 +134,7 @@ bool MailerParent::sendEmail(QString subject, QString messageText, QStringList r
 
 	if (!smtp.sendMail(message)) {
 		//errorMessage = "Sendmail failed.";
-		//emit errorOccurred("An error occurrent while sending the email " + smtp.getResponseText());
+		qDebug() << "An error occurrent while sending the email " + smtp.getResponseText();
 		//emit failed();
 		smtp.quit();
 		return false;
