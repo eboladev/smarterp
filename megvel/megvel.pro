@@ -19,4 +19,5 @@ SUBDIRS += \
     #scheduled_emails \
     erp_dispatch \
     erp_payments_collection \
-    erp_updater
+    erp_updater \
+    erp_mailer
