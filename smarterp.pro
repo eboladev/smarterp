@@ -1,4 +1,4 @@
-#(c) Joseph W Joshua 2012
+#(c) Joseph W Joshua 2012-2014
 
 TEMPLATE = subdirs
 
