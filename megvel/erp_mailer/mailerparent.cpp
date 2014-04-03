@@ -93,7 +93,9 @@ bool MailerParent::sendOc(QString ocNo)
 	QStringList recpients;
 	recpients << "Joseph W Joshua <joshua@megvel.me.ke>";
 
-	QString msg = customerName + "\n" + productName;
+	QString msg = "<b>Customer Name</b>: " + customerName +
+			"<br/>" +
+			"<b>Product Name</b>: " + productName;
 	QString subject = "New OC: " + ocNo + ". Customer: " + customerName;
 	return sendEmail(subject, msg, recpients);
 }
@@ -101,8 +103,8 @@ bool MailerParent::sendOc(QString ocNo)
 bool MailerParent::sendEmail(QString subject, QString messageText, QStringList recepients, QStringList attachments)
 {
 	qDebug() << "Starting email sender...";
-	QString host = "192.168.0.8";
-	int port = 587;
+	QString host = "192.168.0.246";
+	int  port = 25;
 	bool ssl = false;
 	EmailAddress *sender = new EmailAddress("erp@megvel.me.ke", "Megvel Cartons Ltd ERP");
 
@@ -141,6 +143,7 @@ bool MailerParent::sendEmail(QString subject, QString messageText, QStringList r
 	} else {
 		//Email sent
 		//emit messageStatus("Message successfully sent");
+		qDebug() << "Email sent (" + subject + ")";
 		smtp.quit();
 		return true;
 	}
