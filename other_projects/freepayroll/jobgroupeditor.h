@@ -12,27 +12,27 @@ class JobGroupEditor;
 
 class JobGroupEditor : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit JobGroupEditor(QWidget *parent = 0);
-    ~JobGroupEditor();
-    QSqlTableModel *model;
-    QItemSelectionModel *selectionModel;
-    QDataWidgetMapper *mapper;
+	explicit JobGroupEditor(QWidget *parent = 0);
+	~JobGroupEditor();
+	QSqlTableModel *model;
+	QItemSelectionModel *selectionModel;
+	QDataWidgetMapper *mapper;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 private slots:
-    void on_cmdNewJobGroup_clicked();
-    void mapperChanged(int row);
-    void on_lstJobGroups_clicked(const QModelIndex &index);
+	void on_cmdNewJobGroup_clicked();
+	void mapperChanged(int row);
+	void on_lstJobGroups_clicked(const QModelIndex &index);
 
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
-    void on_cmdDeleteJobGroup_clicked();
+	void on_cmdDeleteJobGroup_clicked();
 
 private:
-    Ui::JobGroupEditor *ui;
+	Ui::JobGroupEditor *ui;
 
 };
 

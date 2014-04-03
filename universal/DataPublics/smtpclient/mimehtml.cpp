@@ -22,7 +22,7 @@
 
 MimeHtml::MimeHtml(const QString &html) : MimeText(html)
 {
-    this->cType = "text/html";
+	this->cType = "text/html";
 }
 
 MimeHtml::~MimeHtml() {}
@@ -34,12 +34,12 @@ MimeHtml::~MimeHtml() {}
 
 void MimeHtml::setHtml(const QString & html)
 {
-    this->text = html;
+	this->text = html;
 }
 
 const QString & MimeHtml::getHtml() const
 {
-    return text;
+	return text;
 }
 
 
@@ -50,8 +50,8 @@ const QString & MimeHtml::getHtml() const
 
 void MimeHtml::prepare()
 {
-    /* !!! IMPORTANT !!! */
-    MimeText::prepare();
+	/* !!! IMPORTANT !!! */
+	MimeText::prepare();
 }
 
 /* [3] --- */

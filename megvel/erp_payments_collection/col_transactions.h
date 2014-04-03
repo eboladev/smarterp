@@ -9,14 +9,14 @@ class col_transactions;
 
 class col_transactions : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit col_transactions(QWidget *parent = 0);
-    ~col_transactions();
-    
+	explicit col_transactions(QWidget *parent = 0);
+	~col_transactions();
+
 private:
-    Ui::col_transactions *ui;
+	Ui::col_transactions *ui;
 };
 
 #endif // COL_TRANSACTIONS_H

@@ -11,29 +11,29 @@ class PayrollMonths;
 
 class PayrollMonths : public QWidget
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit PayrollMonths(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~PayrollMonths();
-    bool isAdmin;
+	explicit PayrollMonths(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~PayrollMonths();
+	bool isAdmin;
 private slots:
-    void on_cmdAddNew_clicked();
+	void on_cmdAddNew_clicked();
 
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
-    void on_cmdDelete_clicked();
+	void on_cmdDelete_clicked();
 
-    void on_treeView_clicked(const QModelIndex &index);
+	void on_treeView_clicked(const QModelIndex &index);
 
 private:
-    Ui::PayrollMonths *ui;
-    QSqlDatabase db;
-    void            reload();
-    bool            isAdding;
-    void            clearTexts();
-    QSqlQueryModel  *model;
-    QString         currentID;
+	Ui::PayrollMonths *ui;
+	QSqlDatabase db;
+	void            reload();
+	bool            isAdding;
+	void            clearTexts();
+	QSqlQueryModel  *model;
+	QString         currentID;
 
 };
 

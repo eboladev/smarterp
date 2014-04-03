@@ -4,7 +4,7 @@
 class TextEditDelegate
 {
 public:
-    TextEditDelegate();
+	TextEditDelegate();
 };
 
 #endif // TEXTEDITDELEGATE_H

@@ -9,14 +9,14 @@ class LeaveDaysEditor;
 
 class LeaveDaysEditor : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit LeaveDaysEditor(QWidget *parent = 0);
-    ~LeaveDaysEditor();
-    
+	explicit LeaveDaysEditor(QWidget *parent = 0);
+	~LeaveDaysEditor();
+
 private:
-    Ui::LeaveDaysEditor *ui;
+	Ui::LeaveDaysEditor *ui;
 };
 
 #endif // LEAVEDAYSEDITOR_H

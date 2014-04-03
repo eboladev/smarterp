@@ -5,44 +5,44 @@
 #include <QtPlugin>
 
 QMainWindow *ReportMasterPlugin::pluginMainWindow(QWidget *parent, QSqlDatabase database) {
-    m_reports_mainwindow = new MainWindow(parent, database);
-    QMainWindow *mw =  qobject_cast<QMainWindow *>(m_reports_mainwindow);
-    return mw;
+	m_reports_mainwindow = new MainWindow(parent, database);
+	QMainWindow *mw =  qobject_cast<QMainWindow *>(m_reports_mainwindow);
+	return mw;
 }
 
 QString ReportMasterPlugin::pluginName()
 {
-    return "Report Master";
+	return "Report Master";
 }
 
 QString ReportMasterPlugin::pluginDescription()
 {
-    return "Report viewer. View database reports, print them, and export them to popular formats such as PDF, HTML, etc.";
+	return "Report viewer. View database reports, print them, and export them to popular formats such as PDF, HTML, etc.";
 }
 
 QString ReportMasterPlugin::pluginVersion()
 {
-    return "1.0";
+	return "1.0";
 }
 
 QString ReportMasterPlugin::releaseDate()
 {
-    return QObject::tr("%1 %2").arg(__DATE__, __TIME__);
+	return QObject::tr("%1 %2").arg(__DATE__, __TIME__);
 }
 
 QString ReportMasterPlugin::pluginAuthor()
 {
-    return "MCL";
+	return "MCL";
 }
 
 QStringList ReportMasterPlugin::subWindows()
 {
-    QStringList w;
-    return w;
+	QStringList w;
+	return w;
 }
 
 QString ReportMasterPlugin::projectName() {
-    return "universal";
+	return "universal";
 }
 
 #if QT_VERSION < 0x50000

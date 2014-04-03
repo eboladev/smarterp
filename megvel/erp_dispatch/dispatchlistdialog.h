@@ -10,16 +10,16 @@ class DispatchListDialog;
 
 class DispatchListDialog : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit DispatchListDialog(QWidget *parent = 0, QString ticketNo = QString(),
-                                QSqlDatabase db = QSqlDatabase()
-                                );
-    ~DispatchListDialog();
-    
+	explicit DispatchListDialog(QWidget *parent = 0, QString ticketNo = QString(),
+				    QSqlDatabase db = QSqlDatabase()
+			);
+	~DispatchListDialog();
+
 private:
-    Ui::DispatchListDialog *ui;
+	Ui::DispatchListDialog *ui;
 };
 
 #endif // DISPATCHLISTDIALOG_H

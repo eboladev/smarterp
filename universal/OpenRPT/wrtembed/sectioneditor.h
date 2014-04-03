@@ -29,38 +29,38 @@ class DocumentScene;
 
 class SectionEditor : public QDialog, public Ui::SectionEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    SectionEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~SectionEditor();
+	SectionEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~SectionEditor();
 
-    void init( DocumentScene * scene );
+	void init( DocumentScene * scene );
 
 public slots:
-    virtual void btnAdd_clicked();
-    virtual void btnEdit_clicked();
-    virtual void btnRemove_clicked();
-    virtual void btnMoveUp_clicked();
-    virtual void brnMoveDown_clicked();
-    virtual void cbReportHeader_toggled( bool yes );
-    virtual void cbReportFooter_toggled( bool yes );
-    virtual void cbHeadFirst_toggled( bool yes );
-    virtual void cbHeadLast_toggled( bool yes );
-    virtual void cbHeadEven_toggled( bool yes );
-    virtual void cbHeadOdd_toggled( bool yes );
-    virtual void cbFootFirst_toggled( bool yes );
-    virtual void cbFootLast_toggled( bool yes );
-    virtual void cbFootEven_toggled( bool yes );
-    virtual void cbFootOdd_toggled( bool yes );
-    virtual void cbHeadAny_toggled( bool yes );
-    virtual void cbFootAny_toggled( bool yes );
+	virtual void btnAdd_clicked();
+	virtual void btnEdit_clicked();
+	virtual void btnRemove_clicked();
+	virtual void btnMoveUp_clicked();
+	virtual void brnMoveDown_clicked();
+	virtual void cbReportHeader_toggled( bool yes );
+	virtual void cbReportFooter_toggled( bool yes );
+	virtual void cbHeadFirst_toggled( bool yes );
+	virtual void cbHeadLast_toggled( bool yes );
+	virtual void cbHeadEven_toggled( bool yes );
+	virtual void cbHeadOdd_toggled( bool yes );
+	virtual void cbFootFirst_toggled( bool yes );
+	virtual void cbFootLast_toggled( bool yes );
+	virtual void cbFootEven_toggled( bool yes );
+	virtual void cbFootOdd_toggled( bool yes );
+	virtual void cbHeadAny_toggled( bool yes );
+	virtual void cbFootAny_toggled( bool yes );
 
 protected:
-    DocumentScene * scene;
+	DocumentScene * scene;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

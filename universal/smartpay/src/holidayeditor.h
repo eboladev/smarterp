@@ -10,21 +10,21 @@ class HolidayEditor;
 
 class HolidayEditor : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit HolidayEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~HolidayEditor();
-    void Edit(QString id);
-    void AddNew();
+	explicit HolidayEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~HolidayEditor();
+	void Edit(QString id);
+	void AddNew();
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::HolidayEditor *ui;
-    QSqlDatabase db;
-    QString currentID;
-    bool isAdding;
+	Ui::HolidayEditor *ui;
+	QSqlDatabase db;
+	QString currentID;
+	bool isAdding;
 };
 
 #endif // HOLIDAYEDITOR_H

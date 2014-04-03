@@ -34,7 +34,7 @@
 QT_BEGIN_NAMESPACE_XLSX
 
 CellPrivate::CellPrivate(Cell *p) :
-    q_ptr(p)
+	q_ptr(p)
 {
 
 }
@@ -64,12 +64,12 @@ CellPrivate::CellPrivate(Cell *p) :
  * Created by Worksheet only.
  */
 Cell::Cell(const QVariant &data, DataType type, const Format &format, Worksheet *parent) :
-    d_ptr(new CellPrivate(this))
+	d_ptr(new CellPrivate(this))
 {
-    d_ptr->value = data;
-    d_ptr->dataType = type;
-    d_ptr->format = format;
-    d_ptr->parent = parent;
+	d_ptr->value = data;
+	d_ptr->dataType = type;
+	d_ptr->format = format;
+	d_ptr->parent = parent;
 }
 
 /*!
@@ -77,7 +77,7 @@ Cell::Cell(const QVariant &data, DataType type, const Format &format, Worksheet 
  */
 Cell::~Cell()
 {
-    delete d_ptr;
+	delete d_ptr;
 }
 
 /*!
@@ -85,8 +85,8 @@ Cell::~Cell()
  */
 Cell::DataType Cell::dataType() const
 {
-    Q_D(const Cell);
-    return d->dataType;
+	Q_D(const Cell);
+	return d->dataType;
 }
 
 /*!
@@ -94,8 +94,8 @@ Cell::DataType Cell::dataType() const
  */
 QVariant Cell::value() const
 {
-    Q_D(const Cell);
-    return d->value;
+	Q_D(const Cell);
+	return d->value;
 }
 
 /*!
@@ -103,8 +103,8 @@ QVariant Cell::value() const
  */
 Format Cell::format() const
 {
-    Q_D(const Cell);
-    return d->format;
+	Q_D(const Cell);
+	return d->format;
 }
 
 /*!
@@ -112,8 +112,8 @@ Format Cell::format() const
  */
 QString Cell::formula() const
 {
-    Q_D(const Cell);
-    return d->formula;
+	Q_D(const Cell);
+	return d->formula;
 }
 
 /*!
@@ -121,10 +121,10 @@ QString Cell::formula() const
  */
 bool Cell::isDateTime() const
 {
-    Q_D(const Cell);
-    if (d->dataType == Numeric && d->format.isValid() && d->format.isDateTimeFormat())
-        return true;
-    return false;
+	Q_D(const Cell);
+	if (d->dataType == Numeric && d->format.isValid() && d->format.isDateTimeFormat())
+		return true;
+	return false;
 }
 
 /*!
@@ -132,10 +132,10 @@ bool Cell::isDateTime() const
  */
 QDateTime Cell::dateTime() const
 {
-    Q_D(const Cell);
-    if (!isDateTime())
-        return QDateTime();
-    return datetimeFromNumber(d->value.toDouble(), d->parent->workbook()->isDate1904());
+	Q_D(const Cell);
+	if (!isDateTime())
+		return QDateTime();
+	return datetimeFromNumber(d->value.toDouble(), d->parent->workbook()->isDate1904());
 }
 
 /*!
@@ -143,11 +143,11 @@ QDateTime Cell::dateTime() const
  */
 bool Cell::isRichString() const
 {
-    Q_D(const Cell);
-    if (d->dataType != String && d->dataType != InlineString)
-        return false;
+	Q_D(const Cell);
+	if (d->dataType != String && d->dataType != InlineString)
+		return false;
 
-    return d->richString.isRichString();
+	return d->richString.isRichString();
 }
 
 QT_END_NAMESPACE_XLSX

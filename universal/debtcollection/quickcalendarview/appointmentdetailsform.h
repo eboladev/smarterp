@@ -25,7 +25,7 @@
 
 #include <QList>
 #include <QWidget>
- 
+
 #include "appointment.h"
 #include "calendar.h"
 //#include "ui_appointmentdetailsform.h"
@@ -38,35 +38,35 @@
 
 
 namespace Ui {
-    class AppointmentDetailsForm;
+class AppointmentDetailsForm;
 }
 
 class AppointmentDetailsForm : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    AppointmentDetailsForm(Appointment *appointment,
-                           QList <Calendar *> *calendars,
-                           QWidget *parent = 0);
-    void setCloseHidden(bool h);
+	AppointmentDetailsForm(Appointment *appointment,
+			       QList <Calendar *> *calendars,
+			       QWidget *parent = 0);
+	void setCloseHidden(bool h);
 signals:
-    void onClose(Appointment *appointment);
+	void onClose(Appointment *appointment);
 
 private slots:
-    void onSaveChanges();
-    void onDiscardChanges();
-    void onDeleteAppointment();
-    void startDateTimeChanged(const QDateTime &datetime);
-    void endDateTimeChanged(const QDateTime &datetime);
+	void onSaveChanges();
+	void onDiscardChanges();
+	void onDeleteAppointment();
+	void startDateTimeChanged(const QDateTime &datetime);
+	void endDateTimeChanged(const QDateTime &datetime);
 
 protected:
-    //virtual void closeEvent(QCloseEvent *event);
+	//virtual void closeEvent(QCloseEvent *event);
 
 private:
-    Ui::AppointmentDetailsForm *ui;
-    Appointment *ptrAppointment;
-    QList <Calendar *> *ptrCalendars;
+	Ui::AppointmentDetailsForm *ui;
+	Appointment *ptrAppointment;
+	QList <Calendar *> *ptrCalendars;
 };
 
 #endif

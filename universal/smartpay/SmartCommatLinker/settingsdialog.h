@@ -9,15 +9,15 @@ class SettingsDialog;
 
 class SettingsDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit SettingsDialog(QWidget *parent = 0);
-    ~SettingsDialog();
+	explicit SettingsDialog(QWidget *parent = 0);
+	~SettingsDialog();
 
 private:
-    Ui::SettingsDialog *ui;
-    SettingsManager *sett;
+	Ui::SettingsDialog *ui;
+	SettingsManager *sett;
 };
 
 #endif // SETTINGSDIALOG_H

@@ -10,15 +10,15 @@ class CollectionMainWindow;
 
 class CollectionMainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit CollectionMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~CollectionMainWindow();
-    
+	explicit CollectionMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~CollectionMainWindow();
+
 private:
-    Ui::CollectionMainWindow *ui;
-    QSqlDatabase db;
+	Ui::CollectionMainWindow *ui;
+	QSqlDatabase db;
 };
 
 #endif // COLLECTIONMAINWINDOW_H

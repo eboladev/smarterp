@@ -5,9 +5,9 @@
 
 class ImportCSVThread : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ImportCSVThread(QObject *parent = 0);
+	explicit ImportCSVThread(QObject *parent = 0);
 
 signals:
 

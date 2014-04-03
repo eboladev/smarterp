@@ -9,14 +9,14 @@ class Reports;
 
 class Reports : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit Reports(QWidget *parent = 0);
-    ~Reports();
-    
+	explicit Reports(QWidget *parent = 0);
+	~Reports();
+
 private:
-    Ui::Reports *ui;
+	Ui::Reports *ui;
 };
 
 #endif // REPORTS_H

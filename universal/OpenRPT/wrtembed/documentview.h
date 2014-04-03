@@ -32,20 +32,20 @@ class ReportHandler;
 //
 class DocumentView : public QGraphicsView
 {
-  Q_OBJECT
-  public:
-    DocumentView(DocumentScene * ds, QWidget * parent = 0);
-    void zoom(int delta);
+	Q_OBJECT
+public:
+	DocumentView(DocumentScene * ds, QWidget * parent = 0);
+	void zoom(int delta);
 
-  protected:
-    virtual void wheelEvent(QWheelEvent * e);
-    virtual void keyPressEvent ( QKeyEvent * event );
+protected:
+	virtual void wheelEvent(QWheelEvent * e);
+	virtual void keyPressEvent ( QKeyEvent * event );
 	virtual void keyReleaseEvent ( QKeyEvent * event );
 
-  private:    
-    void moveSelectedItems (int x, int y, Qt::KeyboardModifiers keyModifiers);
+private:
+	void moveSelectedItems (int x, int y, Qt::KeyboardModifiers keyModifiers);
 
-    DocumentScene * _ds;
+	DocumentScene * _ds;
 };
 
 #endif

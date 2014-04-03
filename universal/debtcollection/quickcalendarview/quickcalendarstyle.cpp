@@ -25,42 +25,42 @@
 #include "quickcalendarstyle.h"
 
 QuickCalendarStyle::QuickCalendarStyle() :
-    weekNumberFont("arial", 30),  //Задаем значения по умолчанию
-    dayNumberFont("arial", 24),
-    dayNameFont("arial", 16),
-    appointmentSubjectFont("arial", 16),
-    clockBarFont("arial", 16),
-    expandedDayNumberFont("Arial", 24),
-    collapsedDayNumberFont("Arial", 18)
+	weekNumberFont("arial", 30),  //Задаем значения по умолчанию
+	dayNumberFont("arial", 24),
+	dayNameFont("arial", 16),
+	appointmentSubjectFont("arial", 16),
+	clockBarFont("arial", 16),
+	expandedDayNumberFont("Arial", 24),
+	collapsedDayNumberFont("Arial", 18)
 {
 
-    weekLeftMargin = 50;
-    weekRightMargin = 16;
-    quarterHeight = 10;
+	weekLeftMargin = 50;
+	weekRightMargin = 16;
+	quarterHeight = 10;
 
-    expandedWeekHeaderHeight = 40;
+	expandedWeekHeaderHeight = 40;
 
-    pastDayGradient.setColorAt(0, QColor(199,199,199));
-    pastDayGradient.setColorAt(1, QColor(191,191,191));
+	pastDayGradient.setColorAt(0, QColor(199,199,199));
+	pastDayGradient.setColorAt(1, QColor(191,191,191));
 
-    todayGradient.setColorAt(0, QColor(229,182,114));
-    todayGradient.setColorAt(1, QColor(229,153,45));
+	todayGradient.setColorAt(0, QColor(229,182,114));
+	todayGradient.setColorAt(1, QColor(229,153,45));
 
-    comingDayGradient.setColorAt(0, QColor(255,255,255));
-    comingDayGradient.setColorAt(1, QColor(215,215,215));
+	comingDayGradient.setColorAt(0, QColor(255,255,255));
+	comingDayGradient.setColorAt(1, QColor(215,215,215));
 
-    pastWeekendGradient.setColorAt(0, QColor(169,169,169));
-    pastWeekendGradient.setColorAt(1, QColor(161,161,161));
+	pastWeekendGradient.setColorAt(0, QColor(169,169,169));
+	pastWeekendGradient.setColorAt(1, QColor(161,161,161));
 
-    weekendGradient.setColorAt(0, QColor(199,152,84));
-    weekendGradient.setColorAt(1, QColor(199,123,15));
+	weekendGradient.setColorAt(0, QColor(199,152,84));
+	weekendGradient.setColorAt(1, QColor(199,123,15));
 
-    comingWeekendGradient.setColorAt(0, QColor(225,225,225));
-    comingWeekendGradient.setColorAt(1, QColor(185,185,185));
+	comingWeekendGradient.setColorAt(0, QColor(225,225,225));
+	comingWeekendGradient.setColorAt(1, QColor(185,185,185));
 
-    pastDayPen.setColor(QColor(127,127,127));
-    todayPen.setColor(QColor(0,0,0));
-    comingDayPen.setColor(QColor(63,63,63));
+	pastDayPen.setColor(QColor(127,127,127));
+	todayPen.setColor(QColor(0,0,0));
+	comingDayPen.setColor(QColor(63,63,63));
 
 }
 
@@ -69,5 +69,5 @@ QuickCalendarStyle::QuickCalendarStyle() :
 */
 int QuickCalendarStyle::collapsedWeekHeight() const
 {
-    return 30;
+	return 30;
 }

@@ -27,24 +27,24 @@
 
 class ColorList : public QDialog, public Ui::ColorList
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ColorList(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ColorList();
+	ColorList(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ColorList();
 
 public slots:
-    virtual void _btnAdd_clicked();
-    virtual void _lbColors_dblClick( QListWidgetItem * item );
-    virtual void _btnEdit_clicked();
-    virtual void _btnDelete_clicked();
-    virtual void init( QMap<QString, QColor> * cmap );
+	virtual void _btnAdd_clicked();
+	virtual void _lbColors_dblClick( QListWidgetItem * item );
+	virtual void _btnEdit_clicked();
+	virtual void _btnDelete_clicked();
+	virtual void init( QMap<QString, QColor> * cmap );
 
 protected:
-    QMap<QString, QColor>* _colorMap;
+	QMap<QString, QColor>* _colorMap;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

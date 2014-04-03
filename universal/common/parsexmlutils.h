@@ -51,120 +51,120 @@ class QDomNode;
 //
 class ORDataData
 {
-  public:
-    ORDataData()
-    {
-      query = QString::null;
-      column = QString::null;
-    }
-    ORDataData(const QString & q, const QString & c)
-    {
-      query = q;
-      column = c;
-    }
-    ORDataData(const ORDataData & d)
-    {
-      query = d.query;
-      column = d.column;
-    }
+public:
+	ORDataData()
+	{
+		query = QString::null;
+		column = QString::null;
+	}
+	ORDataData(const QString & q, const QString & c)
+	{
+		query = q;
+		column = c;
+	}
+	ORDataData(const ORDataData & d)
+	{
+		query = d.query;
+		column = d.column;
+	}
 
-    ORDataData & operator=(const ORDataData & d)
-    {
-      query = d.query;
-      column = d.column;
-      return *this;
-    }
+	ORDataData & operator=(const ORDataData & d)
+	{
+		query = d.query;
+		column = d.column;
+		return *this;
+	}
 
-    bool operator==(const ORDataData & d) const
-    {
-      return ((query == d.query) && (column == d.column));
-    }
+	bool operator==(const ORDataData & d) const
+	{
+		return ((query == d.query) && (column == d.column));
+	}
 
-    bool operator< (const ORDataData & d) const
-    {
-      if((query < d.query) || (query == d.query && column < d.column))
-        return true;
-      return false;
-    }
+	bool operator< (const ORDataData & d) const
+	{
+		if((query < d.query) || (query == d.query && column < d.column))
+			return true;
+		return false;
+	}
 
-    QString query;
-    QString column;
+	QString query;
+	QString column;
 };
 class ORKeyData
 {
-  public:
-    QString query;
-    QString column;
+public:
+	QString query;
+	QString column;
 };
 
 class ORColorDefData
 {
-  public:
-    QString name;
-    int red, green, blue;
+public:
+	QString name;
+	int red, green, blue;
 };
 class ORTitleData
 {
-  public:
-    QString string;
-    QFont font;
-    bool font_defined;
+public:
+	QString string;
+	QFont font;
+	bool font_defined;
 };
 class ORStyleData
 {
-  public:
-    bool bar;
-    bool line;
-    bool point;
+public:
+	bool bar;
+	bool line;
+	bool point;
 };
 class ORDataAxisData
 {
-  public:
-    ORTitleData title;
-    QString column;
-    QFont font;
-    bool font_defined;
+public:
+	ORTitleData title;
+	QString column;
+	QFont font;
+	bool font_defined;
 };
 class ORValueAxisData
 {
-  public:
-    ORTitleData title;
-    double min;
-    double max;
-    bool autominmax;
-    QFont font;
-    bool font_defined;
+public:
+	ORTitleData title;
+	double min;
+	double max;
+	bool autominmax;
+	QFont font;
+	bool font_defined;
 };
 
 class ORCrossTabQueryData
 {
 public:
-  QString m_query;
-  QString m_hAlign;
-  QString m_vAlign;
+	QString m_query;
+	QString m_hAlign;
+	QString m_vAlign;
 };
 
 class ORCrossTabTablePropertiesData
 {
 public:
-  bool   m_wrapPolicyColumnsFirst;
+	bool   m_wrapPolicyColumnsFirst;
 
-  bool   m_showColumnHeaderOnEachPart;
-  bool   m_showRowHeaderOnEachPart;
+	bool   m_showColumnHeaderOnEachPart;
+	bool   m_showRowHeaderOnEachPart;
 
-  double m_cellLeftMargin;
-  double m_cellRightMargin;
-  double m_cellTopMargin;
-  double m_cellBottomMargin;
+	double m_cellLeftMargin;
+	double m_cellRightMargin;
+	double m_cellTopMargin;
+	double m_cellBottomMargin;
 };
 
 class ORSeriesData
 {
-  public:
-    QString name;
-    QString color; 
-    QString column;
-    ORStyleData style;
+public:
+	QString name;
+	QString color;
+	QString column;
+	ORStyleData style;
 };
 
 
@@ -180,187 +180,187 @@ class ORCrossTabData;
 
 class ORObject
 {
-  public:
-    ORObject();
-    virtual ~ORObject();
+public:
+	ORObject();
+	virtual ~ORObject();
 
-    virtual bool isLine();
-    virtual ORLineData * toLine();
-    virtual bool isRect();
-    virtual ORRectData * toRect();
-    virtual bool isLabel();
-    virtual ORLabelData * toLabel();
-    virtual bool isField();
-    virtual ORFieldData * toField();
-    virtual bool isText();
-    virtual ORTextData * toText();
-    virtual bool isBarcode();
-    virtual ORBarcodeData * toBarcode();
-    virtual bool isImage();
-    virtual ORImageData * toImage();
-    virtual bool isGraph();
-    virtual ORGraphData * toGraph();
-    virtual bool isCrossTab();
-    virtual ORCrossTabData * toCrossTab();
+	virtual bool isLine();
+	virtual ORLineData * toLine();
+	virtual bool isRect();
+	virtual ORRectData * toRect();
+	virtual bool isLabel();
+	virtual ORLabelData * toLabel();
+	virtual bool isField();
+	virtual ORFieldData * toField();
+	virtual bool isText();
+	virtual ORTextData * toText();
+	virtual bool isBarcode();
+	virtual ORBarcodeData * toBarcode();
+	virtual bool isImage();
+	virtual ORImageData * toImage();
+	virtual bool isGraph();
+	virtual ORGraphData * toGraph();
+	virtual bool isCrossTab();
+	virtual ORCrossTabData * toCrossTab();
 
-    QPen pen() const {return _pen;}
-    void setPen(QPen p) {_pen = p;}
+	QPen pen() const {return _pen;}
+	void setPen(QPen p) {_pen = p;}
 
-    QBrush brush() const {return _brush;}
-    void setBrush(QBrush b) {_brush = b;}
+	QBrush brush() const {return _brush;}
+	void setBrush(QBrush b) {_brush = b;}
 
 	qreal rotation() const { return _rotation; }
 	void setRotation(qreal angle) { _rotation = angle;}
 
 private:
-    QPen    _pen;
-    QBrush  _brush;
+	QPen    _pen;
+	QBrush  _brush;
 	qreal   _rotation;
 };
 
 class ORLineData : public ORObject
 {
-  public:
-    int xStart, yStart;
-    int xEnd,   yEnd;
-    int weight;
+public:
+	int xStart, yStart;
+	int xEnd,   yEnd;
+	int weight;
 
-    virtual bool isLine();
-    virtual ORLineData * toLine();
+	virtual bool isLine();
+	virtual ORLineData * toLine();
 };
 
 class ORRectData : public ORObject
 {
 public:
-    int x, y;
-    int width,  height;
-    int weight;
+	int x, y;
+	int width,  height;
+	int weight;
 
-    virtual bool isRect();
-    virtual ORRectData * toRect();
+	virtual bool isRect();
+	virtual ORRectData * toRect();
 };
 
 class ORLabelData : public ORObject
 {
-  public:
-    QRect rect;
-    QFont font;
-    int align;
-    QString string;
+public:
+	QRect rect;
+	QFont font;
+	int align;
+	QString string;
 
-    virtual bool isLabel();
-    virtual ORLabelData * toLabel();
+	virtual bool isLabel();
+	virtual ORLabelData * toLabel();
 };
 
 class ORFieldData : public ORObject
 {
-  public:
-    QRect rect;
-    QFont font;
-    int align;
-    ORDataData data;
+public:
+	QRect rect;
+	QFont font;
+	int align;
+	ORDataData data;
 
-    bool trackTotal;
-    bool sub_total;
-    bool builtinFormat;
-    QString format;
+	bool trackTotal;
+	bool sub_total;
+	bool builtinFormat;
+	QString format;
 
-    int lines;
-    int columns;
-    qreal xSpacing;
-    qreal ySpacing;
-    bool triggerPageBreak;
-    bool leftToRight;
+	int lines;
+	int columns;
+	qreal xSpacing;
+	qreal ySpacing;
+	bool triggerPageBreak;
+	bool leftToRight;
 
-    virtual bool isField();
-    virtual ORFieldData * toField();
+	virtual bool isField();
+	virtual ORFieldData * toField();
 };
 
 class ORTextData : public ORObject
 {
-  public:
-    QRect rect;
-    QFont font;
-    int align;
-    ORDataData data;
-    int bottompad;
+public:
+	QRect rect;
+	QFont font;
+	int align;
+	ORDataData data;
+	int bottompad;
 
-    virtual bool isText();
-    virtual ORTextData * toText();
+	virtual bool isText();
+	virtual ORTextData * toText();
 };
 
 class ORBarcodeData : public ORObject
 {
-  public:
-    QRect rect;
-    QString format;
-    int maxlength;
-    ORDataData data;
-    int align; // 0 = left, 1 = center, 2 = right
-    double narrowBarWidth;
+public:
+	QRect rect;
+	QString format;
+	int maxlength;
+	ORDataData data;
+	int align; // 0 = left, 1 = center, 2 = right
+	double narrowBarWidth;
 
-    virtual bool isBarcode();
-    virtual ORBarcodeData * toBarcode();
+	virtual bool isBarcode();
+	virtual ORBarcodeData * toBarcode();
 
-    static double defaultNarrowBarWidth() { return 0.01; }
+	static double defaultNarrowBarWidth() { return 0.01; }
 };
 
 class ORImageData : public ORObject
 {
-  public:
-    QRect rect;
+public:
+	QRect rect;
 
-    QString mode;
+	QString mode;
 
-    QString format;      // } 
-    QString inline_data; // } INLINE
-                         //     OR
-    ORDataData data;     // } FROM DB
+	QString format;      // }
+	QString inline_data; // } INLINE
+	//     OR
+	ORDataData data;     // } FROM DB
 
-    virtual bool isImage();
-    virtual ORImageData * toImage();
+	virtual bool isImage();
+	virtual ORImageData * toImage();
 };
 
 class ORGraphData : public ORObject
 {
-  // TODO need a destructor that can delete the series entries
-  public:
-	  ~ORGraphData() {qDeleteAll(series);}
+	// TODO need a destructor that can delete the series entries
+public:
+	~ORGraphData() {qDeleteAll(series);}
 
-    ORDataData data;
+	ORDataData data;
 
-    QFont font;
-    QRect rect;
+	QFont font;
+	QRect rect;
 
-    ORTitleData title;
-    ORDataAxisData dataaxis;
-    ORValueAxisData valueaxis;
+	ORTitleData title;
+	ORDataAxisData dataaxis;
+	ORValueAxisData valueaxis;
 
-    QList<ORSeriesData*> series;
+	QList<ORSeriesData*> series;
 
-    virtual bool isGraph();
-    virtual ORGraphData * toGraph();
+	virtual bool isGraph();
+	virtual ORGraphData * toGraph();
 };
 
 
 class ORCrossTabData : public ORObject
 {
-  public:
-    ORDataData data;
+public:
+	ORDataData data;
 
-    QFont font;
-    QRect rect;
+	QFont font;
+	QRect rect;
 
-    // Table properties
-    ORCrossTabTablePropertiesData m_tableProperties;
+	// Table properties
+	ORCrossTabTablePropertiesData m_tableProperties;
 
-    //Data
-    ORCrossTabQueryData m_column;
-    ORCrossTabQueryData m_row;
-    ORCrossTabQueryData m_value;
+	//Data
+	ORCrossTabQueryData m_column;
+	ORCrossTabQueryData m_row;
+	ORCrossTabQueryData m_value;
 
-    virtual bool isCrossTab();
-    virtual ORCrossTabData * toCrossTab();
+	virtual bool isCrossTab();
+	virtual ORCrossTabData * toCrossTab();
 };
 
 
@@ -369,17 +369,17 @@ class ORCrossTabData : public ORObject
 //
 class ORWatermarkData
 {
-  public:
-    ORWatermarkData();
+public:
+	ORWatermarkData();
 
-    int opacity;
-    bool useDefaultFont;
-    QFont font;
-    bool staticText;
-    QString text;
-    ORDataData data;
+	int opacity;
+	bool useDefaultFont;
+	QFont font;
+	bool staticText;
+	QString text;
+	ORDataData data;
 
-    bool valid;
+	bool valid;
 };
 
 //
@@ -387,17 +387,17 @@ class ORWatermarkData
 //
 class ORBackgroundData
 {
-  public:
-    ORBackgroundData();
+public:
+	ORBackgroundData();
 
-    bool enabled;
-    bool staticImage;
-    QString image;
-    ORDataData data;
-    int opacity;
-    QString mode;
-    int align;
-    QRect rect;
+	bool enabled;
+	bool staticImage;
+	QString image;
+	ORDataData data;
+	int opacity;
+	QString mode;
+	int align;
+	QRect rect;
 };
 
 //
@@ -409,136 +409,136 @@ class ORBackgroundData
 //
 class ORSectionData
 {
-  public:
-	  ~ORSectionData() {qDeleteAll(objects);}
+public:
+	~ORSectionData() {qDeleteAll(objects);}
 
-    QString name;
-    QString extra; // extra info about the section
-    qreal height;
+	QString name;
+	QString extra; // extra info about the section
+	qreal height;
 
-    QList<ORObject*> objects;
-    QList<ORDataData> trackTotal;
+	QList<ORObject*> objects;
+	QList<ORDataData> trackTotal;
 };
 
 class ORDetailGroupSectionData
 {
-  public:
-    ORDetailGroupSectionData();
-    ~ORDetailGroupSectionData();
+public:
+	ORDetailGroupSectionData();
+	~ORDetailGroupSectionData();
 
-    enum PageBreak {
-      BreakNone = 0,
-      BreakAfterGroupFoot = 1
-    };
+	enum PageBreak {
+		BreakNone = 0,
+		BreakAfterGroupFoot = 1
+	};
 
-    QString name;
-    QString column;
-    int pagebreak;
+	QString name;
+	QString column;
+	int pagebreak;
 
-    QMap<ORDataData,double> _subtotCheckPoints;
+	QMap<ORDataData,double> _subtotCheckPoints;
 
-    ORSectionData * head;
-    ORSectionData * foot;
+	ORSectionData * head;
+	ORSectionData * foot;
 };
 
 class ORDetailSectionData
 {
-  public:
-    ORDetailSectionData();
+public:
+	ORDetailSectionData();
 	~ORDetailSectionData();
 
-    enum PageBreak {
-      BreakNone = 0,
-      BreakAtEnd = 1
-    };
+	enum PageBreak {
+		BreakNone = 0,
+		BreakAtEnd = 1
+	};
 
-    QString name;
-    int pagebreak;
+	QString name;
+	int pagebreak;
 
-    ORKeyData key;
+	ORKeyData key;
 
-    ORSectionData * detail;
+	ORSectionData * detail;
 
-    QList<ORDetailGroupSectionData*> groupList;
-    QList<ORDataData> trackTotal;
+	QList<ORDetailGroupSectionData*> groupList;
+	QList<ORDataData> trackTotal;
 };
 
 class ORParameter
 {
-  public:
-    ORParameter() : active(false) {};
-    ORParameter(const QString & n) : name(n), active(false) {}
-    ORParameter(const ORParameter & d)
-    {
-      name = d.name;
-      type = d.type;
-      defaultValue = d.defaultValue;
-      description = d.description;
-      listtype = d.listtype;
-      query = d.query;
-      values = d.values;
-      active = d.active;
-    }
+public:
+	ORParameter() : active(false) {};
+	ORParameter(const QString & n) : name(n), active(false) {}
+	ORParameter(const ORParameter & d)
+	{
+		name = d.name;
+		type = d.type;
+		defaultValue = d.defaultValue;
+		description = d.description;
+		listtype = d.listtype;
+		query = d.query;
+		values = d.values;
+		active = d.active;
+	}
 
-    ORParameter & operator=(const ORParameter & d)
-    {
-      name = d.name;
-      type = d.type;
-      defaultValue = d.defaultValue;
-      description = d.description;
-      listtype = d.listtype;
-      query = d.query;
-      values = d.values;
-      active = d.active;
-      return *this;
-    }
+	ORParameter & operator=(const ORParameter & d)
+	{
+		name = d.name;
+		type = d.type;
+		defaultValue = d.defaultValue;
+		description = d.description;
+		listtype = d.listtype;
+		query = d.query;
+		values = d.values;
+		active = d.active;
+		return *this;
+	}
 
-    QString name;
-    QString type;
-    QString defaultValue;
-    QString description;
-    QString listtype;
-    QString query;
-    QList<QPair<QString,QString> > values;
-    bool active;
+	QString name;
+	QString type;
+	QString defaultValue;
+	QString description;
+	QString listtype;
+	QString query;
+	QList<QPair<QString,QString> > values;
+	bool active;
 };
 
 class ORReportData
 {
-  public:
-    ORReportData();
-        ~ORReportData();
+public:
+	ORReportData();
+	~ORReportData();
 
-    QString title;
-    QString name;
-    QString description;
+	QString title;
+	QString name;
+	QString description;
 
-    QMap<QString,ORParameter> definedParams;
+	QMap<QString,ORParameter> definedParams;
 
-    ORWatermarkData wmData;
-    ORBackgroundData bgData;
+	ORWatermarkData wmData;
+	ORBackgroundData bgData;
 
-    ReportPageOptions page;
-    QuerySourceList queries;
+	ReportPageOptions page;
+	QuerySourceList queries;
 
-    ORSectionData * pghead_first;
-    ORSectionData * pghead_odd;
-    ORSectionData * pghead_even;
-    ORSectionData * pghead_last;
-    ORSectionData * pghead_any;
+	ORSectionData * pghead_first;
+	ORSectionData * pghead_odd;
+	ORSectionData * pghead_even;
+	ORSectionData * pghead_last;
+	ORSectionData * pghead_any;
 
-    ORSectionData * rpthead;
-    ORSectionData * rptfoot;
+	ORSectionData * rpthead;
+	ORSectionData * rptfoot;
 
-    ORSectionData * pgfoot_first;
-    ORSectionData * pgfoot_odd;
-    ORSectionData * pgfoot_even;
-    ORSectionData * pgfoot_last;
-    ORSectionData * pgfoot_any;
+	ORSectionData * pgfoot_first;
+	ORSectionData * pgfoot_odd;
+	ORSectionData * pgfoot_even;
+	ORSectionData * pgfoot_last;
+	ORSectionData * pgfoot_any;
 
-    QList<ORDetailSectionData*> sections;
-    QMap<QString, QColor> color_map;
-    QList<ORDataData> trackTotal;
+	QList<ORDetailSectionData*> sections;
+	QMap<QString, QColor> color_map;
+	QList<ORDataData> trackTotal;
 };
 
 

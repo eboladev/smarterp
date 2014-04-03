@@ -67,7 +67,7 @@ void MailerParent::onTimer()
 void MailerParent::openDatabase()
 {
 	db = QSqlDatabase::addDatabase("QMYSQL", "mailerConnection");
-	db.setHostName("192.168.0.8");
+	db.setHostName("197.254.15.122");
 	db.setUserName("root");
 	db.setPassword("pledge");
 	db.setDatabaseName("cartons");
@@ -103,12 +103,15 @@ bool MailerParent::sendOc(QString ocNo)
 bool MailerParent::sendEmail(QString subject, QString messageText, QStringList recepients, QStringList attachments)
 {
 	qDebug() << "Starting email sender...";
-	QString host = "192.168.0.246";
+	QString host = "mail.primaxofficesolutions.com";
 	int  port = 25;
-	bool ssl = false;
+	bool ssl = true;
 	EmailAddress *sender = new EmailAddress("erp@megvel.me.ke", "Megvel Cartons Ltd ERP");
 
 	SmtpClient smtp (host, port, ssl ? SmtpClient::SslConnection : SmtpClient::TcpConnection);
+	smtp.setAuthMethod(SmtpClient::AuthPlain);
+	smtp.setUser("primaxof");
+	smtp.setPassword("Kg674vSck1");
 	MimeMessage message;
 
 	message.setSender(sender);

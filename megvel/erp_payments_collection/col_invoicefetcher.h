@@ -10,20 +10,20 @@ class col_InvoiceFetcher;
 
 class col_InvoiceFetcher : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit col_InvoiceFetcher(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
-                                QSqlDatabase OdbcDatbase = QSqlDatabase());
-    ~col_InvoiceFetcher();
-    
+	explicit col_InvoiceFetcher(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
+				    QSqlDatabase OdbcDatbase = QSqlDatabase());
+	~col_InvoiceFetcher();
+
 private slots:
-    void on_cmdCancel_clicked();
-    void showProgress(QString invNo);
+	void on_cmdCancel_clicked();
+	void showProgress(QString invNo);
 private:
-    Ui::col_InvoiceFetcher *ui;
-    QSqlDatabase db;
-    QSqlDatabase odbc_db;
+	Ui::col_InvoiceFetcher *ui;
+	QSqlDatabase db;
+	QSqlDatabase odbc_db;
 };
 
 #endif // COL_INVOICEFETCHER_H

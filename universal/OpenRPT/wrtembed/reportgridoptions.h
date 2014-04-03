@@ -30,38 +30,38 @@ class QPointF;
 
 
 class ReportGridOptions : public QObject {
-    Q_OBJECT
-    public:
-        ReportGridOptions(int, int, QObject* = 0, const char* = 0);
+	Q_OBJECT
+public:
+	ReportGridOptions(int, int, QObject* = 0, const char* = 0);
 
-        bool isVisible();
-        bool isSnap();
+	bool isVisible();
+	bool isSnap();
 
-        double xInterval();
-        double yInterval();
+	double xInterval();
+	double yInterval();
 
-        QPointF snapPoint(const QPointF & pos);
+	QPointF snapPoint(const QPointF & pos);
 
-    public slots:
-        void setVisible(bool yes = true);
-        void show();
-        void hide();
-        void setXInterval(double i);
-        void setYInterval(double i);
-        void setSnap(bool yes = true);
+public slots:
+	void setVisible(bool yes = true);
+	void show();
+	void hide();
+	void setXInterval(double i);
+	void setYInterval(double i);
+	void setSnap(bool yes = true);
 
-    signals:
-        void gridOptionsChanged();
+signals:
+	void gridOptionsChanged();
 
-    private:
-        bool show_grid;
-        bool snap_grid;
+private:
+	bool show_grid;
+	bool snap_grid;
 
-        double x_interval;
-        double y_interval;
+	double x_interval;
+	double y_interval;
 
-        int _realDpiX;
-        int _realDpiY;
+	int _realDpiX;
+	int _realDpiY;
 };
 
 

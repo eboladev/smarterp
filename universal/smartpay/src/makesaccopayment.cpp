@@ -2,13 +2,13 @@
 #include "ui_makesaccopayment.h"
 
 MakeSaccoPayment::MakeSaccoPayment(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::MakeSaccoPayment)
+	QDialog(parent),
+	ui(new Ui::MakeSaccoPayment)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 MakeSaccoPayment::~MakeSaccoPayment()
 {
-    delete ui;
+	delete ui;
 }

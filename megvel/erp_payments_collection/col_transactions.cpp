@@ -2,13 +2,13 @@
 #include "ui_col_transactions.h"
 
 col_transactions::col_transactions(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::col_transactions)
+	QMainWindow(parent),
+	ui(new Ui::col_transactions)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 col_transactions::~col_transactions()
 {
-    delete ui;
+	delete ui;
 }

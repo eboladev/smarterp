@@ -10,19 +10,19 @@ class ReelAllocation;
 
 class ReelAllocation : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ReelAllocation(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~ReelAllocation();
-    
+	explicit ReelAllocation(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~ReelAllocation();
+
 private slots:
-    void on_actionNew_Entry_triggered();
+	void on_actionNew_Entry_triggered();
 
 private:
-    Ui::ReelAllocation *ui;
-    QSqlDatabase db;
-    void reload();
+	Ui::ReelAllocation *ui;
+	QSqlDatabase db;
+	void reload();
 };
 
 #endif // REELALLOCATION_H

@@ -9,14 +9,14 @@ class NewActionWizard;
 
 class NewActionWizard : public QWizard
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit NewActionWizard(QWidget *parent = 0);
-    ~NewActionWizard();
-    
+	explicit NewActionWizard(QWidget *parent = 0);
+	~NewActionWizard();
+
 private:
-    Ui::NewActionWizard *ui;
+	Ui::NewActionWizard *ui;
 };
 
 #endif // NEWACTIONWIZARD_H

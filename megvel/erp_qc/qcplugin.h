@@ -8,22 +8,22 @@
 class QcMainWindow;
 
 class QcPlugin : public QObject, public MainWindowInterface {
-    Q_OBJECT
-    Q_INTERFACES(MainWindowInterface)
+	Q_OBJECT
+	Q_INTERFACES(MainWindowInterface)
 #if QT_VERSION >= 0x050000
-    Q_PLUGIN_METADATA(IID "com.erp.megvel.qc")
+	Q_PLUGIN_METADATA(IID "com.erp.megvel.qc")
 #endif
 public:
-    QMainWindow *pluginMainWindow(QWidget *parent, QSqlDatabase database);
-    QString pluginName();
-    QString pluginDescription();
-    QString pluginVersion();
-    QString releaseDate();
-    QString pluginAuthor();
-    QStringList subWindows();
-    QString projectName();
+	QMainWindow *pluginMainWindow(QWidget *parent, QSqlDatabase database);
+	QString pluginName();
+	QString pluginDescription();
+	QString pluginVersion();
+	QString releaseDate();
+	QString pluginAuthor();
+	QStringList subWindows();
+	QString projectName();
 private:
-    QcMainWindow *m_qc;
+	QcMainWindow *m_qc;
 };
 
 #endif // QCPLUGIN_H

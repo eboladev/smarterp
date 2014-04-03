@@ -29,29 +29,29 @@
 
 class PageSetup : public QDialog, public Ui::PageSetup
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    PageSetup(QWidget* parent = 0);
-    ~PageSetup();
+	PageSetup(QWidget* parent = 0);
+	~PageSetup();
 
-    static const char strLetter[];
-    static const char strLegal[];
-    static const char strA4[];
-    static const char strCustom[];
-    static const char strLabel[];
+	static const char strLetter[];
+	static const char strLegal[];
+	static const char strA4[];
+	static const char strCustom[];
+	static const char strLabel[];
 
-    void            setData(const ReportPageOptions& rpo);
-    void            getData(ReportPageOptions& rpo);
+	void            setData(const ReportPageOptions& rpo);
+	void            getData(ReportPageOptions& rpo);
 
 public slots:
-    void            onPaperSize(int idx);
+	void            onPaperSize(int idx);
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 private:
-    virtual void enableCustom( bool yes );
+	virtual void enableCustom( bool yes );
 };
 
 #endif // PAGESETUP_H

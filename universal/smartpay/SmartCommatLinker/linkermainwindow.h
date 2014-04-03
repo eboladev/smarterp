@@ -12,31 +12,31 @@ class ODBCToMysqlImport;
 
 class LinkerMainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit LinkerMainWindow(QWidget *parent = 0);
-    ~LinkerMainWindow();
+	explicit LinkerMainWindow(QWidget *parent = 0);
+	~LinkerMainWindow();
 protected:
-     void closeEvent(QCloseEvent *event);
+	void closeEvent(QCloseEvent *event);
 
 private slots:
-    void on_actionSettings_triggered();
-    void linkerMessage(QString msg);
-    void linkerError(QString err);
-    void on_actionE_xit_triggered();
+	void on_actionSettings_triggered();
+	void linkerMessage(QString msg);
+	void linkerError(QString err);
+	void on_actionE_xit_triggered();
 
-    void on_actionAbout_Smart_Commat_Linker_triggered();
+	void on_actionAbout_Smart_Commat_Linker_triggered();
 
-    void toggleVisibility(QSystemTrayIcon::ActivationReason reason);
-    void on_cmdFetchData_clicked();
+	void toggleVisibility(QSystemTrayIcon::ActivationReason reason);
+	void on_cmdFetchData_clicked();
 
-    void onTimer();
+	void onTimer();
 private:
-    Ui::LinkerMainWindow *ui;
-    ODBCToMysqlImport *linker;
+	Ui::LinkerMainWindow *ui;
+	ODBCToMysqlImport *linker;
 
-    QSystemTrayIcon *trayIcon;
+	QSystemTrayIcon *trayIcon;
 };
 
 #endif // LINKERMAINWINDOW_H

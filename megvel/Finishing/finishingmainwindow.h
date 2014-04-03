@@ -10,15 +10,15 @@ class FinishingMainWindow;
 
 class FinishingMainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit FinishingMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~FinishingMainWindow();
-    
+	explicit FinishingMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~FinishingMainWindow();
+
 private:
-    Ui::FinishingMainWindow *ui;
-    QSqlDatabase db;
+	Ui::FinishingMainWindow *ui;
+	QSqlDatabase db;
 };
 
 #endif // FINISHINGMAINWINDOW_H

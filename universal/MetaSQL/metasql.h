@@ -30,22 +30,22 @@ class QSqlDatabase;
 
 class MetaSQLQueryPrivate;
 class MetaSQLQuery {
-    public:
-        MetaSQLQuery(const QString & = QString::null);
-        virtual ~MetaSQLQuery();
+public:
+	MetaSQLQuery(const QString & = QString::null);
+	virtual ~MetaSQLQuery();
 
-        bool setQuery(const QString &);
-        bool isValid();
-        QString getSource();
+	bool setQuery(const QString &);
+	bool isValid();
+	QString getSource();
 
-        XSqlQuery toQuery(const ParameterList &, QSqlDatabase pDb = QSqlDatabase(), bool pExec = true);
+	XSqlQuery toQuery(const ParameterList &, QSqlDatabase pDb = QSqlDatabase(), bool pExec = true);
 
-        QString parseLog();
+	QString parseLog();
 
-    private:
-        MetaSQLQueryPrivate * _data;
+private:
+	MetaSQLQueryPrivate * _data;
 
-        QString _source;
+	QString _source;
 };
 
 #endif

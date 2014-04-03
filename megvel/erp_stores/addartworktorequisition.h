@@ -9,21 +9,21 @@ class AddArtworkToRequisition;
 
 class AddArtworkToRequisition : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit AddArtworkToRequisition(QWidget *parent = 0);
-    ~AddArtworkToRequisition();
-    QString artworkID;
-    QString paperSize;
-    QString customer;
-    QString product;
-    QString qty;
+	explicit AddArtworkToRequisition(QWidget *parent = 0);
+	~AddArtworkToRequisition();
+	QString artworkID;
+	QString paperSize;
+	QString customer;
+	QString product;
+	QString qty;
 private slots:
-    void on_cmdAdd_clicked();
+	void on_cmdAdd_clicked();
 
 private:
-    Ui::AddArtworkToRequisition *ui;
+	Ui::AddArtworkToRequisition *ui;
 };
 
 #endif // ADDARTWORKTOREQUISITION_H

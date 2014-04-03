@@ -34,100 +34,100 @@ const char PageSetup::strLabel[]       = "Labels";
 
 
 PageSetup::PageSetup(QWidget* parent)
-    : QDialog(parent)
+	: QDialog(parent)
 {
-    setupUi(this);
+	setupUi(this);
 
-    QDoubleValidator* dblval = new QDoubleValidator(0.01, 1000, 2, this);
-    lineTop->setValidator(dblval);
-    lineBottom->setValidator(dblval);
-    lineLeft->setValidator(dblval);
-    lineRight->setValidator(dblval);
-    linePaperWidth->setValidator(dblval);
-    linePaperHeight->setValidator(dblval);
+	QDoubleValidator* dblval = new QDoubleValidator(0.01, 1000, 2, this);
+	lineTop->setValidator(dblval);
+	lineBottom->setValidator(dblval);
+	lineLeft->setValidator(dblval);
+	lineRight->setValidator(dblval);
+	linePaperWidth->setValidator(dblval);
+	linePaperHeight->setValidator(dblval);
 
-    QPushButton* help = buttonBox->button(QDialogButtonBox::Help);
-    help->setDisabled(true);
+	QPushButton* help = buttonBox->button(QDialogButtonBox::Help);
+	help->setDisabled(true);
 
-    comboPaperSize->clear();
-    comboPaperSize->addItem(tr("Letter"), QString(strLetter));
-    comboPaperSize->addItem(tr("Legal"), QString(strLegal));
-    comboPaperSize->addItem(tr("A4"), QString(strA4));
-    comboPaperSize->addItem(tr("Custom"), QString(strCustom));
-    comboPaperSize->addItem(tr("Label"), QString(strLabel));
-    connect(comboPaperSize, SIGNAL(currentIndexChanged(int)), SLOT(onPaperSize(int)));
+	comboPaperSize->clear();
+	comboPaperSize->addItem(tr("Letter"), QString(strLetter));
+	comboPaperSize->addItem(tr("Legal"), QString(strLegal));
+	comboPaperSize->addItem(tr("A4"), QString(strA4));
+	comboPaperSize->addItem(tr("Custom"), QString(strCustom));
+	comboPaperSize->addItem(tr("Label"), QString(strLabel));
+	connect(comboPaperSize, SIGNAL(currentIndexChanged(int)), SLOT(onPaperSize(int)));
 
-    comboLabelType->clear();
+	comboLabelType->clear();
 
-    // Obtain the label names and build the comboLabelType list from these.
-    QStringList labelNames = LabelSizeInfo::getLabelNames();
-    for (QStringList::Iterator label = labelNames.begin(); label != labelNames.end(); ++label)
-    {
-      comboLabelType->addItem(*label, *label);
-    }
+	// Obtain the label names and build the comboLabelType list from these.
+	QStringList labelNames = LabelSizeInfo::getLabelNames();
+	for (QStringList::Iterator label = labelNames.begin(); label != labelNames.end(); ++label)
+	{
+		comboLabelType->addItem(*label, *label);
+	}
 }
 
 PageSetup::~PageSetup()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void PageSetup::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void PageSetup::onPaperSize(int idx)
 {
-    QString ps = comboPaperSize->itemData(idx).toString();
-    enableCustom(ps==strCustom);
-    grpLabels->setEnabled(ps==strLabel);
+	QString ps = comboPaperSize->itemData(idx).toString();
+	enableCustom(ps==strCustom);
+	grpLabels->setEnabled(ps==strLabel);
 }
 
 
 void PageSetup::enableCustom( bool yes )
 {
-    labelCustom->setEnabled(yes);
-    labelWidth->setEnabled(yes);
-    labelHeight->setEnabled(yes);
-    labelInInches->setEnabled(yes);
-    linePaperWidth->setEnabled(yes);
-    linePaperHeight->setEnabled(yes);
+	labelCustom->setEnabled(yes);
+	labelWidth->setEnabled(yes);
+	labelHeight->setEnabled(yes);
+	labelInInches->setEnabled(yes);
+	linePaperWidth->setEnabled(yes);
+	linePaperHeight->setEnabled(yes);
 }
 
 void PageSetup::setData(const ReportPageOptions& rpo)
 {
-    lineTop->setText(QString::number(rpo.getMarginTop(),'f',3));
-    lineBottom->setText(QString::number(rpo.getMarginBottom(),'f',3));
-    lineLeft->setText(QString::number(rpo.getMarginLeft(),'f',3));
-    lineRight->setText(QString::number(rpo.getMarginRight(),'f',3));
-    if( rpo.isPortrait() )
-        radioPortrait->setChecked(true);
-    else
-        radioLandscape->setChecked(true);
-    linePaperWidth->setText(QString::number(rpo.getCustomWidth(),'f',3));
-    linePaperHeight->setText(QString::number(rpo.getCustomHeight(),'f',3));
+	lineTop->setText(QString::number(rpo.getMarginTop(),'f',3));
+	lineBottom->setText(QString::number(rpo.getMarginBottom(),'f',3));
+	lineLeft->setText(QString::number(rpo.getMarginLeft(),'f',3));
+	lineRight->setText(QString::number(rpo.getMarginRight(),'f',3));
+	if( rpo.isPortrait() )
+		radioPortrait->setChecked(true);
+	else
+		radioLandscape->setChecked(true);
+	linePaperWidth->setText(QString::number(rpo.getCustomWidth(),'f',3));
+	linePaperHeight->setText(QString::number(rpo.getCustomHeight(),'f',3));
 
-    int ps = comboPaperSize->findData(rpo.getPageSize());
-    if( ps<0 )
-        ps = 3;
-    comboPaperSize->setCurrentIndex(ps);
-    onPaperSize(ps);
-    int lt = comboLabelType->findData(rpo.getLabelType());
-    if( lt>=0 )
-        comboLabelType->setCurrentIndex(lt);
+	int ps = comboPaperSize->findData(rpo.getPageSize());
+	if( ps<0 )
+		ps = 3;
+	comboPaperSize->setCurrentIndex(ps);
+	onPaperSize(ps);
+	int lt = comboLabelType->findData(rpo.getLabelType());
+	if( lt>=0 )
+		comboLabelType->setCurrentIndex(lt);
 }
 
 void PageSetup::getData(ReportPageOptions& rpo)
 {
-    rpo.setMarginTop(lineTop->text().toDouble());
-    rpo.setMarginBottom(lineBottom->text().toDouble());
-    rpo.setMarginLeft(lineLeft->text().toDouble());
-    rpo.setMarginRight(lineRight->text().toDouble());
-    rpo.setPortrait(radioPortrait->isChecked());
-    rpo.setPageSize(comboPaperSize->itemData(comboPaperSize->currentIndex()).toString());
-    rpo.setLabelType(comboLabelType->itemData(comboLabelType->currentIndex()).toString());
-    rpo.setCustomWidth(linePaperWidth->text().toDouble());
-    rpo.setCustomHeight(linePaperHeight->text().toDouble());
+	rpo.setMarginTop(lineTop->text().toDouble());
+	rpo.setMarginBottom(lineBottom->text().toDouble());
+	rpo.setMarginLeft(lineLeft->text().toDouble());
+	rpo.setMarginRight(lineRight->text().toDouble());
+	rpo.setPortrait(radioPortrait->isChecked());
+	rpo.setPageSize(comboPaperSize->itemData(comboPaperSize->currentIndex()).toString());
+	rpo.setLabelType(comboLabelType->itemData(comboLabelType->currentIndex()).toString());
+	rpo.setCustomWidth(linePaperWidth->text().toDouble());
+	rpo.setCustomHeight(linePaperHeight->text().toDouble());
 }
 

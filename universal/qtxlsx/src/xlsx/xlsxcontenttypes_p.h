@@ -47,32 +47,32 @@ namespace QXlsx {
 class ContentTypes
 {
 public:
-    ContentTypes();
+	ContentTypes();
 
-    void addDefault(const QString &key, const QString &value);
-    void addOverride(const QString &key, const QString &value);
+	void addDefault(const QString &key, const QString &value);
+	void addOverride(const QString &key, const QString &value);
 
-    //Convenient funcation for addOverride()
-    void addWorksheetName(const QString &name);
-    void addChartsheetName(const QString &name);
-    void addChartName(const QString &name);
-    void addDrawingName(const QString &name);
-    void addCommentName(const QString &name);
-    void addImageTypes(const QStringList &imageTypes);
-    void addTableName(const QString &name);
-    void addSharedString();
-    void addVmlName();
-    void addCalcChain();
-    void addVbaProject();
+	//Convenient funcation for addOverride()
+	void addWorksheetName(const QString &name);
+	void addChartsheetName(const QString &name);
+	void addChartName(const QString &name);
+	void addDrawingName(const QString &name);
+	void addCommentName(const QString &name);
+	void addImageTypes(const QStringList &imageTypes);
+	void addTableName(const QString &name);
+	void addSharedString();
+	void addVmlName();
+	void addCalcChain();
+	void addVbaProject();
 
-    void saveToXmlFile(QIODevice *device);
+	void saveToXmlFile(QIODevice *device);
 
 private:
-    QMap<QString, QString> m_defaults;
-    QMap<QString, QString> m_overrides;
+	QMap<QString, QString> m_defaults;
+	QMap<QString, QString> m_overrides;
 
-    QString m_package_prefix;
-    QString m_document_prefix;
+	QString m_package_prefix;
+	QString m_document_prefix;
 };
 
 }

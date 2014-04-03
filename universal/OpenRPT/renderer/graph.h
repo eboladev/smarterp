@@ -30,8 +30,8 @@
 #include <xsqlquery.h>
 
 void renderGraph(QPainter&, const QRect&,
-                 ORGraphData&, XSqlQuery*,
-                 const QMap<QString,QColor>&);
+		 ORGraphData&, XSqlQuery*,
+		 const QMap<QString,QColor>&);
 
 
 #endif

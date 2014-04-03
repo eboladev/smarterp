@@ -27,19 +27,19 @@
 
 class QueryEditor : public QDialog, public Ui::QueryEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
-  public:
-    QueryEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~QueryEditor();
+public:
+	QueryEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~QueryEditor();
 
-  protected slots:
-    virtual void languageChange();
+protected slots:
+	virtual void languageChange();
 
-    virtual void keyPressEvent( QKeyEvent * e );
-    virtual void mqlToggled(bool);
-    virtual void groupEditTextChanged(const QString &);
-    virtual void nameEditTextChanged(const QString &);
+	virtual void keyPressEvent( QKeyEvent * e );
+	virtual void mqlToggled(bool);
+	virtual void groupEditTextChanged(const QString &);
+	virtual void nameEditTextChanged(const QString &);
 
 };
 

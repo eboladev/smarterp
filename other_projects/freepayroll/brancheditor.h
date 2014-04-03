@@ -11,27 +11,27 @@ class BranchEditor;
 
 class BranchEditor : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit BranchEditor(QWidget *parent = 0);
-    ~BranchEditor();
-    QSqlTableModel *model;
-    QItemSelectionModel *selectionModel;
-    QDataWidgetMapper *mapper;
+	explicit BranchEditor(QWidget *parent = 0);
+	~BranchEditor();
+	QSqlTableModel *model;
+	QItemSelectionModel *selectionModel;
+	QDataWidgetMapper *mapper;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 private slots:
-    void on_cmdNewBranch_clicked();
-    void mapperChanged(int row);
-    void on_lstBranches_clicked(const QModelIndex &index);
+	void on_cmdNewBranch_clicked();
+	void mapperChanged(int row);
+	void on_lstBranches_clicked(const QModelIndex &index);
 
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
-    void on_cmdDeleteBranch_clicked();
+	void on_cmdDeleteBranch_clicked();
 
 private:
-    Ui::BranchEditor *ui;
+	Ui::BranchEditor *ui;
 
 };
 

@@ -25,38 +25,38 @@
 #include "dbtools.h"
 
 class DriverInfo {
-  public:
-    DriverInfo(const QString & pDriver, const QString & pName,
-               const QString & pAlias1 = QString::null,
-               const QString & pAlias2 = QString::null,
-               const QString & pAlias3 = QString::null)
-    {
-      driver = pDriver;
-      name = pName;
-      if(!pAlias1.isEmpty())
-        aliases << pAlias1;
-      if(!pAlias2.isEmpty())
-        aliases << pAlias2;
-      if(!pAlias3.isEmpty())
-        aliases << pAlias3;
-    }
-    virtual ~DriverInfo() {}
-    QString driver;
-    QString name;
-    QStringList aliases;
+public:
+	DriverInfo(const QString & pDriver, const QString & pName,
+		   const QString & pAlias1 = QString::null,
+		   const QString & pAlias2 = QString::null,
+		   const QString & pAlias3 = QString::null)
+	{
+		driver = pDriver;
+		name = pName;
+		if(!pAlias1.isEmpty())
+			aliases << pAlias1;
+		if(!pAlias2.isEmpty())
+			aliases << pAlias2;
+		if(!pAlias3.isEmpty())
+			aliases << pAlias3;
+	}
+	virtual ~DriverInfo() {}
+	QString driver;
+	QString name;
+	QStringList aliases;
 
-    bool isNull() const { return driver.isEmpty(); }
+	bool isNull() const { return driver.isEmpty(); }
 
 
 };
 
 const DriverInfo _driverInfoList[] = {
-  DriverInfo("QODBC",  "ODBC", "odbc"),
-  DriverInfo("QODBC3", "ODBC"), // same as QODBC
-  DriverInfo("QPSQL",  "PostgreSQL", "psql", "pgsql"),
-  DriverInfo("QPSQL7", "PostgreSQL"), // same as QPSQL
+	DriverInfo("QODBC",  "ODBC", "odbc"),
+	DriverInfo("QODBC3", "ODBC"), // same as QODBC
+	DriverInfo("QPSQL",  "PostgreSQL", "psql", "pgsql"),
+	DriverInfo("QPSQL7", "PostgreSQL"), // same as QPSQL
 
-  DriverInfo(QString::null, QString::null) // NULL record
+	DriverInfo(QString::null, QString::null) // NULL record
 };
 
 /*
@@ -67,41 +67,41 @@ const DriverInfo _driverInfoList[] = {
  *  true to construct a modal dialog.
  */
 loginOptions::loginOptions(QWidget* parent, const char* name, bool modal, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-  setModal(modal);
-  setObjectName(name);
+	setModal(modal);
+	setObjectName(name);
 
-  setupUi(this);
+	setupUi(this);
 
-  // fill in the sql driver list
-  QStringList drivers = QSqlDatabase::drivers();
-  QStringList modDrivers;
-  QString sInsert;
-  for(int i = 0; i < drivers.size(); i++)
-  {
-    sInsert = drivers.at(i);
-    for(int l = 0; !_driverInfoList[l].isNull(); l++)
-    {
-      if(_driverInfoList[l].driver == drivers.at(i))
-      {
-        sInsert = _driverInfoList[l].name;
-        break;
-      }
-    }
-    if(!modDrivers.contains(sInsert))
-      modDrivers << sInsert;
-  }
-  _driver->clear();
-  _driver->addItems(modDrivers);
-  // signals and slots connections
-  connect(_save, SIGNAL(clicked()), this, SLOT(sSave()));
+	// fill in the sql driver list
+	QStringList drivers = QSqlDatabase::drivers();
+	QStringList modDrivers;
+	QString sInsert;
+	for(int i = 0; i < drivers.size(); i++)
+	{
+		sInsert = drivers.at(i);
+		for(int l = 0; !_driverInfoList[l].isNull(); l++)
+		{
+			if(_driverInfoList[l].driver == drivers.at(i))
+			{
+				sInsert = _driverInfoList[l].name;
+				break;
+			}
+		}
+		if(!modDrivers.contains(sInsert))
+			modDrivers << sInsert;
+	}
+	_driver->clear();
+	_driver->addItems(modDrivers);
+	// signals and slots connections
+	connect(_save, SIGNAL(clicked()), this, SLOT(sSave()));
 
-  _database->setFocus();
-  _server->setText("127.0.0.1");
-  _driver->setCurrentIndex(1);
-  _database->setText("reports");
-  _port->setText("3306");
+	_database->setFocus();
+	_server->setText("127.0.0.1");
+	_driver->setCurrentIndex(1);
+	_database->setText("reports");
+	_port->setText("3306");
 }
 
 /*
@@ -109,7 +109,7 @@ loginOptions::loginOptions(QWidget* parent, const char* name, bool modal, Qt::Wi
  */
 loginOptions::~loginOptions()
 {
-  // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 /*
@@ -118,71 +118,71 @@ loginOptions::~loginOptions()
  */
 void loginOptions::languageChange()
 {
-  retranslateUi(this);
+	retranslateUi(this);
 }
 
 void loginOptions::set(const ParameterList &pParams)
 {
-  QVariant param;
-  bool     valid;
+	QVariant param;
+	bool     valid;
 
-  param = pParams.value("databaseURL", &valid);
-  if (valid)
-  {
-    _databaseURL = param.toString();
+	param = pParams.value("databaseURL", &valid);
+	if (valid)
+	{
+		_databaseURL = param.toString();
 
-    QString protocol;
-    QString server;
-    QString database;
-    QString port;
-    parseDatabaseURL(_databaseURL, protocol, server, database, port);
-    for(int l = 0; !_driverInfoList[l].isNull(); l++)
-    {
-      if(_driverInfoList[l].driver == protocol ||
-         _driverInfoList[l].aliases.contains(protocol))
-      {
-        protocol = _driverInfoList[l].name;
-        break;
-      }
-    }
-    int index = _driver->findText(protocol,Qt::MatchExactly);
-    if(index == -1)
-    {
-        qDebug("Error, the protocol %s was not found!", protocol.toLatin1().data());
-	// just set something
-	_driver->setCurrentIndex(0);
-    } else {
-	_driver->setCurrentIndex(index);
-    }
-    _server->setText(server);
-    _database->setText(database);
-    _port->setText(port);
-  }
+		QString protocol;
+		QString server;
+		QString database;
+		QString port;
+		parseDatabaseURL(_databaseURL, protocol, server, database, port);
+		for(int l = 0; !_driverInfoList[l].isNull(); l++)
+		{
+			if(_driverInfoList[l].driver == protocol ||
+			   _driverInfoList[l].aliases.contains(protocol))
+			{
+				protocol = _driverInfoList[l].name;
+				break;
+			}
+		}
+		int index = _driver->findText(protocol,Qt::MatchExactly);
+		if(index == -1)
+		{
+			qDebug("Error, the protocol %s was not found!", protocol.toLatin1().data());
+			// just set something
+			_driver->setCurrentIndex(0);
+		} else {
+			_driver->setCurrentIndex(index);
+		}
+		_server->setText(server);
+		_database->setText(database);
+		_port->setText(port);
+	}
 
-  for (int x = 0; x < _driver->count(); x++) {
-      if (_driver->itemText(x) == "QMYSQL")
-          _driver->setCurrentIndex(x);
-  }
+	for (int x = 0; x < _driver->count(); x++) {
+		if (_driver->itemText(x) == "QMYSQL")
+			_driver->setCurrentIndex(x);
+	}
 
-  _server->setText("localhost");
-  _database->setText("reports");
-  _port->setText("3306");
+	_server->setText("localhost");
+	_database->setText("reports");
+	_port->setText("3306");
 }
 
 void loginOptions::sSave()
 {
-  QString protocol = _driver->currentText();
-  for(int l = 0; !_driverInfoList[l].isNull(); l++)
-  {
-    if(_driverInfoList[l].name == protocol)
-    {
-      protocol = _driverInfoList[l].driver;
-      break;
-    }
-  }
-  buildDatabaseURL(_databaseURL, protocol, _server->text(), _database->text(), _port->text());
-  QSettings setting(QSettings::UserScope, "Panther", "ReportMaster");
-  setting.setValue("/OpenRPT/_databaseURL", _databaseURL);
+	QString protocol = _driver->currentText();
+	for(int l = 0; !_driverInfoList[l].isNull(); l++)
+	{
+		if(_driverInfoList[l].name == protocol)
+		{
+			protocol = _driverInfoList[l].driver;
+			break;
+		}
+	}
+	buildDatabaseURL(_databaseURL, protocol, _server->text(), _database->text(), _port->text());
+	QSettings setting(QSettings::UserScope, "Panther", "ReportMaster");
+	setting.setValue("/OpenRPT/_databaseURL", _databaseURL);
 
-  accept();
+	accept();
 }

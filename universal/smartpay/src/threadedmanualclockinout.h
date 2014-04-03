@@ -8,24 +8,24 @@
 
 class ThreadedManualClockInOut : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ThreadedManualClockInOut(QObject *parent = 0);
-    void run();
-    QSqlDatabase db;
-    QStringList employees;
-    QDate date;
-    QTime time;
-    bool in;
+	explicit ThreadedManualClockInOut(QObject *parent = 0);
+	void run();
+	QSqlDatabase db;
+	QStringList employees;
+	QDate date;
+	QTime time;
+	bool in;
 
-    void setVars(QSqlDatabase database, QStringList e, QDate d, bool i, QTime t);
+	void setVars(QSqlDatabase database, QStringList e, QDate d, bool i, QTime t);
 
 signals:
-    void showPercentage(int p);
-    void employeeChanged(QString eName);
-    
+	void showPercentage(int p);
+	void employeeChanged(QString eName);
+
 public slots:
-    
+
 };
 
 #endif // THREADEDMANUALCLOCKINOUT_H

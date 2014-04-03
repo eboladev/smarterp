@@ -38,35 +38,35 @@ class CalendarItem : public QGraphicsItem
 
 public:
 	///Конструктор
-    CalendarItem(QGraphicsItem *parent = 0,
-                 QGraphicsScene *scene = 0);
-    
+	CalendarItem(QGraphicsItem *parent = 0,
+		     QGraphicsScene *scene = 0);
+
 	///Метод прорисовки графического элемента календаря.
-    virtual void paint(QPainter *painter,
-                       const QStyleOptionGraphicsItem *option,
-                       QWidget *widget);
+	virtual void paint(QPainter *painter,
+			   const QStyleOptionGraphicsItem *option,
+			   QWidget *widget);
 
 	///Возвращает изображение графического элемента.
 	virtual QPainterPath shape () const;
 
 	///Вернет размер области для рисования
-    QRectF boundingRect() const;
+	QRectF boundingRect() const;
 
 	///Устнаваливает размер области для рисования
-    void setSize(const QSize &size);
+	void setSize(const QSize &size);
 	///Устнаваливает размер области для рисования
-    void setSize(qreal width, qreal height);
+	void setSize(qreal width, qreal height);
 
 	///Обработчик изменения размера
 	virtual void onResize(const QSizeF &size, const QSizeF &oldSize);
 
 	///Обработчик изменения layout
-    virtual void layoutChanged();
+	virtual void layoutChanged();
 	///Обработчик изменения даты
-    virtual void dataChanged();
+	virtual void dataChanged();
 
 protected:
-    QRectF myBoundingRect; ///<Размер области рисования
+	QRectF myBoundingRect; ///<Размер области рисования
 };
 
 #endif

@@ -9,19 +9,19 @@ class ims_reellinker;
 
 class ims_reellinker : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ims_reellinker(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~ims_reellinker();
+	explicit ims_reellinker(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~ims_reellinker();
 public slots:
-    void reloadReels();
+	void reloadReels();
 private slots:
-    void on_lstReels_doubleClicked(const QModelIndex &index);
+	void on_lstReels_doubleClicked(const QModelIndex &index);
 
 private:
-    Ui::ims_reellinker *ui;
-    QSqlDatabase db;
+	Ui::ims_reellinker *ui;
+	QSqlDatabase db;
 };
 
 #endif // IMS_REELLINKER_H

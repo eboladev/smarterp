@@ -32,103 +32,103 @@
 
 QFont getItemFont(QGraphicsItem *gi)
 {
-    QFont font;
-    font.setFamily("");
+	QFont font;
+	font.setFamily("");
 
-    if(gi->type() == ORGraphicsFieldItem::Type)
-    {
-        ORGraphicsFieldItem * item = static_cast<ORGraphicsFieldItem*>(gi);
-        font = item->font();
-    }
-    else if(gi->type() == ORGraphicsTextItem::Type)
-    {
-        ORGraphicsTextItem * item = static_cast<ORGraphicsTextItem*>(gi);
-        font = item->font();
-    }
-    else if(gi->type() == ORGraphicsLabelItem::Type)
-    {
-        ORGraphicsLabelItem * item = static_cast<ORGraphicsLabelItem*>(gi);
-        font = item->font();
-    }
+	if(gi->type() == ORGraphicsFieldItem::Type)
+	{
+		ORGraphicsFieldItem * item = static_cast<ORGraphicsFieldItem*>(gi);
+		font = item->font();
+	}
+	else if(gi->type() == ORGraphicsTextItem::Type)
+	{
+		ORGraphicsTextItem * item = static_cast<ORGraphicsTextItem*>(gi);
+		font = item->font();
+	}
+	else if(gi->type() == ORGraphicsLabelItem::Type)
+	{
+		ORGraphicsLabelItem * item = static_cast<ORGraphicsLabelItem*>(gi);
+		font = item->font();
+	}
 
-    return font;
+	return font;
 }
 
 
 void setItemFont(QGraphicsItem *gi, const QFont &font)
 {
-    if(gi->type() == ORGraphicsFieldItem::Type)
-    {
-        ORGraphicsFieldItem * item = static_cast<ORGraphicsFieldItem*>(gi);
-        item->setFont(font);
-    }
-    else if(gi->type() == ORGraphicsTextItem::Type)
-    {
-        ORGraphicsTextItem * item = static_cast<ORGraphicsTextItem*>(gi);
-        item->setFont(font);
-    }
-    else if(gi->type() == ORGraphicsLabelItem::Type)
-    {
-        ORGraphicsLabelItem * item = static_cast<ORGraphicsLabelItem*>(gi);
-        item->setFont(font);
-    }
+	if(gi->type() == ORGraphicsFieldItem::Type)
+	{
+		ORGraphicsFieldItem * item = static_cast<ORGraphicsFieldItem*>(gi);
+		item->setFont(font);
+	}
+	else if(gi->type() == ORGraphicsTextItem::Type)
+	{
+		ORGraphicsTextItem * item = static_cast<ORGraphicsTextItem*>(gi);
+		item->setFont(font);
+	}
+	else if(gi->type() == ORGraphicsLabelItem::Type)
+	{
+		ORGraphicsLabelItem * item = static_cast<ORGraphicsLabelItem*>(gi);
+		item->setFont(font);
+	}
 }
 
 
 QString getItemFontFamily(QGraphicsItem *gi)
 {
-    return getItemFont(gi).family();
+	return getItemFont(gi).family();
 }
 
 QString getItemFontSize(QGraphicsItem *gi)
 {
-    QFont font = getItemFont(gi);
+	QFont font = getItemFont(gi);
 
-    if(font.family().isEmpty()) 
-        return "";
+	if(font.family().isEmpty())
+		return "";
 
-    return QString("%1").arg(font.pointSize());
+	return QString("%1").arg(font.pointSize());
 }
 
 bool getItemFontWeight(QGraphicsItem *gi)
 {
-    return getItemFont(gi).bold();
+	return getItemFont(gi).bold();
 }
 
 bool getItemFontStyle(QGraphicsItem *gi)
 {
-    return getItemFont(gi).italic();
+	return getItemFont(gi).italic();
 }
 
 
 void setItemFontFamily(QGraphicsItem *gi, const QString s)
 {
-    QFont font = getItemFont(gi);
-    font.setFamily(s);
-    setItemFont(gi, font);
+	QFont font = getItemFont(gi);
+	font.setFamily(s);
+	setItemFont(gi, font);
 }
 
 void setItemFontSize(QGraphicsItem *gi, const QString s)
 {
-    int size = s.toInt();
-    if(s<=0) 
-        return;
+	int size = s.toInt();
+	if(s<=0)
+		return;
 
-    QFont font = getItemFont(gi);
-    font.setPointSize(size);
-    setItemFont(gi, font);
+	QFont font = getItemFont(gi);
+	font.setPointSize(size);
+	setItemFont(gi, font);
 }
 
 void setItemFontWeight(QGraphicsItem *gi, bool v)
 {
-    QFont font = getItemFont(gi);
-    font.setBold(v);
-    setItemFont(gi, font);
+	QFont font = getItemFont(gi);
+	font.setBold(v);
+	setItemFont(gi, font);
 }
 
 void setItemFontStyle(QGraphicsItem *gi, bool v)
 {
-    QFont font = getItemFont(gi);
-    font.setItalic(v);
-    setItemFont(gi, font);
+	QFont font = getItemFont(gi);
+	font.setItalic(v);
+	setItemFont(gi, font);
 }

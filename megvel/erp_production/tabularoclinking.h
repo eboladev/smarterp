@@ -10,29 +10,29 @@ class TabularOcLinking;
 
 class TabularOcLinking : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit TabularOcLinking(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~TabularOcLinking();
-    
+	explicit TabularOcLinking(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~TabularOcLinking();
+
 private slots:
-    void on_dtpDate_dateChanged(const QDate &date);
+	void on_dtpDate_dateChanged(const QDate &date);
 
-    void on_cmdPreviousDate_clicked();
+	void on_cmdPreviousDate_clicked();
 
-    void on_cmdNextDate_clicked();
+	void on_cmdNextDate_clicked();
 
-    void on_action_New_triggered();
+	void on_action_New_triggered();
 
-    void on_action_Save_triggered();
+	void on_action_Save_triggered();
 
-    void on_action_Delete_triggered();
+	void on_action_Delete_triggered();
 
 private:
-    Ui::TabularOcLinking *ui;
-    QSqlDatabase db;
-    SqlTableModel *model;
+	Ui::TabularOcLinking *ui;
+	QSqlDatabase db;
+	SqlTableModel *model;
 };
 
 #endif // TABULAROCLINKING_H

@@ -2,13 +2,13 @@
 #include "ui_leavedayseditor.h"
 
 LeaveDaysEditor::LeaveDaysEditor(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::LeaveDaysEditor)
+	QDialog(parent),
+	ui(new Ui::LeaveDaysEditor)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 LeaveDaysEditor::~LeaveDaysEditor()
 {
-    delete ui;
+	delete ui;
 }

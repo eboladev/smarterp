@@ -5,20 +5,20 @@
 #include <QtSql>
 class col_ThreadedInvoiceDateChanger : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit col_ThreadedInvoiceDateChanger(QObject *parent = 0,
-                                        QSqlDatabase database = QSqlDatabase(),
-                                        QSqlDatabase QbDatabase = QSqlDatabase());
-    void run();
+	explicit col_ThreadedInvoiceDateChanger(QObject *parent = 0,
+						QSqlDatabase database = QSqlDatabase(),
+						QSqlDatabase QbDatabase = QSqlDatabase());
+	void run();
 signals:
-    void complete();
-    void currentInv(QString);
+	void complete();
+	void currentInv(QString);
 public slots:
-    
+
 private:
-    QSqlDatabase db;
-    QSqlDatabase odbc_db;
+	QSqlDatabase db;
+	QSqlDatabase odbc_db;
 };
 
 #endif // COL_THREADEDINVOICEDATECHANGER_H

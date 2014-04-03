@@ -14,23 +14,23 @@
 
 class HtmlPrinter : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit HtmlPrinter(QObject *parent = 0, QSqlDatabase database = QSqlDatabase(), QString sqlQuery = QString(),
-                         QString reportTitle = QString());
+	explicit HtmlPrinter(QObject *parent = 0, QSqlDatabase database = QSqlDatabase(), QString sqlQuery = QString(),
+			     QString reportTitle = QString());
 
 signals:
 
 public slots:
-    void printRequested(QPrinter *printer);
+	void printRequested(QPrinter *printer);
 private:
-    QSqlDatabase db;
-    QPrinter *printer;
-    QString sql;
-    QString title;
+	QSqlDatabase db;
+	QPrinter *printer;
+	QString sql;
+	QString title;
 
-    QSqlQuery qu;
-    QStringList hiddenColumns;
+	QSqlQuery qu;
+	QStringList hiddenColumns;
 };
 
 #endif // HTMLPRINTER_H

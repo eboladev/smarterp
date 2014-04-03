@@ -10,20 +10,20 @@ class ChequeDeposit;
 
 class ChequeDeposit : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ChequeDeposit(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(), QString ID = QString());
-    ~ChequeDeposit();
-    void addCheque(QString chequeNo);
+	explicit ChequeDeposit(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(), QString ID = QString());
+	~ChequeDeposit();
+	void addCheque(QString chequeNo);
 private slots:
-    void on_cmdDeposit_clicked();
+	void on_cmdDeposit_clicked();
 
 private:
-    Ui::ChequeDeposit *ui;
-    QSqlDatabase db;
-    QString chequeID;
-    QStringList chequeIDs;
+	Ui::ChequeDeposit *ui;
+	QSqlDatabase db;
+	QString chequeID;
+	QStringList chequeIDs;
 };
 
 #endif // CHEQUEDEPOSIT_H

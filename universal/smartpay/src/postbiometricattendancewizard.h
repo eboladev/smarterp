@@ -9,22 +9,22 @@ class PostBiometricAttendanceWizard;
 
 class PostBiometricAttendanceWizard : public QWizard
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit PostBiometricAttendanceWizard(QWidget *parent = 0
-            , QSqlDatabase d = QSqlDatabase());
-    ~PostBiometricAttendanceWizard();
+	explicit PostBiometricAttendanceWizard(QWidget *parent = 0
+			, QSqlDatabase d = QSqlDatabase());
+	~PostBiometricAttendanceWizard();
 private slots:
-    void reloadEmployees();
-    void on_dtpDate_dateChanged(const QDate &date);
-    void pageChanged(int pageNum);
-    void on_cmdSave_clicked();
+	void reloadEmployees();
+	void on_dtpDate_dateChanged(const QDate &date);
+	void pageChanged(int pageNum);
+	void on_cmdSave_clicked();
 
 private:
-    Ui::PostBiometricAttendanceWizard *ui;
-    QSqlDatabase db;
-    bool saved;
+	Ui::PostBiometricAttendanceWizard *ui;
+	QSqlDatabase db;
+	bool saved;
 };
 
 #endif // POSTBIOMETRICATTENDANCEWIZARD_H

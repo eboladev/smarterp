@@ -5,17 +5,17 @@
 
 class PostPOToQuickbooks : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit PostPOToQuickbooks(QObject *parent = 0);
-    QString lastError;
+	explicit PostPOToQuickbooks(QObject *parent = 0);
+	QString lastError;
 
 private:
-    QString ItemName;
+	QString ItemName;
 signals:
-    
+
 public slots:
-    
+
 };
 
 #endif // POSTPOTOQUICKBOOKS_H

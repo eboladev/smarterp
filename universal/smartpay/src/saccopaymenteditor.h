@@ -11,20 +11,20 @@ class SaccoPaymentEditor;
 
 class SaccoPaymentEditor : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit SaccoPaymentEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~SaccoPaymentEditor();
-    bool isAdding;
-    QString currentID;
-    void Edit(QString paymentID);
-    void AddNew(QString employeeID);
+	explicit SaccoPaymentEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~SaccoPaymentEditor();
+	bool isAdding;
+	QString currentID;
+	void Edit(QString paymentID);
+	void AddNew(QString employeeID);
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 private:
-    Ui::SaccoPaymentEditor *ui;
-    QSqlDatabase db;
+	Ui::SaccoPaymentEditor *ui;
+	QSqlDatabase db;
 };
 
 #endif // SACCOPAYMENTEDITOR_H

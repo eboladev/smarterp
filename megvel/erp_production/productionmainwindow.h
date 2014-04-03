@@ -10,15 +10,15 @@ class ProductionMainWindow;
 
 class ProductionMainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ProductionMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~ProductionMainWindow();
-    
+	explicit ProductionMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~ProductionMainWindow();
+
 private:
-    Ui::ProductionMainWindow *ui;
-    QSqlDatabase db;
+	Ui::ProductionMainWindow *ui;
+	QSqlDatabase db;
 };
 
 #endif // PRODUCTIONMAINWINDOW_H

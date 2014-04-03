@@ -9,17 +9,17 @@ class Attendance_NewDateRange;
 
 class Attendance_NewDateRange : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit Attendance_NewDateRange(QWidget *parent = 0);
-    ~Attendance_NewDateRange();
-    QDate dateIn;
-    QDate dateOut;
+	explicit Attendance_NewDateRange(QWidget *parent = 0);
+	~Attendance_NewDateRange();
+	QDate dateIn;
+	QDate dateOut;
 private slots:
-    void DateChange();
+	void DateChange();
 private:
-    Ui::Attendance_NewDateRange *ui;
+	Ui::Attendance_NewDateRange *ui;
 };
 
 #endif // ATTENDANCE_NEWDATERANGE_H

@@ -48,18 +48,18 @@ namespace QXlsx {
 class XLSX_AUTOTEST_EXPORT ZipReader
 {
 public:
-    explicit ZipReader(const QString &fileName);
-    explicit ZipReader(QIODevice *device);
-    ~ZipReader();
-    bool exists() const;
-    QStringList filePaths() const;
-    QByteArray fileData(const QString &fileName) const;
+	explicit ZipReader(const QString &fileName);
+	explicit ZipReader(QIODevice *device);
+	~ZipReader();
+	bool exists() const;
+	QStringList filePaths() const;
+	QByteArray fileData(const QString &fileName) const;
 
 private:
-    Q_DISABLE_COPY(ZipReader)
-    void init();
-    QScopedPointer<QZipReader> m_reader;
-    QStringList m_filePaths;
+	Q_DISABLE_COPY(ZipReader)
+	void init();
+	QScopedPointer<QZipReader> m_reader;
+	QStringList m_filePaths;
 };
 
 } // namespace QXlsx

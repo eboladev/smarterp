@@ -20,10 +20,10 @@
 
 *******************************************************************************/
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include "calendaritem.h"
 
@@ -32,8 +32,8 @@
 * @param scene - указатель на сцену.
 */
 CalendarItem::CalendarItem(QGraphicsItem *parent,
-                           QGraphicsScene *scene) :
-    QGraphicsItem(parent) //Вызов конструктора базового класса
+			   QGraphicsScene *scene) :
+	QGraphicsItem(parent) //Вызов конструктора базового класса
 {
 }
 
@@ -42,9 +42,9 @@ CalendarItem::CalendarItem(QGraphicsItem *parent,
 */
 QPainterPath CalendarItem::shape () const
 {
-    QPainterPath result; //Создаем контейнер операций рисования
-    result.addRect(myBoundingRect); //Добавляем в него прямоугольник
-    return result; //Возвращаем результат
+	QPainterPath result; //Создаем контейнер операций рисования
+	result.addRect(myBoundingRect); //Добавляем в него прямоугольник
+	return result; //Возвращаем результат
 }
 
 /**
@@ -53,10 +53,10 @@ QPainterPath CalendarItem::shape () const
 * @param widget - указатель на виджет.
 */
 void CalendarItem::paint(QPainter *painter,
-    const QStyleOptionGraphicsItem *option, QWidget *widget)
+			 const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-//    painter->setPen(QColor(0,0,0,128));
-//    painter->drawRect(0,0,myBoundingRect.width(),myBoundingRect.height());
+	//    painter->setPen(QColor(0,0,0,128));
+	//    painter->drawRect(0,0,myBoundingRect.width(),myBoundingRect.height());
 }
 
 /**
@@ -64,23 +64,23 @@ void CalendarItem::paint(QPainter *painter,
 */
 QRectF CalendarItem::boundingRect() const
 {
-    return myBoundingRect; //Вернуть размер
+	return myBoundingRect; //Вернуть размер
 }
 /**
 * @param size - устанавливаемый размер.
 */
 void CalendarItem::setSize(const QSize &size)
 {
-        if(size.width() != myBoundingRect.width() ||
-           size.height() != myBoundingRect.height()) //если новый размер отличен от текущего
-    {
-        prepareGeometryChange(); //Подготавливаем элемент для смены геометрии.
-        QSizeF old = myBoundingRect.size(); //Запоминаем старый размер
-        myBoundingRect.setWidth(size.width()); //устанавливаем новую ширину
-        myBoundingRect.setHeight(size.height()); //и высоту
-        onResize(size, old); //Вызваем обработчик перерисовки
-        update(); //перерисовка области элемента
-    }
+	if(size.width() != myBoundingRect.width() ||
+	   size.height() != myBoundingRect.height()) //если новый размер отличен от текущего
+	{
+		prepareGeometryChange(); //Подготавливаем элемент для смены геометрии.
+		QSizeF old = myBoundingRect.size(); //Запоминаем старый размер
+		myBoundingRect.setWidth(size.width()); //устанавливаем новую ширину
+		myBoundingRect.setHeight(size.height()); //и высоту
+		onResize(size, old); //Вызваем обработчик перерисовки
+		update(); //перерисовка области элемента
+	}
 }
 
 /**
@@ -89,16 +89,16 @@ void CalendarItem::setSize(const QSize &size)
 */
 void CalendarItem::setSize(qreal width, qreal height)
 {
-    if(width != myBoundingRect.width() || height != myBoundingRect.height())
-    {
-        prepareGeometryChange(); //Подготавливаем элемент для смены геометрии.
-        QSizeF old = myBoundingRect.size();//Запоминаем старый размер
-        QSizeF size(width, height); //Новый размер
-        myBoundingRect.setWidth(width); //устанавливаем новую ширину
-        myBoundingRect.setHeight(height); //и высоту
-        onResize(size, old); //Взываем обработчик перерисовки
-        update(); //перерисовка области элемента
-    }
+	if(width != myBoundingRect.width() || height != myBoundingRect.height())
+	{
+		prepareGeometryChange(); //Подготавливаем элемент для смены геометрии.
+		QSizeF old = myBoundingRect.size();//Запоминаем старый размер
+		QSizeF size(width, height); //Новый размер
+		myBoundingRect.setWidth(width); //устанавливаем новую ширину
+		myBoundingRect.setHeight(height); //и высоту
+		onResize(size, old); //Взываем обработчик перерисовки
+		update(); //перерисовка области элемента
+	}
 }
 
 /**

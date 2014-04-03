@@ -37,37 +37,37 @@ class QuickCalendarStyle
 {
 
 public:
-    QuickCalendarStyle(); ///<Конструктор
+	QuickCalendarStyle(); ///<Конструктор
 
-    QFont weekNumberFont; ///<Шрифт цифр номера недели
-    QFont dayNumberFont; ///<Шрифт цифр номера дня недели
-    QFont dayNameFont; ///<Шрифт названия дня
+	QFont weekNumberFont; ///<Шрифт цифр номера недели
+	QFont dayNumberFont; ///<Шрифт цифр номера дня недели
+	QFont dayNameFont; ///<Шрифт названия дня
 
-    QFont appointmentSubjectFont; ///<Шрифт для отображения информации о встрече
-    QFont clockBarFont; ///<Шрифт для списка часов от 0-00 до 23-00
+	QFont appointmentSubjectFont; ///<Шрифт для отображения информации о встрече
+	QFont clockBarFont; ///<Шрифт для списка часов от 0-00 до 23-00
 
-    int weekLeftMargin; ///<Ширина столбика с номером недели
-    int weekRightMargin; ///<Отступ справа от границы окна до столбика ВС
-    int quarterHeight; ///<Высота получасовой ячейки
+	int weekLeftMargin; ///<Ширина столбика с номером недели
+	int weekRightMargin; ///<Отступ справа от границы окна до столбика ВС
+	int quarterHeight; ///<Высота получасовой ячейки
 
-    int expandedWeekHeaderHeight; ///<Высота строки с номером недели и днями при развернутом дне
+	int expandedWeekHeaderHeight; ///<Высота строки с номером недели и днями при развернутом дне
 
-    QPen pastDayPen; ///<Перо, которым рисуются прошедшие числа
-    QPen todayPen; ///<Перо, которым рисуется сегодняшнее число
-    QPen comingDayPen; ///<Перо, которым рисуются будущие числа
+	QPen pastDayPen; ///<Перо, которым рисуются прошедшие числа
+	QPen todayPen; ///<Перо, которым рисуется сегодняшнее число
+	QPen comingDayPen; ///<Перо, которым рисуются будущие числа
 
-    QLinearGradient pastDayGradient; ///<Градиент прошедшего дня
-    QLinearGradient todayGradient; ///<Градиент сегодняшнего дня
-    QLinearGradient comingDayGradient; ///<Градиент будущего дня
-    
-    QLinearGradient pastWeekendGradient; ///<Градиент прошедших выходных
-    QLinearGradient weekendGradient; ///<Градиент текущих выходных
-    QLinearGradient comingWeekendGradient; ///<Градиент будущих дня
+	QLinearGradient pastDayGradient; ///<Градиент прошедшего дня
+	QLinearGradient todayGradient; ///<Градиент сегодняшнего дня
+	QLinearGradient comingDayGradient; ///<Градиент будущего дня
 
-    QFont expandedDayNumberFont; ///< Шрифт числа при развернутом дне недели
-    QFont collapsedDayNumberFont; ///< Шрифт числа при свернутом дне недели
+	QLinearGradient pastWeekendGradient; ///<Градиент прошедших выходных
+	QLinearGradient weekendGradient; ///<Градиент текущих выходных
+	QLinearGradient comingWeekendGradient; ///<Градиент будущих дня
 
-    int collapsedWeekHeight() const; ///<Метод, возвращающий высоту свернутой недели
+	QFont expandedDayNumberFont; ///< Шрифт числа при развернутом дне недели
+	QFont collapsedDayNumberFont; ///< Шрифт числа при свернутом дне недели
+
+	int collapsedWeekHeight() const; ///<Метод, возвращающий высоту свернутой недели
 };
 
 

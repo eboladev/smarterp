@@ -31,37 +31,37 @@
 
 class ParameterEdit : public QWidget, public Ui::ParameterEdit
 {
-  Q_OBJECT
+	Q_OBJECT
 
-  public:
-    ParameterEdit(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ParameterEdit();
+public:
+	ParameterEdit(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ParameterEdit();
 
-    Q_INVOKABLE static  QDialog      *ParameterEditDialog(ParameterEdit *p, QWidget *parent = 0, Qt::WindowFlags f = Qt::Dialog);
-    Q_INVOKABLE virtual ParameterList getParameterList();
-    Q_INVOKABLE         bool          setDocument(const QDomDocument & doc);
+	Q_INVOKABLE static  QDialog      *ParameterEditDialog(ParameterEdit *p, QWidget *parent = 0, Qt::WindowFlags f = Qt::Dialog);
+	Q_INVOKABLE virtual ParameterList getParameterList();
+	Q_INVOKABLE         bool          setDocument(const QDomDocument & doc);
 
-  public slots:
-    virtual void clear();
+public slots:
+	virtual void clear();
 
-  protected:
-    QMap<QString,QVariant> _params;
+protected:
+	QMap<QString,QVariant> _params;
 
-  protected slots:
-    virtual void languageChange();
+protected slots:
+	virtual void languageChange();
 
-    virtual void newItem();
-    virtual void edit();
-    virtual void editItem(int row);
-    virtual void editItemList();
-    virtual void doubleClick(int row, int col);
-    virtual void selectionChange();
-    virtual void deleteItem();
+	virtual void newItem();
+	virtual void edit();
+	virtual void editItem(int row);
+	virtual void editItemList();
+	virtual void doubleClick(int row, int col);
+	virtual void selectionChange();
+	virtual void deleteItem();
 
 private:
-    void updateParam(const QString & name, const QVariant & value, bool active);
+	void updateParam(const QString & name, const QVariant & value, bool active);
 
-    QMap<QString, QList<QPair<QString,QString> > > _lists;
+	QMap<QString, QList<QPair<QString,QString> > > _lists;
 
 };
 

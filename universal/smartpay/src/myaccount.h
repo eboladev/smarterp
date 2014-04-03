@@ -10,17 +10,17 @@ class MyAccount;
 
 class MyAccount : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit MyAccount(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~MyAccount();
-    QString userID;
+	explicit MyAccount(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~MyAccount();
+	QString userID;
 private:
-    Ui::MyAccount *ui;
-    QSqlDatabase db;
+	Ui::MyAccount *ui;
+	QSqlDatabase db;
 signals:
-    void logOff();
+	void logOff();
 };
 
 #endif // MYACCOUNT_H

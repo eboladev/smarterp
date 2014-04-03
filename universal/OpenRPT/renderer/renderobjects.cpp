@@ -24,177 +24,177 @@
 // ORODocument
 //
 ORODocument::ORODocument(const QString & pTitle)
-  : _title(pTitle)
+	: _title(pTitle)
 {
 }
 
 ORODocument::~ORODocument()
 {
-  while(!_pages.isEmpty())
-  {
-    OROPage * p = _pages.takeFirst();
-    p->_document = 0;
-    delete p;
-  }
+	while(!_pages.isEmpty())
+	{
+		OROPage * p = _pages.takeFirst();
+		p->_document = 0;
+		delete p;
+	}
 }
 
 void ORODocument::setTitle(const QString & pTitle)
 {
-  _title = pTitle;
+	_title = pTitle;
 }
 
 OROPage* ORODocument::page(int pnum)
 {
-  return _pages.at(pnum);
+	return _pages.at(pnum);
 }
 
 void ORODocument::addPage(OROPage* p)
 {
-  if(p == 0)
-    return;
+	if(p == 0)
+		return;
 
-  // check that this page is not already in another document
+	// check that this page is not already in another document
 
-  p->_document = this;
-  _pages.append(p);
+	p->_document = this;
+	_pages.append(p);
 }
 
 void ORODocument::setPageOptions(const ReportPageOptions & options)
 {
-  _pageOptions = options;
+	_pageOptions = options;
 }
 
 //
 // OROPage
 //
 OROPage::OROPage(ORODocument * pDocument)
-  : _document(pDocument)
+	: _document(pDocument)
 {
-  _wmOpacity = 25;
-  _bgPos = QPointF(0, 0);
-  _bgSize = QSizeF(1, 1);
-  _bgScale = false;
-  _bgScaleMode = Qt::IgnoreAspectRatio;
-  _bgAlign = Qt::AlignLeft | Qt::AlignTop;
-  _bgOpacity = 25;
+	_wmOpacity = 25;
+	_bgPos = QPointF(0, 0);
+	_bgSize = QSizeF(1, 1);
+	_bgScale = false;
+	_bgScaleMode = Qt::IgnoreAspectRatio;
+	_bgAlign = Qt::AlignLeft | Qt::AlignTop;
+	_bgOpacity = 25;
 }
 
 OROPage::~OROPage()
 {
-  if(_document != 0)
-  {
-    _document->_pages.removeAt(page());
-    _document = 0;
-  }
+	if(_document != 0)
+	{
+		_document->_pages.removeAt(page());
+		_document = 0;
+	}
 
-  while(!_primitives.isEmpty())
-  {
-    OROPrimitive* p = _primitives.takeFirst();
-    p->_page = 0;
-    delete p;
-  }
+	while(!_primitives.isEmpty())
+	{
+		OROPrimitive* p = _primitives.takeFirst();
+		p->_page = 0;
+		delete p;
+	}
 }
 
 int OROPage::page() const
 {
-  if(_document != 0)
-  {
-    for(int i = 0; i < _document->_pages.size(); i++)
-    {
-      if(_document->_pages.at(i) == this)
-        return i;
-    }
-  }
-  return -1;
+	if(_document != 0)
+	{
+		for(int i = 0; i < _document->_pages.size(); i++)
+		{
+			if(_document->_pages.at(i) == this)
+				return i;
+		}
+	}
+	return -1;
 }
 
 OROPrimitive* OROPage::primitive(int idx)
 {
-  return _primitives.at(idx);
+	return _primitives.at(idx);
 }
 
 void OROPage::addPrimitive(OROPrimitive* p)
 {
-  if(p == 0)
-    return;
+	if(p == 0)
+		return;
 
-  // check that this primitve is not already in another page
+	// check that this primitve is not already in another page
 
-  p->_page = this;
-  _primitives.append(p);
+	p->_page = this;
+	_primitives.append(p);
 }
 
 void OROPage::setWatermarkText(const QString & txt)
 {
-  _wmText = txt;
+	_wmText = txt;
 }
 
 void OROPage::setWatermarkFont(const QFont & fnt)
 {
-  _wmFont = fnt;
+	_wmFont = fnt;
 }
 
 void OROPage::setWatermarkOpacity(unsigned char o)
 {
-  _wmOpacity = o;
+	_wmOpacity = o;
 }
 
 void OROPage::setBackgroundImage(const QImage & img)
 {
-  _bgImage = img;
+	_bgImage = img;
 }
 
 void OROPage::setBackgroundPosition(const QPointF & p)
 {
-  _bgPos = p;
+	_bgPos = p;
 }
 
 void OROPage::setBackgroundSize(const QSizeF & s)
 {
-  _bgSize = s;
+	_bgSize = s;
 }
 
 void OROPage::setBackgroundScale(bool b)
 {
-  _bgScale = b;
+	_bgScale = b;
 }
 
 void OROPage::setBackgroundScaleMode(Qt::AspectRatioMode m)
 {
-  _bgScaleMode = m;
+	_bgScaleMode = m;
 }
 
 void OROPage::setBackgroundAlign(int a)
 {
-  _bgAlign = a;
+	_bgAlign = a;
 }
 
 void OROPage::setBackgroundOpacity(unsigned char o)
 {
-  _bgOpacity = o;
+	_bgOpacity = o;
 }
 
 //
 // OROPrimitive
 //
 OROPrimitive::OROPrimitive(ORObject *o, int pType)
-  : _type(pType), _pen(o->pen()), _brush(o->brush()), _rotation(o->rotation())
+	: _type(pType), _pen(o->pen()), _brush(o->brush()), _rotation(o->rotation())
 {
-  _page = 0;
+	_page = 0;
 }
 
 OROPrimitive::~OROPrimitive()
 {
-  if(_page != 0)
-  {
-    _page->_primitives.removeAt(_page->_primitives.indexOf(this));
-    _page = 0;
-  }
+	if(_page != 0)
+	{
+		_page->_primitives.removeAt(_page->_primitives.indexOf(this));
+		_page = 0;
+	}
 }
 
 void OROPrimitive::setPosition(const QPointF & p)
 {
-  _position = p;
+	_position = p;
 }
 
 void OROPrimitive::setRotationAxis(const QPointF p)
@@ -208,9 +208,9 @@ void OROPrimitive::setRotationAxis(const QPointF p)
 //
 const int OROTextBox::TextBox = 1;
 OROTextBox::OROTextBox(ORObject *o)
-  : OROPrimitive(o, OROTextBox::TextBox)
+	: OROPrimitive(o, OROTextBox::TextBox)
 {
-  _flags = 0;
+	_flags = 0;
 }
 
 OROTextBox::~OROTextBox()
@@ -219,22 +219,22 @@ OROTextBox::~OROTextBox()
 
 void OROTextBox::setSize(const QSizeF & s)
 {
-  _size = s;
+	_size = s;
 }
 
 void OROTextBox::setText(const QString & s)
 {
-  _text = s;
+	_text = s;
 }
 
 void OROTextBox::setFont(const QFont & f)
 {
-  _font = f;
+	_font = f;
 }
 
 void OROTextBox::setFlags(int f)
 {
-  _flags = f;
+	_flags = f;
 }
 
 //
@@ -243,9 +243,9 @@ void OROTextBox::setFlags(int f)
 const int OROLine::Line = 2;
 
 OROLine::OROLine(ORObject *o)
-  : OROPrimitive(o, OROLine::Line)
+	: OROPrimitive(o, OROLine::Line)
 {
-  _weight = 0.0;
+	_weight = 0.0;
 } 
 
 OROLine::~OROLine()
@@ -254,17 +254,17 @@ OROLine::~OROLine()
 
 void OROLine::setStartPoint(const QPointF & p)
 {
-  setPosition(p);
+	setPosition(p);
 }
 
 void OROLine::setEndPoint(const QPointF & p)
 {
-  _endPoint = p;
+	_endPoint = p;
 }
 
 void OROLine::setWeight(qreal w)
 {
-  _weight = w;
+	_weight = w;
 }
 
 //
@@ -273,11 +273,11 @@ void OROLine::setWeight(qreal w)
 const int OROImage::Image = 3;
 
 OROImage::OROImage(ORObject *o)
-  : OROPrimitive(o, OROImage::Image)
+	: OROPrimitive(o, OROImage::Image)
 {
-  _scaled = false;
-  _transformFlags = Qt::FastTransformation;
-  _aspectFlags = Qt::IgnoreAspectRatio;
+	_scaled = false;
+	_transformFlags = Qt::FastTransformation;
+	_aspectFlags = Qt::IgnoreAspectRatio;
 }
 
 OROImage::~OROImage()
@@ -286,27 +286,27 @@ OROImage::~OROImage()
 
 void OROImage::setImage(const QImage & img)
 {
-  _image = img;
+	_image = img;
 }
 
 void OROImage::setSize(const QSizeF & sz)
 {
-  _size = sz;
+	_size = sz;
 }
 
 void OROImage::setScaled(bool b)
 {
-  _scaled = b;
+	_scaled = b;
 }
 
 void OROImage::setTransformationMode(int tm)
 {
-  _transformFlags = tm;
+	_transformFlags = tm;
 }
 
 void OROImage::setAspectRatioMode(int arm)
 {
-  _aspectFlags = arm;
+	_aspectFlags = arm;
 }
 
 //
@@ -315,9 +315,9 @@ void OROImage::setAspectRatioMode(int arm)
 const int ORORect::Rect = 4;
 
 ORORect::ORORect(ORObject *o)
-  : OROPrimitive(o, ORORect::Rect)
+	: OROPrimitive(o, ORORect::Rect)
 {
-  _weight = 0.0;
+	_weight = 0.0;
 }
 
 ORORect::~ORORect()
@@ -326,18 +326,18 @@ ORORect::~ORORect()
 
 void ORORect::setSize(const QSizeF & s)
 {
-  _size = s;
+	_size = s;
 }
 
 void ORORect::setWeight(qreal w)
 {
-    _weight = w;
+	_weight = w;
 }
 
 void ORORect::setRect(const QRectF & r)
 {
-  setPosition(r.topLeft());
-  setSize(r.size());
+	setPosition(r.topLeft());
+	setSize(r.size());
 }
 
 

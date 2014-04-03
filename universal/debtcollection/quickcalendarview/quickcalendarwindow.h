@@ -61,38 +61,38 @@ int main(int argc, char *argv[])
 */ 
 class QuickCalendarWindow: public QMainWindow, public Ui::QuickCalendarWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	///Конструктор
-    QuickCalendarWindow();
+	QuickCalendarWindow();
 
 	///Метод создает основные компоненты окна, связывает основные сигналы и слоты
-    void startUp();
+	void startUp();
 
 protected:
-    void closeEvent(QCloseEvent *event); ///<Событие закрытия окна
-    void createDockWidgets(); ///<Метод создает плавающий список календарей
+	void closeEvent(QCloseEvent *event); ///<Событие закрытия окна
+	void createDockWidgets(); ///<Метод создает плавающий список календарей
 
 private slots: 
-    void onExit(); ///<Слот, вызываемый при закрытии виджета
+	void onExit(); ///<Слот, вызываемый при закрытии виджета
 	///Слот изменения списка выбранных календарей
-    void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
-    void modeChanged(int mode); //<Слот изменения режима
+	void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
+	void modeChanged(int mode); //<Слот изменения режима
 
 private:
 	///Метод добавляет 4 календаря и несколько событий
-    void generateData();
+	void generateData();
 
-    QList <QColor> myColors; ///<Вектор цветов
-    QList <QIcon> myIcons;   ///<Вектор иконок
+	QList <QColor> myColors; ///<Вектор цветов
+	QList <QIcon> myIcons;   ///<Вектор иконок
 
-    QuickCalendarView *ptrCalendarView; ///<Виджет календарь (таблица дней месяца)
-    SelectorWidget *ptrSelectorWidget; ///<Виджет выбора месяца
-    QTableView *ptrTableView;
-    CalendarTableModel *ptrCalendarModel; ///<Модель календарей
+	QuickCalendarView *ptrCalendarView; ///<Виджет календарь (таблица дней месяца)
+	SelectorWidget *ptrSelectorWidget; ///<Виджет выбора месяца
+	QTableView *ptrTableView;
+	CalendarTableModel *ptrCalendarModel; ///<Модель календарей
 
-    QList <Calendar *> myCalendars; ///<Список календарей
+	QList <Calendar *> myCalendars; ///<Список календарей
 };
 
 #endif

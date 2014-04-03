@@ -31,60 +31,60 @@
 #include <QStackedLayout>
 #include <QDateEdit>
 #include <QCheckBox>
- 
+
 class SelectorWidget : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    SelectorWidget(QWidget *parent = 0);
+	SelectorWidget(QWidget *parent = 0);
 
-    QSize sizeHint() const;
-    QSize minimumSizeHint() const;
-    int maximumHeight() const;
-    QSize maximumSize() const;
-    //QSizePolicy sizePolicy() const;
+	QSize sizeHint() const;
+	QSize minimumSizeHint() const;
+	int maximumHeight() const;
+	QSize maximumSize() const;
+	//QSizePolicy sizePolicy() const;
 
-    QDate date(){ return myDate;}
-    void setDate(QDate date);
+	QDate date(){ return myDate;}
+	void setDate(QDate date);
 
 signals:
-    void monthChanged(int year, int month);
-    void rangeChanged(const QDate &start, const QDate &end);
-    void modeChanged(int mode);
+	void monthChanged(int year, int month);
+	void rangeChanged(const QDate &start, const QDate &end);
+	void modeChanged(int mode);
 
 public slots:
-    void showMonthBased();
-    void showWeekBased();
-    void showDayBased();
-    void showRangeBased();
+	void showMonthBased();
+	void showWeekBased();
+	void showDayBased();
+	void showRangeBased();
 
 private slots:
-    void onMonthChanged(int month);
-    void onYearChanged(int year);
-    void previous();
-    void next();
-    void valueChanged(int i);
-    void dateChanged(const QDate &date);
-    void weekStateChanged(int state);
+	void onMonthChanged(int month);
+	void onYearChanged(int year);
+	void previous();
+	void next();
+	void valueChanged(int i);
+	void dateChanged(const QDate &date);
+	void weekStateChanged(int state);
 
 private:
-    int state;
+	int state;
 
-    QDate myDate;
+	QDate myDate;
 
-    QComboBox *monthCombo;
-    QComboBox *yearCombo;
+	QComboBox *monthCombo;
+	QComboBox *yearCombo;
 
-    QSpinBox *weekSpin;
-    QSpinBox *daySpin;
+	QSpinBox *weekSpin;
+	QSpinBox *daySpin;
 
-    QDateEdit *start;
-    QDateEdit *end;
+	QDateEdit *start;
+	QDateEdit *end;
 
-    QCheckBox *multiWeek;
+	QCheckBox *multiWeek;
 
-    QStackedLayout *stackedLayout;
+	QStackedLayout *stackedLayout;
 };
 
 #endif

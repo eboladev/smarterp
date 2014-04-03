@@ -29,21 +29,21 @@
 
 class loginOptions : public QDialog, public Ui::loginOptions
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    loginOptions(QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0);
-    ~loginOptions();
+	loginOptions(QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0);
+	~loginOptions();
 
-    QString _databaseURL;
+	QString _databaseURL;
 
 public slots:
-    virtual void set( const ParameterList & pParams );
+	virtual void set( const ParameterList & pParams );
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
-    virtual void sSave();
+	virtual void sSave();
 
 
 };

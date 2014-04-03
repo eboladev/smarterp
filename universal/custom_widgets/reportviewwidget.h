@@ -9,14 +9,14 @@ class ReportViewWidget;
 
 class ReportViewWidget : public QWidget
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ReportViewWidget(QWidget *parent = 0);
-    ~ReportViewWidget();
-    
+	explicit ReportViewWidget(QWidget *parent = 0);
+	~ReportViewWidget();
+
 private:
-    Ui::ReportViewWidget *ui;
+	Ui::ReportViewWidget *ui;
 };
 
 #endif // REPORTVIEWWIDGET_H

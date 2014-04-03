@@ -30,64 +30,64 @@ class QuerySourceList;
 
 class QuerySource
 {
-  public:
-    QuerySource();
-    QuerySource(const QString & n, const QString & q = QString::null, bool fromDb = false, const QString & mg = QString::null, const QString & mn = QString::null);
-    ~QuerySource();
+public:
+	QuerySource();
+	QuerySource(const QString & n, const QString & q = QString::null, bool fromDb = false, const QString & mg = QString::null, const QString & mn = QString::null);
+	~QuerySource();
 
-    void setName(const QString &);
-    QString name() const;
-    void setQuery(const QString &);
-    QString query() const;
-    void setLoadFromDb(bool);
-    bool loadFromDb() const;
-    void setMetaSqlGroup(const QString &);
-    QString metaSqlGroup() const;
-    void setMetaSqlName(const QString &);
-    QString metaSqlName() const;
+	void setName(const QString &);
+	QString name() const;
+	void setQuery(const QString &);
+	QString query() const;
+	void setLoadFromDb(bool);
+	bool loadFromDb() const;
+	void setMetaSqlGroup(const QString &);
+	QString metaSqlGroup() const;
+	void setMetaSqlName(const QString &);
+	QString metaSqlName() const;
 
-    // This is a special overload that will return the loaded query
-    // if that is what is needed or the specified query otherwise.
-    QString query(const QSqlDatabase &) const;
+	// This is a special overload that will return the loaded query
+	// if that is what is needed or the specified query otherwise.
+	QString query(const QSqlDatabase &) const;
 
-  private:
-    QString _name;
-    QString _query;
-    bool    _loadFromDb;
-    QString _mqlGroup;
-    QString _mqlName;
+private:
+	QString _name;
+	QString _query;
+	bool    _loadFromDb;
+	QString _mqlGroup;
+	QString _mqlName;
 
-    friend class QuerySourceList;
-    QuerySourceList *_inList;
-    void updated();
+	friend class QuerySourceList;
+	QuerySourceList *_inList;
+	void updated();
 };
 
 class QuerySourceList : public QObject
 {
-  Q_OBJECT
-  public:
-    QuerySourceList(QObject * parent = 0);
-    ~QuerySourceList();
+	Q_OBJECT
+public:
+	QuerySourceList(QObject * parent = 0);
+	~QuerySourceList();
 
-    unsigned int size();
+	unsigned int size();
 
-    bool add(QuerySource * qs);
+	bool add(QuerySource * qs);
 
-    QuerySource * remove(int i);
-    QuerySource * remove(QuerySource * qs);
-    QuerySource * remove(const QString & name);
+	QuerySource * remove(int i);
+	QuerySource * remove(QuerySource * qs);
+	QuerySource * remove(const QString & name);
 
-    QuerySource * get(int i);
-    QuerySource * get(const QString & name);
+	QuerySource * get(int i);
+	QuerySource * get(const QString & name);
 
-  signals:
-    void updated();
+signals:
+	void updated();
 
-  private:
-    QList<QuerySource*> _srcList;
+private:
+	QList<QuerySource*> _srcList;
 
-    friend class QuerySource;
-    void childUpdated(QuerySource *);
+	friend class QuerySource;
+	void childUpdated(QuerySource *);
 };
 
 #endif

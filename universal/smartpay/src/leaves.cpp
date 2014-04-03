@@ -4,10 +4,10 @@
 #include "leaveeditor.h"
 
 Leaves::Leaves(QWidget *parent, QSqlDatabase database) :
-    QMainWindow(parent),
-    ui(new Ui::Leaves)
+	QMainWindow(parent),
+	ui(new Ui::Leaves)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 
 
@@ -15,7 +15,7 @@ Leaves::Leaves(QWidget *parent, QSqlDatabase database) :
 
 Leaves::~Leaves()
 {
-    delete ui;
+	delete ui;
 }
 
 

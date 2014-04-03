@@ -31,49 +31,49 @@
 
 
 AppointmentItem::AppointmentItem(Appointment *appointment,
-                                 DayItem *dayItem,
-                                 QGraphicsItem *parent,
-                                 QGraphicsScene *scene) :
-    CalendarItem(parent, scene),
-    ptrAppointment(appointment),    //Инициализируем поля
-    ptrDayItem(dayItem),
-    myFont("Verdana", 9, QFont::Bold)
+				 DayItem *dayItem,
+				 QGraphicsItem *parent,
+				 QGraphicsScene *scene) :
+	CalendarItem(parent, scene),
+	ptrAppointment(appointment),    //Инициализируем поля
+	ptrDayItem(dayItem),
+	myFont("Verdana", 9, QFont::Bold)
 {
-    myColumn = 1; //По умолчанию элемент расположим в 1ом ряду
-    myColumnSpan = 1; //Перекрывает 1 ряд
+	myColumn = 1; //По умолчанию элемент расположим в 1ом ряду
+	myColumnSpan = 1; //Перекрывает 1 ряд
 
-    setFlag(QGraphicsItem::ItemIsSelectable); //Разрешить выделение элемента
+	setFlag(QGraphicsItem::ItemIsSelectable); //Разрешить выделение элемента
 }
 
 void AppointmentItem::paint(QPainter *painter,
-                            const QStyleOptionGraphicsItem *option, QWidget *widget)
+			    const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setFont(myFont); //Установим шрифт
+	painter->setFont(myFont); //Установим шрифт
 
-    painter->setPen(QPen(myColor)); //Цвет пера
-    QColor color = myColor; //Запомним цвет пера
-    if (ptrAppointment->isComplete) {
-        myColor = QColor(191, 191, 191);
-    }
-    color.setAlpha(159); //Установим альфа-составляющую
-    painter->setBrush(QBrush(color)); //Установим полученный цвет кисти
-    painter->drawRoundedRect(myBoundingRect, 10, 10); //Рисуем прямоугольник
+	painter->setPen(QPen(myColor)); //Цвет пера
+	QColor color = myColor; //Запомним цвет пера
+	if (ptrAppointment->isComplete) {
+		myColor = QColor(191, 191, 191);
+	}
+	color.setAlpha(159); //Установим альфа-составляющую
+	painter->setBrush(QBrush(color)); //Установим полученный цвет кисти
+	painter->drawRoundedRect(myBoundingRect, 10, 10); //Рисуем прямоугольник
 
 
-    painter->setPen(QPen(QColor(0,0,0)));
-    qDebug() << "Drawing appointment " << ptrAppointment->key() << " for " << ptrAppointment->customerName << " on canvas";
+	painter->setPen(QPen(QColor(0,0,0)));
+	qDebug() << "Drawing appointment " << ptrAppointment->key() << " for " << ptrAppointment->customerName << " on canvas";
 
-    painter->drawText(myBoundingRect.adjusted(3,3,0,0),
-                      Qt::AlignLeft | Qt::TextWordWrap,
-                      myCustomer + "\n--\n" + mySubject);
+	painter->drawText(myBoundingRect.adjusted(3,3,0,0),
+			  Qt::AlignLeft | Qt::TextWordWrap,
+			  myCustomer + "\n--\n" + mySubject);
 }
 
 
 void AppointmentItem::layoutChanged()
 {
-    myColor = ptrAppointment->calendar()->color(); //Запомним цвет календаря
-    mySubject = ptrAppointment->subject(); //Запомним субъект встречи
-    myCustomer = ptrAppointment->customerName;
+	myColor = ptrAppointment->calendar()->color(); //Запомним цвет календаря
+	mySubject = ptrAppointment->subject(); //Запомним субъект встречи
+	myCustomer = ptrAppointment->customerName;
 }
 
 /**
@@ -81,5 +81,5 @@ void AppointmentItem::layoutChanged()
 */
 void AppointmentItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-    ptrDayItem->ptrCalendarView->showAppointmentForm(ptrAppointment); //Отобразим форму настройки встречи
+	ptrDayItem->ptrCalendarView->showAppointmentForm(ptrAppointment); //Отобразим форму настройки встречи
 }

@@ -10,21 +10,21 @@ class NewFileDialog;
 
 class NewFileDialog : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit NewFileDialog(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~NewFileDialog();
-    void Edit(QString id);
-    void AddNew();
+	explicit NewFileDialog(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~NewFileDialog();
+	void Edit(QString id);
+	void AddNew();
 private slots:
-    void on_cmdOK_clicked();
+	void on_cmdOK_clicked();
 
 private:
-    Ui::NewFileDialog *ui;
-    QSqlDatabase db;
-    bool isAdding;
-    QString currentID;
+	Ui::NewFileDialog *ui;
+	QSqlDatabase db;
+	bool isAdding;
+	QString currentID;
 };
 
 #endif // NEWFILEDIALOG_H

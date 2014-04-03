@@ -30,15 +30,15 @@
 QT_BEGIN_NAMESPACE_XLSX
 
 RichStringPrivate::RichStringPrivate()
-    :_dirty(true)
+	:_dirty(true)
 {
 
 }
 
 RichStringPrivate::RichStringPrivate(const RichStringPrivate &other)
-    :QSharedData(other), fragmentTexts(other.fragmentTexts)
-    ,fragmentFormats(other.fragmentFormats)
-    , _idKey(other.idKey()), _dirty(other._dirty)
+	:QSharedData(other), fragmentTexts(other.fragmentTexts)
+	,fragmentFormats(other.fragmentFormats)
+	, _idKey(other.idKey()), _dirty(other._dirty)
 {
 
 }
@@ -58,7 +58,7 @@ RichStringPrivate::~RichStringPrivate()
     Constructs a null string.
  */
 RichString::RichString()
-    :d(new RichStringPrivate)
+	:d(new RichStringPrivate)
 {
 }
 
@@ -66,16 +66,16 @@ RichString::RichString()
     Constructs a plain string with the given \a text.
 */
 RichString::RichString(const QString text)
-    :d(new RichStringPrivate)
+	:d(new RichStringPrivate)
 {
-    addFragment(text, Format());
+	addFragment(text, Format());
 }
 
 /*!
     Constructs a copy of \a other.
  */
 RichString::RichString(const RichString &other)
-    :d(other.d)
+	:d(other.d)
 {
 
 }
@@ -93,8 +93,8 @@ RichString::~RichString()
  */
 RichString &RichString::operator =(const RichString &other)
 {
-    this->d = other.d;
-    return *this;
+	this->d = other.d;
+	return *this;
 }
 
 /*!
@@ -102,7 +102,7 @@ RichString &RichString::operator =(const RichString &other)
 */
 RichString::operator QVariant() const
 {
-    return QVariant(qMetaTypeId<RichString>(), this);
+	return QVariant(qMetaTypeId<RichString>(), this);
 }
 
 /*!
@@ -110,9 +110,9 @@ RichString::operator QVariant() const
  */
 bool RichString::isRichString() const
 {
-    if (fragmentCount() > 1) //Is this enough??
-        return true;
-    return false;
+	if (fragmentCount() > 1) //Is this enough??
+		return true;
+	return false;
 }
 
 /*!
@@ -120,7 +120,7 @@ bool RichString::isRichString() const
  */
 bool RichString::isNull() const
 {
-    return d->fragmentTexts.size() == 0;
+	return d->fragmentTexts.size() == 0;
 }
 
 /*!
@@ -128,12 +128,12 @@ bool RichString::isNull() const
  */
 bool RichString::isEmtpy() const
 {
-    foreach (const QString str, d->fragmentTexts) {
-        if (!str.isEmpty())
-            return false;
-    }
+	foreach (const QString str, d->fragmentTexts) {
+		if (!str.isEmpty())
+			return false;
+	}
 
-    return true;
+	return true;
 }
 
 /*!
@@ -141,12 +141,12 @@ bool RichString::isEmtpy() const
 */
 QString RichString::toPlainString() const
 {
-    if (isEmtpy())
-        return QString();
-    if (d->fragmentTexts.size() == 1)
-        return d->fragmentTexts[0];
+	if (isEmtpy())
+		return QString();
+	if (d->fragmentTexts.size() == 1)
+		return d->fragmentTexts[0];
 
-    return d->fragmentTexts.join(QString());
+	return d->fragmentTexts.join(QString());
 }
 
 /*!
@@ -154,7 +154,7 @@ QString RichString::toPlainString() const
  */
 int RichString::fragmentCount() const
 {
-    return d->fragmentTexts.size();
+	return d->fragmentTexts.size();
 }
 
 /*!
@@ -162,9 +162,9 @@ int RichString::fragmentCount() const
  */
 void RichString::addFragment(const QString &text, const Format &format)
 {
-    d->fragmentTexts.append(text);
-    d->fragmentFormats.append(format);
-    d->_dirty = true;
+	d->fragmentTexts.append(text);
+	d->fragmentFormats.append(format);
+	d->_dirty = true;
 }
 
 /*!
@@ -172,10 +172,10 @@ void RichString::addFragment(const QString &text, const Format &format)
  */
 QString RichString::fragmentText(int index) const
 {
-    if (index < 0 || index >= fragmentCount())
-        return QString();
+	if (index < 0 || index >= fragmentCount())
+		return QString();
 
-    return d->fragmentTexts[index];
+	return d->fragmentTexts[index];
 }
 
 /*!
@@ -183,10 +183,10 @@ QString RichString::fragmentText(int index) const
  */
 Format RichString::fragmentFormat(int index) const
 {
-    if (index < 0 || index >= fragmentCount())
-        return Format();
+	if (index < 0 || index >= fragmentCount())
+		return Format();
 
-    return d->fragmentFormats[index];
+	return d->fragmentFormats[index];
 }
 
 /*!
@@ -194,27 +194,27 @@ Format RichString::fragmentFormat(int index) const
  */
 QByteArray RichStringPrivate::idKey() const
 {
-    if (_dirty) {
-        RichStringPrivate *rs = const_cast<RichStringPrivate *>(this);
-        QByteArray bytes;
-        if (fragmentTexts.size() == 1) {
-            bytes = fragmentTexts[0].toUtf8();
-        } else {
-            //Generate a hash value base on QByteArray ?
-            bytes.append("@@QtXlsxRichString=");
-            for (int i=0; i<fragmentTexts.size(); ++i) {
-                bytes.append("@Text");
-                bytes.append(fragmentTexts[i].toUtf8());
-                bytes.append("@Format");
-                if (fragmentFormats[i].hasFontData())
-                    bytes.append(fragmentFormats[i].fontKey());
-            }
-        }
-        rs->_idKey = bytes;
-        rs->_dirty = false;
-    }
+	if (_dirty) {
+		RichStringPrivate *rs = const_cast<RichStringPrivate *>(this);
+		QByteArray bytes;
+		if (fragmentTexts.size() == 1) {
+			bytes = fragmentTexts[0].toUtf8();
+		} else {
+			//Generate a hash value base on QByteArray ?
+			bytes.append("@@QtXlsxRichString=");
+			for (int i=0; i<fragmentTexts.size(); ++i) {
+				bytes.append("@Text");
+				bytes.append(fragmentTexts[i].toUtf8());
+				bytes.append("@Format");
+				if (fragmentFormats[i].hasFontData())
+					bytes.append(fragmentFormats[i].fontKey());
+			}
+		}
+		rs->_idKey = bytes;
+		rs->_dirty = false;
+	}
 
-    return _idKey;
+	return _idKey;
 }
 
 /*!
@@ -223,10 +223,10 @@ QByteArray RichStringPrivate::idKey() const
  */
 bool operator==(const RichString &rs1, const RichString &rs2)
 {
-    if (rs1.fragmentCount() != rs2.fragmentCount())
-        return false;
+	if (rs1.fragmentCount() != rs2.fragmentCount())
+		return false;
 
-    return rs1.d->idKey() == rs2.d->idKey();
+	return rs1.d->idKey() == rs2.d->idKey();
 }
 
 /*!
@@ -235,10 +235,10 @@ bool operator==(const RichString &rs1, const RichString &rs2)
  */
 bool operator!=(const RichString &rs1, const RichString &rs2)
 {
-    if (rs1.fragmentCount() != rs2.fragmentCount())
-        return true;
+	if (rs1.fragmentCount() != rs2.fragmentCount())
+		return true;
 
-    return rs1.d->idKey() != rs2.d->idKey();
+	return rs1.d->idKey() != rs2.d->idKey();
 }
 
 /*!
@@ -246,7 +246,7 @@ bool operator!=(const RichString &rs1, const RichString &rs2)
  */
 bool operator<(const RichString &rs1, const RichString &rs2)
 {
-    return rs1.d->idKey() < rs2.d->idKey();
+	return rs1.d->idKey() < rs2.d->idKey();
 }
 
 /*!
@@ -256,10 +256,10 @@ bool operator<(const RichString &rs1, const RichString &rs2)
  */
 bool operator ==(const RichString &rs1, const QString &rs2)
 {
-    if (rs1.fragmentCount() == 1 && rs1.fragmentText(0) == rs2) //format == 0
-        return true;
+	if (rs1.fragmentCount() == 1 && rs1.fragmentText(0) == rs2) //format == 0
+		return true;
 
-    return false;
+	return false;
 }
 
 /*!
@@ -269,10 +269,10 @@ bool operator ==(const RichString &rs1, const QString &rs2)
  */
 bool operator !=(const RichString &rs1, const QString &rs2)
 {
-    if (rs1.fragmentCount() == 1 && rs1.fragmentText(0) == rs2) //format == 0
-        return false;
+	if (rs1.fragmentCount() == 1 && rs1.fragmentText(0) == rs2) //format == 0
+		return false;
 
-    return true;
+	return true;
 }
 
 /*!
@@ -282,7 +282,7 @@ bool operator !=(const RichString &rs1, const QString &rs2)
  */
 bool operator ==(const QString &rs1, const RichString &rs2)
 {
-    return rs2 == rs1;
+	return rs2 == rs1;
 }
 
 /*!
@@ -292,19 +292,19 @@ bool operator ==(const QString &rs1, const RichString &rs2)
  */
 bool operator !=(const QString &rs1, const RichString &rs2)
 {
-    return rs2 != rs1;
+	return rs2 != rs1;
 }
 
 uint qHash(const RichString &rs, uint seed) Q_DECL_NOTHROW
 {
-    return qHash(rs.d->idKey(), seed);
+	return qHash(rs.d->idKey(), seed);
 }
 
 #ifndef QT_NO_DEBUG_STREAM
 QDebug operator<<(QDebug dbg, const RichString &rs)
 {
-    dbg.nospace() << "QXlsx::RichString(" << rs.d->fragmentTexts << ")";
-    return dbg.space();
+	dbg.nospace() << "QXlsx::RichString(" << rs.d->fragmentTexts << ")";
+	return dbg.space();
 }
 #endif
 

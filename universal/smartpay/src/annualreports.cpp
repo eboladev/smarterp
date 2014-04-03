@@ -2,13 +2,13 @@
 #include "ui_annualreports.h"
 
 AnnualReports::AnnualReports(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::AnnualReports)
+	QMainWindow(parent),
+	ui(new Ui::AnnualReports)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 AnnualReports::~AnnualReports()
 {
-    delete ui;
+	delete ui;
 }

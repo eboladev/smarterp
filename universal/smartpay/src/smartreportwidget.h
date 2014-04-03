@@ -11,14 +11,14 @@ class SmartReportWidget;
 
 class SmartReportWidget : public QPrintPreviewWidget
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit SmartReportWidget(QWidget *parent = 0);
-    ~SmartReportWidget();
-    
+	explicit SmartReportWidget(QWidget *parent = 0);
+	~SmartReportWidget();
+
 private:
-    Ui::SmartReportWidget *ui;
+	Ui::SmartReportWidget *ui;
 };
 
 #endif // SMARTREPORTWIDGET_H

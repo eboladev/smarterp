@@ -36,29 +36,29 @@
 */
 class CalendarTableModel : public QAbstractTableModel
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    CalendarTableModel(QObject *parent = 0); ///<Конструктор
-    ~CalendarTableModel() {} ///<Деструктор
+	CalendarTableModel(QObject *parent = 0); ///<Конструктор
+	~CalendarTableModel() {} ///<Деструктор
 
-    void setCalendars(QList<Calendar *> *calendars); ///<Метод установки адреса списка календарей
+	void setCalendars(QList<Calendar *> *calendars); ///<Метод установки адреса списка календарей
 
 	///Метод чтения количества строк
-    int rowCount(const QModelIndex & parent = QModelIndex()) const;
+	int rowCount(const QModelIndex & parent = QModelIndex()) const;
 	///Метод чтения количества столбцов
-    int columnCount(const QModelIndex & parent = QModelIndex()) const;
+	int columnCount(const QModelIndex & parent = QModelIndex()) const;
 	///Вернет информацию о данных календаря с номером index в зависимости от role.
-    QVariant data(const QModelIndex &index, int role) const;
+	QVariant data(const QModelIndex &index, int role) const;
 	///Метод возвращает информацию о заголовках
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+	QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 	///Если role == Qt::CheckStateRole, изменит статус выделения календаря с номером index на противоположный.
-    bool setData(const QModelIndex &index, const QVariant &value, int role);
+	bool setData(const QModelIndex &index, const QVariant &value, int role);
 	///Вернет возможность выбора пользователем календаря с номером index
-    Qt::ItemFlags flags(const QModelIndex &index) const;
+	Qt::ItemFlags flags(const QModelIndex &index) const;
 
 private:
-    QList <Calendar *> *ptrCalendars; ///<Адрес списка календарей
+	QList <Calendar *> *ptrCalendars; ///<Адрес списка календарей
 };
 
 #endif

@@ -30,15 +30,15 @@
 namespace QXlsx {
 
 ZipReader::ZipReader(const QString &filePath) :
-    m_reader(new QZipReader(filePath))
+	m_reader(new QZipReader(filePath))
 {
-    init();
+	init();
 }
 
 ZipReader::ZipReader(QIODevice *device) :
-    m_reader(new QZipReader(device))
+	m_reader(new QZipReader(device))
 {
-    init();
+	init();
 }
 
 ZipReader::~ZipReader()
@@ -48,26 +48,26 @@ ZipReader::~ZipReader()
 
 void ZipReader::init()
 {
-    QList<QZipReader::FileInfo> allFiles = m_reader->fileInfoList();
-    foreach (const QZipReader::FileInfo &fi, allFiles) {
-        if (fi.isFile)
-            m_filePaths.append(fi.filePath);
-    }
+	QList<QZipReader::FileInfo> allFiles = m_reader->fileInfoList();
+	foreach (const QZipReader::FileInfo &fi, allFiles) {
+		if (fi.isFile)
+			m_filePaths.append(fi.filePath);
+	}
 }
 
 bool ZipReader::exists() const
 {
-    return m_reader->exists();
+	return m_reader->exists();
 }
 
 QStringList ZipReader::filePaths() const
 {
-    return m_filePaths;
+	return m_filePaths;
 }
 
 QByteArray ZipReader::fileData(const QString &fileName) const
 {
-    return m_reader->fileData(fileName);
+	return m_reader->fileData(fileName);
 }
 
 } // namespace QXlsx

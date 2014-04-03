@@ -4,25 +4,25 @@
 #include <QDialog>
 
 namespace Ui {
-    class LogDialog;
+class LogDialog;
 }
 
 class LogDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit LogDialog(QWidget *parent = 0);
-    ~LogDialog();
-    QStringList userLogs;
-    QStringList appLogs;
+	explicit LogDialog(QWidget *parent = 0);
+	~LogDialog();
+	QStringList userLogs;
+	QStringList appLogs;
 private:
-    Ui::LogDialog *ui;
+	Ui::LogDialog *ui;
 signals:
-    void closed(bool);
+	void closed(bool);
 public slots:
-    virtual void closeEvent( QCloseEvent * );
-    void refreshLog(QString section, QString newLog);
+	virtual void closeEvent( QCloseEvent * );
+	void refreshLog(QString section, QString newLog);
 };
 
 #endif // LOGDIALOG_H

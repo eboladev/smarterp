@@ -47,19 +47,19 @@ namespace QXlsx {
 class XLSX_AUTOTEST_EXPORT DocPropsCore
 {
 public:
-    explicit DocPropsCore();
+	explicit DocPropsCore();
 
-    bool setProperty(const QString &name, const QString &value);
-    QString property(const QString &name) const;
-    QStringList propertyNames() const;
-        
-    void saveToXmlFile(QIODevice *device);
-    QByteArray saveToXmlData();
-    static DocPropsCore loadFromXmlFile(QIODevice *device);
-    static DocPropsCore loadFromXmlData(const QByteArray &data);
+	bool setProperty(const QString &name, const QString &value);
+	QString property(const QString &name) const;
+	QStringList propertyNames() const;
+
+	void saveToXmlFile(QIODevice *device);
+	QByteArray saveToXmlData();
+	static DocPropsCore loadFromXmlFile(QIODevice *device);
+	static DocPropsCore loadFromXmlData(const QByteArray &data);
 
 private:
-    QMap<QString, QString> m_properties;
+	QMap<QString, QString> m_properties;
 };
 
 }

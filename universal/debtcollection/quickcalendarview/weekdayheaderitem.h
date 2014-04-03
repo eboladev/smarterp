@@ -34,32 +34,32 @@ class QuickCalendarView;
 class WeekDayHeaderItem : public CalendarItem
 {
 public:
-    WeekDayHeaderItem(QuickCalendarView *calendarView,
-                      int dayOfWeek,
-                      QGraphicsItem *parent = 0,
-                      QGraphicsScene *scene = 0);
+	WeekDayHeaderItem(QuickCalendarView *calendarView,
+			  int dayOfWeek,
+			  QGraphicsItem *parent = 0,
+			  QGraphicsScene *scene = 0);
 
-    virtual void paint(QPainter *painter,
-                       const QStyleOptionGraphicsItem *option,
-                       QWidget *widget);
+	virtual void paint(QPainter *painter,
+			   const QStyleOptionGraphicsItem *option,
+			   QWidget *widget);
 
-    virtual void layoutChanged();
+	virtual void layoutChanged();
 
 protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+	void mousePressEvent(QGraphicsSceneMouseEvent *event);
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    QString myDayTitle;
-    int myAlign;
+	QString myDayTitle;
+	int myAlign;
 
-    QLinearGradient myGradient;
-    QPen myPen;
-    QFont myFont;
+	QLinearGradient myGradient;
+	QPen myPen;
+	QFont myFont;
 
-    QuickCalendarView *ptrCalendarView;
-    int myDayOfWeek;
+	QuickCalendarView *ptrCalendarView;
+	int myDayOfWeek;
 };
 
 #endif

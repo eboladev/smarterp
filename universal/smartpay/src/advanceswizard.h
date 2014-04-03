@@ -11,20 +11,20 @@ class AdvancesWizard;
 
 class AdvancesWizard : public QWizard
 {
-    Q_OBJECT
-    
-public:
-    explicit AdvancesWizard(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~AdvancesWizard();
-    
-private slots:
-    void on_commandLinkButton_clicked();
+	Q_OBJECT
 
-    void on_lstEmployees_itemChanged(QTreeWidgetItem *item, int column);
+public:
+	explicit AdvancesWizard(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~AdvancesWizard();
+
+private slots:
+	void on_commandLinkButton_clicked();
+
+	void on_lstEmployees_itemChanged(QTreeWidgetItem *item, int column);
 
 private:
-    Ui::AdvancesWizard *ui;
-    QSqlDatabase db;
+	Ui::AdvancesWizard *ui;
+	QSqlDatabase db;
 };
 
 #endif // ADVANCESWIZARD_H

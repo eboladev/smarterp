@@ -27,18 +27,18 @@
 
 class BarcodeEditor : public QDialog, public Ui::BarcodeEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    BarcodeEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~BarcodeEditor();
+	BarcodeEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~BarcodeEditor();
 
 public slots:
-    virtual void cbFormat_activated(int);
-    virtual void sliderMaxVal_sliderMoved(int);
+	virtual void cbFormat_activated(int);
+	virtual void sliderMaxVal_sliderMoved(int);
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

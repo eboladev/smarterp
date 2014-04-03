@@ -14,21 +14,21 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit MainWindow(QWidget *parent = 0
-            , QSqlDatabase database = QSqlDatabase());
-    ~MainWindow();
-    
+	explicit MainWindow(QWidget *parent = 0
+			, QSqlDatabase database = QSqlDatabase());
+	~MainWindow();
+
 private:
-    Ui::MainWindow *ui;
-    QSqlDatabase db;
-    QTimer *buddyTimer;
-    QString userID;
+	Ui::MainWindow *ui;
+	QSqlDatabase db;
+	QTimer *buddyTimer;
+	QString userID;
 private slots:
-    void updateBuddies();
-    void on_lstBuddies_itemDoubleClicked(QTreeWidgetItem *item, int column);
+	void updateBuddies();
+	void on_lstBuddies_itemDoubleClicked(QTreeWidgetItem *item, int column);
 };
 
 #endif // MAINWINDOW_H

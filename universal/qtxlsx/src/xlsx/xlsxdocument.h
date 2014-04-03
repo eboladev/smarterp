@@ -46,60 +46,60 @@ class ConditionalFormatting;
 class DocumentPrivate;
 class Q_XLSX_EXPORT Document : public QObject
 {
-    Q_OBJECT
-    Q_DECLARE_PRIVATE(Document)
+	Q_OBJECT
+	Q_DECLARE_PRIVATE(Document)
 
 public:
-    explicit Document(QObject *parent = 0);
-    Document(const QString &xlsxName, QObject *parent=0);
-    Document(QIODevice *device, QObject *parent=0);
-    ~Document();
+	explicit Document(QObject *parent = 0);
+	Document(const QString &xlsxName, QObject *parent=0);
+	Document(QIODevice *device, QObject *parent=0);
+	~Document();
 
-    int write(const QString &cell, const QVariant &value, const Format &format=Format());
-    int write(int row, int col, const QVariant &value, const Format &format=Format());
-    QVariant read(const QString &cell) const;
-    QVariant read(int row, int col) const;
-    int insertImage(int row, int column, const QImage &image, double xOffset=0, double yOffset=0, double xScale=1, double yScale=1);
-    int mergeCells(const CellRange &range, const Format &format=Format());
-    int mergeCells(const QString &range, const Format &format=Format());
-    int unmergeCells(const CellRange &range);
-    int unmergeCells(const QString &range);
-    bool setRow(int row, double height, const Format &format=Format(), bool hidden=false);
-    bool setColumn(int colFirst, int colLast, double width, const Format &format=Format(), bool hidden=false);
-    bool setColumn(const QString &colFirst, const QString &colLast, double width, const Format &format=Format(), bool hidden=false);
-    bool groupRows(int rowFirst, int rowLast, bool collapsed = true);
-    bool groupColumns(int colFirst, int colLast, bool collapsed = true);
-    bool addDataValidation(const DataValidation &validation);
-    bool addConditionalFormatting(const ConditionalFormatting &cf);
+	int write(const QString &cell, const QVariant &value, const Format &format=Format());
+	int write(int row, int col, const QVariant &value, const Format &format=Format());
+	QVariant read(const QString &cell) const;
+	QVariant read(int row, int col) const;
+	int insertImage(int row, int column, const QImage &image, double xOffset=0, double yOffset=0, double xScale=1, double yScale=1);
+	int mergeCells(const CellRange &range, const Format &format=Format());
+	int mergeCells(const QString &range, const Format &format=Format());
+	int unmergeCells(const CellRange &range);
+	int unmergeCells(const QString &range);
+	bool setRow(int row, double height, const Format &format=Format(), bool hidden=false);
+	bool setColumn(int colFirst, int colLast, double width, const Format &format=Format(), bool hidden=false);
+	bool setColumn(const QString &colFirst, const QString &colLast, double width, const Format &format=Format(), bool hidden=false);
+	bool groupRows(int rowFirst, int rowLast, bool collapsed = true);
+	bool groupColumns(int colFirst, int colLast, bool collapsed = true);
+	bool addDataValidation(const DataValidation &validation);
+	bool addConditionalFormatting(const ConditionalFormatting &cf);
 
-    Cell *cellAt(const QString &cell) const;
-    Cell *cellAt(int row, int col) const;
+	Cell *cellAt(const QString &cell) const;
+	Cell *cellAt(int row, int col) const;
 
-    bool defineName(const QString &name, const QString &formula, const QString &comment=QString(), const QString &scope=QString());
+	bool defineName(const QString &name, const QString &formula, const QString &comment=QString(), const QString &scope=QString());
 
-    CellRange dimension() const;
+	CellRange dimension() const;
 
-    QString documentProperty(const QString &name) const;
-    void setDocumentProperty(const QString &name, const QString &property);
-    QStringList documentPropertyNames() const;
+	QString documentProperty(const QString &name) const;
+	void setDocumentProperty(const QString &name, const QString &property);
+	QStringList documentPropertyNames() const;
 
-    bool addWorksheet(const QString &name = QString());
-    bool insertWorkSheet(int index, const QString &name = QString());
-    bool setSheetName(const QString &name);
+	bool addWorksheet(const QString &name = QString());
+	bool insertWorkSheet(int index, const QString &name = QString());
+	bool setSheetName(const QString &name);
 
-    Workbook *workbook() const;
-    Worksheet *currentWorksheet() const;
-    void setCurrentWorksheet(int index);
-    void setCurrentWorksheet(const QString &name);
+	Workbook *workbook() const;
+	Worksheet *currentWorksheet() const;
+	void setCurrentWorksheet(int index);
+	void setCurrentWorksheet(const QString &name);
 
-    bool save();
-    bool saveAs(const QString &xlsXname);
-    bool saveAs(QIODevice *device);
+	bool save();
+	bool saveAs(const QString &xlsXname);
+	bool saveAs(QIODevice *device);
 
 private:
-    friend class Package;
-    Q_DISABLE_COPY(Document)
-    DocumentPrivate * const d_ptr;
+	friend class Package;
+	Q_DISABLE_COPY(Document)
+	DocumentPrivate * const d_ptr;
 };
 
 QT_END_NAMESPACE_XLSX

@@ -47,61 +47,61 @@ struct FancyMainWindowPrivate;
 
 class  FancyMainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit FancyMainWindow(QWidget *parent = 0);
-    virtual ~FancyMainWindow();
+	explicit FancyMainWindow(QWidget *parent = 0);
+	virtual ~FancyMainWindow();
 
-    /* The widget passed in should have an objectname set
+	/* The widget passed in should have an objectname set
      * which will then be used as key for QSettings. */
-    QDockWidget *addDockForWidget(QWidget *widget);
-    QList<QDockWidget *> dockWidgets() const;
+	QDockWidget *addDockForWidget(QWidget *widget);
+	QList<QDockWidget *> dockWidgets() const;
 
-    void setTrackingEnabled(bool enabled);
-    bool isLocked() const;
+	void setTrackingEnabled(bool enabled);
+	bool isLocked() const;
 
-    void saveSettings(QSettings *settings) const;
-    void restoreSettings(const QSettings *settings);
-    QHash<QString, QVariant> saveSettings() const;
-    void restoreSettings(const QHash<QString, QVariant> &settings);
+	void saveSettings(QSettings *settings) const;
+	void restoreSettings(const QSettings *settings);
+	QHash<QString, QVariant> saveSettings() const;
+	void restoreSettings(const QHash<QString, QVariant> &settings);
 
-    // Additional context menu actions
-    QAction *menuSeparator1() const;
-    QAction *toggleLockedAction() const;
-    QAction *menuSeparator2() const;
-    QAction *resetLayoutAction() const;
+	// Additional context menu actions
+	QAction *menuSeparator1() const;
+	QAction *toggleLockedAction() const;
+	QAction *menuSeparator2() const;
+	QAction *resetLayoutAction() const;
 
-    // Overwritten to add locked/reset.
-    virtual QMenu *createPopupMenu();
+	// Overwritten to add locked/reset.
+	virtual QMenu *createPopupMenu();
 
 
-    QDockWidget *toolBarDockWidget() const;
-    void setToolBarDockWidget(QDockWidget *dock);
+	QDockWidget *toolBarDockWidget() const;
+	void setToolBarDockWidget(QDockWidget *dock);
 
 signals:
-    // Emitted by resetLayoutAction(). Connect to a slot
-    // restoring the default layout.
-    void resetLayout();
+	// Emitted by resetLayoutAction(). Connect to a slot
+	// restoring the default layout.
+	void resetLayout();
 
 public slots:
-    void setLocked(bool locked);
-    void setDockActionsVisible(bool v);
+	void setLocked(bool locked);
+	void setDockActionsVisible(bool v);
 
 protected:
-    void hideEvent(QHideEvent *event);
-    void showEvent(QShowEvent *event);
-    void contextMenuEvent(QContextMenuEvent *event);
+	void hideEvent(QHideEvent *event);
+	void showEvent(QShowEvent *event);
+	void contextMenuEvent(QContextMenuEvent *event);
 private slots:
-    void onDockActionTriggered();
-    void onDockVisibilityChange(bool);
-    void onTopLevelChanged();
+	void onDockActionTriggered();
+	void onDockVisibilityChange(bool);
+	void onTopLevelChanged();
 
 private:
-    void updateDockWidget(QDockWidget *dockWidget);
-    void handleVisibilityChanged(bool visible);
+	void updateDockWidget(QDockWidget *dockWidget);
+	void handleVisibilityChanged(bool visible);
 
-    FancyMainWindowPrivate *d;
+	FancyMainWindowPrivate *d;
 };
 
 } // namespace Utils

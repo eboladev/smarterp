@@ -2,41 +2,41 @@
 #include "ui_addcolumndialog.h"
 #include <QInputDialog>
 AddColumnDialog::AddColumnDialog(QWidget *parent, QString fieldName, QString dataType) :
-        QDialog(parent),
-        ui(new Ui::AddColumnDialog)
+	QDialog(parent),
+	ui(new Ui::AddColumnDialog)
 {
-    ui->setupUi(this);
-    ui->txtFieldName->setText(fieldName);
-    ui->cboDataType->setEditText(dataType);
+	ui->setupUi(this);
+	ui->txtFieldName->setText(fieldName);
+	ui->cboDataType->setEditText(dataType);
 }
 
 AddColumnDialog::~AddColumnDialog()
 {
-    delete ui;
+	delete ui;
 }
 
 void AddColumnDialog::on_cmdSetDataType_clicked()
 {
-    QString customType = QInputDialog::getText(this, tr("Get Type"), tr("Enter the custom type"));
-    if (!customType.isEmpty())
-        ui->cboDataType->setEditText(customType);
+	QString customType = QInputDialog::getText(this, tr("Get Type"), tr("Enter the custom type"));
+	if (!customType.isEmpty())
+		ui->cboDataType->setEditText(customType);
 }
 
 DatabaseTableField AddColumnDialog::getFieldSpec() {
-    DatabaseTableField f;
-    f.comment = ui->txtComment->text();
-    f.defval = ui->txtDefault->text();
-    f.name = ui->txtFieldName->text();
-    f.notnull = ui->chkNotNull->isChecked();
-    f.pk = ui->cboDataType->currentText().toLower().contains("primary");
-    f.type = ui->cboDataType->currentText();
-    return f;
+	DatabaseTableField f;
+	f.comment = ui->txtComment->text();
+	f.defval = ui->txtDefault->text();
+	f.name = ui->txtFieldName->text();
+	f.notnull = ui->chkNotNull->isChecked();
+	f.pk = ui->cboDataType->currentText().toLower().contains("primary");
+	f.type = ui->cboDataType->currentText();
+	return f;
 }
 
 void AddColumnDialog::setField(DatabaseTableField f) {
-    ui->txtComment->setText(f.comment);
-    ui->txtDefault->setText(f.defval);
-    ui->txtFieldName->setText(f.name);
-    ui->chkNotNull->setChecked(f.notnull);
-    ui->cboDataType->setEditText(f.type);
+	ui->txtComment->setText(f.comment);
+	ui->txtDefault->setText(f.defval);
+	ui->txtFieldName->setText(f.name);
+	ui->chkNotNull->setChecked(f.notnull);
+	ui->cboDataType->setEditText(f.type);
 }

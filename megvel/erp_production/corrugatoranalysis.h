@@ -10,18 +10,18 @@ class CorrugatorAnalysis;
 
 class CorrugatorAnalysis : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit CorrugatorAnalysis(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~CorrugatorAnalysis();
-    
+	explicit CorrugatorAnalysis(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~CorrugatorAnalysis();
+
 private slots:
-    void on_cmdView_clicked();
+	void on_cmdView_clicked();
 
 private:
-    Ui::CorrugatorAnalysis *ui;
-    QSqlDatabase db;
+	Ui::CorrugatorAnalysis *ui;
+	QSqlDatabase db;
 };
 
 #endif // CORRUGATORANALYSIS_H

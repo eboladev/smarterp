@@ -32,24 +32,24 @@ class SmartOcPrinter;
 
 class SmartOcPrinter : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit SmartOcPrinter(QDomDocument doc = QDomDocument(),
-                            QSqlDatabase database = QSqlDatabase(),
-                            QWidget *parent = 0);
-    ~SmartOcPrinter();
+	explicit SmartOcPrinter(QDomDocument doc = QDomDocument(),
+				QSqlDatabase database = QSqlDatabase(),
+				QWidget *parent = 0);
+	~SmartOcPrinter();
 private slots:
-    void zoomIn();
-    void zoomOut();
-    void print();
-    void makePDF();
-    void previewRequested(QPrinter *prnt);
+	void zoomIn();
+	void zoomOut();
+	void print();
+	void makePDF();
+	void previewRequested(QPrinter *prnt);
 private:
-    Ui::SmartOcPrinter *ui;
-    QPrinter *printer;
-    QDomDocument _doc;
-    QSqlDatabase db;
+	Ui::SmartOcPrinter *ui;
+	QPrinter *printer;
+	QDomDocument _doc;
+	QSqlDatabase db;
 };
 
 #endif // SMARTOCPRINTER_H

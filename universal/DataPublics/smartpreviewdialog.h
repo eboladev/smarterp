@@ -12,17 +12,17 @@ class SmartPreviewDialog;
 
 class SmartPreviewDialog : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit SmartPreviewDialog(ORODocument *document, QPrinter *pPrinter, QWidget *parent = 0);
-    ~SmartPreviewDialog();
-    
+	explicit SmartPreviewDialog(ORODocument *document, QPrinter *pPrinter, QWidget *parent = 0);
+	~SmartPreviewDialog();
+
 private slots:
-    void on_cmdPrint_clicked();
+	void on_cmdPrint_clicked();
 
 private:
-    Ui::SmartPreviewDialog *ui;
+	Ui::SmartPreviewDialog *ui;
 };
 
 #endif // SMARTPREVIEWDIALOG_H

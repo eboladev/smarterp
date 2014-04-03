@@ -2,10 +2,10 @@
 #define CREATEPROFORMA_H
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 
 #include <QDialog>
@@ -16,14 +16,14 @@ class CreateProforma;
 
 class CreateProforma : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit CreateProforma(QWidget *parent = 0);
-    ~CreateProforma();
-    
+	explicit CreateProforma(QWidget *parent = 0);
+	~CreateProforma();
+
 private:
-    Ui::CreateProforma *ui;
+	Ui::CreateProforma *ui;
 };
 
 #endif // CREATEPROFORMA_H

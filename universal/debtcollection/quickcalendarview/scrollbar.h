@@ -35,52 +35,52 @@ class ScrollBar : public CalendarItem
 {
 public:
 	///Конструктор
-    ScrollBar(ScrollAreaItem *scrollArea = 0, QGraphicsScene *scene = 0);
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-        QWidget *widget);
+	ScrollBar(ScrollAreaItem *scrollArea = 0, QGraphicsScene *scene = 0);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
-    virtual void layoutChanged();
+	virtual void layoutChanged();
 
 	///Вернет значение, соответствующее текущему положению ползунка
-    qreal getValue() const;
+	qreal getValue() const;
 	///Установит ползунок в положение, соответствующее value
-    void scrollTo(qreal value);
-    void scrollBy(qreal scrollBy);
-    //void scrollBy(qreal sсrollBy);
+	void scrollTo(qreal value);
+	void scrollBy(qreal scrollBy);
+	//void scrollBy(qreal sсrollBy);
 
-    void setMinimum(qreal min);
+	void setMinimum(qreal min);
 	///Устанавливает значение, соответствующее нижнему положению ползунка
-    void setMaximum(qreal max);
+	void setMaximum(qreal max);
 
 	///Действия при изменении размера
-    virtual void onResize(const QSizeF &size, const QSizeF &oldSize);
+	virtual void onResize(const QSizeF &size, const QSizeF &oldSize);
 
-    void ensureVisibility(qreal y); ///<Обеспечивает видимость
+	void ensureVisibility(qreal y); ///<Обеспечивает видимость
 
-    int orientation; ///<Ориентация (не используется)
+	int orientation; ///<Ориентация (не используется)
 
 protected:
 	///Обработчик события нажатия кнопки мыши
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+	void mousePressEvent(QGraphicsSceneMouseEvent *event);
 	///Обработчик события перемещения мыши
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 	///Обработчик события отпускания кнопки мыши
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    qreal myMin; ///<Максимальное значение
-    qreal myMax; ///<Минимальное значение
-    qreal myValue; ///<Текущее значение
-    qreal myFactor; ///<Масштаб
+	qreal myMin; ///<Максимальное значение
+	qreal myMax; ///<Минимальное значение
+	qreal myValue; ///<Текущее значение
+	qreal myFactor; ///<Масштаб
 
-    qreal sliderMax; ///<Максимальное положение ползунка
-    qreal sliderPos; ///<Текущее положение ползунка
-    qreal sliderHeight; ///<Высота (размер) ползунка
+	qreal sliderMax; ///<Максимальное положение ползунка
+	qreal sliderPos; ///<Текущее положение ползунка
+	qreal sliderHeight; ///<Высота (размер) ползунка
 
-    int pressedControl; ///<Флаг нажатия кнопки мыши
+	int pressedControl; ///<Флаг нажатия кнопки мыши
 
-    ScrollAreaItem *ptrArea; ///<Прокручиваемая область
-    //ScrollHandle myHandle;
+	ScrollAreaItem *ptrArea; ///<Прокручиваемая область
+	//ScrollHandle myHandle;
 };
 
 #endif

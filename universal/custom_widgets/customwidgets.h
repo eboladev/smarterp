@@ -5,9 +5,9 @@
 
 class CUSTOM_WIDGETSSHARED_EXPORT CustomWidgets
 {
-    
+
 public:
-    CustomWidgets();
+	CustomWidgets();
 };
 
 #endif // CUSTOMWIDGETS_H

@@ -27,14 +27,14 @@
 
 class ReportParameterListItem : public QDialog, public Ui::ReportParameterListItem
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ReportParameterListItem(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ReportParameterListItem();
+	ReportParameterListItem(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ReportParameterListItem();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

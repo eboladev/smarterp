@@ -37,9 +37,9 @@ class ClockBar : public CalendarItem
 
 public:
 	///Конструктор
-    ClockBar(QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                QWidget *widget);
+	ClockBar(QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 };
 
 #endif

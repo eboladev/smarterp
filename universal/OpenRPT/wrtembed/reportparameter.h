@@ -28,24 +28,24 @@
 
 class ReportParameter : public QDialog, public Ui::ReportParameter
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ReportParameter(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ReportParameter();
+	ReportParameter(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ReportParameter();
 
 public slots:
-    virtual QString paramName();
-    virtual ORParameter paramData();
-    virtual void setParamName( const QString & text );
-    virtual void setParamData( const ORParameter & param );
-    virtual void sSelectionChanged();
-    virtual void sAdd();
-    virtual void sEdit();
-    virtual void sRemove();
+	virtual QString paramName();
+	virtual ORParameter paramData();
+	virtual void setParamName( const QString & text );
+	virtual void setParamData( const ORParameter & param );
+	virtual void sSelectionChanged();
+	virtual void sAdd();
+	virtual void sEdit();
+	virtual void sRemove();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

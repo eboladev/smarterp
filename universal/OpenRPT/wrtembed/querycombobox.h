@@ -26,14 +26,14 @@
 
 class QueryComboBox : public QComboBox
 {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
-  QueryComboBox(QWidget *parent);
-  ~QueryComboBox();
+	QueryComboBox(QWidget *parent);
+	~QueryComboBox();
 
-  void init(QuerySourceList * qsl, const QString &query, bool paramAndContextQueries=true);
-  QString currentQuery();
+	void init(QuerySourceList * qsl, const QString &query, bool paramAndContextQueries=true);
+	QString currentQuery();
 
 };
 

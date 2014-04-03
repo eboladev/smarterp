@@ -2,10 +2,10 @@
 #define USERS_H
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include <QtSql>
 #include "datapublics.h"
@@ -16,21 +16,21 @@ class Users;
 
 class Users : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit Users(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~Users();
-    
+	explicit Users(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~Users();
+
 private slots:
-    void on_cmdAddNew_clicked();
-    void reloadUsers();
-    void on_lstUSers_doubleClicked(const QModelIndex &index);
+	void on_cmdAddNew_clicked();
+	void reloadUsers();
+	void on_lstUSers_doubleClicked(const QModelIndex &index);
 
 private:
-    Ui::Users *ui;
-    QSqlDatabase db;
-    QSqlQueryModel *usersModel;
+	Ui::Users *ui;
+	QSqlDatabase db;
+	QSqlQueryModel *usersModel;
 };
 
 #endif // USERS_H

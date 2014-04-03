@@ -9,44 +9,44 @@
 class EEO_Field
 {
 public:
-    EEO_Field(const int ic, const QString &sf, const QString &st):
-            iCol(ic),sFieldName(sf),sFieldType(st){};
+	EEO_Field(const int ic, const QString &sf, const QString &st):
+		iCol(ic),sFieldName(sf),sFieldType(st){};
 
-    int     iCol;
-    QString sFieldName;
-    QString sFieldType;
+	int     iCol;
+	QString sFieldName;
+	QString sFieldType;
 };
 
 class ExportExcelObject : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    ExportExcelObject(const QString &filepath, const QString &sheettitle,
-                      QTableView *tableview, QAbstractItemModel *model):excelFilePath(filepath),
-        sheetName(sheettitle), tableView(tableview), model(model){}
+	ExportExcelObject(const QString &filepath, const QString &sheettitle,
+			  QTableView *tableview, QAbstractItemModel *model):excelFilePath(filepath),
+		sheetName(sheettitle), tableView(tableview), model(model){}
 
-    ~ExportExcelObject() {QSqlDatabase::removeDatabase("excelexport");}
+	~ExportExcelObject() {QSqlDatabase::removeDatabase("excelexport");}
 private:
-    QString excelFilePath;
-    QList<EEO_Field *> fieldList;
+	QString excelFilePath;
+	QList<EEO_Field *> fieldList;
 public:
-    void setOutputFilePath(const QString &spath) {excelFilePath = spath;}
-    void setOutputSheetTitle(const QString &ssheet) {sheetName = ssheet;}
-    void setTableView(QTableView *tableview) {tableView = tableview;}
+	void setOutputFilePath(const QString &spath) {excelFilePath = spath;}
+	void setOutputSheetTitle(const QString &ssheet) {sheetName = ssheet;}
+	void setTableView(QTableView *tableview) {tableView = tableview;}
 
-    void addField(const int iCol, const QString &fieldname, const QString &fieldtype)
-         {fieldList << new EEO_Field(iCol, fieldname, fieldtype);}
+	void addField(const int iCol, const QString &fieldname, const QString &fieldtype)
+	{fieldList << new EEO_Field(iCol, fieldname, fieldtype);}
 
-    void removeAllFields()
-         {while (!fieldList.isEmpty()) delete fieldList.takeFirst();}
+	void removeAllFields()
+	{while (!fieldList.isEmpty()) delete fieldList.takeFirst();}
 
-    int export2Excel();
-    QString sheetName;
-    QTableView *tableView;
+	int export2Excel();
+	QString sheetName;
+	QTableView *tableView;
 
-    QAbstractItemModel *model;
+	QAbstractItemModel *model;
 signals:
-    void exportedRowCount(int row);
+	void exportedRowCount(int row);
 
 
 };

@@ -11,20 +11,20 @@ class ReelsMainWindow;
 
 class ReelsMainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ReelsMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~ReelsMainWindow();
-    
+	explicit ReelsMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~ReelsMainWindow();
+
 private slots:
-    void on_cmdRefresh_clicked();
-    void refresh();
-    void on_cmdEditSelectedReel_clicked();
+	void on_cmdRefresh_clicked();
+	void refresh();
+	void on_cmdEditSelectedReel_clicked();
 
 private:
-    Ui::ReelsMainWindow *ui;
-    QSqlDatabase db;
+	Ui::ReelsMainWindow *ui;
+	QSqlDatabase db;
 };
 
 #endif // REELSMAINWINDOW_H

@@ -31,37 +31,37 @@ QT_BEGIN_NAMESPACE_XLSX
 class Q_XLSX_EXPORT CellRange
 {
 public:
-    CellRange();
-    CellRange(int firstRow, int firstColumn, int lastRow, int lastColumn);
-    CellRange(const QString &range);
-    CellRange(const CellRange &other);
-    ~CellRange();
+	CellRange();
+	CellRange(int firstRow, int firstColumn, int lastRow, int lastColumn);
+	CellRange(const QString &range);
+	CellRange(const CellRange &other);
+	~CellRange();
 
-    QString toString() const;
-    bool isValid() const;
-    inline void setFirstRow(int row) { top = row; }
-    inline void setLastRow(int row) { bottom = row; }
-    inline void setFirstColumn(int col) { left = col; }
-    inline void setLastColumn(int col) { right = col; }
-    inline int firstRow() const { return top; }
-    inline int lastRow() const { return bottom; }
-    inline int firstColumn() const { return left; }
-    inline int lastColumn() const { return right; }
-    inline int rowCount() const { return bottom - top + 1; }
-    inline int columnCount() const { return right - left + 1; }
+	QString toString() const;
+	bool isValid() const;
+	inline void setFirstRow(int row) { top = row; }
+	inline void setLastRow(int row) { bottom = row; }
+	inline void setFirstColumn(int col) { left = col; }
+	inline void setLastColumn(int col) { right = col; }
+	inline int firstRow() const { return top; }
+	inline int lastRow() const { return bottom; }
+	inline int firstColumn() const { return left; }
+	inline int lastColumn() const { return right; }
+	inline int rowCount() const { return bottom - top + 1; }
+	inline int columnCount() const { return right - left + 1; }
 
-    inline bool operator ==(const CellRange &other) const
-    {
-        return top==other.top && bottom==other.bottom
-                && left == other.left && right == other.right;
-    }
-    inline bool operator !=(const CellRange &other) const
-    {
-        return top!=other.top || bottom!=other.bottom
-                || left != other.left || right != other.right;
-    }
+	inline bool operator ==(const CellRange &other) const
+	{
+		return top==other.top && bottom==other.bottom
+				&& left == other.left && right == other.right;
+	}
+	inline bool operator !=(const CellRange &other) const
+	{
+		return top!=other.top || bottom!=other.bottom
+				|| left != other.left || right != other.right;
+	}
 private:
-    int top, left, bottom, right;
+	int top, left, bottom, right;
 };
 
 QT_END_NAMESPACE_XLSX

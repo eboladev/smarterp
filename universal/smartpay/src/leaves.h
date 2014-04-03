@@ -9,17 +9,17 @@ class Leaves;
 
 class Leaves : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit Leaves(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~Leaves();
-    
+	explicit Leaves(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~Leaves();
+
 private slots:
 
 private:
-    Ui::Leaves *ui;
-    QSqlDatabase db;
+	Ui::Leaves *ui;
+	QSqlDatabase db;
 };
 
 #endif // LEAVES_H

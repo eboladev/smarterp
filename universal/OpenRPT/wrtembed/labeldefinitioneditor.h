@@ -30,24 +30,24 @@
 
 class LabelDefinitionEditor : public QDialog, public Ui::LabelDefinitionEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
-  public:
-    LabelDefinitionEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~LabelDefinitionEditor();
+public:
+	LabelDefinitionEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~LabelDefinitionEditor();
 
-  public slots:
-    virtual void init(LabelSizeInfo);
-    virtual LabelSizeInfo getLabelDefinition() { return labelDefinition; }
+public slots:
+	virtual void init(LabelSizeInfo);
+	virtual LabelSizeInfo getLabelDefinition() { return labelDefinition; }
 
-  protected slots:
-    virtual void languageChange();
-    virtual void saveLabelDef();
+protected slots:
+	virtual void languageChange();
+	virtual void saveLabelDef();
 
-  protected:
-    virtual bool nameExists(QString name);
-    LabelSizeInfo labelDefinition;
-    QStringList paperDefs;
+protected:
+	virtual bool nameExists(QString name);
+	LabelSizeInfo labelDefinition;
+	QStringList paperDefs;
 };
 
 #endif // LABELDEFINITIONEDITOR_H

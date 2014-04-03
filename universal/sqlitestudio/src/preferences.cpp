@@ -15,9 +15,9 @@ Preferences* Preferences::_instance = 0;
 
 
 Preferences::Preferences(QObject *parent)
- : QObject(parent)
+	: QObject(parent)
 {
-        QSettings s(qApp->organizationName(), qApp->applicationName());
+	QSettings s(qApp->organizationName(), qApp->applicationName());
 	m_checkQtVersion = s.value("checkQtVersion", true).toBool();
 	//
 	m_nullHighlight = s.value("prefs/nullCheckBox", true).toBool();
@@ -34,7 +34,7 @@ Preferences::Preferences(QObject *parent)
 	m_GUIstyle = s.value("prefs/styleComboBox", 0).toInt();
 	m_cropColumns = s.value("prefs/cropColumnsCheckBox", false).toBool();
 	QFont f(QApplication::font());
-// 	f.setPointSize(sqlFontSize());
+	// 	f.setPointSize(sqlFontSize());
 	m_sqlFont = s.value("prefs/sqleditor/font", f).value<QFont>();
 	m_sqlFontSize = s.value("prefs/sqleditor/fontSize", f.pointSize()).toInt();
 	m_activeHighlighting = s.value("prefs/sqleditor/useActiveHighlightCheckBox", true).toBool();
@@ -46,18 +46,18 @@ Preferences::Preferences(QObject *parent)
 	m_useShortcuts = s.value("prefs/sqleditor/useShortcuts", false).toBool();
 	m_shortcuts = s.value("prefs/sqleditor/shortcuts", QMap<QString,QVariant>()).toMap();
 	// qscintilla
-//	QsciLexerSQL syntaxLexer;
-//	m_syDefaultColor = s.value("prefs/qscintilla/syDefaultColor",
-//							   syntaxLexer.defaultColor(QsciLexerSQL::Default)).value<QColor>();
-//	m_syKeywordColor = s.value("prefs/qscintilla/syKeywordColor",
-//							   syntaxLexer.defaultColor(QsciLexerSQL::Keyword)).value<QColor>();
-//	m_syNumberColor = s.value("prefs/qscintilla/syNumberColor",
-//							  syntaxLexer.defaultColor(QsciLexerSQL::Number)).value<QColor>();
-//	m_syStringColor = s.value("prefs/qscintilla/syStringColor",
-//							  syntaxLexer.defaultColor(QsciLexerSQL::SingleQuotedString)).value<QColor>();
-//	m_syCommentColor = s.value("prefs/qscintilla/syCommentColor",
-//							   syntaxLexer.defaultColor(QsciLexerSQL::Comment)).value<QColor>();
-//	// data
+	//	QsciLexerSQL syntaxLexer;
+	//	m_syDefaultColor = s.value("prefs/qscintilla/syDefaultColor",
+	//							   syntaxLexer.defaultColor(QsciLexerSQL::Default)).value<QColor>();
+	//	m_syKeywordColor = s.value("prefs/qscintilla/syKeywordColor",
+	//							   syntaxLexer.defaultColor(QsciLexerSQL::Keyword)).value<QColor>();
+	//	m_syNumberColor = s.value("prefs/qscintilla/syNumberColor",
+	//							  syntaxLexer.defaultColor(QsciLexerSQL::Number)).value<QColor>();
+	//	m_syStringColor = s.value("prefs/qscintilla/syStringColor",
+	//							  syntaxLexer.defaultColor(QsciLexerSQL::SingleQuotedString)).value<QColor>();
+	//	m_syCommentColor = s.value("prefs/qscintilla/syCommentColor",
+	//							   syntaxLexer.defaultColor(QsciLexerSQL::Comment)).value<QColor>();
+	//	// data
 	m_dateTimeFormat = s.value("data/dateTimeFormat", "MM/dd/yyyy").toString();
 	// data export
 	m_exportFormat = s.value("dataExport/format", 0).toInt();
@@ -69,7 +69,7 @@ Preferences::Preferences(QObject *parent)
 
 Preferences::~Preferences()
 {
-        QSettings settings(qApp->organizationName(), qApp->applicationName());
+	QSettings settings(qApp->organizationName(), qApp->applicationName());
 	settings.setValue("checkQtVersion", m_checkQtVersion);
 	// lnf
 	settings.setValue("prefs/languageComboBox", m_GUItranslator);
@@ -87,7 +87,7 @@ Preferences::~Preferences()
 	settings.setValue("prefs/cropColumnsCheckBox", m_cropColumns);
 	// sql editor
 	settings.setValue("prefs/sqleditor/font", m_sqlFont);
-    settings.setValue("prefs/sqleditor/fontSize", m_sqlFontSize);
+	settings.setValue("prefs/sqleditor/fontSize", m_sqlFontSize);
 	settings.setValue("prefs/sqleditor/useActiveHighlightCheckBox", m_activeHighlighting);
 	settings.setValue("prefs/sqleditor/activeHighlightButton", m_activeHighlightColor);
 	settings.setValue("prefs/sqleditor/useTextWidthMarkCheckBox", m_textWidthMark);
@@ -114,15 +114,15 @@ Preferences::~Preferences()
 
 Preferences* Preferences::instance()
 {
-    if (_instance == 0)
-        _instance = new Preferences();
+	if (_instance == 0)
+		_instance = new Preferences();
 
-    return _instance;
+	return _instance;
 }
 
 void Preferences::deleteInstance()
 {
-    if (_instance)
-        delete _instance;
-    _instance = 0;
+	if (_instance)
+		delete _instance;
+	_instance = 0;
 }

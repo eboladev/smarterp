@@ -51,60 +51,60 @@ public:
 	@param parent Родильский графический элемент
 	@param scene Сцена для графического отображения
 	*/
-    DayItem(QuickCalendarView *calendar,
-            const QDate &date,
-            QGraphicsItem *parent = 0,
-            QGraphicsScene *scene = 0);
+	DayItem(QuickCalendarView *calendar,
+		const QDate &date,
+		QGraphicsItem *parent = 0,
+		QGraphicsScene *scene = 0);
 	
 	/**
 	@brief Установка информации даты для дня
 	*/
-    void setDate(const QDate &date);
-    //void setWeekItem(
-    /**
+	void setDate(const QDate &date);
+	//void setWeekItem(
+	/**
     @brief Метод прорисовки элемента дня
     */
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                QWidget *widget);
-     
-    //Наследуемые методы обработки изменения родительского слоя и данных
-    virtual void layoutChanged();
-    virtual void dataChanged();
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
-    
-    bool isOutOfRange() const { return amIOutOfRange; }
-    void setOutOfRange(bool outOfRange) { amIOutOfRange = outOfRange; }
+	//Наследуемые методы обработки изменения родительского слоя и данных
+	virtual void layoutChanged();
+	virtual void dataChanged();
+
+
+	bool isOutOfRange() const { return amIOutOfRange; }
+	void setOutOfRange(bool outOfRange) { amIOutOfRange = outOfRange; }
 
 protected:
 	///Обработчик нажатия мыши на элементе, не имеет реализации
-    void mousePressEvent(QGraphicsSceneMouseEvent *event); 
+	void mousePressEvent(QGraphicsSceneMouseEvent *event);
 	///Обработчик перемещния мыши по элементу, не имеет реализации
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 	///Обработчик отпускания мыши на элементе
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 private:
-    bool amIOutOfRange;
+	bool amIOutOfRange;
 
-    QuickCalendarView *ptrCalendarView;
-    QDate myDate; ///<Отображаемая дата
+	QuickCalendarView *ptrCalendarView;
+	QDate myDate; ///<Отображаемая дата
 
-    DayContentItem *ptrContentItem;
-    QBrush myBrush; ///
-    QLinearGradient myGradient;
-    QPen myPen; 
-    QFont myFont;
+	DayContentItem *ptrContentItem;
+	QBrush myBrush; ///
+	QLinearGradient myGradient;
+	QPen myPen;
+	QFont myFont;
 
-    QString myCaption;
-    int myAlign;
+	QString myCaption;
+	int myAlign;
 
-    QList<Appointment *> myAppointments;
+	QList<Appointment *> myAppointments;
 
-    QPixmap myClockIcon;
+	QPixmap myClockIcon;
 
-    friend class MonthItem;
-    friend class WeekItem;
-    friend class DayContentItem;
-    friend class AppointmentItem;
+	friend class MonthItem;
+	friend class WeekItem;
+	friend class DayContentItem;
+	friend class AppointmentItem;
 };
 
 #endif

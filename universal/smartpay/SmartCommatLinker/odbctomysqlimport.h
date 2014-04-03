@@ -6,25 +6,25 @@
 
 class ODBCToMysqlImport : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ODBCToMysqlImport(QObject *parent = 0);
-    void run();
-    void prepare();
+	explicit ODBCToMysqlImport(QObject *parent = 0);
+	void run();
+	void prepare();
 private:
-    QTimer *tmr;
-    QSqlDatabase odbcDb;
-    QSqlDatabase mysqlDb;
-    void openOdbcDb();
-    void openMysqlDb();
+	QTimer *tmr;
+	QSqlDatabase odbcDb;
+	QSqlDatabase mysqlDb;
+	void openOdbcDb();
+	void openMysqlDb();
 private slots:
-    void on_timer();
+	void on_timer();
 signals:
-    void error(QString err);
-    void message(QString msg);
-    void finished();
+	void error(QString err);
+	void message(QString msg);
+	void finished();
 public slots:
-    void process();
+	void process();
 };
 
 #endif // ODBCTOMYSQLIMPORT_H

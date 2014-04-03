@@ -46,47 +46,47 @@ class DocumentPrivate;
 class WorkbookPrivate;
 class Q_XLSX_EXPORT Workbook
 {
-    Q_DECLARE_PRIVATE(Workbook)
+	Q_DECLARE_PRIVATE(Workbook)
 public:
-    ~Workbook();
+	~Workbook();
 
-    QList<QSharedPointer<Worksheet> > worksheets() const;
-    Worksheet *addWorksheet(const QString &name = QString());
-    Worksheet *insertWorkSheet(int index, const QString &name = QString());
-    int activeWorksheet() const;
-    void setActiveWorksheet(int index);
+	QList<QSharedPointer<Worksheet> > worksheets() const;
+	Worksheet *addWorksheet(const QString &name = QString());
+	Worksheet *insertWorkSheet(int index, const QString &name = QString());
+	int activeWorksheet() const;
+	void setActiveWorksheet(int index);
 
-//    void addChart();
-    bool defineName(const QString &name, const QString &formula, const QString &comment=QString(), const QString &scope=QString());
-    bool isDate1904() const;
-    void setDate1904(bool date1904);
-    bool isStringsToNumbersEnabled() const;
-    void setStringsToNumbersEnabled(bool enable=true);
-    QString defaultDateFormat() const;
-    void setDefaultDateFormat(const QString &format);
+	//    void addChart();
+	bool defineName(const QString &name, const QString &formula, const QString &comment=QString(), const QString &scope=QString());
+	bool isDate1904() const;
+	void setDate1904(bool date1904);
+	bool isStringsToNumbersEnabled() const;
+	void setStringsToNumbersEnabled(bool enable=true);
+	QString defaultDateFormat() const;
+	void setDefaultDateFormat(const QString &format);
 
 private:
-    friend class Package;
-    friend class Worksheet;
-    friend class WorksheetPrivate;
-    friend class Document;
-    friend class DocumentPrivate;
+	friend class Package;
+	friend class Worksheet;
+	friend class WorksheetPrivate;
+	friend class Document;
+	friend class DocumentPrivate;
 
-    Workbook();
+	Workbook();
 
-    void saveToXmlFile(QIODevice *device);
-    QByteArray saveToXmlData();
-    bool loadFromXmlFile(QIODevice *device);
-    bool loadFromXmlData(const QByteArray &data);
+	void saveToXmlFile(QIODevice *device);
+	QByteArray saveToXmlData();
+	bool loadFromXmlFile(QIODevice *device);
+	bool loadFromXmlData(const QByteArray &data);
 
-    SharedStrings *sharedStrings() const;
-    Styles *styles();
-    Theme *theme();
-    QList<QImage> images();
-    QList<Drawing *> drawings();
-    void prepareDrawings();
-    Worksheet *addWorksheet(const QString &name, int sheetId);
-    WorkbookPrivate * const d_ptr;
+	SharedStrings *sharedStrings() const;
+	Styles *styles();
+	Theme *theme();
+	QList<QImage> images();
+	QList<Drawing *> drawings();
+	void prepareDrawings();
+	Worksheet *addWorksheet(const QString &name, int sheetId);
+	WorkbookPrivate * const d_ptr;
 };
 
 QT_END_NAMESPACE_XLSX

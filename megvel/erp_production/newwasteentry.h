@@ -9,17 +9,17 @@ class NewWasteEntry;
 
 class NewWasteEntry : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit NewWasteEntry(QWidget *parent = 0);
-    ~NewWasteEntry();
-    
+	explicit NewWasteEntry(QWidget *parent = 0);
+	~NewWasteEntry();
+
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::NewWasteEntry *ui;
+	Ui::NewWasteEntry *ui;
 };
 
 #endif // NEWWASTEENTRY_H

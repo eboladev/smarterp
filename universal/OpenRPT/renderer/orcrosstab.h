@@ -30,10 +30,10 @@
 #include <xsqlquery.h>
 
 void renderCrossTab(QPainter&,
-                    const QRect&,
-                    ORCrossTabData&,
-                    XSqlQuery*,
-                    const QMap<QString,QColor>&);
+		    const QRect&,
+		    ORCrossTabData&,
+		    XSqlQuery*,
+		    const QMap<QString,QColor>&);
 
 
 #endif //__RENDERER_ORCROSSTAB_H__

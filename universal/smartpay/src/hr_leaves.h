@@ -10,18 +10,18 @@ class HR_Leaves;
 
 class HR_Leaves : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit HR_Leaves(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~HR_Leaves();
-    
+	explicit HR_Leaves(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~HR_Leaves();
+
 private:
-    Ui::HR_Leaves *ui;
-    QSqlDatabase db;
+	Ui::HR_Leaves *ui;
+	QSqlDatabase db;
 
 private slots:
-    void reloadEmployees();
+	//void reloadEmployees()
 };
 
 #endif // HR_LEAVES_H

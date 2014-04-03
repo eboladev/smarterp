@@ -34,35 +34,35 @@
  *  true to construct a modal dialog.
  */
 CrossTabEditor::CrossTabEditor(QWidget* parent)
-    : QDialog(parent)
+	: QDialog(parent)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
+	// signals and slots connections
+	connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
 }
 
 CrossTabEditor::~CrossTabEditor()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void CrossTabEditor::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void CrossTabEditor::btnFont_clicked()
 {
-    // pop up a font dialog
-    bool ok;
-    QFont font = QFontDialog::getFont(&ok, _font, this);
-    if(ok) {
-        _font = font;
-    }
+	// pop up a font dialog
+	bool ok;
+	QFont font = QFontDialog::getFont(&ok, _font, this);
+	if(ok) {
+		_font = font;
+	}
 }
 
 void CrossTabEditor::on_valueQueryGroupBox_toggled(bool)

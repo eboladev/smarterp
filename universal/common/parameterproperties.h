@@ -27,31 +27,31 @@
 
 class ParameterProperties : public QDialog, public Ui::ParameterProperties
 {
-  Q_OBJECT
+	Q_OBJECT
 
-  public:
-    ParameterProperties(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ParameterProperties();
+public:
+	ParameterProperties(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ParameterProperties();
 
-    Q_INVOKABLE virtual bool            active();
-    Q_INVOKABLE virtual QList<QVariant> list();
-    Q_INVOKABLE virtual QString         name();
-    Q_INVOKABLE virtual QVariant::Type  type();
-    Q_INVOKABLE virtual QString         typeName();
-    Q_INVOKABLE virtual QVariant        value();
+	Q_INVOKABLE virtual bool            active();
+	Q_INVOKABLE virtual QList<QVariant> list();
+	Q_INVOKABLE virtual QString         name();
+	Q_INVOKABLE virtual QVariant::Type  type();
+	Q_INVOKABLE virtual QString         typeName();
+	Q_INVOKABLE virtual QVariant        value();
 
-  public slots:
-    virtual void languageChange();
-    virtual void editItem();
-    virtual void deleteItem();
-    virtual void moveItemUp();
-    virtual void moveItemDown();
-    virtual void newItem();
-    virtual void setActive(bool p);
-    virtual void setList(const QList<QVariant> &l);
-    virtual void setName(QString p);
-    virtual void setType(QString p);
-    virtual void setType(QVariant::Type p);
-    virtual void setValue(QVariant p);
+public slots:
+	virtual void languageChange();
+	virtual void editItem();
+	virtual void deleteItem();
+	virtual void moveItemUp();
+	virtual void moveItemDown();
+	virtual void newItem();
+	virtual void setActive(bool p);
+	virtual void setList(const QList<QVariant> &l);
+	virtual void setName(QString p);
+	virtual void setType(QString p);
+	virtual void setType(QVariant::Type p);
+	virtual void setValue(QVariant p);
 };
 #endif

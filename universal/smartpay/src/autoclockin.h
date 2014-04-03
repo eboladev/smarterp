@@ -10,18 +10,18 @@ class AutoClockIn;
 
 class AutoClockIn : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit AutoClockIn(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~AutoClockIn();
-    
-private:
-    Ui::AutoClockIn *ui;
-    QSqlDatabase db;
+	Q_OBJECT
 
-    void reloadEmployees();
-    QSqlQueryModel *employeesModel;
+public:
+	explicit AutoClockIn(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~AutoClockIn();
+
+private:
+	Ui::AutoClockIn *ui;
+	QSqlDatabase db;
+
+	void reloadEmployees();
+	QSqlQueryModel *employeesModel;
 };
 
 #endif // AUTOCLOCKIN_H

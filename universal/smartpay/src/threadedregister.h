@@ -7,21 +7,21 @@
 
 class ThreadedRegister : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ThreadedRegister(QObject *parent = 0);
-    void run();
-    void setVars(QStringList employees, QStringList dates,
-                 QStringList inTimes, QStringList outTimes, QSqlDatabase d);
+	explicit ThreadedRegister(QObject *parent = 0);
+	void run();
+	void setVars(QStringList employees, QStringList dates,
+		     QStringList inTimes, QStringList outTimes, QSqlDatabase d);
 signals:
-    void showProgress(int);
-    void employeeChanged(QString);
-    void dateChanged(QDate);
+	void showProgress(int);
+	void employeeChanged(QString);
+	void dateChanged(QDate);
 public slots:
-    
+
 private:
-    QSqlDatabase db;
-    QStringList e, ds, ins, outs;
+	QSqlDatabase db;
+	QStringList e, ds, ins, outs;
 };
 
 #endif // THREADEDREGISTER_H

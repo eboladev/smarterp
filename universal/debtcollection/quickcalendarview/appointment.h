@@ -34,76 +34,76 @@ class Calendar;
 class Appointment 
 {
 public:
-    Appointment() : myKey(0), ptrCalendar(0) {  isComplete = false; }
-    ~Appointment() {}
+	Appointment() : myKey(0), ptrCalendar(0) {  isComplete = false; }
+	~Appointment() {}
 
-    int key() const {return myKey;}
-    void setKey(int key) {myKey = key;}
+	int key() const {return myKey;}
+	void setKey(int key) {myKey = key;}
 
-    int calendarKey() const {return myCalendarKey;}
-    void setCalendarKey(int calendarKey) {myCalendarKey = calendarKey;}
+	int calendarKey() const {return myCalendarKey;}
+	void setCalendarKey(int calendarKey) {myCalendarKey = calendarKey;}
 
-    Calendar* calendar() const {return ptrCalendar;}
-    void setCalendar(Calendar *calendar) {ptrCalendar = calendar;}
+	Calendar* calendar() const {return ptrCalendar;}
+	void setCalendar(Calendar *calendar) {ptrCalendar = calendar;}
 
-    QString subject() const {return mySubject;}
-    void setSubject(const QString &subject) {mySubject = subject;}
+	QString subject() const {return mySubject;}
+	void setSubject(const QString &subject) {mySubject = subject;}
 
-    QString customerName;
-    QString customerID() const { return myCustomer; }
-    void setCustomerID(const QString &customerID);
+	QString customerName;
+	QString customerID() const { return myCustomer; }
+	void setCustomerID(const QString &customerID);
 
-    QString place() const {return myPlace;}
-    void setPlace(const QString &place) {myPlace = place;}
-
-
-    bool isComplete;
-    void setIsComplete(const bool c) { isComplete = c; }
+	QString place() const {return myPlace;}
+	void setPlace(const QString &place) {myPlace = place;}
 
 
-    QString description() const {return myDescription;}
-    void setDescription(const QString &description) {myDescription = description;}
-
-    QTime startTime() const { return myStartDateTime.time(); }
-    QDate startDate() const { return myStartDateTime.date(); }
-    QDateTime startDateTime() const {return myStartDateTime;}
-    void setStartDateTime(const QDateTime &startDateTime);
-
-    QTime endTime() const { return myEndDateTime.time(); }
-    QDate endDate() const { return myEndDateTime.date(); }
-    QDateTime endDateTime() const {return myEndDateTime; }
-    void setEndDateTime(const QDateTime &endDateTime);
+	bool isComplete;
+	void setIsComplete(const bool c) { isComplete = c; }
 
 
-    void setDateTimes(const QDateTime &startDateTime, const QDateTime &endDateTime);
+	QString description() const {return myDescription;}
+	void setDescription(const QString &description) {myDescription = description;}
 
-    void setTimes(const QTime &startTime, const QTime &endTime); 
+	QTime startTime() const { return myStartDateTime.time(); }
+	QDate startDate() const { return myStartDateTime.date(); }
+	QDateTime startDateTime() const {return myStartDateTime;}
+	void setStartDateTime(const QDateTime &startDateTime);
+
+	QTime endTime() const { return myEndDateTime.time(); }
+	QDate endDate() const { return myEndDateTime.date(); }
+	QDateTime endDateTime() const {return myEndDateTime; }
+	void setEndDateTime(const QDateTime &endDateTime);
 
 
-    int startQuater(const QDate &date) const;
+	void setDateTimes(const QDateTime &startDateTime, const QDateTime &endDateTime);
 
-    int endQuater(const QDate &date) const;
+	void setTimes(const QTime &startTime, const QTime &endTime);
 
 
-    static bool before(Appointment *app1, Appointment *app2);
+	int startQuater(const QDate &date) const;
 
-    bool operator==(const Appointment &other) const;
-    bool operator!=(const Appointment &other) const;
-    bool operator<(const Appointment &other) const;
+	int endQuater(const QDate &date) const;
+
+
+	static bool before(Appointment *app1, Appointment *app2);
+
+	bool operator==(const Appointment &other) const;
+	bool operator!=(const Appointment &other) const;
+	bool operator<(const Appointment &other) const;
 
 private:
-    int myKey;
-    int myCalendarKey;
+	int myKey;
+	int myCalendarKey;
 
-    Calendar *ptrCalendar;
+	Calendar *ptrCalendar;
 
-    QString mySubject;
-    QString myPlace;
-    QString myDescription;
-    QString myCustomer;
+	QString mySubject;
+	QString myPlace;
+	QString myDescription;
+	QString myCustomer;
 
-    QDateTime myStartDateTime;
-    QDateTime myEndDateTime;
+	QDateTime myStartDateTime;
+	QDateTime myEndDateTime;
 
 };
 

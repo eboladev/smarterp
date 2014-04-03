@@ -32,26 +32,26 @@
 QT_BEGIN_NAMESPACE_XLSX
 
 FormatPrivate::FormatPrivate()
-    : dirty(true)
-    , font_dirty(true), font_index_valid(false), font_index(-1)
-    , fill_dirty(true), fill_index_valid(false), fill_index(-1)
-    , border_dirty(true), border_index_valid(false), border_index(-1)
-    , xf_index(-1), xf_indexValid(false)
-    , is_dxf_fomat(false), dxf_index(-1), dxf_indexValid(false)
-    , theme(0)
+	: dirty(true)
+	, font_dirty(true), font_index_valid(false), font_index(-1)
+	, fill_dirty(true), fill_index_valid(false), fill_index(-1)
+	, border_dirty(true), border_index_valid(false), border_index(-1)
+	, xf_index(-1), xf_indexValid(false)
+	, is_dxf_fomat(false), dxf_index(-1), dxf_indexValid(false)
+	, theme(0)
 {
 }
 
 FormatPrivate::FormatPrivate(const FormatPrivate &other)
-    : QSharedData(other)
-    , dirty(other.dirty), formatKey(other.formatKey)
-    , font_dirty(other.font_dirty), font_index_valid(other.font_index_valid), font_key(other.font_key), font_index(other.font_index)
-    , fill_dirty(other.fill_dirty), fill_index_valid(other.fill_index_valid), fill_key(other.fill_key), fill_index(other.fill_index)
-    , border_dirty(other.border_dirty), border_index_valid(other.border_index_valid), border_key(other.border_key), border_index(other.border_index)
-    , xf_index(other.xf_index), xf_indexValid(other.xf_indexValid)
-    , is_dxf_fomat(other.is_dxf_fomat), dxf_index(other.dxf_index), dxf_indexValid(other.dxf_indexValid)
-    , theme(other.theme)
-    , property(other.property)
+	: QSharedData(other)
+	, dirty(other.dirty), formatKey(other.formatKey)
+	, font_dirty(other.font_dirty), font_index_valid(other.font_index_valid), font_key(other.font_key), font_index(other.font_index)
+	, fill_dirty(other.fill_dirty), fill_index_valid(other.fill_index_valid), fill_key(other.fill_key), fill_index(other.fill_index)
+	, border_dirty(other.border_dirty), border_index_valid(other.border_index_valid), border_key(other.border_key), border_index(other.border_index)
+	, xf_index(other.xf_index), xf_indexValid(other.xf_indexValid)
+	, is_dxf_fomat(other.is_dxf_fomat), dxf_index(other.dxf_index), dxf_indexValid(other.dxf_indexValid)
+	, theme(other.theme)
+	, property(other.property)
 {
 
 }
@@ -180,15 +180,15 @@ FormatPrivate::~FormatPrivate()
  */
 Format::Format()
 {
-    qRegisterMetaTypeStreamOperators<XlsxColor>("XlsxColor");
-    //The d pointer is initialized with a null pointer
+	qRegisterMetaTypeStreamOperators<XlsxColor>("XlsxColor");
+	//The d pointer is initialized with a null pointer
 }
 
 /*!
    Creates a new format with the same attributes as the \a other format.
  */
 Format::Format(const Format &other)
-    :d(other.d)
+	:d(other.d)
 {
 
 }
@@ -199,8 +199,8 @@ Format::Format(const Format &other)
  */
 Format &Format::operator =(const Format &other)
 {
-    d = other.d;
-    return *this;
+	d = other.d;
+	return *this;
 }
 
 /*!
@@ -215,7 +215,7 @@ Format::~Format()
  */
 int Format::numberFormatIndex() const
 {
-    return intProperty(FormatPrivate::P_NumFmt_Id);
+	return intProperty(FormatPrivate::P_NumFmt_Id);
 }
 
 /*!
@@ -225,8 +225,8 @@ int Format::numberFormatIndex() const
  */
 void Format::setNumberFormatIndex(int format)
 {
-    setProperty(FormatPrivate::P_NumFmt_Id, format);
-    clearProperty(FormatPrivate::P_NumFmt_FormatCode);
+	setProperty(FormatPrivate::P_NumFmt_Id, format);
+	clearProperty(FormatPrivate::P_NumFmt_FormatCode);
 }
 
 /*!
@@ -236,7 +236,7 @@ void Format::setNumberFormatIndex(int format)
  */
 QString Format::numberFormat() const
 {
-    return stringProperty(FormatPrivate::P_NumFmt_FormatCode);
+	return stringProperty(FormatPrivate::P_NumFmt_FormatCode);
 }
 
 /*!
@@ -245,10 +245,10 @@ QString Format::numberFormat() const
  */
 void Format::setNumberFormat(const QString &format)
 {
-    if (format.isEmpty())
-        return;
-    setProperty(FormatPrivate::P_NumFmt_FormatCode, format);
-    clearProperty(FormatPrivate::P_NumFmt_Id); //numFmt id must be re-generated.
+	if (format.isEmpty())
+		return;
+	setProperty(FormatPrivate::P_NumFmt_FormatCode, format);
+	clearProperty(FormatPrivate::P_NumFmt_Id); //numFmt id must be re-generated.
 }
 
 /*!
@@ -256,23 +256,23 @@ void Format::setNumberFormat(const QString &format)
  */
 bool Format::isDateTimeFormat() const
 {
-    if (hasProperty(FormatPrivate::P_NumFmt_FormatCode)) {
-        //Custom numFmt, so
-        //Gauss from the number string
-        QString formatCode = numberFormat();
-        formatCode.remove(QRegularExpression(QStringLiteral("\\[(Green|White|Blue|Magenta|Yellow|Cyan|Red)\\]")));
-        if (formatCode.contains(QRegularExpression(QStringLiteral("[dmhys]"))))
-            return true;
-    } else if (hasProperty(FormatPrivate::P_NumFmt_Id)){
-        //Non-custom numFmt
-        int idx = numberFormatIndex();
+	if (hasProperty(FormatPrivate::P_NumFmt_FormatCode)) {
+		//Custom numFmt, so
+		//Gauss from the number string
+		QString formatCode = numberFormat();
+		formatCode.remove(QRegularExpression(QStringLiteral("\\[(Green|White|Blue|Magenta|Yellow|Cyan|Red)\\]")));
+		if (formatCode.contains(QRegularExpression(QStringLiteral("[dmhys]"))))
+			return true;
+	} else if (hasProperty(FormatPrivate::P_NumFmt_Id)){
+		//Non-custom numFmt
+		int idx = numberFormatIndex();
 
-        //Is built-in date time number id?
-        if ((idx >= 15 && idx <= 22) || (idx >= 45 && idx <= 47))
-            return true;
-    }
+		//Is built-in date time number id?
+		if ((idx >= 15 && idx <= 22) || (idx >= 45 && idx <= 47))
+			return true;
+	}
 
-    return false;
+	return false;
 }
 
 /*!
@@ -281,8 +281,8 @@ bool Format::isDateTimeFormat() const
  */
 void Format::setNumberFormat(int id, const QString &format)
 {
-    setProperty(FormatPrivate::P_NumFmt_Id, id);
-    setProperty(FormatPrivate::P_NumFmt_FormatCode, format);
+	setProperty(FormatPrivate::P_NumFmt_Id, id);
+	setProperty(FormatPrivate::P_NumFmt_FormatCode, format);
 }
 
 /*!
@@ -291,8 +291,8 @@ void Format::setNumberFormat(int id, const QString &format)
  */
 void Format::fixNumberFormat(int id, const QString &format)
 {
-    setProperty(FormatPrivate::P_NumFmt_Id, id, 0, false);
-    setProperty(FormatPrivate::P_NumFmt_FormatCode, format, QString(), false);
+	setProperty(FormatPrivate::P_NumFmt_Id, id, 0, false);
+	setProperty(FormatPrivate::P_NumFmt_FormatCode, format, QString(), false);
 }
 
 /*!
@@ -301,14 +301,14 @@ void Format::fixNumberFormat(int id, const QString &format)
  */
 bool Format::hasNumFmtData() const
 {
-    if (!d)
-        return false;
+	if (!d)
+		return false;
 
-    if (hasProperty(FormatPrivate::P_NumFmt_Id)
-            || hasProperty(FormatPrivate::P_NumFmt_FormatCode)) {
-        return true;
-    }
-    return false;
+	if (hasProperty(FormatPrivate::P_NumFmt_Id)
+	    || hasProperty(FormatPrivate::P_NumFmt_FormatCode)) {
+		return true;
+	}
+	return false;
 }
 
 /*!
@@ -316,7 +316,7 @@ bool Format::hasNumFmtData() const
  */
 int Format::fontSize() const
 {
-    return intProperty(FormatPrivate::P_Font_Size);
+	return intProperty(FormatPrivate::P_Font_Size);
 }
 
 /*!
@@ -324,7 +324,7 @@ int Format::fontSize() const
  */
 void Format::setFontSize(int size)
 {
-    setProperty(FormatPrivate::P_Font_Size, size);
+	setProperty(FormatPrivate::P_Font_Size, size);
 }
 
 /*!
@@ -332,7 +332,7 @@ void Format::setFontSize(int size)
  */
 bool Format::fontItalic() const
 {
-    return boolProperty(FormatPrivate::P_Font_Italic);
+	return boolProperty(FormatPrivate::P_Font_Italic);
 }
 
 /*!
@@ -340,7 +340,7 @@ bool Format::fontItalic() const
  */
 void Format::setFontItalic(bool italic)
 {
-    setProperty(FormatPrivate::P_Font_Italic, italic, false);
+	setProperty(FormatPrivate::P_Font_Italic, italic, false);
 }
 
 /*!
@@ -348,7 +348,7 @@ void Format::setFontItalic(bool italic)
  */
 bool Format::fontStrikeOut() const
 {
-    return boolProperty(FormatPrivate::P_Font_StrikeOut);
+	return boolProperty(FormatPrivate::P_Font_StrikeOut);
 }
 
 /*!
@@ -356,7 +356,7 @@ bool Format::fontStrikeOut() const
  */
 void Format::setFontStrikeOut(bool strikeOut)
 {
-    setProperty(FormatPrivate::P_Font_StrikeOut, strikeOut, false);
+	setProperty(FormatPrivate::P_Font_StrikeOut, strikeOut, false);
 }
 
 /*!
@@ -364,9 +364,9 @@ void Format::setFontStrikeOut(bool strikeOut)
  */
 QColor Format::fontColor() const
 {
-    if (hasProperty(FormatPrivate::P_Font_Color))
-        return colorProperty(FormatPrivate::P_Font_Color);
-    return QColor();
+	if (hasProperty(FormatPrivate::P_Font_Color))
+		return colorProperty(FormatPrivate::P_Font_Color);
+	return QColor();
 }
 
 /*!
@@ -374,7 +374,7 @@ QColor Format::fontColor() const
  */
 void Format::setFontColor(const QColor &color)
 {
-    setProperty(FormatPrivate::P_Font_Color, XlsxColor(color), XlsxColor());
+	setProperty(FormatPrivate::P_Font_Color, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -382,7 +382,7 @@ void Format::setFontColor(const QColor &color)
  */
 bool Format::fontBold() const
 {
-    return boolProperty(FormatPrivate::P_Font_Bold);
+	return boolProperty(FormatPrivate::P_Font_Bold);
 }
 
 /*!
@@ -390,7 +390,7 @@ bool Format::fontBold() const
  */
 void Format::setFontBold(bool bold)
 {
-    setProperty(FormatPrivate::P_Font_Bold, bold, false);
+	setProperty(FormatPrivate::P_Font_Bold, bold, false);
 }
 
 /*!
@@ -398,7 +398,7 @@ void Format::setFontBold(bool bold)
  */
 Format::FontScript Format::fontScript() const
 {
-    return static_cast<Format::FontScript>(intProperty(FormatPrivate::P_Font_Script));
+	return static_cast<Format::FontScript>(intProperty(FormatPrivate::P_Font_Script));
 }
 
 /*!
@@ -406,7 +406,7 @@ Format::FontScript Format::fontScript() const
  */
 void Format::setFontScript(FontScript script)
 {
-    setProperty(FormatPrivate::P_Font_Script, script, FontScriptNormal);
+	setProperty(FormatPrivate::P_Font_Script, script, FontScriptNormal);
 }
 
 /*!
@@ -414,7 +414,7 @@ void Format::setFontScript(FontScript script)
  */
 Format::FontUnderline Format::fontUnderline() const
 {
-    return static_cast<Format::FontUnderline>(intProperty(FormatPrivate::P_Font_Underline));
+	return static_cast<Format::FontUnderline>(intProperty(FormatPrivate::P_Font_Underline));
 }
 
 /*!
@@ -422,7 +422,7 @@ Format::FontUnderline Format::fontUnderline() const
  */
 void Format::setFontUnderline(FontUnderline underline)
 {
-    setProperty(FormatPrivate::P_Font_Underline, underline, FontUnderlineNone);
+	setProperty(FormatPrivate::P_Font_Underline, underline, FontUnderlineNone);
 }
 
 /*!
@@ -430,7 +430,7 @@ void Format::setFontUnderline(FontUnderline underline)
  */
 bool Format::fontOutline() const
 {
-    return boolProperty(FormatPrivate::P_Font_Outline);
+	return boolProperty(FormatPrivate::P_Font_Outline);
 }
 
 /*!
@@ -438,7 +438,7 @@ bool Format::fontOutline() const
  */
 void Format::setFontOutline(bool outline)
 {
-    setProperty(FormatPrivate::P_Font_Outline, outline, false);
+	setProperty(FormatPrivate::P_Font_Outline, outline, false);
 }
 
 /*!
@@ -446,7 +446,7 @@ void Format::setFontOutline(bool outline)
  */
 QString Format::fontName() const
 {
-    return stringProperty(FormatPrivate::P_Font_Name, QStringLiteral("Calibri"));
+	return stringProperty(FormatPrivate::P_Font_Name, QStringLiteral("Calibri"));
 }
 
 /*!
@@ -454,7 +454,7 @@ QString Format::fontName() const
  */
 void Format::setFontName(const QString &name)
 {
-    setProperty(FormatPrivate::P_Font_Name, name, QStringLiteral("Calibri"));
+	setProperty(FormatPrivate::P_Font_Name, name, QStringLiteral("Calibri"));
 }
 
 /*!
@@ -464,9 +464,9 @@ void Format::setFontName(const QString &name)
  */
 bool Format::fontIndexValid() const
 {
-    if (!hasFontData())
-        return false;
-    return d->font_index_valid;
+	if (!hasFontData())
+		return false;
+	return d->font_index_valid;
 }
 
 /*!
@@ -474,10 +474,10 @@ bool Format::fontIndexValid() const
  */
 int Format::fontIndex() const
 {
-    if (fontIndexValid())
-        return d->font_index;
+	if (fontIndexValid())
+		return d->font_index;
 
-    return -1;
+	return -1;
 }
 
 /*!
@@ -485,8 +485,8 @@ int Format::fontIndex() const
  */
 void Format::setFontIndex(int index)
 {
-    d->font_index = index;
-    d->font_index_valid = true;
+	d->font_index = index;
+	d->font_index_valid = true;
 }
 
 /*!
@@ -494,22 +494,22 @@ void Format::setFontIndex(int index)
  */
 QByteArray Format::fontKey() const
 {
-    if (isEmpty())
-        return QByteArray();
+	if (isEmpty())
+		return QByteArray();
 
-    if (d->font_dirty) {
-        QByteArray key;
-        QDataStream stream(&key, QIODevice::WriteOnly);
-        for (int i=FormatPrivate::P_Font_STARTID; i<FormatPrivate::P_Font_ENDID; ++i) {
-            if (d->property.contains(i))
-                stream << i << d->property[i];
-        };
+	if (d->font_dirty) {
+		QByteArray key;
+		QDataStream stream(&key, QIODevice::WriteOnly);
+		for (int i=FormatPrivate::P_Font_STARTID; i<FormatPrivate::P_Font_ENDID; ++i) {
+			if (d->property.contains(i))
+				stream << i << d->property[i];
+		};
 
-        const_cast<Format*>(this)->d->font_key = key;
-        const_cast<Format*>(this)->d->font_dirty = false;
-    }
+		const_cast<Format*>(this)->d->font_key = key;
+		const_cast<Format*>(this)->d->font_dirty = false;
+	}
 
-    return d->font_key;
+	return d->font_key;
 }
 
 /*!
@@ -518,14 +518,14 @@ QByteArray Format::fontKey() const
  */
 bool Format::hasFontData() const
 {
-    if (!d)
-        return false;
+	if (!d)
+		return false;
 
-    for (int i=FormatPrivate::P_Font_STARTID; i<FormatPrivate::P_Font_ENDID; ++i) {
-        if (hasProperty(i))
-            return true;
-    }
-    return false;
+	for (int i=FormatPrivate::P_Font_STARTID; i<FormatPrivate::P_Font_ENDID; ++i) {
+		if (hasProperty(i))
+			return true;
+	}
+	return false;
 }
 
 /*!
@@ -533,7 +533,7 @@ bool Format::hasFontData() const
  */
 Format::HorizontalAlignment Format::horizontalAlignment() const
 {
-    return static_cast<Format::HorizontalAlignment>(intProperty(FormatPrivate::P_Alignment_AlignH, AlignHGeneral));
+	return static_cast<Format::HorizontalAlignment>(intProperty(FormatPrivate::P_Alignment_AlignH, AlignHGeneral));
 }
 
 /*!
@@ -541,17 +541,17 @@ Format::HorizontalAlignment Format::horizontalAlignment() const
  */
 void Format::setHorizontalAlignment(HorizontalAlignment align)
 {
-    if (hasProperty(FormatPrivate::P_Alignment_Indent)
-            &&(align != AlignHGeneral && align != AlignLeft && align != AlignRight && align != AlignHDistributed)) {
-        clearProperty(FormatPrivate::P_Alignment_Indent);
-    }
+	if (hasProperty(FormatPrivate::P_Alignment_Indent)
+	    &&(align != AlignHGeneral && align != AlignLeft && align != AlignRight && align != AlignHDistributed)) {
+		clearProperty(FormatPrivate::P_Alignment_Indent);
+	}
 
-    if (hasProperty(FormatPrivate::P_Alignment_ShinkToFit)
-            && (align == AlignHFill || align == AlignHJustify || align == AlignHDistributed)) {
-        clearProperty(FormatPrivate::P_Alignment_ShinkToFit);
-    }
+	if (hasProperty(FormatPrivate::P_Alignment_ShinkToFit)
+	    && (align == AlignHFill || align == AlignHJustify || align == AlignHDistributed)) {
+		clearProperty(FormatPrivate::P_Alignment_ShinkToFit);
+	}
 
-    setProperty(FormatPrivate::P_Alignment_AlignH, align, AlignHGeneral);
+	setProperty(FormatPrivate::P_Alignment_AlignH, align, AlignHGeneral);
 }
 
 /*!
@@ -559,7 +559,7 @@ void Format::setHorizontalAlignment(HorizontalAlignment align)
  */
 Format::VerticalAlignment Format::verticalAlignment() const
 {
-    return static_cast<Format::VerticalAlignment>(intProperty(FormatPrivate::P_Alignment_AlignV, AlignBottom));
+	return static_cast<Format::VerticalAlignment>(intProperty(FormatPrivate::P_Alignment_AlignV, AlignBottom));
 }
 
 /*!
@@ -567,7 +567,7 @@ Format::VerticalAlignment Format::verticalAlignment() const
  */
 void Format::setVerticalAlignment(VerticalAlignment align)
 {
-    setProperty(FormatPrivate::P_Alignment_AlignV, align, AlignBottom);
+	setProperty(FormatPrivate::P_Alignment_AlignV, align, AlignBottom);
 }
 
 /*!
@@ -575,7 +575,7 @@ void Format::setVerticalAlignment(VerticalAlignment align)
  */
 bool Format::textWrap() const
 {
-    return boolProperty(FormatPrivate::P_Alignment_Wrap);
+	return boolProperty(FormatPrivate::P_Alignment_Wrap);
 }
 
 /*!
@@ -583,10 +583,10 @@ bool Format::textWrap() const
  */
 void Format::setTextWarp(bool wrap)
 {
-    if (wrap && hasProperty(FormatPrivate::P_Alignment_ShinkToFit))
-        clearProperty(FormatPrivate::P_Alignment_ShinkToFit);
+	if (wrap && hasProperty(FormatPrivate::P_Alignment_ShinkToFit))
+		clearProperty(FormatPrivate::P_Alignment_ShinkToFit);
 
-    setProperty(FormatPrivate::P_Alignment_Wrap, wrap, false);
+	setProperty(FormatPrivate::P_Alignment_Wrap, wrap, false);
 }
 
 /*!
@@ -594,7 +594,7 @@ void Format::setTextWarp(bool wrap)
  */
 int Format::rotation() const
 {
-    return intProperty(FormatPrivate::P_Alignment_Rotation);
+	return intProperty(FormatPrivate::P_Alignment_Rotation);
 }
 
 /*!
@@ -602,7 +602,7 @@ int Format::rotation() const
  */
 void Format::setRotation(int rotation)
 {
-    setProperty(FormatPrivate::P_Alignment_Rotation, rotation, 0);
+	setProperty(FormatPrivate::P_Alignment_Rotation, rotation, 0);
 }
 
 /*!
@@ -610,7 +610,7 @@ void Format::setRotation(int rotation)
  */
 int Format::indent() const
 {
-    return intProperty(FormatPrivate::P_Alignment_Indent);
+	return intProperty(FormatPrivate::P_Alignment_Indent);
 }
 
 /*!
@@ -618,15 +618,15 @@ int Format::indent() const
  */
 void Format::setIndent(int indent)
 {
-    if (indent && hasProperty(FormatPrivate::P_Alignment_AlignH)) {
-        HorizontalAlignment hl = horizontalAlignment();
+	if (indent && hasProperty(FormatPrivate::P_Alignment_AlignH)) {
+		HorizontalAlignment hl = horizontalAlignment();
 
-        if (hl != AlignHGeneral && hl != AlignLeft && hl!= AlignRight && hl!= AlignHJustify) {
-            setHorizontalAlignment(AlignLeft);
-        }
-    }
+		if (hl != AlignHGeneral && hl != AlignLeft && hl!= AlignRight && hl!= AlignHJustify) {
+			setHorizontalAlignment(AlignLeft);
+		}
+	}
 
-    setProperty(FormatPrivate::P_Alignment_Indent, indent, 0);
+	setProperty(FormatPrivate::P_Alignment_Indent, indent, 0);
 }
 
 /*!
@@ -634,7 +634,7 @@ void Format::setIndent(int indent)
  */
 bool Format::shrinkToFit() const
 {
-    return boolProperty(FormatPrivate::P_Alignment_ShinkToFit);
+	return boolProperty(FormatPrivate::P_Alignment_ShinkToFit);
 }
 
 /*!
@@ -642,16 +642,16 @@ bool Format::shrinkToFit() const
  */
 void Format::setShrinkToFit(bool shink)
 {
-    if (shink && hasProperty(FormatPrivate::P_Alignment_Wrap))
-        clearProperty(FormatPrivate::P_Alignment_Wrap);
+	if (shink && hasProperty(FormatPrivate::P_Alignment_Wrap))
+		clearProperty(FormatPrivate::P_Alignment_Wrap);
 
-    if (shink && hasProperty(FormatPrivate::P_Alignment_AlignH)) {
-        HorizontalAlignment hl = horizontalAlignment();
-        if (hl == AlignHFill || hl == AlignHJustify || hl == AlignHDistributed)
-            setHorizontalAlignment(AlignLeft);
-    }
+	if (shink && hasProperty(FormatPrivate::P_Alignment_AlignH)) {
+		HorizontalAlignment hl = horizontalAlignment();
+		if (hl == AlignHFill || hl == AlignHJustify || hl == AlignHDistributed)
+			setHorizontalAlignment(AlignLeft);
+	}
 
-    setProperty(FormatPrivate::P_Alignment_ShinkToFit, shink, false);
+	setProperty(FormatPrivate::P_Alignment_ShinkToFit, shink, false);
 }
 
 /*!
@@ -659,14 +659,14 @@ void Format::setShrinkToFit(bool shink)
  */
 bool Format::hasAlignmentData() const
 {
-    if (!d)
-        return false;
+	if (!d)
+		return false;
 
-    for (int i=FormatPrivate::P_Alignment_STARTID; i<FormatPrivate::P_Alignment_ENDID; ++i) {
-        if (hasProperty(i))
-            return true;
-    }
-    return false;
+	for (int i=FormatPrivate::P_Alignment_STARTID; i<FormatPrivate::P_Alignment_ENDID; ++i) {
+		if (hasProperty(i))
+			return true;
+	}
+	return false;
 }
 
 /*!
@@ -674,10 +674,10 @@ bool Format::hasAlignmentData() const
  */
 void Format::setBorderStyle(BorderStyle style)
 {
-    setLeftBorderStyle(style);
-    setRightBorderStyle(style);
-    setBottomBorderStyle(style);
-    setTopBorderStyle(style);
+	setLeftBorderStyle(style);
+	setRightBorderStyle(style);
+	setBottomBorderStyle(style);
+	setTopBorderStyle(style);
 }
 
 /*!
@@ -685,10 +685,10 @@ void Format::setBorderStyle(BorderStyle style)
  */
 void Format::setBorderColor(const QColor &color)
 {
-    setLeftBorderColor(color);
-    setRightBorderColor(color);
-    setTopBorderColor(color);
-    setBottomBorderColor(color);
+	setLeftBorderColor(color);
+	setRightBorderColor(color);
+	setTopBorderColor(color);
+	setBottomBorderColor(color);
 }
 
 /*!
@@ -696,7 +696,7 @@ void Format::setBorderColor(const QColor &color)
  */
 Format::BorderStyle Format::leftBorderStyle() const
 {
-    return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_LeftStyle));
+	return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_LeftStyle));
 }
 
 /*!
@@ -704,7 +704,7 @@ Format::BorderStyle Format::leftBorderStyle() const
  */
 void Format::setLeftBorderStyle(BorderStyle style)
 {
-    setProperty(FormatPrivate::P_Border_LeftStyle, style, BorderNone);
+	setProperty(FormatPrivate::P_Border_LeftStyle, style, BorderNone);
 }
 
 /*!
@@ -712,7 +712,7 @@ void Format::setLeftBorderStyle(BorderStyle style)
  */
 QColor Format::leftBorderColor() const
 {
-    return colorProperty(FormatPrivate::P_Border_LeftColor);
+	return colorProperty(FormatPrivate::P_Border_LeftColor);
 }
 
 /*!
@@ -720,7 +720,7 @@ QColor Format::leftBorderColor() const
 */
 void Format::setLeftBorderColor(const QColor &color)
 {
-    setProperty(FormatPrivate::P_Border_LeftColor, XlsxColor(color), XlsxColor());
+	setProperty(FormatPrivate::P_Border_LeftColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -728,7 +728,7 @@ void Format::setLeftBorderColor(const QColor &color)
 */
 Format::BorderStyle Format::rightBorderStyle() const
 {
-    return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_RightStyle));
+	return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_RightStyle));
 }
 
 /*!
@@ -736,7 +736,7 @@ Format::BorderStyle Format::rightBorderStyle() const
 */
 void Format::setRightBorderStyle(BorderStyle style)
 {
-    setProperty(FormatPrivate::P_Border_RightStyle, style, BorderNone);
+	setProperty(FormatPrivate::P_Border_RightStyle, style, BorderNone);
 }
 
 /*!
@@ -744,7 +744,7 @@ void Format::setRightBorderStyle(BorderStyle style)
 */
 QColor Format::rightBorderColor() const
 {
-    return colorProperty(FormatPrivate::P_Border_RightColor);
+	return colorProperty(FormatPrivate::P_Border_RightColor);
 }
 
 /*!
@@ -752,7 +752,7 @@ QColor Format::rightBorderColor() const
 */
 void Format::setRightBorderColor(const QColor &color)
 {
-    setProperty(FormatPrivate::P_Border_RightColor, XlsxColor(color), XlsxColor());
+	setProperty(FormatPrivate::P_Border_RightColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -760,7 +760,7 @@ void Format::setRightBorderColor(const QColor &color)
 */
 Format::BorderStyle Format::topBorderStyle() const
 {
-    return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_TopStyle));
+	return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_TopStyle));
 }
 
 /*!
@@ -768,7 +768,7 @@ Format::BorderStyle Format::topBorderStyle() const
 */
 void Format::setTopBorderStyle(BorderStyle style)
 {
-    setProperty(FormatPrivate::P_Border_TopStyle, style, BorderNone);
+	setProperty(FormatPrivate::P_Border_TopStyle, style, BorderNone);
 }
 
 /*!
@@ -776,7 +776,7 @@ void Format::setTopBorderStyle(BorderStyle style)
 */
 QColor Format::topBorderColor() const
 {
-    return colorProperty(FormatPrivate::P_Border_TopColor);
+	return colorProperty(FormatPrivate::P_Border_TopColor);
 }
 
 /*!
@@ -784,7 +784,7 @@ QColor Format::topBorderColor() const
 */
 void Format::setTopBorderColor(const QColor &color)
 {
-    setProperty(FormatPrivate::P_Border_TopColor, XlsxColor(color), XlsxColor());
+	setProperty(FormatPrivate::P_Border_TopColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -792,7 +792,7 @@ void Format::setTopBorderColor(const QColor &color)
 */
 Format::BorderStyle Format::bottomBorderStyle() const
 {
-    return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_BottomStyle));
+	return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_BottomStyle));
 }
 
 /*!
@@ -800,7 +800,7 @@ Format::BorderStyle Format::bottomBorderStyle() const
 */
 void Format::setBottomBorderStyle(BorderStyle style)
 {
-    setProperty(FormatPrivate::P_Border_BottomStyle, style, BorderNone);
+	setProperty(FormatPrivate::P_Border_BottomStyle, style, BorderNone);
 }
 
 /*!
@@ -808,7 +808,7 @@ void Format::setBottomBorderStyle(BorderStyle style)
 */
 QColor Format::bottomBorderColor() const
 {
-    return colorProperty(FormatPrivate::P_Border_BottomColor);
+	return colorProperty(FormatPrivate::P_Border_BottomColor);
 }
 
 /*!
@@ -816,7 +816,7 @@ QColor Format::bottomBorderColor() const
 */
 void Format::setBottomBorderColor(const QColor &color)
 {
-    setProperty(FormatPrivate::P_Border_BottomColor, XlsxColor(color), XlsxColor());
+	setProperty(FormatPrivate::P_Border_BottomColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -824,7 +824,7 @@ void Format::setBottomBorderColor(const QColor &color)
 */
 Format::BorderStyle Format::diagonalBorderStyle() const
 {
-    return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_DiagonalStyle));
+	return static_cast<BorderStyle>(intProperty(FormatPrivate::P_Border_DiagonalStyle));
 }
 
 /*!
@@ -832,7 +832,7 @@ Format::BorderStyle Format::diagonalBorderStyle() const
 */
 void Format::setDiagonalBorderStyle(BorderStyle style)
 {
-    setProperty(FormatPrivate::P_Border_DiagonalStyle, style, BorderNone);
+	setProperty(FormatPrivate::P_Border_DiagonalStyle, style, BorderNone);
 }
 
 /*!
@@ -840,7 +840,7 @@ void Format::setDiagonalBorderStyle(BorderStyle style)
 */
 Format::DiagonalBorderType Format::diagonalBorderType() const
 {
-    return static_cast<DiagonalBorderType>(intProperty(FormatPrivate::P_Border_DiagonalType));
+	return static_cast<DiagonalBorderType>(intProperty(FormatPrivate::P_Border_DiagonalType));
 }
 
 /*!
@@ -848,7 +848,7 @@ Format::DiagonalBorderType Format::diagonalBorderType() const
 */
 void Format::setDiagonalBorderType(DiagonalBorderType style)
 {
-    setProperty(FormatPrivate::P_Border_DiagonalType, style, DiagonalBorderNone);
+	setProperty(FormatPrivate::P_Border_DiagonalType, style, DiagonalBorderNone);
 }
 
 /*!
@@ -856,7 +856,7 @@ void Format::setDiagonalBorderType(DiagonalBorderType style)
 */
 QColor Format::diagonalBorderColor() const
 {
-    return colorProperty(FormatPrivate::P_Border_DiagonalColor);
+	return colorProperty(FormatPrivate::P_Border_DiagonalColor);
 }
 
 /*!
@@ -864,7 +864,7 @@ QColor Format::diagonalBorderColor() const
 */
 void Format::setDiagonalBorderColor(const QColor &color)
 {
-    setProperty(FormatPrivate::P_Border_DiagonalColor, XlsxColor(color), XlsxColor());
+	setProperty(FormatPrivate::P_Border_DiagonalColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -873,9 +873,9 @@ void Format::setDiagonalBorderColor(const QColor &color)
 */
 bool Format::borderIndexValid() const
 {
-    if (!hasBorderData())
-        return false;
-    return d->border_index_valid;
+	if (!hasBorderData())
+		return false;
+	return d->border_index_valid;
 }
 
 /*!
@@ -884,7 +884,7 @@ bool Format::borderIndexValid() const
 */
 int Format::borderIndex() const
 {
-    return d->border_index;
+	return d->border_index;
 }
 
 /*!
@@ -892,29 +892,29 @@ int Format::borderIndex() const
  */
 void Format::setBorderIndex(int index)
 {
-    d->border_index = index;
+	d->border_index = index;
 }
 
 /*! \internal
  */
 QByteArray Format::borderKey() const
 {
-    if (isEmpty())
-        return QByteArray();
+	if (isEmpty())
+		return QByteArray();
 
-    if (d->border_dirty) {
-        QByteArray key;
-        QDataStream stream(&key, QIODevice::WriteOnly);
-        for (int i=FormatPrivate::P_Border_STARTID; i<FormatPrivate::P_Border_ENDID; ++i) {
-            if (d->property.contains(i))
-                stream << i << d->property[i];
-        };
+	if (d->border_dirty) {
+		QByteArray key;
+		QDataStream stream(&key, QIODevice::WriteOnly);
+		for (int i=FormatPrivate::P_Border_STARTID; i<FormatPrivate::P_Border_ENDID; ++i) {
+			if (d->property.contains(i))
+				stream << i << d->property[i];
+		};
 
-        const_cast<Format*>(this)->d->border_key = key;
-        const_cast<Format*>(this)->d->border_dirty = false;
-    }
+		const_cast<Format*>(this)->d->border_key = key;
+		const_cast<Format*>(this)->d->border_dirty = false;
+	}
 
-    return d->border_key;
+	return d->border_key;
 }
 
 /*!
@@ -923,14 +923,14 @@ QByteArray Format::borderKey() const
  */
 bool Format::hasBorderData() const
 {
-    if (!d)
-        return false;
+	if (!d)
+		return false;
 
-    for (int i=FormatPrivate::P_Border_STARTID; i<FormatPrivate::P_Border_ENDID; ++i) {
-        if (hasProperty(i))
-            return true;
-    }
-    return false;
+	for (int i=FormatPrivate::P_Border_STARTID; i<FormatPrivate::P_Border_ENDID; ++i) {
+		if (hasProperty(i))
+			return true;
+	}
+	return false;
 }
 
 /*!
@@ -938,7 +938,7 @@ bool Format::hasBorderData() const
 */
 Format::FillPattern Format::fillPattern() const
 {
-    return static_cast<FillPattern>(intProperty(FormatPrivate::P_Fill_Pattern, PatternNone));
+	return static_cast<FillPattern>(intProperty(FormatPrivate::P_Fill_Pattern, PatternNone));
 }
 
 /*!
@@ -946,7 +946,7 @@ Format::FillPattern Format::fillPattern() const
 */
 void Format::setFillPattern(FillPattern pattern)
 {
-    setProperty(FormatPrivate::P_Fill_Pattern, pattern, PatternNone);
+	setProperty(FormatPrivate::P_Fill_Pattern, pattern, PatternNone);
 }
 
 /*!
@@ -954,7 +954,7 @@ void Format::setFillPattern(FillPattern pattern)
 */
 QColor Format::patternForegroundColor() const
 {
-    return colorProperty(FormatPrivate::P_Fill_FgColor);
+	return colorProperty(FormatPrivate::P_Fill_FgColor);
 }
 
 /*!
@@ -962,9 +962,9 @@ QColor Format::patternForegroundColor() const
 */
 void Format::setPatternForegroundColor(const QColor &color)
 {
-    if (color.isValid() && !hasProperty(FormatPrivate::P_Fill_Pattern))
-        setFillPattern(PatternSolid);
-    setProperty(FormatPrivate::P_Fill_FgColor, XlsxColor(color), XlsxColor());
+	if (color.isValid() && !hasProperty(FormatPrivate::P_Fill_Pattern))
+		setFillPattern(PatternSolid);
+	setProperty(FormatPrivate::P_Fill_FgColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -972,7 +972,7 @@ void Format::setPatternForegroundColor(const QColor &color)
 */
 QColor Format::patternBackgroundColor() const
 {
-    return colorProperty(FormatPrivate::P_Fill_BgColor);
+	return colorProperty(FormatPrivate::P_Fill_BgColor);
 }
 
 /*!
@@ -980,9 +980,9 @@ QColor Format::patternBackgroundColor() const
 */
 void Format::setPatternBackgroundColor(const QColor &color)
 {
-    if (color.isValid() && !hasProperty(FormatPrivate::P_Fill_Pattern))
-        setFillPattern(PatternSolid);
-    setProperty(FormatPrivate::P_Fill_BgColor, XlsxColor(color), XlsxColor());
+	if (color.isValid() && !hasProperty(FormatPrivate::P_Fill_Pattern))
+		setFillPattern(PatternSolid);
+	setProperty(FormatPrivate::P_Fill_BgColor, XlsxColor(color), XlsxColor());
 }
 
 /*!
@@ -990,9 +990,9 @@ void Format::setPatternBackgroundColor(const QColor &color)
  */
 bool Format::fillIndexValid() const
 {
-    if (!hasFillData())
-        return false;
-    return d->fill_index_valid;
+	if (!hasFillData())
+		return false;
+	return d->fill_index_valid;
 }
 
 /*!
@@ -1000,9 +1000,9 @@ bool Format::fillIndexValid() const
  */
 int Format::fillIndex() const
 {
-    if (!d)
-        return 0;
-    return d->fill_index;
+	if (!d)
+		return 0;
+	return d->fill_index;
 }
 
 /*!
@@ -1010,7 +1010,7 @@ int Format::fillIndex() const
  */
 void Format::setFillIndex(int index)
 {
-    d->fill_index = index;
+	d->fill_index = index;
 }
 
 /*!
@@ -1018,22 +1018,22 @@ void Format::setFillIndex(int index)
  */
 QByteArray Format::fillKey() const
 {
-    if (isEmpty())
-        return QByteArray();
+	if (isEmpty())
+		return QByteArray();
 
-    if (d->fill_dirty) {
-        QByteArray key;
-        QDataStream stream(&key, QIODevice::WriteOnly);
-        for (int i=FormatPrivate::P_Fill_STARTID; i<FormatPrivate::P_Fill_ENDID; ++i) {
-            if (d->property.contains(i))
-                stream << i << d->property[i];
-        };
+	if (d->fill_dirty) {
+		QByteArray key;
+		QDataStream stream(&key, QIODevice::WriteOnly);
+		for (int i=FormatPrivate::P_Fill_STARTID; i<FormatPrivate::P_Fill_ENDID; ++i) {
+			if (d->property.contains(i))
+				stream << i << d->property[i];
+		};
 
-        const_cast<Format*>(this)->d->fill_key = key;
-        const_cast<Format*>(this)->d->fill_dirty = false;
-    }
+		const_cast<Format*>(this)->d->fill_key = key;
+		const_cast<Format*>(this)->d->fill_dirty = false;
+	}
 
-    return d->fill_key;
+	return d->fill_key;
 }
 
 /*!
@@ -1042,14 +1042,14 @@ QByteArray Format::fillKey() const
  */
 bool Format::hasFillData() const
 {
-    if (!d)
-        return false;
+	if (!d)
+		return false;
 
-    for (int i=FormatPrivate::P_Fill_STARTID; i<FormatPrivate::P_Fill_ENDID; ++i) {
-        if (hasProperty(i))
-            return true;
-    }
-    return false;
+	for (int i=FormatPrivate::P_Fill_STARTID; i<FormatPrivate::P_Fill_ENDID; ++i) {
+		if (hasProperty(i))
+			return true;
+	}
+	return false;
 }
 
 /*!
@@ -1057,7 +1057,7 @@ bool Format::hasFillData() const
 */
 bool Format::hidden() const
 {
-    return boolProperty(FormatPrivate::P_Protection_Hidden);
+	return boolProperty(FormatPrivate::P_Protection_Hidden);
 }
 
 /*!
@@ -1065,7 +1065,7 @@ bool Format::hidden() const
 */
 void Format::setHidden(bool hidden)
 {
-    setProperty(FormatPrivate::P_Protection_Hidden, hidden);
+	setProperty(FormatPrivate::P_Protection_Hidden, hidden);
 }
 
 /*!
@@ -1073,7 +1073,7 @@ void Format::setHidden(bool hidden)
 */
 bool Format::locked() const
 {
-    return boolProperty(FormatPrivate::P_Protection_Locked);
+	return boolProperty(FormatPrivate::P_Protection_Locked);
 }
 
 /*!
@@ -1081,19 +1081,19 @@ bool Format::locked() const
 */
 void Format::setLocked(bool locked)
 {
-    setProperty(FormatPrivate::P_Protection_Locked, locked);
+	setProperty(FormatPrivate::P_Protection_Locked, locked);
 }
 
 bool Format::hasProtectionData() const
 {
-    if (!d)
-        return false;
+	if (!d)
+		return false;
 
-    if (hasProperty(FormatPrivate::P_Protection_Hidden)
-            || FormatPrivate::P_Protection_Locked) {
-        return true;
-    }
-    return false;
+	if (hasProperty(FormatPrivate::P_Protection_Hidden)
+	    || FormatPrivate::P_Protection_Locked) {
+		return true;
+	}
+	return false;
 }
 
 /*!
@@ -1101,9 +1101,9 @@ bool Format::hasProtectionData() const
  */
 bool Format::isValid() const
 {
-    if (d)
-        return true;
-    return false;
+	if (d)
+		return true;
+	return false;
 }
 
 /*!
@@ -1111,9 +1111,9 @@ bool Format::isValid() const
  */
 bool Format::isEmpty() const
 {
-    if (!d)
-        return true;
-    return d->property.isEmpty();
+	if (!d)
+		return true;
+	return d->property.isEmpty();
 }
 
 /*!
@@ -1121,24 +1121,24 @@ bool Format::isEmpty() const
  */
 QByteArray Format::formatKey() const
 {
-    if (isEmpty())
-        return QByteArray();
+	if (isEmpty())
+		return QByteArray();
 
-    if (d->dirty) {
-        QByteArray key;
-        QDataStream stream(&key, QIODevice::WriteOnly);
+	if (d->dirty) {
+		QByteArray key;
+		QDataStream stream(&key, QIODevice::WriteOnly);
 
-        QMapIterator<int, QVariant> i(d->property);
-        while (i.hasNext()) {
-            i.next();
-            stream<<i.key()<<i.value();
-        }
+		QMapIterator<int, QVariant> i(d->property);
+		while (i.hasNext()) {
+			i.next();
+			stream<<i.key()<<i.value();
+		}
 
-        d->formatKey = key;
-        d->dirty = false;
-    }
+		d->formatKey = key;
+		d->dirty = false;
+	}
 
-    return d->formatKey;
+	return d->formatKey;
 }
 
 /*!
@@ -1147,10 +1147,10 @@ QByteArray Format::formatKey() const
  */
 void Format::setXfIndex(int index)
 {
-    if (!d)
-        d = new FormatPrivate;
-    d->xf_index = index;
-    d->xf_indexValid = true;
+	if (!d)
+		d = new FormatPrivate;
+	d->xf_index = index;
+	d->xf_indexValid = true;
 }
 
 /*!
@@ -1158,9 +1158,9 @@ void Format::setXfIndex(int index)
  */
 int Format::xfIndex() const
 {
-    if (!d)
-        return -1;
-    return d->xf_index;
+	if (!d)
+		return -1;
+	return d->xf_index;
 }
 
 /*!
@@ -1168,9 +1168,9 @@ int Format::xfIndex() const
  */
 bool Format::xfIndexValid() const
 {
-    if (!d)
-        return false;
-    return d->xf_indexValid;
+	if (!d)
+		return false;
+	return d->xf_indexValid;
 }
 
 /*!
@@ -1179,10 +1179,10 @@ bool Format::xfIndexValid() const
  */
 void Format::setDxfIndex(int index)
 {
-    if (!d)
-        d = new FormatPrivate;
-    d->dxf_index = index;
-    d->dxf_indexValid = true;
+	if (!d)
+		d = new FormatPrivate;
+	d->dxf_index = index;
+	d->dxf_indexValid = true;
 }
 
 /*!
@@ -1191,9 +1191,9 @@ void Format::setDxfIndex(int index)
  */
 int Format::dxfIndex() const
 {
-    if (!d)
-        return -1;
-    return d->dxf_index;
+	if (!d)
+		return -1;
+	return d->dxf_index;
 }
 
 /*!
@@ -1202,9 +1202,9 @@ int Format::dxfIndex() const
  */
 bool Format::dxfIndexValid() const
 {
-    if (!d)
-        return false;
-    return d->dxf_indexValid;
+	if (!d)
+		return false;
+	return d->dxf_indexValid;
 }
 
 /*!
@@ -1212,7 +1212,7 @@ bool Format::dxfIndexValid() const
 */
 bool Format::operator ==(const Format &format) const
 {
-    return this->formatKey() == format.formatKey();
+	return this->formatKey() == format.formatKey();
 }
 
 /*!
@@ -1220,12 +1220,12 @@ bool Format::operator ==(const Format &format) const
 */
 bool Format::operator !=(const Format &format) const
 {
-    return this->formatKey() != format.formatKey();
+	return this->formatKey() != format.formatKey();
 }
 
 int Format::theme() const
 {
-    return d->theme;
+	return d->theme;
 }
 
 /*!
@@ -1233,9 +1233,9 @@ int Format::theme() const
  */
 QVariant Format::property(int propertyId, const QVariant &defaultValue) const
 {
-    if (d->property.contains(propertyId))
-        return d->property[propertyId];
-    return defaultValue;
+	if (d->property.contains(propertyId))
+		return d->property[propertyId];
+	return defaultValue;
 }
 
 /*!
@@ -1243,37 +1243,37 @@ QVariant Format::property(int propertyId, const QVariant &defaultValue) const
  */
 void Format::setProperty(int propertyId, const QVariant &value, const QVariant &clearValue, bool detach)
 {
-    if (!d)
-        d = new FormatPrivate;
+	if (!d)
+		d = new FormatPrivate;
 
-    if (value != clearValue) {
-        if (d->property.contains(propertyId) && d->property[propertyId] == value)
-            return;
-        if (detach)
-            d.detach();
-        d->property[propertyId] = value;
-    } else {
-        if (!d->property.contains(propertyId))
-            return;
-        if (detach)
-            d.detach();
-        d->property.remove(propertyId);
-    }
+	if (value != clearValue) {
+		if (d->property.contains(propertyId) && d->property[propertyId] == value)
+			return;
+		if (detach)
+			d.detach();
+		d->property[propertyId] = value;
+	} else {
+		if (!d->property.contains(propertyId))
+			return;
+		if (detach)
+			d.detach();
+		d->property.remove(propertyId);
+	}
 
-    d->dirty = true;
-    d->xf_indexValid = false;
-    d->dxf_indexValid = false;
+	d->dirty = true;
+	d->xf_indexValid = false;
+	d->dxf_indexValid = false;
 
-    if (propertyId >= FormatPrivate::P_Font_STARTID && propertyId < FormatPrivate::P_Font_ENDID) {
-        d->font_dirty = true;
-        d->font_index_valid = false;
-    } else if (propertyId >= FormatPrivate::P_Border_STARTID && propertyId < FormatPrivate::P_Border_ENDID) {
-        d->border_dirty = true;
-        d->border_index_valid = false;
-    } else if (propertyId >= FormatPrivate::P_Fill_STARTID && propertyId < FormatPrivate::P_Fill_ENDID) {
-        d->fill_dirty = true;
-        d->fill_index_valid = false;
-    }
+	if (propertyId >= FormatPrivate::P_Font_STARTID && propertyId < FormatPrivate::P_Font_ENDID) {
+		d->font_dirty = true;
+		d->font_index_valid = false;
+	} else if (propertyId >= FormatPrivate::P_Border_STARTID && propertyId < FormatPrivate::P_Border_ENDID) {
+		d->border_dirty = true;
+		d->border_index_valid = false;
+	} else if (propertyId >= FormatPrivate::P_Fill_STARTID && propertyId < FormatPrivate::P_Fill_ENDID) {
+		d->fill_dirty = true;
+		d->fill_index_valid = false;
+	}
 }
 
 /*!
@@ -1281,7 +1281,7 @@ void Format::setProperty(int propertyId, const QVariant &value, const QVariant &
  */
 void Format::clearProperty(int propertyId)
 {
-    setProperty(propertyId, QVariant());
+	setProperty(propertyId, QVariant());
 }
 
 /*!
@@ -1289,9 +1289,9 @@ void Format::clearProperty(int propertyId)
  */
 bool Format::hasProperty(int propertyId) const
 {
-    if (!d)
-        return false;
-    return d->property.contains(propertyId);
+	if (!d)
+		return false;
+	return d->property.contains(propertyId);
 }
 
 /*!
@@ -1299,13 +1299,13 @@ bool Format::hasProperty(int propertyId) const
  */
 bool Format::boolProperty(int propertyId, bool defaultValue) const
 {
-    if (!hasProperty(propertyId))
-        return defaultValue;
+	if (!hasProperty(propertyId))
+		return defaultValue;
 
-    const QVariant prop = d->property[propertyId];
-    if (prop.userType() != QMetaType::Bool)
-        return defaultValue;
-    return prop.toBool();
+	const QVariant prop = d->property[propertyId];
+	if (prop.userType() != QMetaType::Bool)
+		return defaultValue;
+	return prop.toBool();
 }
 
 /*!
@@ -1313,13 +1313,13 @@ bool Format::boolProperty(int propertyId, bool defaultValue) const
  */
 int Format::intProperty(int propertyId, int defaultValue) const
 {
-    if (!hasProperty(propertyId))
-        return defaultValue;
+	if (!hasProperty(propertyId))
+		return defaultValue;
 
-    const QVariant prop = d->property[propertyId];
-    if (prop.userType() != QMetaType::Int)
-        return defaultValue;
-    return prop.toInt();
+	const QVariant prop = d->property[propertyId];
+	if (prop.userType() != QMetaType::Int)
+		return defaultValue;
+	return prop.toInt();
 }
 
 /*!
@@ -1327,13 +1327,13 @@ int Format::intProperty(int propertyId, int defaultValue) const
  */
 double Format::doubleProperty(int propertyId, double defaultValue) const
 {
-    if (!hasProperty(propertyId))
-        return defaultValue;
+	if (!hasProperty(propertyId))
+		return defaultValue;
 
-    const QVariant prop = d->property[propertyId];
-    if (prop.userType() != QMetaType::Double && prop.userType() != QMetaType::Float)
-        return defaultValue;
-    return prop.toDouble();
+	const QVariant prop = d->property[propertyId];
+	if (prop.userType() != QMetaType::Double && prop.userType() != QMetaType::Float)
+		return defaultValue;
+	return prop.toDouble();
 }
 
 /*!
@@ -1341,13 +1341,13 @@ double Format::doubleProperty(int propertyId, double defaultValue) const
  */
 QString Format::stringProperty(int propertyId, const QString &defaultValue) const
 {
-    if (!hasProperty(propertyId))
-        return defaultValue;
+	if (!hasProperty(propertyId))
+		return defaultValue;
 
-    const QVariant prop = d->property[propertyId];
-    if (prop.userType() != QMetaType::QString)
-        return defaultValue;
-    return prop.toString();
+	const QVariant prop = d->property[propertyId];
+	if (prop.userType() != QMetaType::QString)
+		return defaultValue;
+	return prop.toString();
 }
 
 /*!
@@ -1355,20 +1355,20 @@ QString Format::stringProperty(int propertyId, const QString &defaultValue) cons
  */
 QColor Format::colorProperty(int propertyId, const QColor &defaultValue) const
 {
-    if (!hasProperty(propertyId))
-        return defaultValue;
+	if (!hasProperty(propertyId))
+		return defaultValue;
 
-    const QVariant prop = d->property[propertyId];
-    if (prop.userType() != qMetaTypeId<XlsxColor>())
-        return defaultValue;
-    return qvariant_cast<XlsxColor>(prop).rgbColor();
+	const QVariant prop = d->property[propertyId];
+	if (prop.userType() != qMetaTypeId<XlsxColor>())
+		return defaultValue;
+	return qvariant_cast<XlsxColor>(prop).rgbColor();
 }
 
 #ifndef QT_NO_DEBUG_STREAM
 QDebug operator<<(QDebug dbg, const Format &f)
 {
-    dbg.nospace() << "QXlsx::Format(" << f.d->property << ")";
-    return dbg.space();
+	dbg.nospace() << "QXlsx::Format(" << f.d->property << ")";
+	return dbg.space();
 }
 #endif
 

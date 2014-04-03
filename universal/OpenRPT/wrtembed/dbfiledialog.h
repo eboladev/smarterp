@@ -28,27 +28,27 @@
 
 class DBFileDialog : public QDialog, public Ui::DBFileDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    DBFileDialog(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~DBFileDialog();
+	DBFileDialog(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~DBFileDialog();
 
 public slots:
-    virtual int getId();
-    virtual QString getName();
-    virtual int getGrade();
-    virtual QString getSource();
-    virtual QString getNameById();
-    virtual int getGradeById();
-    virtual void sGradeChanged( int );
+	virtual int getId();
+	virtual QString getName();
+	virtual int getGrade();
+	virtual QString getSource();
+	virtual QString getNameById();
+	virtual int getGradeById();
+	virtual void sGradeChanged( int );
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
-    virtual void sSelectedReport();
-    virtual void sNameChanged( const QString & text );
-    virtual void sNameGradeChanged();
+	virtual void sSelectedReport();
+	virtual void sNameChanged( const QString & text );
+	virtual void sNameGradeChanged();
 
 
 };

@@ -10,16 +10,16 @@ class EditReel;
 
 class EditReel : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit EditReel(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(), QString reelID = QString());
-    ~EditReel();
-    
+	explicit EditReel(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(), QString reelID = QString());
+	~EditReel();
+
 private:
-    Ui::EditReel *ui;
-    QSqlDatabase db;
-    QString currentID;
+	Ui::EditReel *ui;
+	QSqlDatabase db;
+	QString currentID;
 };
 
 #endif // EDITREEL_H

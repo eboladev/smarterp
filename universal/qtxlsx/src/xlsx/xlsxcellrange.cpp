@@ -44,7 +44,7 @@ QT_BEGIN_NAMESPACE_XLSX
     whose rowCount() and columnCount() are 0.
 */
 CellRange::CellRange()
-    : top(-1), left(-1), bottom(-2), right(-2)
+	: top(-1), left(-1), bottom(-2), right(-2)
 {
 }
 
@@ -55,7 +55,7 @@ CellRange::CellRange()
     \sa topRow(), leftColumn(), bottomRow(), rightColumn()
 */
 CellRange::CellRange(int top, int left, int bottom, int right)
-    : top(top), left(left), bottom(bottom), right(right)
+	: top(top), left(left), bottom(bottom), right(right)
 {
 }
 
@@ -65,21 +65,21 @@ CellRange::CellRange(int top, int left, int bottom, int right)
 */
 CellRange::CellRange(const QString &range)
 {
-    QStringList rs = range.split(QLatin1Char(':'));
-    if (rs.size() == 2) {
-        QPoint start = xl_cell_to_rowcol(rs[0]);
-        QPoint end = xl_cell_to_rowcol(rs[1]);
-        top = start.x();
-        left = start.y();
-        bottom = end.x();
-        right = end.y();
-    } else {
-        QPoint p = xl_cell_to_rowcol(rs[0]);
-        top = p.x();
-        left = p.y();
-        bottom = p.x();
-        right = p.y();
-    }
+	QStringList rs = range.split(QLatin1Char(':'));
+	if (rs.size() == 2) {
+		QPoint start = xl_cell_to_rowcol(rs[0]);
+		QPoint end = xl_cell_to_rowcol(rs[1]);
+		top = start.x();
+		left = start.y();
+		bottom = end.x();
+		right = end.y();
+	} else {
+		QPoint p = xl_cell_to_rowcol(rs[0]);
+		top = p.x();
+		left = p.y();
+		bottom = p.x();
+		right = p.y();
+	}
 }
 
 /*!
@@ -87,7 +87,7 @@ CellRange::CellRange(const QString &range)
     other range.
 */
 CellRange::CellRange(const CellRange &other)
-    : top(other.top), left(other.left), bottom(other.bottom), right(other.right)
+	: top(other.top), left(other.left), bottom(other.bottom), right(other.right)
 {
 }
 
@@ -103,17 +103,17 @@ CellRange::~CellRange()
 */
 QString CellRange::toString() const
 {
-    if (left == -1 || top == -1)
-        return QString();
+	if (left == -1 || top == -1)
+		return QString();
 
-    if (left == right && top == bottom) {
-        //Single cell
-        return xl_rowcol_to_cell(top, left);
-    }
+	if (left == right && top == bottom) {
+		//Single cell
+		return xl_rowcol_to_cell(top, left);
+	}
 
-    QString cell_1 = xl_rowcol_to_cell(top, left);
-    QString cell_2 = xl_rowcol_to_cell(bottom, right);
-    return cell_1 + QLatin1String(":") + cell_2;
+	QString cell_1 = xl_rowcol_to_cell(top, left);
+	QString cell_2 = xl_rowcol_to_cell(bottom, right);
+	return cell_1 + QLatin1String(":") + cell_2;
 }
 
 /*!
@@ -121,7 +121,7 @@ QString CellRange::toString() const
  */
 bool CellRange::isValid() const
 {
-    return left <= right && top <= bottom;
+	return left <= right && top <= bottom;
 }
 
 QT_END_NAMESPACE_XLSX

@@ -10,24 +10,24 @@ class SaccosMainWindow;
 
 class SaccosMainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit SaccosMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~SaccosMainWindow();
-    
+	explicit SaccosMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~SaccosMainWindow();
+
 private slots:
-    void on_cmdDelete_clicked();
+	void on_cmdDelete_clicked();
 
-    void on_actionNew_Entry_triggered();
+	void on_actionNew_Entry_triggered();
 
-    void on_cboMonths_currentIndexChanged(const QString &arg1);
+	void on_cboMonths_currentIndexChanged(const QString &arg1);
 
-    void on_actionRefresh_triggered();
+	void on_actionRefresh_triggered();
 
 private:
-    Ui::SaccosMainWindow *ui;
-    QSqlDatabase db;
+	Ui::SaccosMainWindow *ui;
+	QSqlDatabase db;
 };
 
 #endif // SACCOSMAINWINDOW_H

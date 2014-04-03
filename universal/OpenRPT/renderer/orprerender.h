@@ -36,52 +36,52 @@ class ORODocument;
 // an ORODocument that can be used to pass to any number of renderers.
 //
 class ORPreRender {
-  public:
-    ORPreRender(QSqlDatabase = QSqlDatabase());
-    ORPreRender(const QDomDocument &, QSqlDatabase = QSqlDatabase());
-    ORPreRender(const QDomDocument &, const ParameterList &, QSqlDatabase = QSqlDatabase());
-    virtual ~ORPreRender();
+public:
+	ORPreRender(QSqlDatabase = QSqlDatabase());
+	ORPreRender(const QDomDocument &, QSqlDatabase = QSqlDatabase());
+	ORPreRender(const QDomDocument &, const ParameterList &, QSqlDatabase = QSqlDatabase());
+	virtual ~ORPreRender();
 
-    ORODocument * generate();
+	ORODocument * generate();
 
-    void setDatabase(QSqlDatabase);
-    QSqlDatabase database() const;
+	void setDatabase(QSqlDatabase);
+	QSqlDatabase database() const;
 
-    bool setDom(const QDomDocument &);
-    void setParamList(const ParameterList &);
-    ParameterList paramList() const;
+	bool setDom(const QDomDocument &);
+	void setParamList(const ParameterList &);
+	ParameterList paramList() const;
 
-    bool isValid() const;
-    bool doParamsSatisfy() const;
+	bool isValid() const;
+	bool doParamsSatisfy() const;
 
-    void setWatermarkText(const QString &);
-    void setWatermarkFont(const QFont &);
-    void setWatermarkOpacity(unsigned char); // 0..255 : default 25
+	void setWatermarkText(const QString &);
+	void setWatermarkFont(const QFont &);
+	void setWatermarkOpacity(unsigned char); // 0..255 : default 25
 
-    QString watermarkText() const;
-    QFont watermarkFont() const;
-    unsigned char watermarkOpacity() const;
+	QString watermarkText() const;
+	QFont watermarkFont() const;
+	unsigned char watermarkOpacity() const;
 
-    void setBackgroundImage(const QImage &);
-    void setBackgroundRect(const QRectF &);
-    void setBackgroundRect(double, double, double, double);
-    void setBackgroundOpacity(unsigned char);
-    void setBackgroundAlignment(int);
-    void setBackgroundScale(bool);
-    void setBackgroundScaleMode(Qt::AspectRatioMode mode);
+	void setBackgroundImage(const QImage &);
+	void setBackgroundRect(const QRectF &);
+	void setBackgroundRect(double, double, double, double);
+	void setBackgroundOpacity(unsigned char);
+	void setBackgroundAlignment(int);
+	void setBackgroundScale(bool);
+	void setBackgroundScaleMode(Qt::AspectRatioMode mode);
 
-    QImage backgroundImage() const;
-    QRectF backgroundRect() const;
-    unsigned char backgroundOpacity() const;
-    int backgroundAlignment() const;
-    bool backgroundScale() const;
-    Qt::AspectRatioMode backgroundScaleMode() const;
+	QImage backgroundImage() const;
+	QRectF backgroundRect() const;
+	unsigned char backgroundOpacity() const;
+	int backgroundAlignment() const;
+	bool backgroundScale() const;
+	Qt::AspectRatioMode backgroundScaleMode() const;
 
 
-  protected:
+protected:
 
-  private:
-    ORPreRenderPrivate* _internal;
+private:
+	ORPreRenderPrivate* _internal;
 };
 
 

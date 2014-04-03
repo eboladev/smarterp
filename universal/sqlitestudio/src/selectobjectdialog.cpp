@@ -2,23 +2,23 @@
 #include "ui_selectobjectdialog.h"
 
 SelectObjectDialog::SelectObjectDialog(QWidget *parent, QString title, QString label) :
-    QDialog(parent),
-    ui(new Ui::SelectObjectDialog)
+	QDialog(parent),
+	ui(new Ui::SelectObjectDialog)
 {
-    ui->setupUi(this);
-    this->setWindowTitle(title);
-    ui->label->setText(label);
+	ui->setupUi(this);
+	this->setWindowTitle(title);
+	ui->label->setText(label);
 }
 
 SelectObjectDialog::~SelectObjectDialog()
 {
-    delete ui;
+	delete ui;
 }
 
 void SelectObjectDialog::setItems(QStringList items)  {
-    ui->listWidget->insertItems(0, items);
+	ui->listWidget->insertItems(0, items);
 }
 
 QString SelectObjectDialog::returnValue() {
-    return ui->listWidget->currentItem()->text();
+	return ui->listWidget->currentItem()->text();
 }

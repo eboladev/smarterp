@@ -46,19 +46,19 @@ namespace QXlsx {
 
 class DocumentPrivate
 {
-    Q_DECLARE_PUBLIC(Document)
+	Q_DECLARE_PUBLIC(Document)
 public:
-    DocumentPrivate(Document *p);
-    void init();
+	DocumentPrivate(Document *p);
+	void init();
 
-    bool loadPackage(QIODevice *device);
+	bool loadPackage(QIODevice *device);
 
-    Document *q_ptr;
-    const QString defaultPackageName; //default name when package name not specified
-    QString packageName; //name of the .xlsx file
+	Document *q_ptr;
+	const QString defaultPackageName; //default name when package name not specified
+	QString packageName; //name of the .xlsx file
 
-    QMap<QString, QString> documentProperties; //core, app and custom properties
-    QSharedPointer<Workbook> workbook;
+	QMap<QString, QString> documentProperties; //core, app and custom properties
+	QSharedPointer<Workbook> workbook;
 };
 
 }

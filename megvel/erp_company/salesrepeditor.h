@@ -2,10 +2,10 @@
 #define SALESREPEDITOR_H
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include <QtSql>
 #include <QMainWindow>
@@ -18,25 +18,25 @@ class SalesRepEditor;
 
 class SalesRepEditor : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit SalesRepEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~SalesRepEditor();    
-    QString currentId;
-    void addNew();
-    void edit();
+	explicit SalesRepEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~SalesRepEditor();
+	QString currentId;
+	void addNew();
+	void edit();
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
-    void on_cmdDelete_clicked();
+	void on_cmdDelete_clicked();
 
-    void on_cmdClose_clicked();
+	void on_cmdClose_clicked();
 
 private:
-    Ui::SalesRepEditor *ui;
-    QSqlDatabase db;
-    bool isAdding;
+	Ui::SalesRepEditor *ui;
+	QSqlDatabase db;
+	bool isAdding;
 };
 
 #endif // SALESREPEDITOR_H

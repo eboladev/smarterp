@@ -27,22 +27,22 @@
 
 class CrossTabEditor : public QDialog, public Ui::CrossTabEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    CrossTabEditor(QWidget* parent = 0);
-    ~CrossTabEditor();
+	CrossTabEditor(QWidget* parent = 0);
+	~CrossTabEditor();
 
-    QFont _font;
+	QFont _font;
 
 public slots:
-    virtual void btnFont_clicked();
+	virtual void btnFont_clicked();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 private slots:
-    void on_valueQueryGroupBox_toggled(bool);
+	void on_valueQueryGroupBox_toggled(bool);
 
 };
 

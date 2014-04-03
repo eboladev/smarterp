@@ -29,68 +29,68 @@ class QuerySourceList;
 
 class ReportProperties : public QDialog, public Ui::ReportProperties
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ReportProperties(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ReportProperties();
+	ReportProperties(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ReportProperties();
 
 public slots:
-    virtual QString getReportDescription();
-    virtual QString getReportName();
-    virtual QString getReportTitle();
-    virtual QString getDynamicQuery();
-    virtual void setReportDescription( QString str );
-    virtual void setReportName( QString str );
-    virtual void setReportTitle( QString str );
-    virtual void setDynamicQuery( QString str );
-    virtual int getWatermarkOpacity();
-    virtual void setWatermarkOpacity( int i );
-    virtual void setWmFont( QFont fnt );
-    virtual QFont getWmFont();
-    virtual void SetUseBestWMFont( bool b );
-    virtual bool getUseBestWmFont();
-    virtual bool isWmTextStatic();
-    virtual void setWmTextStatic( bool b );
-    virtual QString getWmText();
-    virtual void setWmText( QString str );
-    virtual void setWmColumn( QString str );
-    virtual QString getWmColumn();
-    virtual void setWmQuery( QuerySourceList * qsl, QString query );
-    virtual QString getWmQuery();
-    virtual QString getBgColumn();
-    virtual void setBgColumn( QString str );
-    virtual QString getBgQuery();
-    virtual void setBgQuery( QuerySourceList * qsl, QString query );
-    virtual int getBgOpacity();
-    virtual void setBgOpacity( int i );
-    virtual bool isBgEnabled();
-    virtual void setBgEnabled( bool b );
-    virtual bool isBgStatic();
-    virtual void setBgStatic( bool b );
-    virtual QString getBgResizeMode();
-    virtual void setBgResizeMode( QString m );
-    virtual QString getBgImageData();
-    virtual void setBgImageData( QString dat );
-    virtual void setBgAlign( int f );
-    virtual int getBgAlign();
-    virtual int getBgBoundsX();
-    virtual int getBgBoundsY();
-    virtual int getBgBoundsWidth();
-    virtual int getBgBoundsHeight();
-    virtual void setBgBoundsX( int i );
-    virtual void setBgBoundsY( int i );
-    virtual void setBgBoundsWidth( int i );
-    virtual void setBgBoundsHeight( int i );
+	virtual QString getReportDescription();
+	virtual QString getReportName();
+	virtual QString getReportTitle();
+	virtual QString getDynamicQuery();
+	virtual void setReportDescription( QString str );
+	virtual void setReportName( QString str );
+	virtual void setReportTitle( QString str );
+	virtual void setDynamicQuery( QString str );
+	virtual int getWatermarkOpacity();
+	virtual void setWatermarkOpacity( int i );
+	virtual void setWmFont( QFont fnt );
+	virtual QFont getWmFont();
+	virtual void SetUseBestWMFont( bool b );
+	virtual bool getUseBestWmFont();
+	virtual bool isWmTextStatic();
+	virtual void setWmTextStatic( bool b );
+	virtual QString getWmText();
+	virtual void setWmText( QString str );
+	virtual void setWmColumn( QString str );
+	virtual QString getWmColumn();
+	virtual void setWmQuery( QuerySourceList * qsl, QString query );
+	virtual QString getWmQuery();
+	virtual QString getBgColumn();
+	virtual void setBgColumn( QString str );
+	virtual QString getBgQuery();
+	virtual void setBgQuery( QuerySourceList * qsl, QString query );
+	virtual int getBgOpacity();
+	virtual void setBgOpacity( int i );
+	virtual bool isBgEnabled();
+	virtual void setBgEnabled( bool b );
+	virtual bool isBgStatic();
+	virtual void setBgStatic( bool b );
+	virtual QString getBgResizeMode();
+	virtual void setBgResizeMode( QString m );
+	virtual QString getBgImageData();
+	virtual void setBgImageData( QString dat );
+	virtual void setBgAlign( int f );
+	virtual int getBgAlign();
+	virtual int getBgBoundsX();
+	virtual int getBgBoundsY();
+	virtual int getBgBoundsWidth();
+	virtual int getBgBoundsHeight();
+	virtual void setBgBoundsX( int i );
+	virtual void setBgBoundsY( int i );
+	virtual void setBgBoundsWidth( int i );
+	virtual void setBgBoundsHeight( int i );
 
 protected:
-    QString _uudata;
+	QString _uudata;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
-    virtual void changeWmFont();
-    virtual void sLoadBgImage();
+	virtual void changeWmFont();
+	virtual void sLoadBgImage();
 
 
 };

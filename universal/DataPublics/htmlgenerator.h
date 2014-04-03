@@ -6,22 +6,22 @@
 
 class HtmlGenerator : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit HtmlGenerator(QObject *parent = 0);
-    static QString showReportHtml(QString reportID, QSqlDatabase db);
-    QString getReportHTMLFromQuery(QString query, QSqlDatabase db, QString ReportTitle);
-    void AddSumColumn(QString colName);
-    void AddHiddenColumn(QString colName);
+	explicit HtmlGenerator(QObject *parent = 0);
+	static QString showReportHtml(QString reportID, QSqlDatabase db);
+	QString getReportHTMLFromQuery(QString query, QSqlDatabase db, QString ReportTitle);
+	void AddSumColumn(QString colName);
+	void AddHiddenColumn(QString colName);
 private:
-    QStringList lst_sumColumns;
-    QStringList lst_hiddenColumns;
+	QStringList lst_sumColumns;
+	QStringList lst_hiddenColumns;
 signals:
-    
+
 public slots:
 
 
-    
+
 };
 
 #endif // HTMLGENERATOR_H

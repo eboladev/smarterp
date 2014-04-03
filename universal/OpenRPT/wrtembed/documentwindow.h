@@ -33,25 +33,25 @@ class ReportHandler;
 //
 class DocumentWindow : public QMainWindow
 {  
-  Q_OBJECT
+	Q_OBJECT
 
-  friend class ReportHandler;
+	friend class ReportHandler;
 
-  public:
-    DocumentWindow(bool newDoc, ReportGridOptions * rgo, ReportHandler * handler, QWidget * parent);
+public:
+	DocumentWindow(bool newDoc, ReportGridOptions * rgo, ReportHandler * handler, QWidget * parent);
 
-  public slots:
-    virtual void setCaption();
+public slots:
+	virtual void setCaption();
 
-  protected:
-    virtual void closeEvent(QCloseEvent * e);
+protected:
+	virtual void closeEvent(QCloseEvent * e);
 
 	ReportHandler * _handler;
-    DocumentScene * _scene;
-    DocumentView * _view;
+	DocumentScene * _scene;
+	DocumentView * _view;
 
 signals:
-    void m_changed(QString);
+	void m_changed(QString);
 };
 
 #endif

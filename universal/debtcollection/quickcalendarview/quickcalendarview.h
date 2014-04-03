@@ -38,123 +38,123 @@
 */ 
 class QuickCalendarView : public QGraphicsView
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    QuickCalendarView(QWidget *parent = 0); ///<Конструктор
-    ~QuickCalendarView() {} ///<Пустой деструктор
+	QuickCalendarView(QWidget *parent = 0); ///<Конструктор
+	~QuickCalendarView() {} ///<Пустой деструктор
 
-   /*! 
+	/*!
    *  Перечисление способов отображения:
    *         -# Отображать полные недели
    *         -# Отображать только диапазон
    */
-    enum DisplayMode{ 
-      DisplayFullWeeks = 0,
-      DisplayOnlyRange = 1
-    };
+	enum DisplayMode{
+		DisplayFullWeeks = 0,
+		DisplayOnlyRange = 1
+	};
 
 	/*!
     *	Метод вернет способ отображения.
     *	@return способ отображения.
     */
-    int displayMode() const { return myDisplayMode; } 
+	int displayMode() const { return myDisplayMode; }
 
 	/*!
     *	Метод вернет номер развернутого дня недели.
     *	@return номер развернутого дня недели. Если все дни свернуты, вернет 0.
     */
-    int expandedDayOfWeek() const { return myExpandedDayOfWeek; }
+	int expandedDayOfWeek() const { return myExpandedDayOfWeek; }
 
-    int expandedWeekNumber() const; ///<Вернет информацию о развернутой неделе
+	int expandedWeekNumber() const; ///<Вернет информацию о развернутой неделе
 
 	/*!
     *	Метод вернет развернутую неделю.
     *	@return развернутую неделю.
     */
-    WeekItem* expandedWeekItem() const { return myExpandedWeekItem; }
+	WeekItem* expandedWeekItem() const { return myExpandedWeekItem; }
 
 	/*!
     *	Метод вернет количество отображаемых недель.
     *	@return количество отображаемых недель.
     */
-    int weekCount() const { return myWeekCount; }
+	int weekCount() const { return myWeekCount; }
 
 	/*!
     *	Метод вернет ширину столбика в календаре.
 	*	@param dayOfWeek - номер столбика.
     *	@return если dayOfWeek от нуля до 21 вернет ширину нужного столбкика. Иначе вернет 0.
     */
-    int dayWidth(int dayOfWeek) const {
-        if(dayOfWeek >= 0 && dayOfWeek < 21) return myDayWidths[dayOfWeek]; else return 0;
-    }
+	int dayWidth(int dayOfWeek) const {
+		if(dayOfWeek >= 0 && dayOfWeek < 21) return myDayWidths[dayOfWeek]; else return 0;
+	}
 
 	/*!
     *	Метод вернет информацию о внешнем виде календаря.
     *	@return информацию о внешнем виде календаря.
     */
-    QuickCalendarStyle* style() const { return ptrStyle; }
+	QuickCalendarStyle* style() const { return ptrStyle; }
 
 	/*!
     *	Метод вернет список календарей.
     *	@return список календарей.
     */
-    QList <Calendar*>* calendars() { return ptrCalendars; }
+	QList <Calendar*>* calendars() { return ptrCalendars; }
 
 signals:
-    void dateExpanded(const QDate &date); ///< Сигнал разворачивания даты
+	void dateExpanded(const QDate &date); ///< Сигнал разворачивания даты
 
 public slots:
-    void expandDate(const QDate &date); ///<Метод разворачивает указанную дату
-    void expandDayOfWeek(int dayOfWeek); ///<Метод разворачивает указанный день недели
-    void expandWeek(int weekNumber); ///<Метод разворачивает указанную неделю
-    void expandWeek(WeekItem *week); ///<Метод разворачивает указанную неделю
-    void collapseAll(); ///<Метод сворачивает все элементы календаря
+	void expandDate(const QDate &date); ///<Метод разворачивает указанную дату
+	void expandDayOfWeek(int dayOfWeek); ///<Метод разворачивает указанный день недели
+	void expandWeek(int weekNumber); ///<Метод разворачивает указанную неделю
+	void expandWeek(WeekItem *week); ///<Метод разворачивает указанную неделю
+	void collapseAll(); ///<Метод сворачивает все элементы календаря
 
-    void setRange(const QDate &start, const QDate &end); ///<Устанавливает отображаемый диапазон времени
-    void setMonth(int year, int month); ///<Метод установит текущий отображаемый месяц и год
+	void setRange(const QDate &start, const QDate &end); ///<Устанавливает отображаемый диапазон времени
+	void setMonth(int year, int month); ///<Метод установит текущий отображаемый месяц и год
 
-    void setDisplayMode(DisplayMode mode); ///<Метод устанавливает способ отображения
-    void setCalendars(QList <Calendar *> *calendars); ///<Метод устанавливает список календарей
+	void setDisplayMode(DisplayMode mode); ///<Метод устанавливает способ отображения
+	void setCalendars(QList <Calendar *> *calendars); ///<Метод устанавливает список календарей
 
-    void showAppointmentForm(Appointment *appointment); ///<Метод отображает форму настройки встречи
+	void showAppointmentForm(Appointment *appointment); ///<Метод отображает форму настройки встречи
 
-    void dataChanged(); //Метод вызывает метод dataChanged() у всех отображаемых недель
-    void layoutChanged(); ///<Метод задает положение всех элементов календаря
+	void dataChanged(); //Метод вызывает метод dataChanged() у всех отображаемых недель
+	void layoutChanged(); ///<Метод задает положение всех элементов календаря
 
 protected:
-    void resizeEvent(QResizeEvent *event); ///< Обработчик события изменения размера
+	void resizeEvent(QResizeEvent *event); ///< Обработчик события изменения размера
 
 private slots:
-    void onFormClosed(Appointment *appointment); ///<Слот, вызываемый при закрытии формы настройки встречи
+	void onFormClosed(Appointment *appointment); ///<Слот, вызываемый при закрытии формы настройки встречи
 
 private:
-    int myWeekMode;
-    int myDisplayMode; ///<Способ отображения
+	int myWeekMode;
+	int myDisplayMode; ///<Способ отображения
 
-    QDate myStartDate; ///<Начало недели, с которой начинается отображение
-    QDate myEndDate; ///<Конец недели, которой заканчивается отображение
+	QDate myStartDate; ///<Начало недели, с которой начинается отображение
+	QDate myEndDate; ///<Конец недели, которой заканчивается отображение
 
-    QDate myRangeStart; ///<Дата, с которой начинается отображение
-    QDate myRangeEnd; ///<Дата, которой заканчивается отображение
+	QDate myRangeStart; ///<Дата, с которой начинается отображение
+	QDate myRangeEnd; ///<Дата, которой заканчивается отображение
 
-    QDate myExpandedDate; ///<Развернутая дата
+	QDate myExpandedDate; ///<Развернутая дата
 
-    int myWeekCount; ///<Количество отображаемых недель
+	int myWeekCount; ///<Количество отображаемых недель
 
-    CalendarItem *ptrHeader; ///<Панель выбора месяца и года
-    CalendarItem *ptrContentPane; ///<Панель для отображения содержимого календаря
+	CalendarItem *ptrHeader; ///<Панель выбора месяца и года
+	CalendarItem *ptrContentPane; ///<Панель для отображения содержимого календаря
 
-    QList <WeekItem *> myWeeks; ///<Список недель
+	QList <WeekItem *> myWeeks; ///<Список недель
 
-    int myExpandedDayOfWeek; ///<Номер развернутого дня недели
-    WeekItem *myExpandedWeekItem; ///<Развернутая неделя
+	int myExpandedDayOfWeek; ///<Номер развернутого дня недели
+	WeekItem *myExpandedWeekItem; ///<Развернутая неделя
 
-    QuickCalendarStyle *ptrStyle; ///<Информация о внешнем виде календаря
+	QuickCalendarStyle *ptrStyle; ///<Информация о внешнем виде календаря
 
-    int myDayWidths[21]; ///<Вектор, хранящий ширину всех верт. столбцов календаря
+	int myDayWidths[21]; ///<Вектор, хранящий ширину всех верт. столбцов календаря
 
-    QList <Calendar *> *ptrCalendars; ///<Список календарей
+	QList <Calendar *> *ptrCalendars; ///<Список календарей
 };
 
 #endif // QUICKCALENDARVIEW_H

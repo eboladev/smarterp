@@ -2,13 +2,13 @@
 #include "ui_smartreportwidget.h"
 
 SmartReportWidget::SmartReportWidget(QWidget *parent) :
-    QPrintPreviewWidget(parent),
-    ui(new Ui::SmartReportWidget)
+	QPrintPreviewWidget(parent),
+	ui(new Ui::SmartReportWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 SmartReportWidget::~SmartReportWidget()
 {
-    delete ui;
+	delete ui;
 }

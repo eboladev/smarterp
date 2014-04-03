@@ -9,14 +9,14 @@ class ClearHistory;
 
 class ClearHistory : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ClearHistory(QWidget *parent = 0);
-    ~ClearHistory();
-    
+	explicit ClearHistory(QWidget *parent = 0);
+	~ClearHistory();
+
 private:
-    Ui::ClearHistory *ui;
+	Ui::ClearHistory *ui;
 };
 
 #endif // CLEARHISTORY_H

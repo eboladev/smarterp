@@ -2,13 +2,13 @@
 #include "ui_reportviewwidget.h"
 
 ReportViewWidget::ReportViewWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ReportViewWidget)
+	QWidget(parent),
+	ui(new Ui::ReportViewWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 ReportViewWidget::~ReportViewWidget()
 {
-    delete ui;
+	delete ui;
 }

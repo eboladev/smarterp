@@ -10,18 +10,18 @@ class ConfirmDelivery;
 
 class ConfirmDelivery : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ConfirmDelivery(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~ConfirmDelivery();
-    
+	explicit ConfirmDelivery(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~ConfirmDelivery();
+
 private slots:
-    void on_cmdConfirm_clicked();
-    void reloadList();
+	void on_cmdConfirm_clicked();
+	void reloadList();
 private:
-    Ui::ConfirmDelivery *ui;
-    QSqlDatabase db;
+	Ui::ConfirmDelivery *ui;
+	QSqlDatabase db;
 };
 
 #endif // CONFIRMDELIVERY_H

@@ -16,29 +16,29 @@
 
 EAN13::EAN13(const QString &code)
 {
-    // Set up constant data
+	// Set up constant data
 
-    LCode << "0001101" << "0011001" << "0010011" <<"0111101" << "0100011"
-            << "0110001" << "0101111" << "0111011" << "0110111" << "0001011";
+	LCode << "0001101" << "0011001" << "0010011" <<"0111101" << "0100011"
+	      << "0110001" << "0101111" << "0111011" << "0110111" << "0001011";
 
-    GCode << "0100111" << "0110011" << "0011011" << "0100001" << "0011101"
-            << "0111001" << "0000101" << "0010001" << "0001001" << "0010111";
+	GCode << "0100111" << "0110011" << "0011011" << "0100001" << "0011101"
+	      << "0111001" << "0000101" << "0010001" << "0001001" << "0010111";
 
-    RCode << "1110010" << "1100110" << "1101100" << "1000010" << "1011100"
-            << "1001110" << "1010000" << "1000100" << "1001000" << "1110100";
+	RCode << "1110010" << "1100110" << "1101100" << "1000010" << "1011100"
+	      << "1001110" << "1010000" << "1000100" << "1001000" << "1110100";
 
-    Parity	<< "000000" << "001011" << "001101" << "001110" << "010011"
-            << "011001" << "011100" << "010101" << "010110" << "011010";
+	Parity	<< "000000" << "001011" << "001101" << "001110" << "010011"
+		<< "011001" << "011100" << "010101" << "010110" << "011010";
 
-    quietZone = "000000000";
-    leadTail = "101";
-    separator = "01010";
+	quietZone = "000000000";
+	leadTail = "101";
+	separator = "01010";
 
-    nominalWidth = 37.29;
-    nominalHeight = 25.93;
-    nominalFontSize = 8.0;
+	nominalWidth = 37.29;
+	nominalHeight = 25.93;
+	nominalFontSize = 8.0;
 
-    barcode = code.left(12);		// no more than 12 characters
+	barcode = code.left(12);		// no more than 12 characters
 }
 
 
@@ -49,7 +49,7 @@ EAN13::EAN13(const QString &code)
   **/
 void EAN13::setBarcode(const QString &code)
 {
-    barcode = code.left(12);		// no more than 12 characters
+	barcode = code.left(12);		// no more than 12 characters
 }
 
 /** calculateChecksumDigit
@@ -63,26 +63,26 @@ void EAN13::setBarcode(const QString &code)
 
 void EAN13::calculateChecksumDigit()
 {
-    int sum = 0;
-    int digit = 0;
+	int sum = 0;
+	int digit = 0;
 
-    // calculate checksum digit
+	// calculate checksum digit
 
-    for(int i = barcode.length() - 1; i >= 0; i--)
-    {
-        digit = barcode.mid(i, 1).toInt();
-        if(i % 2 == 0)
-        {
-            sum += digit;			// odd
-        }
-        else
-        {
-            sum += digit * 3;		// even
-        }
-    }
-    int checksum = (10 -(sum % 10)) % 10;
+	for(int i = barcode.length() - 1; i >= 0; i--)
+	{
+		digit = barcode.mid(i, 1).toInt();
+		if(i % 2 == 0)
+		{
+			sum += digit;			// odd
+		}
+		else
+		{
+			sum += digit * 3;		// even
+		}
+	}
+	int checksum = (10 -(sum % 10)) % 10;
 
-    checksumDigit = QString::number(checksum);
+	checksumDigit = QString::number(checksum);
 }
 
 /** convertToDigitPattern
@@ -94,15 +94,15 @@ void EAN13::calculateChecksumDigit()
 
 QString EAN13::convertToDigitPattern(QString number, QStringList &pattern)
 {
-    QString digitPattern("");
+	QString digitPattern("");
 
-    for(int i = 0; i < number.length(); i++)
-    {
-        int index = number.mid(i, 1).toInt();
-        digitPattern.append(pattern[index]);
-    }
+	for(int i = 0; i < number.length(); i++)
+	{
+		int index = number.mid(i, 1).toInt();
+		digitPattern.append(pattern[index]);
+	}
 
-    return digitPattern;
+	return digitPattern;
 }
 
 /** convertLeftPattern
@@ -114,9 +114,9 @@ QString EAN13::convertToDigitPattern(QString number, QStringList &pattern)
 
 QString EAN13::convertLeftPattern(QString left)
 {
-    QString string(left);
+	QString string(left);
 
-    return calculateCountryCode(string.left(1).toInt(), string.mid(1));
+	return calculateCountryCode(string.left(1).toInt(), string.mid(1));
 }
 
 /** calculateCountryCode
@@ -128,19 +128,19 @@ QString EAN13::convertLeftPattern(QString left)
 
 QString EAN13::calculateCountryCode(int index, QString left)
 {
-    QString parity = this->Parity[index];
+	QString parity = this->Parity[index];
 
-    QString result;
+	QString result;
 
-    for(int i = 0; i < 6; i++)
-    {
-        if(parity.mid(i, 1).toInt())
-            result.append(convertToDigitPattern(left.mid(i, 1), this->GCode));
-        else
-            result.append(convertToDigitPattern(left.mid(i, 1), this->LCode));
-    }
+	for(int i = 0; i < 6; i++)
+	{
+		if(parity.mid(i, 1).toInt())
+			result.append(convertToDigitPattern(left.mid(i, 1), this->GCode));
+		else
+			result.append(convertToDigitPattern(left.mid(i, 1), this->LCode));
+	}
 
-    return result;
+	return result;
 }
 
 /** draw
@@ -158,112 +158,112 @@ QString EAN13::calculateCountryCode(int index, QString left)
 
 void EAN13::draw(const QRectF &rect, QPainter &painter)
 {
-    // calculate checksum digit
+	// calculate checksum digit
 
-    calculateChecksumDigit();
+	calculateChecksumDigit();
 
-    QString code(barcode + checksumDigit);
+	QString code(barcode + checksumDigit);
 
-    // convert left hand numbers
+	// convert left hand numbers
 
-    QString leftPattern(convertLeftPattern(code.mid(0, 7)));
+	QString leftPattern(convertLeftPattern(code.mid(0, 7)));
 
-    // build the EAN code
+	// build the EAN code
 
-    QString ean13(quietZone + leadTail + leftPattern + separator +
-                  convertToDigitPattern(code.mid(7), RCode) + leadTail + quietZone);
+	QString ean13(quietZone + leadTail + leftPattern + separator +
+		      convertToDigitPattern(code.mid(7), RCode) + leadTail + quietZone);
 
-    painter.save();
+	painter.save();
 
-    painter.setViewport(int(rect.x()), int(rect.y()),
-                        int(rect.width()), int(rect.height()));
-    painter.setWindow(/*int(rect.x()), int(rect.y()),*/0, 0,
-                        int(rect.width()), int(rect.height()));
-    painter.fillRect(painter.window(), Qt::white);	// set background
+	painter.setViewport(int(rect.x()), int(rect.y()),
+			    int(rect.width()), int(rect.height()));
+	painter.setWindow(/*int(rect.x()), int(rect.y()),*/0, 0,
+			  int(rect.width()), int(rect.height()));
+	painter.fillRect(painter.window(), Qt::white);	// set background
 
-    qreal width = rect.width();
-    qreal height = rect.height();
-    qreal barWidth = width / 113;
+	qreal width = rect.width();
+	qreal height = rect.height();
+	qreal barWidth = width / 113;
 
-    qreal nominalWidthInPixels = nominalWidth * painter.device()->physicalDpiX() / 25.4;
-    qreal fontScale = width / nominalWidthInPixels;
+	qreal nominalWidthInPixels = nominalWidth * painter.device()->physicalDpiX() / 25.4;
+	qreal fontScale = width / nominalWidthInPixels;
 
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    QFont font("arial");
-    font.setPointSizeF(nominalFontSize * fontScale);
-    painter.setFont(font);
-    painter.setPen(Qt::SolidLine);
-    painter.setPen(Qt::black);
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::black);
-    painter.setBrush(brush);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+	QFont font("arial");
+	font.setPointSizeF(nominalFontSize * fontScale);
+	painter.setFont(font);
+	painter.setPen(Qt::SolidLine);
+	painter.setPen(Qt::black);
+	QBrush brush;
+	brush.setStyle(Qt::SolidPattern);
+	brush.setColor(Qt::black);
+	painter.setBrush(brush);
 
-    qreal textHeight = painter.boundingRect(0, 0, 0, 0, 0, ean13.mid(0,1)).height();
+	qreal textHeight = painter.boundingRect(0, 0, 0, 0, 0, ean13.mid(0,1)).height();
 
-    painter.save();
+	painter.save();
 
-    painter.setPen(Qt::NoPen);
+	painter.setPen(Qt::NoPen);
 
-    // draw the barcode lines
+	// draw the barcode lines
 
-    for(int i = 0; i < ean13.length(); i++)
-    {
-        if(ean13.mid(i, 1) == "1")
-        {
-            if((i > 12 && i < 55) || (i > 57 && i < 101))
-            {
-                // draw spaces for the number
+	for(int i = 0; i < ean13.length(); i++)
+	{
+		if(ean13.mid(i, 1) == "1")
+		{
+			if((i > 12 && i < 55) || (i > 57 && i < 101))
+			{
+				// draw spaces for the number
 
-                painter.drawRect(QRectF(0, 0, barWidth, height - textHeight));
-            }
-            else
-            {
-                // draw a full line
+				painter.drawRect(QRectF(0, 0, barWidth, height - textHeight));
+			}
+			else
+			{
+				// draw a full line
 
-                painter.drawRect(QRectF(0, 0, barWidth, height));
-            }
-        }
-        painter.translate(barWidth, 0);
+				painter.drawRect(QRectF(0, 0, barWidth, height));
+			}
+		}
+		painter.translate(barWidth, 0);
 
-    }
+	}
 
-    // draw the numbers below the line
+	// draw the numbers below the line
 
-    painter.restore();
+	painter.restore();
 
-    QString countryCode(barcode.mid(0, 1));
-    QString leftCode(barcode.mid(1, 6));
-    QString rightCode(barcode.mid(7, 5));
+	QString countryCode(barcode.mid(0, 1));
+	QString leftCode(barcode.mid(1, 6));
+	QString rightCode(barcode.mid(7, 5));
 
-    QRectF countryCodeRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignRight,
-                                                countryCode));
-    QRectF leftCodeRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignHCenter,
-                                             leftCode));
-    QRectF rightCodeRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignHCenter,
-                                              rightCode));
-    QRectF checksumRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignLeft,
-                                             checksumDigit));
+	QRectF countryCodeRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignRight,
+						    countryCode));
+	QRectF leftCodeRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignHCenter,
+						 leftCode));
+	QRectF rightCodeRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignHCenter,
+						  rightCode));
+	QRectF checksumRect(painter.boundingRect(QRectF(0, 0, 0, 0), Qt::AlignLeft,
+						 checksumDigit));
 
-    // draw 1st digit of country code
+	// draw 1st digit of country code
 
-    painter.translate(8 * barWidth, height - countryCodeRect.height());
-    painter.drawText(countryCodeRect, Qt::AlignRight, countryCode);
+	painter.translate(8 * barWidth, height - countryCodeRect.height());
+	painter.drawText(countryCodeRect, Qt::AlignRight, countryCode);
 
-    // draw manufacturer number
+	// draw manufacturer number
 
-    painter.translate((25 * barWidth), 0);
-    painter.drawText(leftCodeRect, Qt::AlignHCenter, leftCode);
+	painter.translate((25 * barWidth), 0);
+	painter.drawText(leftCodeRect, Qt::AlignHCenter, leftCode);
 
-    // draw product id
+	// draw product id
 
-    painter.translate((47 * barWidth), 0);
-    painter.drawText(rightCodeRect, Qt::AlignHCenter, rightCode);
+	painter.translate((47 * barWidth), 0);
+	painter.drawText(rightCodeRect, Qt::AlignHCenter, rightCode);
 
-    // draw checksum digit
+	// draw checksum digit
 
-    painter.translate((26 * barWidth), 0);
-    painter.drawText(checksumRect, Qt::AlignLeft, checksumDigit);
+	painter.translate((26 * barWidth), 0);
+	painter.drawText(checksumRect, Qt::AlignLeft, checksumDigit);
 
-    painter.restore();
+	painter.restore();
 }

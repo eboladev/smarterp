@@ -12,34 +12,34 @@ class EmployeeEditor;
 
 class EmployeeEditor : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit EmployeeEditor(QWidget *parent = 0);
-    ~EmployeeEditor();
-    QSqlTableModel *model;
-    QItemSelectionModel *selectionModel;
-    QDataWidgetMapper *mapper;
+	explicit EmployeeEditor(QWidget *parent = 0);
+	~EmployeeEditor();
+	QSqlTableModel *model;
+	QItemSelectionModel *selectionModel;
+	QDataWidgetMapper *mapper;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 private slots:
-    void on_cmdAddNew_clicked();
-    void mapperChanged(int row);
-    void on_txtLastName_textChanged(const QString &arg1);
+	void on_cmdAddNew_clicked();
+	void mapperChanged(int row);
+	void on_txtLastName_textChanged(const QString &arg1);
 
-    void on_lstEmployees_activated(const QModelIndex &index);
+	void on_lstEmployees_activated(const QModelIndex &index);
 
-    void on_lstEmployees_clicked(const QModelIndex &index);
+	void on_lstEmployees_clicked(const QModelIndex &index);
 
-    void setEmpName();
-    void on_txtName_textChanged(const QString &arg1);
+	void setEmpName();
+	void on_txtName_textChanged(const QString &arg1);
 
-    void on_cmdSetDateOfBirth_clicked();
+	void on_cmdSetDateOfBirth_clicked();
 
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::EmployeeEditor *ui;
+	Ui::EmployeeEditor *ui;
 };
 
 #endif // EMPLOYEEEDITOR_H

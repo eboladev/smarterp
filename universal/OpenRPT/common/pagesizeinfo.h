@@ -26,32 +26,32 @@
 
 class PageSizeInfo
 {
-  public:
-    PageSizeInfo(const QString&, int, int, int);
-    PageSizeInfo();
-    virtual ~PageSizeInfo();
+public:
+	PageSizeInfo(const QString&, int, int, int);
+	PageSizeInfo();
+	virtual ~PageSizeInfo();
 
-    const QString & name() const;
-    int qpValue() const;
-    int width() const;
-    int height() const;
-    int area() const;
+	const QString & name() const;
+	int qpValue() const;
+	int width() const;
+	int height() const;
+	int area() const;
 
-    bool isNull() const;
+	bool isNull() const;
 
-    static const PageSizeInfo & getByName(const QString &);
-    static const PageSizeInfo & getByValue(int);
-    static const PageSizeInfo & findNearest(int, int);
-    static QStringList getPageNames();
+	static const PageSizeInfo & getByName(const QString &);
+	static const PageSizeInfo & getByValue(int);
+	static const PageSizeInfo & findNearest(int, int);
+	static QStringList getPageNames();
 
-  protected:
-    QString _name;
-    int _qpValue;
-    int _width;
-    int _height;
+protected:
+	QString _name;
+	int _qpValue;
+	int _width;
+	int _height;
 
-    int _area;
-    bool _null;
+	int _area;
+	bool _null;
 };
 
 #endif

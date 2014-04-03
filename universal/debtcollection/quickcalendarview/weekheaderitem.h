@@ -28,18 +28,18 @@
 class WeekHeaderItem : public CalendarItem
 {
 public:
-    WeekHeaderItem();
-    ~WeekHeaderItem();
+	WeekHeaderItem();
+	~WeekHeaderItem();
 
-    void paint(QPainter *painter,
-               const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
+	void paint(QPainter *painter,
+		   const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
-    virtual void layoutChanged();
-    virtual void dataChanged();
+	virtual void layoutChanged();
+	virtual void dataChanged();
 
 private:
-    QList <DayHeaderItem *> dayHeaders;
+	QList <DayHeaderItem *> dayHeaders;
 }
 
 #endif // WEEKHEADERITEM_H

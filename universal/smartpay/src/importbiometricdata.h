@@ -9,17 +9,17 @@ class ImportBiometricData;
 
 class ImportBiometricData : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit ImportBiometricData(QWidget *parent = 0);
-    ~ImportBiometricData();
+	explicit ImportBiometricData(QWidget *parent = 0);
+	~ImportBiometricData();
 
 private slots:
-    void on_cmdSelectDataFile_clicked();
+	void on_cmdSelectDataFile_clicked();
 
 private:
-    Ui::ImportBiometricData *ui;
+	Ui::ImportBiometricData *ui;
 };
 
 #endif // IMPORTBIOMETRICDATA_H

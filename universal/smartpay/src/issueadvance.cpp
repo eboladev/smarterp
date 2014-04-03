@@ -2,47 +2,47 @@
 #include "ui_issueadvance.h"
 #include "publics.h"
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 
 IssueAdvance::IssueAdvance(QWidget *parent, QSqlDatabase database, int employeeID) :
-    QDialog(parent),
-    ui(new Ui::IssueAdvance)
+	QDialog(parent),
+	ui(new Ui::IssueAdvance)
 {
-    ui->setupUi(this);
-    db = database;
-    Publics pubs;
-    ui->EmployeeName->setText(pubs.getDbValue(db, "SELECT Name FROM vw_employeenames WHERE EmployeeID = '" + QString::number(employeeID)  + "'", "Name"));
-    ui->EmployeeName->setEnabled(false);
-    id = employeeID;
+	ui->setupUi(this);
+	db = database;
+	Publics pubs;
+	ui->EmployeeName->setText(pubs.getDbValue(db, "SELECT Name FROM vw_employeenames WHERE EmployeeID = '" + QString::number(employeeID)  + "'", "Name"));
+	ui->EmployeeName->setEnabled(false);
+	id = employeeID;
 
-    ui->AdvanceDate->setDate(QDate::currentDate());
+	ui->AdvanceDate->setDate(QDate::currentDate());
 }
 
 IssueAdvance::~IssueAdvance()
 {
-    delete ui;
+	delete ui;
 }
 
 void IssueAdvance::on_cancelButton_clicked()
 {
-    this->reject();
+	this->reject();
 }
 
 void IssueAdvance::on_IssueButton_clicked()
 {
-    db.exec("INSERT INTO employee_advances (EmployeeID, AdvanceDate, Amount) VALUES ('" +
-            QString::number(id) + "', '" + ui->AdvanceDate->date().toString("yyyy-MM-dd") + "', '" +
-            QString::number(ui->Amount->value()) + "')");
+	db.exec("INSERT INTO employee_advances (EmployeeID, AdvanceDate, Amount) VALUES ('" +
+		QString::number(id) + "', '" + ui->AdvanceDate->date().toString("yyyy-MM-dd") + "', '" +
+		QString::number(ui->Amount->value()) + "')");
 
-    if (db.lastError().isValid()) {
-        QMessageBox::critical(this, "Error", db.lastError().text());
-    }
-    else
-    {
-        this->accept();
-    }
+	if (db.lastError().isValid()) {
+		QMessageBox::critical(this, "Error", db.lastError().text());
+	}
+	else
+	{
+		this->accept();
+	}
 }

@@ -29,111 +29,111 @@
 #include <QMessageBox>
 
 LabelDefinitionEditor::LabelDefinitionEditor(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-  setupUi(this);
+	setupUi(this);
 
-  // signals and slots connections
-  connect(btnCancel, SIGNAL(clicked()), this, SLOT(close()));
-  connect(btnSave, SIGNAL(clicked()), this, SLOT(saveLabelDef()));
+	// signals and slots connections
+	connect(btnCancel, SIGNAL(clicked()), this, SLOT(close()));
+	connect(btnSave, SIGNAL(clicked()), this, SLOT(saveLabelDef()));
 
-  paperSize->clear();
-  QStringList pageNames = PageSizeInfo::getPageNames();
+	paperSize->clear();
+	QStringList pageNames = PageSizeInfo::getPageNames();
 
-  for (QStringList::Iterator name = pageNames.begin(); name != pageNames.end(); name++)
-  {
-    paperSize->addItem(*name);
-    paperDefs.append(*name);
-  }
+	for (QStringList::Iterator name = pageNames.begin(); name != pageNames.end(); name++)
+	{
+		paperSize->addItem(*name);
+		paperDefs.append(*name);
+	}
 }
 
 LabelDefinitionEditor::~LabelDefinitionEditor()
 {
-  // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void LabelDefinitionEditor::init(LabelSizeInfo labelDef)
 {
-  if (!labelDef.isNull())
-  {
-    labelName->setText(labelDef.name());
-    paperSize->setCurrentIndex(paperDefs.indexOf(labelDef.paper()));
-    labelColumns->setValue(labelDef.columns());
-    labelRows->setValue(labelDef.rows());
-    labelWidth->setValue(labelDef.width());
-    labelHeight->setValue(labelDef.height());
-    labelStartXOffset->setValue(labelDef.startX());
-    labelStartYOffset->setValue(labelDef.startY());
-    labelHorizontalGap->setValue(labelDef.xGap());
-    labelVerticalGap->setValue(labelDef.yGap());
-  }
+	if (!labelDef.isNull())
+	{
+		labelName->setText(labelDef.name());
+		paperSize->setCurrentIndex(paperDefs.indexOf(labelDef.paper()));
+		labelColumns->setValue(labelDef.columns());
+		labelRows->setValue(labelDef.rows());
+		labelWidth->setValue(labelDef.width());
+		labelHeight->setValue(labelDef.height());
+		labelStartXOffset->setValue(labelDef.startX());
+		labelStartYOffset->setValue(labelDef.startY());
+		labelHorizontalGap->setValue(labelDef.xGap());
+		labelVerticalGap->setValue(labelDef.yGap());
+	}
 
-  labelDefinition = labelDef;
+	labelDefinition = labelDef;
 }
 
 void LabelDefinitionEditor::saveLabelDef()
 {
-  LabelSizeInfo labelDef(
-                  labelName->text(),
-                  paperSize->currentText(),
-                  labelColumns->value(),
-                  labelRows->value(),
-                  labelWidth->value(),
-                  labelHeight->value(),
-                  labelStartXOffset->value(),
-                  labelStartYOffset->value(),
-                  labelHorizontalGap->value(),
-                  labelVerticalGap->value()
-                );
+	LabelSizeInfo labelDef(
+				labelName->text(),
+				paperSize->currentText(),
+				labelColumns->value(),
+				labelRows->value(),
+				labelWidth->value(),
+				labelHeight->value(),
+				labelStartXOffset->value(),
+				labelStartYOffset->value(),
+				labelHorizontalGap->value(),
+				labelVerticalGap->value()
+				);
 
-  QString name = labelName->text();
-  QString errorText = "";
-  bool hasError = false;
+	QString name = labelName->text();
+	QString errorText = "";
+	bool hasError = false;
 
-  if (name.length() > 0)
-  {
-    if (name.compare(labelDefinition.name()) == 0 || !nameExists(name))
-    {
-      labelDefinition = labelDef;
-    }
-    else
-    {
-      errorText = "This label name is already taken.  Please enter a new, unique name.";
-      hasError = true;
-    }
-  }
-  else
-  {
-    errorText = "You must give this label definition a name.";
-    hasError = true;
-  }
+	if (name.length() > 0)
+	{
+		if (name.compare(labelDefinition.name()) == 0 || !nameExists(name))
+		{
+			labelDefinition = labelDef;
+		}
+		else
+		{
+			errorText = "This label name is already taken.  Please enter a new, unique name.";
+			hasError = true;
+		}
+	}
+	else
+	{
+		errorText = "You must give this label definition a name.";
+		hasError = true;
+	}
 
-  if (hasError)
-  {
-    QMessageBox::warning(this, tr("Warning"), errorText);
-  }
-  else
-  {
-    accept();
-  }
+	if (hasError)
+	{
+		QMessageBox::warning(this, tr("Warning"), errorText);
+	}
+	else
+	{
+		accept();
+	}
 }
 
 bool LabelDefinitionEditor::nameExists(QString name)
 {
-  bool exists = false;
-  XSqlQuery xqry;
-  xqry.prepare("SELECT labeldef_id FROM labeldef WHERE labeldef_name=:name");
-  xqry.bindValue(":name", name);
-  xqry.exec();
+	bool exists = false;
+	XSqlQuery xqry;
+	xqry.prepare("SELECT labeldef_id FROM labeldef WHERE labeldef_name=:name");
+	xqry.bindValue(":name", name);
+	xqry.exec();
 
-  if (xqry.first())
-  {
-    exists = true;
-  }
-  return exists;
+	if (xqry.first())
+	{
+		exists = true;
+	}
+	return exists;
 }
 
 void LabelDefinitionEditor::languageChange()
 {
-  retranslateUi(this);
+	retranslateUi(this);
 }

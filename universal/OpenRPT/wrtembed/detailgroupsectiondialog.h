@@ -27,14 +27,14 @@
 
 class DetailGroupSectionDialog : public QDialog, public Ui::DetailGroupSectionDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    DetailGroupSectionDialog(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~DetailGroupSectionDialog();
+	DetailGroupSectionDialog(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~DetailGroupSectionDialog();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

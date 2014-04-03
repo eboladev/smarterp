@@ -9,14 +9,14 @@ class MakeSaccoPayment;
 
 class MakeSaccoPayment : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit MakeSaccoPayment(QWidget *parent = 0);
-    ~MakeSaccoPayment();
-    
+	explicit MakeSaccoPayment(QWidget *parent = 0);
+	~MakeSaccoPayment();
+
 private:
-    Ui::MakeSaccoPayment *ui;
+	Ui::MakeSaccoPayment *ui;
 };
 
 #endif // MAKESACCOPAYMENT_H

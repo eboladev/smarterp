@@ -23,14 +23,14 @@
 #include <QVariant>
 
 ReportParameterListItem::ReportParameterListItem(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(_cancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(_accept, SIGNAL(clicked()), this, SLOT(accept()));
+	// signals and slots connections
+	connect(_cancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(_accept, SIGNAL(clicked()), this, SLOT(accept()));
 }
 
 /*
@@ -38,7 +38,7 @@ ReportParameterListItem::ReportParameterListItem(QWidget* parent, Qt::WindowFlag
  */
 ReportParameterListItem::~ReportParameterListItem()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 /*
@@ -47,6 +47,6 @@ ReportParameterListItem::~ReportParameterListItem()
  */
 void ReportParameterListItem::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 

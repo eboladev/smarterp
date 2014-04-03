@@ -41,48 +41,48 @@
 //
 //  Query Class
 class orQuery {
-  private:
-    QString      qstrName;
+private:
+	QString      qstrName;
 
-    QString      qstrQuery;
-    XSqlQuery   *qryQuery;
+	QString      qstrQuery;
+	XSqlQuery   *qryQuery;
 
-    QSqlDatabase _database;
+	QSqlDatabase _database;
 
-  public:
-    orQuery();
-    orQuery(const QString &, const QString &, ParameterList, bool doexec, QSqlDatabase pDb = QSqlDatabase());
+public:
+	orQuery();
+	orQuery(const QString &, const QString &, ParameterList, bool doexec, QSqlDatabase pDb = QSqlDatabase());
 
-    virtual ~orQuery();
+	virtual ~orQuery();
 
-    inline bool queryExecuted() const { return (qryQuery != 0); }
-    bool execute();
+	inline bool queryExecuted() const { return (qryQuery != 0); }
+	bool execute();
 
-    inline XSqlQuery *getQuery() { return qryQuery; }
-    inline const QString &getSql() const { return qstrQuery; }
-    inline const QString &getName() const { return qstrName; }
+	inline XSqlQuery *getQuery() { return qryQuery; }
+	inline const QString &getSql() const { return qstrQuery; }
+	inline const QString &getName() const { return qstrName; }
 
-    QStringList     missingParamList;
+	QStringList     missingParamList;
 };
 
 
 // Data class
 class orData {
-  private:
-    orQuery *qryThis;
-    QString qstrField;
-    QString qstrValue;
-    bool    _valid;
+private:
+	orQuery *qryThis;
+	QString qstrField;
+	QString qstrValue;
+	bool    _valid;
 
-  public:
-    orData();
+public:
+	orData();
 
-    void  setQuery(orQuery *qryPassed);
-    void  setField(const QString &qstrPPassed);
+	void  setQuery(orQuery *qryPassed);
+	void  setField(const QString &qstrPPassed);
 
-    inline bool  isValid() const { return _valid; }
+	inline bool  isValid() const { return _valid; }
 
-    const QString &getValue();
+	const QString &getValue();
 	const QVariant getVariant() const;
 };
 

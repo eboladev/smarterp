@@ -22,10 +22,10 @@
 
 
 #if QT_VERSION >= 0x050000
-    #include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrinter>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QPrinter>
+#include <QPrinter>
 #endif
 #include <QPainter>
 
@@ -33,27 +33,27 @@ class ORODocument;
 
 class ORPrintRender
 {
-  public:
-    ORPrintRender();
-    virtual ~ORPrintRender();
+public:
+	ORPrintRender();
+	virtual ~ORPrintRender();
 
-    void setPrinter(QPrinter *);
-    QPrinter * printer() { return _printer; }
+	void setPrinter(QPrinter *);
+	QPrinter * printer() { return _printer; }
 
-    void setPainter(QPainter *);
-    QPainter * painter() { return _painter; }
+	void setPainter(QPainter *);
+	QPainter * painter() { return _painter; }
 
-    bool setupPrinter(ORODocument *, QPrinter *);
-    bool setupOcPrinter(ORODocument *, QPrinter *);
-    bool renderOC(ORODocument *);
-    bool render(ORODocument *);
+	bool setupPrinter(ORODocument *, QPrinter *);
+	bool setupOcPrinter(ORODocument *, QPrinter *);
+	bool renderOC(ORODocument *);
+	bool render(ORODocument *);
 
-    static void renderPage(ORODocument * pDocument, int pageNb, QPainter *painter, qreal xDpi, qreal yDpi, QSize margins, int printResolution);
-    static bool exportToPDF(ORODocument * pDocument, QString pdfFileName);
+	static void renderPage(ORODocument * pDocument, int pageNb, QPainter *painter, qreal xDpi, qreal yDpi, QSize margins, int printResolution);
+	static bool exportToPDF(ORODocument * pDocument, QString pdfFileName);
 
-  protected:
-    QPrinter* _printer;
-    QPainter* _painter;
+protected:
+	QPrinter* _printer;
+	QPainter* _painter;
 };
 
 #endif // __ORPRINTRENDER_H__

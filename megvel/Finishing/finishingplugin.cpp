@@ -4,46 +4,46 @@
 
 
 QMainWindow *FinishingPlugin::pluginMainWindow(QWidget *parent, QSqlDatabase database) {
-    mFinishing = new FinishingMainWindow(parent, database);
-    QMainWindow *mw =  qobject_cast<QMainWindow *>(mFinishing);
-    return mw;
+	mFinishing = new FinishingMainWindow(parent, database);
+	QMainWindow *mw =  qobject_cast<QMainWindow *>(mFinishing);
+	return mw;
 }
 
 QString FinishingPlugin::pluginName()
 {
-    return "Finishing";
+	return "Finishing";
 }
 
 QString FinishingPlugin::pluginDescription()
 {
-    return "Used to enter finishing data (Peeling, Stitching and Gluing).";
+	return "Used to enter finishing data (Peeling, Stitching and Gluing).";
 }
 
 QString FinishingPlugin::pluginVersion()
 {
-    return "2.0";
+	return "2.0";
 }
 
 QString FinishingPlugin::releaseDate()
 {
-    return QObject::tr("%1 %2").arg(__DATE__, __TIME__);
+	return QObject::tr("%1 %2").arg(__DATE__, __TIME__);
 }
 
 QString FinishingPlugin::pluginAuthor()
 {
-    return "MCL";
+	return "MCL";
 }
 
 QStringList FinishingPlugin::subWindows()
 {
-    QStringList w;
-//    w << "Cust\tManage Users and User Roles\tMCL"
-//      << "Sales Reps\tManage Sale Representatives\tMCL";
-    return w;
+	QStringList w;
+	//    w << "Cust\tManage Users and User Roles\tMCL"
+	//      << "Sales Reps\tManage Sale Representatives\tMCL";
+	return w;
 }
 
 QString FinishingPlugin::projectName() {
-    return "megvel";
+	return "megvel";
 }
 
 

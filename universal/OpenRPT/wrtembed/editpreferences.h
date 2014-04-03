@@ -27,33 +27,33 @@
 
 class EditPreferences : public QDialog, public Ui::EditPreferences
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    EditPreferences(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~EditPreferences();
+	EditPreferences(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~EditPreferences();
 
-    QString selectedLanguage() {return _selectedLanguage;}
+	QString selectedLanguage() {return _selectedLanguage;}
 
 public slots:
-    virtual void setGridSize( double x, double y );
-    virtual double gridSizeX();
-    virtual double gridSizeY();
-    virtual bool showGrid();
-    virtual bool snapGrid();
-    virtual void setShowGrid( bool show );
-    virtual void setSnapGrid( bool snap );
-    virtual void setDefaultFont( QFont fnt );
-    virtual QFont defaultFont();
+	virtual void setGridSize( double x, double y );
+	virtual double gridSizeX();
+	virtual double gridSizeY();
+	virtual bool showGrid();
+	virtual bool snapGrid();
+	virtual void setShowGrid( bool show );
+	virtual void setSnapGrid( bool snap );
+	virtual void setDefaultFont( QFont fnt );
+	virtual QFont defaultFont();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
-    virtual void changeDefaultFont();
-    virtual void selLanguage(QString sel);
+	virtual void changeDefaultFont();
+	virtual void selLanguage(QString sel);
 
 private:
-    QString _selectedLanguage;
+	QString _selectedLanguage;
 
 };
 

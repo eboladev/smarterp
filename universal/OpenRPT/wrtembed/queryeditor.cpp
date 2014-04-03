@@ -26,87 +26,87 @@
 #include <QMessageBox>
 
 QueryEditor::QueryEditor(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-  setupUi(this);
+	setupUi(this);
 
-  // signals and slots connections
-  connect(_metasql, SIGNAL(toggled(bool)), this, SLOT(mqlToggled(bool)));
-  connect(_mqlGroup, SIGNAL(editTextChanged(QString)), this, SLOT(groupEditTextChanged(QString)));
-  connect(_mqlName, SIGNAL(editTextChanged(QString)), this, SLOT(nameEditTextChanged(QString)));
+	// signals and slots connections
+	connect(_metasql, SIGNAL(toggled(bool)), this, SLOT(mqlToggled(bool)));
+	connect(_mqlGroup, SIGNAL(editTextChanged(QString)), this, SLOT(groupEditTextChanged(QString)));
+	connect(_mqlName, SIGNAL(editTextChanged(QString)), this, SLOT(nameEditTextChanged(QString)));
 
-  _mqlGroup->clear();
-  _mqlGroup->addItem("");
-  XSqlQuery xqry;
-  if(xqry.exec("SELECT distinct metasql_group FROM metasql ORDER BY metasql_group;"))
-  {
-    while(xqry.next())
-      _mqlGroup->addItem(xqry.value(0).toString());
-  }
+	_mqlGroup->clear();
+	_mqlGroup->addItem("");
+	XSqlQuery xqry;
+	if(xqry.exec("SELECT distinct metasql_group FROM metasql ORDER BY metasql_group;"))
+	{
+		while(xqry.next())
+			_mqlGroup->addItem(xqry.value(0).toString());
+	}
 }
 
 QueryEditor::~QueryEditor()
 {
-  // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void QueryEditor::languageChange()
 {
-  retranslateUi(this);
+	retranslateUi(this);
 }
 
 void QueryEditor::keyPressEvent( QKeyEvent * e)
 {
-  if(Qt::Key_Escape == e->key())
-  {
-    e->accept();
-  }
+	if(Qt::Key_Escape == e->key())
+	{
+		e->accept();
+	}
 }
 
 void QueryEditor::mqlToggled(bool b)
 {
-  if(b && isVisible())
-  {
-    if(QMessageBox::question(this, tr("Change may be lost"),
-                             tr("<p>Any changes you have made to the sql "
-                                "query may be lost by turning this option on. "
-                                "Are you sure you want to continue?"),
-       QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
-    {
-      _metasql->setChecked(false);
-    }
-  }
+	if(b && isVisible())
+	{
+		if(QMessageBox::question(this, tr("Change may be lost"),
+					 tr("<p>Any changes you have made to the sql "
+					    "query may be lost by turning this option on. "
+					    "Are you sure you want to continue?"),
+					 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
+		{
+			_metasql->setChecked(false);
+		}
+	}
 }
 
 void QueryEditor::groupEditTextChanged(const QString & t)
 {
-  XSqlQuery xqry;
-  xqry.prepare("SELECT DISTINCT metasql_name FROM metasql WHERE metasql_group=:group ORDER BY metasql_name;");
-  xqry.bindValue(":group", t);
-  if(xqry.exec())
-  {
-    _mqlName->clear();
-    while(xqry.next())
-      _mqlName->addItem(xqry.value(0).toString());
-  }
+	XSqlQuery xqry;
+	xqry.prepare("SELECT DISTINCT metasql_name FROM metasql WHERE metasql_group=:group ORDER BY metasql_name;");
+	xqry.bindValue(":group", t);
+	if(xqry.exec())
+	{
+		_mqlName->clear();
+		while(xqry.next())
+			_mqlName->addItem(xqry.value(0).toString());
+	}
 
 }
 
 void QueryEditor::nameEditTextChanged(const QString & t)
 {
-  if(_metasql->isChecked())
-  {
-    XSqlQuery xqry;
-    xqry.prepare("SELECT metasql_query"
-                 "  FROM metasql"
-                 " WHERE ((metasql_group=:group)"
-                 "    AND (metasql_name=:name))"
-                 " ORDER BY metasql_grade DESC"
-                 " LIMIT 1;");
-    xqry.bindValue(":group", _mqlGroup->currentText());
-    xqry.bindValue(":name", t);
-    xqry.exec();
-    xqry.first();
-    tbQuery->setText(xqry.value(0).toString());
-  }
+	if(_metasql->isChecked())
+	{
+		XSqlQuery xqry;
+		xqry.prepare("SELECT metasql_query"
+			     "  FROM metasql"
+			     " WHERE ((metasql_group=:group)"
+			     "    AND (metasql_name=:name))"
+			     " ORDER BY metasql_grade DESC"
+			     " LIMIT 1;");
+		xqry.bindValue(":group", _mqlGroup->currentText());
+		xqry.bindValue(":name", t);
+		xqry.exec();
+		xqry.first();
+		tbQuery->setText(xqry.value(0).toString());
+	}
 }

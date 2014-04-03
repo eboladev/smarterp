@@ -32,43 +32,43 @@
 #include <quuencode.h>
 
 ReportProperties::ReportProperties(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(_btnAccept, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(_btnCancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(_slWmOpacity, SIGNAL(valueChanged(int)), this, SLOT(setWatermarkOpacity(int)));
-    connect(_cbWmStatic, SIGNAL(toggled(bool)), _gbWmDynamic, SLOT(setDisabled(bool)));
-    connect(_cbWmStatic, SIGNAL(toggled(bool)), _leWmText, SLOT(setEnabled(bool)));
-    connect(_cbWmUseBest, SIGNAL(toggled(bool)), _gbWmFont, SLOT(setDisabled(bool)));
-    connect(_btnWmChangeFont, SIGNAL(clicked()), this, SLOT(changeWmFont()));
-    connect(_cbBgEnable, SIGNAL(toggled(bool)), _tabBg, SLOT(setEnabled(bool)));
-    connect(_rbBgStatic, SIGNAL(toggled(bool)), _gbBgDynamic, SLOT(setDisabled(bool)));
-    connect(_rbBgStatic, SIGNAL(toggled(bool)), _gbStatic, SLOT(setEnabled(bool)));
-    connect(_slBgOpacity, SIGNAL(valueChanged(int)), this, SLOT(setBgOpacity(int)));
-    connect(_btnLoad, SIGNAL(clicked()), this, SLOT(sLoadBgImage()));
+	// signals and slots connections
+	connect(_btnAccept, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(_btnCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(_slWmOpacity, SIGNAL(valueChanged(int)), this, SLOT(setWatermarkOpacity(int)));
+	connect(_cbWmStatic, SIGNAL(toggled(bool)), _gbWmDynamic, SLOT(setDisabled(bool)));
+	connect(_cbWmStatic, SIGNAL(toggled(bool)), _leWmText, SLOT(setEnabled(bool)));
+	connect(_cbWmUseBest, SIGNAL(toggled(bool)), _gbWmFont, SLOT(setDisabled(bool)));
+	connect(_btnWmChangeFont, SIGNAL(clicked()), this, SLOT(changeWmFont()));
+	connect(_cbBgEnable, SIGNAL(toggled(bool)), _tabBg, SLOT(setEnabled(bool)));
+	connect(_rbBgStatic, SIGNAL(toggled(bool)), _gbBgDynamic, SLOT(setDisabled(bool)));
+	connect(_rbBgStatic, SIGNAL(toggled(bool)), _gbStatic, SLOT(setEnabled(bool)));
+	connect(_slBgOpacity, SIGNAL(valueChanged(int)), this, SLOT(setBgOpacity(int)));
+	connect(_btnLoad, SIGNAL(clicked()), this, SLOT(sLoadBgImage()));
 
-    _tabBg->setEnabled(false);
-    _uudata = QString::null;
-    
-    QDoubleValidator * dblval = new QDoubleValidator(0.0, 100.0, 2, this);
-    _leBgX->setValidator(dblval);
-    _leBgY->setValidator(dblval);
-    _leBgWidth->setValidator(dblval);
-    _leBgHeight->setValidator(dblval);
+	_tabBg->setEnabled(false);
+	_uudata = QString::null;
+
+	QDoubleValidator * dblval = new QDoubleValidator(0.0, 100.0, 2, this);
+	_leBgX->setValidator(dblval);
+	_leBgY->setValidator(dblval);
+	_leBgWidth->setValidator(dblval);
+	_leBgHeight->setValidator(dblval);
 }
 
 ReportProperties::~ReportProperties()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void ReportProperties::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 //
@@ -76,32 +76,32 @@ void ReportProperties::languageChange()
 //
 QString ReportProperties::getReportDescription()
 {
-    return _leDescription->toPlainText();
+	return _leDescription->toPlainText();
 }
 
 QString ReportProperties::getReportName()
 {
-    return _leName->text();
+	return _leName->text();
 }
 
 QString ReportProperties::getReportTitle()
 {
-    return _leTitle->text();
+	return _leTitle->text();
 }
 
 void ReportProperties::setReportDescription(QString str)
 {
-    _leDescription->setText(str);
+	_leDescription->setText(str);
 }
 
 void ReportProperties::setReportName(QString str)
 {
-    _leName->setText(str);
+	_leName->setText(str);
 }
 
 void ReportProperties::setReportTitle(QString str)
 {
-    _leTitle->setText(str);
+	_leTitle->setText(str);
 }
 
 //
@@ -109,91 +109,91 @@ void ReportProperties::setReportTitle(QString str)
 //
 int ReportProperties::getWatermarkOpacity()
 {
-    return _slWmOpacity->value();
+	return _slWmOpacity->value();
 }
 
 void ReportProperties::setWatermarkOpacity( int i )
 {
-    if(_slWmOpacity->value() != i) {
-	_slWmOpacity->setValue(i);
-    }
-    double d = i / 2.55;
-    _lblWmOpacity->setText(QString("%1%").arg(QString::number((int)d)));
+	if(_slWmOpacity->value() != i) {
+		_slWmOpacity->setValue(i);
+	}
+	double d = i / 2.55;
+	_lblWmOpacity->setText(QString("%1%").arg(QString::number((int)d)));
 }
 
 void ReportProperties::changeWmFont()
 {
-    bool valid = false;
-    QFont fnt = QFontDialog::getFont(&valid, getWmFont(), this);
-    if(valid) {
-	setWmFont(fnt);
-    }
+	bool valid = false;
+	QFont fnt = QFontDialog::getFont(&valid, getWmFont(), this);
+	if(valid) {
+		setWmFont(fnt);
+	}
 }
 
 void ReportProperties::setWmFont( QFont fnt )
 {
-    _leWmFont->setFont(fnt);
-    _leWmFont->setText(fnt.family());
+	_leWmFont->setFont(fnt);
+	_leWmFont->setText(fnt.family());
 }
 
 
 QFont ReportProperties::getWmFont()
 {
-    return _leWmFont->font();
+	return _leWmFont->font();
 }
 
 void ReportProperties::SetUseBestWMFont( bool b )
 {
-    _cbWmUseBest->setChecked(b);
+	_cbWmUseBest->setChecked(b);
 }
 
 bool ReportProperties::getUseBestWmFont()
 {
-    return _cbWmUseBest->isChecked();
+	return _cbWmUseBest->isChecked();
 }
 
 bool ReportProperties::isWmTextStatic()
 {
-    return _cbWmStatic->isChecked();
+	return _cbWmStatic->isChecked();
 }
 
 void ReportProperties::setWmTextStatic( bool b )
 {
-    _cbWmStatic->setChecked(b);
+	_cbWmStatic->setChecked(b);
 }
 
 QString ReportProperties::getWmText()
 {
-    return _leWmText->text();
+	return _leWmText->text();
 }
 
 void ReportProperties::setWmText( QString str )
 {
-    _leWmText->setText(str);
+	_leWmText->setText(str);
 }
 
 
 void ReportProperties::setWmColumn( QString str )
 {
-    _leWmColumn->setText(str);
+	_leWmColumn->setText(str);
 }
 
 
 QString ReportProperties::getWmColumn()
 {
-    return _leWmColumn->text();
+	return _leWmColumn->text();
 }
 
 
 void ReportProperties::setWmQuery( QuerySourceList * qsl, QString query)
 {
-    _cbWmQuery->init(qsl,query);
+	_cbWmQuery->init(qsl,query);
 }
 
 
 QString ReportProperties::getWmQuery()
 {
-    return _cbWmQuery->currentQuery();
+	return _cbWmQuery->currentQuery();
 }
 
 //
@@ -201,210 +201,210 @@ QString ReportProperties::getWmQuery()
 //
 QString ReportProperties::getBgColumn()
 {
-    return _leBgColumn->text();
+	return _leBgColumn->text();
 }
 
 void ReportProperties::setBgColumn( QString str )
 {
-    _leBgColumn->setText(str);
+	_leBgColumn->setText(str);
 }
 
 QString ReportProperties::getBgQuery()
 {
-    return _cbBgQuery->currentQuery();
+	return _cbBgQuery->currentQuery();
 }
 
 void ReportProperties::setBgQuery( QuerySourceList * qsl, QString query )
 {
-    _cbBgQuery->init(qsl,query);
+	_cbBgQuery->init(qsl,query);
 }
 
 int ReportProperties::getBgOpacity()
 {
-    return _slBgOpacity->value();
+	return _slBgOpacity->value();
 }
 
 void ReportProperties::setBgOpacity( int i )
 {
-    if(_slBgOpacity->value() != i) {
-	_slBgOpacity->setValue(i);
-    }
-    double d = i / 2.55;
-    _lblBgOpacity->setText(QString("%1%").arg(QString::number((int)d)));
+	if(_slBgOpacity->value() != i) {
+		_slBgOpacity->setValue(i);
+	}
+	double d = i / 2.55;
+	_lblBgOpacity->setText(QString("%1%").arg(QString::number((int)d)));
 }
 
 
 bool ReportProperties::isBgEnabled()
 {
-    return _cbBgEnable->isChecked();
+	return _cbBgEnable->isChecked();
 }
 
 
 void ReportProperties::setBgEnabled( bool b )
 {
-    _cbBgEnable->setChecked(b);
+	_cbBgEnable->setChecked(b);
 }
 
 
 bool ReportProperties::isBgStatic()
 {
-    return _rbBgStatic->isChecked();
+	return _rbBgStatic->isChecked();
 }
 
 
 void ReportProperties::setBgStatic( bool b )
 {
-    if(b) {
-	_rbBgStatic->setChecked(true);
-    } else {
-	_rbBgDynamic->setChecked(true);
-    }
+	if(b) {
+		_rbBgStatic->setChecked(true);
+	} else {
+		_rbBgDynamic->setChecked(true);
+	}
 }
 
 
 QString ReportProperties::getBgResizeMode()
 {
-    if(_rbBgClip->isChecked()) return "clip";
-    if(_rbBgStretch->isChecked()) return "stretch";
-    return "clip";
+	if(_rbBgClip->isChecked()) return "clip";
+	if(_rbBgStretch->isChecked()) return "stretch";
+	return "clip";
 }
 
 
 void ReportProperties::setBgResizeMode( QString m )
 {
-    if(m == "stretch") {
-	_rbBgStretch->setChecked(true);
-    } else /* if(m == "clip") */ {
-	_rbBgClip->setChecked(true);
-    }
-    
+	if(m == "stretch") {
+		_rbBgStretch->setChecked(true);
+	} else /* if(m == "clip") */ {
+		_rbBgClip->setChecked(true);
+	}
+
 }
 
 
 QString ReportProperties::getBgImageData()
 {
-    return _uudata;
+	return _uudata;
 }
 
 
 void ReportProperties::setBgImageData( QString dat )
 {
-    _uudata = dat;
-    if(!_uudata.isEmpty()) {
-        QByteArray bytes = QUUDecode(dat);
-        QImage i;
-        i.loadFromData(bytes);
-        _pixmap->setPixmap(QPixmap::fromImage(i));
-    } else {
-        _pixmap->setPixmap(QPixmap());
-    }
+	_uudata = dat;
+	if(!_uudata.isEmpty()) {
+		QByteArray bytes = QUUDecode(dat);
+		QImage i;
+		i.loadFromData(bytes);
+		_pixmap->setPixmap(QPixmap::fromImage(i));
+	} else {
+		_pixmap->setPixmap(QPixmap());
+	}
 }
 
 void ReportProperties::sLoadBgImage() {
-    QString fn = QFileDialog::getOpenFileName(this, tr("Choose a file"), QString::null, tr("Images(*.png *.jpg *.xpm)"));
-    if(!fn.isEmpty()) {
-        QFile file(fn);
-        setBgImageData(QUUEncode(file));
-    }
+	QString fn = QFileDialog::getOpenFileName(this, tr("Choose a file"), QString::null, tr("Images(*.png *.jpg *.xpm)"));
+	if(!fn.isEmpty()) {
+		QFile file(fn);
+		setBgImageData(QUUEncode(file));
+	}
 }
 
 void ReportProperties::setBgAlign( int f )
 {
-    if((f & Qt::AlignLeft) == Qt::AlignLeft) {
-        _rbBgHAlignLeft->setChecked(true);
-    } else if((f & Qt::AlignHCenter) == Qt::AlignHCenter) {
-        _rbBgHAlignCenter->setChecked(true);
-    } else if((f & Qt::AlignRight) == Qt::AlignRight) {
-        _rbBgHAlignRight->setChecked(true);
-    } else {
-	_rbBgHAlignLeft->setChecked(true);
-    }
-    
-    if((f & Qt::AlignTop) == Qt::AlignTop) {
-        _rbBgVAlignTop->setChecked(true);
-    } else if((f & Qt::AlignVCenter) == Qt::AlignVCenter) {
-        _rbBgVAlignMiddle->setChecked(true);
-    } else if((f & Qt::AlignBottom) == Qt::AlignBottom) {
-        _rbBgVAlignBottom->setChecked(true);
-    } else {
-	_rbBgVAlignTop->setChecked(true);
-    }
+	if((f & Qt::AlignLeft) == Qt::AlignLeft) {
+		_rbBgHAlignLeft->setChecked(true);
+	} else if((f & Qt::AlignHCenter) == Qt::AlignHCenter) {
+		_rbBgHAlignCenter->setChecked(true);
+	} else if((f & Qt::AlignRight) == Qt::AlignRight) {
+		_rbBgHAlignRight->setChecked(true);
+	} else {
+		_rbBgHAlignLeft->setChecked(true);
+	}
+
+	if((f & Qt::AlignTop) == Qt::AlignTop) {
+		_rbBgVAlignTop->setChecked(true);
+	} else if((f & Qt::AlignVCenter) == Qt::AlignVCenter) {
+		_rbBgVAlignMiddle->setChecked(true);
+	} else if((f & Qt::AlignBottom) == Qt::AlignBottom) {
+		_rbBgVAlignBottom->setChecked(true);
+	} else {
+		_rbBgVAlignTop->setChecked(true);
+	}
 }
 
 int ReportProperties::getBgAlign()
 {
-    int f = 0;
-    if(_rbBgHAlignRight->isChecked()) {
-	f = Qt::AlignRight;
-    } else if(_rbBgHAlignCenter->isChecked()) {
-	f = Qt::AlignHCenter;
-    } else /*if(_rbBgHAlignLeft->isChecked())*/ {
-	f = Qt::AlignLeft;
-    }
-    if(_rbBgVAlignBottom->isChecked()) {
-	f |= Qt::AlignBottom;
-    } else if(_rbBgVAlignMiddle->isChecked()) {
-	f |= Qt::AlignVCenter;
-    } else /*if(_rbBgVAlignMiddle->isChecked())*/ {
-	f |= Qt::AlignTop;
-    }
-    return f;
+	int f = 0;
+	if(_rbBgHAlignRight->isChecked()) {
+		f = Qt::AlignRight;
+	} else if(_rbBgHAlignCenter->isChecked()) {
+		f = Qt::AlignHCenter;
+	} else /*if(_rbBgHAlignLeft->isChecked())*/ {
+		f = Qt::AlignLeft;
+	}
+	if(_rbBgVAlignBottom->isChecked()) {
+		f |= Qt::AlignBottom;
+	} else if(_rbBgVAlignMiddle->isChecked()) {
+		f |= Qt::AlignVCenter;
+	} else /*if(_rbBgVAlignMiddle->isChecked())*/ {
+		f |= Qt::AlignTop;
+	}
+	return f;
 }
 
 
 int ReportProperties::getBgBoundsX()
 {
-    return (int)(_leBgX->text().toDouble() * 100.0);
+	return (int)(_leBgX->text().toDouble() * 100.0);
 }
 
 
 int ReportProperties::getBgBoundsY()
 {
-    return (int)(_leBgY->text().toDouble() * 100.0);
+	return (int)(_leBgY->text().toDouble() * 100.0);
 }
 
 
 int ReportProperties::getBgBoundsWidth()
 {
-    return (int)(_leBgWidth->text().toDouble() * 100.0);
+	return (int)(_leBgWidth->text().toDouble() * 100.0);
 }
 
 
 int ReportProperties::getBgBoundsHeight()
 {
-    return (int)(_leBgHeight->text().toDouble() * 100.0);
+	return (int)(_leBgHeight->text().toDouble() * 100.0);
 }
 
 
 void ReportProperties::setBgBoundsX( int i )
 {
-    _leBgX->setText(QString::number((double)i/100.0, 'g', 2));
+	_leBgX->setText(QString::number((double)i/100.0, 'g', 2));
 }
 
 
 void ReportProperties::setBgBoundsY( int i )
 {
-    _leBgY->setText(QString::number((double)i/100.0, 'g', 2));
+	_leBgY->setText(QString::number((double)i/100.0, 'g', 2));
 }
 
 
 void ReportProperties::setBgBoundsWidth( int i )
 {
-    _leBgWidth->setText(QString::number((double)i/100.0, 'g', 2));
+	_leBgWidth->setText(QString::number((double)i/100.0, 'g', 2));
 }
 
 
 void ReportProperties::setBgBoundsHeight( int i )
 {
-    _leBgHeight->setText(QString::number((double)i/100.0, 'g', 2));
+	_leBgHeight->setText(QString::number((double)i/100.0, 'g', 2));
 }
 
 QString ReportProperties::getDynamicQuery()
 {
-    return txtDynamicQuery->toPlainText();
+	return txtDynamicQuery->toPlainText();
 }
 
 void ReportProperties::setDynamicQuery(QString str)
 {
-    txtDynamicQuery->setText(str);
+	txtDynamicQuery->setText(str);
 }

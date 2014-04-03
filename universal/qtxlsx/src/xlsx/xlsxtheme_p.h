@@ -44,12 +44,12 @@ namespace QXlsx {
 class Theme
 {
 public:
-    Theme();
+	Theme();
 
-    void saveToXmlFile(QIODevice *device);
-    void loadFromXmlData(const QByteArray &data);
+	void saveToXmlFile(QIODevice *device);
+	void loadFromXmlData(const QByteArray &data);
 
-    QByteArray xmlData;
+	QByteArray xmlData;
 };
 
 }

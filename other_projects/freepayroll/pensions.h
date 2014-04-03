@@ -12,27 +12,27 @@ class PensionEditor;
 
 class PensionEditor : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit PensionEditor(QWidget *parent = 0);
-    ~PensionEditor();
-    QSqlTableModel *model;
-    QItemSelectionModel *selectionModel;
-    QDataWidgetMapper *mapper;
+	explicit PensionEditor(QWidget *parent = 0);
+	~PensionEditor();
+	QSqlTableModel *model;
+	QItemSelectionModel *selectionModel;
+	QDataWidgetMapper *mapper;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 private slots:
-    void on_cmdNewPension_clicked();
-    void mapperChanged(int row);
-    void on_lstPensions_clicked(const QModelIndex &index);
+	void on_cmdNewPension_clicked();
+	void mapperChanged(int row);
+	void on_lstPensions_clicked(const QModelIndex &index);
 
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
-    void on_cmdDeletePension_clicked();
+	void on_cmdDeletePension_clicked();
 
 private:
-    Ui::PensionEditor *ui;
+	Ui::PensionEditor *ui;
 
 };
 

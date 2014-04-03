@@ -9,14 +9,14 @@ class UpdaterMainWindow;
 
 class UpdaterMainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit UpdaterMainWindow(QWidget *parent = 0);
-    ~UpdaterMainWindow();
+	explicit UpdaterMainWindow(QWidget *parent = 0);
+	~UpdaterMainWindow();
 
 private:
-    Ui::UpdaterMainWindow *ui;
+	Ui::UpdaterMainWindow *ui;
 };
 
 #endif // UPDATERMAINWINDOW_H

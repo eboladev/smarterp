@@ -5,14 +5,14 @@
 #include <QtSql>
 class CustomersModel : public QSqlQueryModel
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit CustomersModel(QObject *parent = 0);
-    QVariant data(const QModelIndex &item, int role) const;
+	explicit CustomersModel(QObject *parent = 0);
+	QVariant data(const QModelIndex &item, int role) const;
 signals:
-    
+
 public slots:
-    
+
 };
 
 #endif // CUSTOMERSMODEL_H

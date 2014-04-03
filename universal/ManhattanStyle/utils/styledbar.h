@@ -36,36 +36,36 @@
 #include "utils_global.h"
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 
 namespace Utils {
 
 class  StyledBar : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    StyledBar(QWidget *parent = 0);
-    void setSingleRow(bool singleRow);
-    bool isSingleRow() const;
+	StyledBar(QWidget *parent = 0);
+	void setSingleRow(bool singleRow);
+	bool isSingleRow() const;
 
-    void setLightColored(bool lightColored);
-    bool isLightColored() const;
+	void setLightColored(bool lightColored);
+	bool isLightColored() const;
 
 protected:
-    void paintEvent(QPaintEvent *event);
+	void paintEvent(QPaintEvent *event);
 };
 
 class  StyledSeparator : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    StyledSeparator(QWidget *parent = 0);
+	StyledSeparator(QWidget *parent = 0);
 protected:
-    void paintEvent(QPaintEvent *event);
+	void paintEvent(QPaintEvent *event);
 };
 
 } // Utils

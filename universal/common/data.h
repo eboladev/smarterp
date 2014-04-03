@@ -25,14 +25,14 @@
 #include "languageoptions.h"
 
 class OpenRPT {
-  public:
-    static QString         build;
-    static QString         copyright;
-    static QString         databaseURL;
-    static LanguageOptions languages;
-    static bool            loggedIn;
-    static QString         name;
-    static QString         version;
+public:
+	static QString         build;
+	static QString         copyright;
+	static QString         databaseURL;
+	static LanguageOptions languages;
+	static bool            loggedIn;
+	static QString         name;
+	static QString         version;
 };
 
 #endif

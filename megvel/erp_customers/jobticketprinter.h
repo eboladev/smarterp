@@ -8,27 +8,27 @@
 #include <QtXml>
 class JobTicketPrinter : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit JobTicketPrinter(QWidget *parent = 0,
-                              QString ocNo = QString(),
-                              QSqlDatabase database = QSqlDatabase()
-                              );
+	explicit JobTicketPrinter(QWidget *parent = 0,
+				  QString ocNo = QString(),
+				  QSqlDatabase database = QSqlDatabase()
+			);
 
 
-    bool isPdf() const;
-    void setIsPdf(bool isPdf);
+	bool isPdf() const;
+	void setIsPdf(bool isPdf);
 private:
-    QSqlDatabase db;
-    QPrinter *printer;
-    QString _xml;
-    QString m_ocNo;
-    bool m_isPdf;
+	QSqlDatabase db;
+	QPrinter *printer;
+	QString _xml;
+	QString m_ocNo;
+	bool m_isPdf;
 
 private slots:
-    void paintRequested(QPrinter *p);
+	void paintRequested(QPrinter *p);
 protected:
-    QDomDocument _doc;
+	QDomDocument _doc;
 };
 
 #endif // JOBTICKETPRINTER_H

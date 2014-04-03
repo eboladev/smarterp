@@ -21,54 +21,54 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~MainWindow();
+	explicit MainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
-    int dbTimerId;
+	Ui::MainWindow *ui;
+	int dbTimerId;
 
-    QAction * fileExitAction;
+	QAction * fileExitAction;
 
-    ReportHandler * handler;
+	ReportHandler * handler;
 
-    QMenu *windowMenu;
-    QDockWidget *_fieldDock;
-    QMdiArea * ws;
-    QString _dbName;
-    QString _serverName;
-    QString _userName;
-    QString _password;
-    QString _reportName;
+	QMenu *windowMenu;
+	QDockWidget *_fieldDock;
+	QMdiArea * ws;
+	QString _dbName;
+	QString _serverName;
+	QString _userName;
+	QString _password;
+	QString _reportName;
 
-    QSqlDatabase db;
-    QSqlDatabase fieldDb;
+	QSqlDatabase db;
+	QSqlDatabase fieldDb;
 
-    QWidget *currentSubWindow();
+	QWidget *currentSubWindow();
 
-    QTimer *secondTimer;
-    QString rName;
+	QTimer *secondTimer;
+	QString rName;
 public slots:
-    virtual void setCaption();
-    virtual void openReportFile(const QString &);
-    void dbConnected();
-    void reportChanged(QString newReportName);
+	virtual void setCaption();
+	virtual void openReportFile(const QString &);
+	void dbConnected();
+	void reportChanged(QString newReportName);
 
-    void timeOut();
+	void timeOut();
 
 protected:
-    virtual void closeEvent(QCloseEvent*);
-    virtual void timerEvent(QTimerEvent*);
+	virtual void closeEvent(QCloseEvent*);
+	virtual void timerEvent(QTimerEvent*);
 
 private slots:
-    void appExit();
-    void sPrepareWindowMenu();
-    void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
-    void on_actionAuto_Report_triggered();
-    void on_pushButton_clicked();
+	void appExit();
+	void sPrepareWindowMenu();
+	void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
+	void on_actionAuto_Report_triggered();
+	void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H

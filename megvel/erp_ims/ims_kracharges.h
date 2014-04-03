@@ -9,19 +9,19 @@ class IMS_KraCharges;
 
 class IMS_KraCharges : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit IMS_KraCharges(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~IMS_KraCharges();
-    
+	explicit IMS_KraCharges(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~IMS_KraCharges();
+
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::IMS_KraCharges *ui;
-    QSqlDatabase db;
-    QString currentID;
+	Ui::IMS_KraCharges *ui;
+	QSqlDatabase db;
+	QString currentID;
 };
 
 #endif // IMS_KRACHARGES_H

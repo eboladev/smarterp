@@ -10,18 +10,18 @@ class finishing_report;
 
 class finishing_report : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit finishing_report(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~finishing_report();
-    
+	explicit finishing_report(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~finishing_report();
+
 private slots:
-    void on_cmdRefresh_clicked();
-    void refresh();
+	void on_cmdRefresh_clicked();
+	void refresh();
 private:
-    Ui::finishing_report *ui;
-    QSqlDatabase db;
+	Ui::finishing_report *ui;
+	QSqlDatabase db;
 };
 
 #endif // FINISHING_REPORT_H

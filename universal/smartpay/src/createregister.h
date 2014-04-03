@@ -10,20 +10,20 @@ class CreateRegister;
 
 class CreateRegister : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit CreateRegister(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~CreateRegister();
-    
-private slots:
-    void on_cmdPreview_clicked();
+	Q_OBJECT
 
-    void on_cmdSave_clicked();
+public:
+	explicit CreateRegister(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~CreateRegister();
+
+private slots:
+	void on_cmdPreview_clicked();
+
+	void on_cmdSave_clicked();
 
 private:
-    Ui::CreateRegister *ui;
-    QSqlDatabase db;
+	Ui::CreateRegister *ui;
+	QSqlDatabase db;
 };
 
 #endif // CREATEREGISTER_H

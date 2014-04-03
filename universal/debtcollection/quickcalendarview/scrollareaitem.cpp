@@ -21,10 +21,10 @@
 *******************************************************************************/
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include <QGraphicsSceneWheelEvent>
 
@@ -32,22 +32,22 @@
 #include "dayitem.h"
 
 ScrollAreaItem::ScrollAreaItem(QGraphicsItem *parent, QGraphicsScene *scene) : 
-    CalendarItem(parent, scene), myVertical(this, scene), myContent(this, scene), ptrItem(0)
+	CalendarItem(parent, scene), myVertical(this, scene), myContent(this, scene), ptrItem(0)
 {
-    myContent.setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
+	myContent.setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
 }
 
 
 void ScrollAreaItem::setItem(CalendarItem *item)
 {
 	//Если задан элемент
-    if(item != 0)
-    {	//Устанавливает родительскм для этого элемент клиентскую область прокрутки
-        item->setParentItem(&myContent);
+	if(item != 0)
+	{	//Устанавливает родительскм для этого элемент клиентскую область прокрутки
+		item->setParentItem(&myContent);
 		//Максимальное значения полоски прокрутки устанавливается равным высоте элемента
-        myVertical.setMaximum(item->boundingRect().height());
-    }
-    ptrItem = item;
+		myVertical.setMaximum(item->boundingRect().height());
+	}
+	ptrItem = item;
 }
 
 /**
@@ -56,20 +56,20 @@ void ScrollAreaItem::setItem(CalendarItem *item)
 * @param option - опции прорисовки
 */
 void ScrollAreaItem::paint(QPainter *painter,
-    const QStyleOptionGraphicsItem *option, QWidget *widget)
+			   const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    int left = 0;
-    int top = 0;
-    int width = (int)myBoundingRect.width();
-    int height = (int)myBoundingRect.height();
+	int left = 0;
+	int top = 0;
+	int width = (int)myBoundingRect.width();
+	int height = (int)myBoundingRect.height();
 
-    painter->setBrush(QBrush(QColor(127, 127, 127)));
-    painter->drawRect(left, top, width, height);
+	painter->setBrush(QBrush(QColor(127, 127, 127)));
+	painter->drawRect(left, top, width, height);
 }
 
 void ScrollAreaItem::onResize(const QSizeF &size, const QSizeF &oldSize)
 {
-    layoutChanged();
+	layoutChanged();
 }
 
 /**
@@ -77,35 +77,35 @@ void ScrollAreaItem::onResize(const QSizeF &size, const QSizeF &oldSize)
 */
 void ScrollAreaItem::layoutChanged()
 {
-    //int left = 0;
-    //int top = 0;
+	//int left = 0;
+	//int top = 0;
 	//Получаем высоту и ширину полной области прорисовки
-    qreal width = myBoundingRect.width();
-    qreal height = myBoundingRect.height();
+	qreal width = myBoundingRect.width();
+	qreal height = myBoundingRect.height();
 
 	//Получаем ширину области рисования для полоски прокрутки
-    qreal verticalBar = myVertical.boundingRect().width();
+	qreal verticalBar = myVertical.boundingRect().width();
 
-    //Устанавливает размер области прокрутки для элементов 
-    myContent.setSize(width - verticalBar, height);
+	//Устанавливает размер области прокрутки для элементов
+	myContent.setSize(width - verticalBar, height);
 
 	//Задает параметры полоски прокрутки
-    myVertical.setPos(width - verticalBar, 0); //Устанавливаем позицию
-    myVertical.setSize(verticalBar, height); //Ширина полоски задается шириной области рисования для неё
+	myVertical.setPos(width - verticalBar, 0); //Устанавливаем позицию
+	myVertical.setSize(verticalBar, height); //Ширина полоски задается шириной области рисования для неё
 
 	//Если установлен элемент календаря для области прокрутки, то
 	//максимальное значение полоски устанавливается высотой элемента
-    if(ptrItem != 0)
-    {
-        myVertical.setMaximum(ptrItem->boundingRect().height());
-    }
+	if(ptrItem != 0)
+	{
+		myVertical.setMaximum(ptrItem->boundingRect().height());
+	}
 
-    //myVertical.layoutChanged();
+	//myVertical.layoutChanged();
 }
 
 void ScrollAreaItem::scrollTo(qreal value)
 {
-    myVertical.scrollTo(value);
+	myVertical.scrollTo(value);
 }
 
 /*!
@@ -113,19 +113,19 @@ void ScrollAreaItem::scrollTo(qreal value)
 */
 void ScrollAreaItem::ensureVisibility(qreal x, qreal y)
 {
-    myVertical.ensureVisibility(y);
+	myVertical.ensureVisibility(y);
 }
 
 qreal ScrollAreaItem::scrollBarWidth() const
 {
-    return myVertical.boundingRect().width();
+	return myVertical.boundingRect().width();
 }
 
 void ScrollAreaItem::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
 	///Изменяет значение полоски прокрутки на четверть изменения положения колесика
 	///с обратным знаком(т.к. движение колесика вперед сооствествует подъему бегунка полоски прокрутки)
-    myVertical.scrollBy(-event->delta() / 4);
+	myVertical.scrollBy(-event->delta() / 4);
 	//??
-    layoutChanged();
+	layoutChanged();
 }

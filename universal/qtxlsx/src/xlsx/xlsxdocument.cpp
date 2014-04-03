@@ -35,22 +35,22 @@
 QT_BEGIN_NAMESPACE_XLSX
 
 DocumentPrivate::DocumentPrivate(Document *p) :
-    q_ptr(p), defaultPackageName(QStringLiteral("Book1.xlsx"))
+	q_ptr(p), defaultPackageName(QStringLiteral("Book1.xlsx"))
 {
-    workbook = QSharedPointer<Workbook>(new Workbook);
+	workbook = QSharedPointer<Workbook>(new Workbook);
 }
 
 void DocumentPrivate::init()
 {
-    if (workbook->worksheets().size() == 0)
-        workbook->addWorksheet();
+	if (workbook->worksheets().size() == 0)
+		workbook->addWorksheet();
 }
 
 bool DocumentPrivate::loadPackage(QIODevice *device)
 {
-    Q_Q(Document);
-    Package package(q);
-    return package.parsePackage(device);
+	Q_Q(Document);
+	Package package(q);
+	return package.parsePackage(device);
 }
 
 
@@ -66,9 +66,9 @@ bool DocumentPrivate::loadPackage(QIODevice *device)
  * The \a parent argument is passed to QObject's constructor.
  */
 Document::Document(QObject *parent) :
-    QObject(parent), d_ptr(new DocumentPrivate(this))
+	QObject(parent), d_ptr(new DocumentPrivate(this))
 {
-    d_ptr->init();
+	d_ptr->init();
 }
 
 /*!
@@ -77,15 +77,15 @@ Document::Document(QObject *parent) :
  * The \a parent argument is passed to QObject's constructor.
  */
 Document::Document(const QString &name, QObject *parent) :
-    QObject(parent), d_ptr(new DocumentPrivate(this))
+	QObject(parent), d_ptr(new DocumentPrivate(this))
 {
-    d_ptr->packageName = name;
-    if (QFile::exists(name)) {
-        QFile xlsx(name);
-        if (xlsx.open(QFile::ReadOnly))
-            d_ptr->loadPackage(&xlsx);
-    }
-    d_ptr->init();
+	d_ptr->packageName = name;
+	if (QFile::exists(name)) {
+		QFile xlsx(name);
+		if (xlsx.open(QFile::ReadOnly))
+			d_ptr->loadPackage(&xlsx);
+	}
+	d_ptr->init();
 }
 
 /*!
@@ -94,11 +94,11 @@ Document::Document(const QString &name, QObject *parent) :
  * The \a parent argument is passed to QObject's constructor.
  */
 Document::Document(QIODevice *device, QObject *parent) :
-    QObject(parent), d_ptr(new DocumentPrivate(this))
+	QObject(parent), d_ptr(new DocumentPrivate(this))
 {
-    if (device && device->isReadable())
-        d_ptr->loadPackage(device);
-    d_ptr->init();
+	if (device && device->isReadable())
+		d_ptr->loadPackage(device);
+	d_ptr->init();
 }
 
 /*!
@@ -108,7 +108,7 @@ Document::Document(QIODevice *device, QObject *parent) :
  */
 int Document::write(const QString &row_column, const QVariant &value, const Format &format)
 {
-    return currentWorksheet()->write(row_column, value, format);
+	return currentWorksheet()->write(row_column, value, format);
 }
 
 /*!
@@ -116,7 +116,7 @@ int Document::write(const QString &row_column, const QVariant &value, const Form
  */
 int Document::write(int row, int col, const QVariant &value, const Format &format)
 {
-    return currentWorksheet()->write(row, col, value, format);
+	return currentWorksheet()->write(row, col, value, format);
 }
 
 /*!
@@ -125,7 +125,7 @@ int Document::write(int row, int col, const QVariant &value, const Format &forma
 */
 QVariant Document::read(const QString &cell) const
 {
-    return currentWorksheet()->read(cell);
+	return currentWorksheet()->read(cell);
 }
 
 /*!
@@ -133,7 +133,7 @@ QVariant Document::read(const QString &cell) const
  */
 QVariant Document::read(int row, int col) const
 {
-    return currentWorksheet()->read(row, col);
+	return currentWorksheet()->read(row, col);
 }
 
 /*!
@@ -142,7 +142,7 @@ QVariant Document::read(int row, int col) const
  */
 int Document::insertImage(int row, int column, const QImage &image, double xOffset, double yOffset, double xScale, double yScale)
 {
-    return currentWorksheet()->insertImage(row, column, image, QPointF(xOffset, yOffset), xScale, yScale);
+	return currentWorksheet()->insertImage(row, column, image, QPointF(xOffset, yOffset), xScale, yScale);
 }
 
 /*!
@@ -153,7 +153,7 @@ int Document::insertImage(int row, int column, const QImage &image, double xOffs
  */
 int Document::mergeCells(const CellRange &range, const Format &format)
 {
-    return currentWorksheet()->mergeCells(range, format);
+	return currentWorksheet()->mergeCells(range, format);
 }
 
 /*!
@@ -165,7 +165,7 @@ int Document::mergeCells(const CellRange &range, const Format &format)
  */
 int Document::mergeCells(const QString &range, const Format &format)
 {
-    return currentWorksheet()->mergeCells(range, format);
+	return currentWorksheet()->mergeCells(range, format);
 }
 
 /*!
@@ -173,7 +173,7 @@ int Document::mergeCells(const QString &range, const Format &format)
 */
 int Document::unmergeCells(const QString &range)
 {
-    return currentWorksheet()->unmergeCells(range);
+	return currentWorksheet()->unmergeCells(range);
 }
 
 /*!
@@ -181,7 +181,7 @@ int Document::unmergeCells(const QString &range)
 */
 int Document::unmergeCells(const CellRange &range)
 {
-    return currentWorksheet()->unmergeCells(range);
+	return currentWorksheet()->unmergeCells(range);
 }
 
 /*!
@@ -192,7 +192,7 @@ int Document::unmergeCells(const CellRange &range)
  */
 bool Document::setRow(int row, double height, const Format &format, bool hidden)
 {
-    return currentWorksheet()->setRow(row, height, format, hidden);
+	return currentWorksheet()->setRow(row, height, format, hidden);
 }
 
 /*!
@@ -206,7 +206,7 @@ bool Document::setRow(int row, double height, const Format &format, bool hidden)
  */
 bool Document::setColumn(int colFirst, int colLast, double width, const Format &format, bool hidden)
 {
-    return currentWorksheet()->setColumn(colFirst, colLast, width, format, hidden);
+	return currentWorksheet()->setColumn(colFirst, colLast, width, format, hidden);
 }
 
 /*!
@@ -220,7 +220,7 @@ bool Document::setColumn(int colFirst, int colLast, double width, const Format &
  */
 bool Document::setColumn(const QString &colFirst, const QString &colLast, double width, const Format &format, bool hidden)
 {
-    return currentWorksheet()->setColumn(colFirst, colLast, width, format, hidden);
+	return currentWorksheet()->setColumn(colFirst, colLast, width, format, hidden);
 }
 
 /*!
@@ -229,7 +229,7 @@ bool Document::setColumn(const QString &colFirst, const QString &colLast, double
  */
 bool Document::groupRows(int rowFirst, int rowLast, bool collapsed)
 {
-    return currentWorksheet()->groupRows(rowFirst, rowLast, collapsed);
+	return currentWorksheet()->groupRows(rowFirst, rowLast, collapsed);
 }
 
 /*!
@@ -238,7 +238,7 @@ bool Document::groupRows(int rowFirst, int rowLast, bool collapsed)
  */
 bool Document::groupColumns(int colFirst, int colLast, bool collapsed)
 {
-    return currentWorksheet()->groupColumns(colFirst, colLast, collapsed);
+	return currentWorksheet()->groupColumns(colFirst, colLast, collapsed);
 }
 
 /*!
@@ -246,7 +246,7 @@ bool Document::groupColumns(int colFirst, int colLast, bool collapsed)
  */
 bool Document::addDataValidation(const DataValidation &validation)
 {
-    return currentWorksheet()->addDataValidation(validation);
+	return currentWorksheet()->addDataValidation(validation);
 }
 
 /*!
@@ -254,7 +254,7 @@ bool Document::addDataValidation(const DataValidation &validation)
  */
 bool Document::addConditionalFormatting(const ConditionalFormatting &cf)
 {
-    return currentWorksheet()->addConditionalFormatting(cf);
+	return currentWorksheet()->addConditionalFormatting(cf);
 }
 
 /*!
@@ -262,7 +262,7 @@ bool Document::addConditionalFormatting(const ConditionalFormatting &cf)
  */
 Cell *Document::cellAt(const QString &pos) const
 {
-    return currentWorksheet()->cellAt(pos);
+	return currentWorksheet()->cellAt(pos);
 }
 
 /*!
@@ -270,7 +270,7 @@ Cell *Document::cellAt(const QString &pos) const
  */
 Cell *Document::cellAt(int row, int col) const
 {
-    return currentWorksheet()->cellAt(row, col);
+	return currentWorksheet()->cellAt(row, col);
 }
 
 /*!
@@ -284,9 +284,9 @@ Cell *Document::cellAt(int row, int col) const
  */
 bool Document::defineName(const QString &name, const QString &formula, const QString &comment, const QString &scope)
 {
-    Q_D(Document);
+	Q_D(Document);
 
-    return d->workbook->defineName(name, formula, comment, scope);
+	return d->workbook->defineName(name, formula, comment, scope);
 }
 
 /*!
@@ -294,7 +294,7 @@ bool Document::defineName(const QString &name, const QString &formula, const QSt
  */
 CellRange Document::dimension() const
 {
-    return currentWorksheet()->dimension();
+	return currentWorksheet()->dimension();
 }
 
 /*!
@@ -302,11 +302,11 @@ CellRange Document::dimension() const
  */
 QString Document::documentProperty(const QString &key) const
 {
-    Q_D(const Document);
-    if (d->documentProperties.contains(key))
-        return d->documentProperties[key];
-    else
-        return QString();
+	Q_D(const Document);
+	if (d->documentProperties.contains(key))
+		return d->documentProperties[key];
+	else
+		return QString();
 }
 
 /*!
@@ -333,8 +333,8 @@ QString Document::documentProperty(const QString &key) const
 */
 void Document::setDocumentProperty(const QString &key, const QString &property)
 {
-    Q_D(Document);
-    d->documentProperties[key] = property;
+	Q_D(Document);
+	d->documentProperties[key] = property;
 }
 
 /*!
@@ -342,8 +342,8 @@ void Document::setDocumentProperty(const QString &key, const QString &property)
  */
 QStringList Document::documentPropertyNames() const
 {
-    Q_D(const Document);
-    return d->documentProperties.keys();
+	Q_D(const Document);
+	return d->documentProperties.keys();
 }
 
 /*!
@@ -351,8 +351,8 @@ QStringList Document::documentPropertyNames() const
  */
 Workbook *Document::workbook() const
 {
-    Q_D(const Document);
-    return d->workbook.data();
+	Q_D(const Document);
+	return d->workbook.data();
 }
 
 /*!
@@ -361,8 +361,8 @@ Workbook *Document::workbook() const
  */
 bool Document::addWorksheet(const QString &name)
 {
-    Q_D(Document);
-    return d->workbook->addWorksheet(name);
+	Q_D(Document);
+	return d->workbook->addWorksheet(name);
 }
 
 /*!
@@ -371,8 +371,8 @@ bool Document::addWorksheet(const QString &name)
  */
 bool Document::insertWorkSheet(int index, const QString &name)
 {
-    Q_D(Document);
-    return d->workbook->insertWorkSheet(index, name);
+	Q_D(Document);
+	return d->workbook->insertWorkSheet(index, name);
 }
 
 /*!
@@ -381,13 +381,13 @@ bool Document::insertWorkSheet(int index, const QString &name)
  */
 bool Document::setSheetName(const QString &name)
 {
-    Q_D(Document);
-    for (int i=0; i<d->workbook->worksheets().size(); ++i) {
-        if (d->workbook->worksheets()[i]->sheetName() == name)
-            return false;
-    }
-    currentWorksheet()->setSheetName(name);
-    return true;
+	Q_D(Document);
+	for (int i=0; i<d->workbook->worksheets().size(); ++i) {
+		if (d->workbook->worksheets()[i]->sheetName() == name)
+			return false;
+	}
+	currentWorksheet()->setSheetName(name);
+	return true;
 }
 
 /*!
@@ -395,11 +395,11 @@ bool Document::setSheetName(const QString &name)
  */
 Worksheet *Document::currentWorksheet() const
 {
-    Q_D(const Document);
-    if (d->workbook->worksheets().size() == 0)
-        return 0;
+	Q_D(const Document);
+	if (d->workbook->worksheets().size() == 0)
+		return 0;
 
-    return d->workbook->worksheets().at(d->workbook->activeWorksheet()).data();
+	return d->workbook->worksheets().at(d->workbook->activeWorksheet()).data();
 }
 
 /*!
@@ -407,8 +407,8 @@ Worksheet *Document::currentWorksheet() const
  */
 void Document::setCurrentWorksheet(int index)
 {
-    Q_D(Document);
-    d->workbook->setActiveWorksheet(index);
+	Q_D(Document);
+	d->workbook->setActiveWorksheet(index);
 }
 
 /*!
@@ -416,11 +416,11 @@ void Document::setCurrentWorksheet(int index)
  */
 void Document::setCurrentWorksheet(const QString &name)
 {
-    Q_D(Document);
-    for (int i=0; i<d->workbook->worksheets().size(); ++i) {
-        if (d->workbook->worksheets()[i]->sheetName() == name)
-            d->workbook->setActiveWorksheet(i);
-    }
+	Q_D(Document);
+	for (int i=0; i<d->workbook->worksheets().size(); ++i) {
+		if (d->workbook->worksheets()[i]->sheetName() == name)
+			d->workbook->setActiveWorksheet(i);
+	}
 }
 
 /*!
@@ -430,10 +430,10 @@ void Document::setCurrentWorksheet(const QString &name)
  */
 bool Document::save()
 {
-    Q_D(Document);
-    QString name = d->packageName.isEmpty() ? d->defaultPackageName : d->packageName;
+	Q_D(Document);
+	QString name = d->packageName.isEmpty() ? d->defaultPackageName : d->packageName;
 
-    return saveAs(name);
+	return saveAs(name);
 }
 
 /*!
@@ -442,10 +442,10 @@ bool Document::save()
  */
 bool Document::saveAs(const QString &name)
 {
-    QFile file(name);
-    if (file.open(QIODevice::WriteOnly))
-        return saveAs(&file);
-    return false;
+	QFile file(name);
+	if (file.open(QIODevice::WriteOnly))
+		return saveAs(&file);
+	return false;
 }
 
 /*!
@@ -454,12 +454,12 @@ bool Document::saveAs(const QString &name)
  */
 bool Document::saveAs(QIODevice *device)
 {
-//    activedWorksheet()->setHidden(false);
-//    activedWorksheet()->setSelected(true);
+	//    activedWorksheet()->setHidden(false);
+	//    activedWorksheet()->setSelected(true);
 
-    //Create the package based on current workbook
-    Package package(this);
-    return package.createPackage(device);
+	//Create the package based on current workbook
+	Package package(this);
+	return package.createPackage(device);
 }
 
 /*!
@@ -467,7 +467,7 @@ bool Document::saveAs(QIODevice *device)
  */
 Document::~Document()
 {
-    delete d_ptr;
+	delete d_ptr;
 }
 
 QT_END_NAMESPACE_XLSX

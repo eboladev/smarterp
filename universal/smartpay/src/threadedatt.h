@@ -7,21 +7,21 @@
 
 class ThreadedAtt : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ThreadedAtt(QObject *parent = 0);
-    ~ThreadedAtt();
-    void run();
-    QSqlDatabase db;
-    QStringList employees;
-    QDate startDate;
-    QDate endDate;
-    int perc;
+	explicit ThreadedAtt(QObject *parent = 0);
+	~ThreadedAtt();
+	void run();
+	QSqlDatabase db;
+	QStringList employees;
+	QDate startDate;
+	QDate endDate;
+	int perc;
 
-    void setVars(QSqlDatabase d, QStringList e, QDate sD, QDate eD, int p);
+	void setVars(QSqlDatabase d, QStringList e, QDate sD, QDate eD, int p);
 
 signals:
-    void showPercentage(int p);
+	void showPercentage(int p);
 
 };
 

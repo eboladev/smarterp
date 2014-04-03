@@ -27,106 +27,106 @@
 //
 orQuery::orQuery()
 {
-  qryQuery = 0;
+	qryQuery = 0;
 }
 
 orQuery::orQuery( const QString &qstrPName, const QString &qstrSQL,
-                  ParameterList qstrlstParams, bool doexec, QSqlDatabase pDb )
+		  ParameterList qstrlstParams, bool doexec, QSqlDatabase pDb )
 {
-  QString qstrParsedSQL(qstrSQL);
-  QString qstrParam;
-  int     intParamNum;
-  int     intStartIndex = 0;
+	QString qstrParsedSQL(qstrSQL);
+	QString qstrParam;
+	int     intParamNum;
+	int     intStartIndex = 0;
 
-  qryQuery = 0;
-  _database = pDb;
+	qryQuery = 0;
+	_database = pDb;
 
-  //  Initialize some privates
-  qstrName  = qstrPName;
+	//  Initialize some privates
+	qstrName  = qstrPName;
 
-  QRegExp rexp("<\\?.*\\?>");
-  if(rexp.indexIn(qstrParsedSQL) == -1)
-  {
-    // Parse through the passed SQL populating the parameters
-    QRegExp re("(?:%(\\d+))|(?:\\$\"([^\"]*)\")");
-    while ((intStartIndex = re.indexIn(qstrParsedSQL,intStartIndex)) != -1)
-    {
-      QString val = " ";
+	QRegExp rexp("<\\?.*\\?>");
+	if(rexp.indexIn(qstrParsedSQL) == -1)
+	{
+		// Parse through the passed SQL populating the parameters
+		QRegExp re("(?:%(\\d+))|(?:\\$\"([^\"]*)\")");
+		while ((intStartIndex = re.indexIn(qstrParsedSQL,intStartIndex)) != -1)
+		{
+			QString val = " ";
 
-      QString match = re.cap(0);
-      if(match[0] == '$')
-      {
-        QString n = re.cap(2).toLower();
-        val = qstrlstParams.value(n).toString();
-        if(val.isNull())
-        {
-          // add this to the list of missing parameters
-          if(!missingParamList.contains(n))
-            missingParamList.append(n);
-        }
-      }
-      else if(match[0] == '%')
-      {
-        //  Grab the parameter number
-        intParamNum = re.cap(1).toInt();
+			QString match = re.cap(0);
+			if(match[0] == '$')
+			{
+				QString n = re.cap(2).toLower();
+				val = qstrlstParams.value(n).toString();
+				if(val.isNull())
+				{
+					// add this to the list of missing parameters
+					if(!missingParamList.contains(n))
+						missingParamList.append(n);
+				}
+			}
+			else if(match[0] == '%')
+			{
+				//  Grab the parameter number
+				intParamNum = re.cap(1).toInt();
 
-        //  Replace the parameter hold with the specified paramemter
-        //  Verify the parameter index
-        if (intParamNum <= (int)qstrlstParams.count())
-          val = qstrlstParams.value(intParamNum - 1).toString();
-        else
-        {
-          // add this to the list of missing parameters
-          QString s = QString("%%1").arg(intParamNum);
-          if(!missingParamList.contains(s)) missingParamList.append(s);
-        }
-      }
-      else
-      {
-        // ?!?!? How did we get here.
-        qDebug("Match did not start with $ or %%...");
-      }
+				//  Replace the parameter hold with the specified paramemter
+				//  Verify the parameter index
+				if (intParamNum <= (int)qstrlstParams.count())
+					val = qstrlstParams.value(intParamNum - 1).toString();
+				else
+				{
+					// add this to the list of missing parameters
+					QString s = QString("%%1").arg(intParamNum);
+					if(!missingParamList.contains(s)) missingParamList.append(s);
+				}
+			}
+			else
+			{
+				// ?!?!? How did we get here.
+				qDebug("Match did not start with $ or %%...");
+			}
 
-      QString qstrWork = qstrParsedSQL.left(intStartIndex)
-                       + val
-                       + qstrParsedSQL.right(qstrParsedSQL.length() - intStartIndex - re.matchedLength());
-      intStartIndex += val.length();
-      qstrParsedSQL = qstrWork;
-    }
+			QString qstrWork = qstrParsedSQL.left(intStartIndex)
+					+ val
+					+ qstrParsedSQL.right(qstrParsedSQL.length() - intStartIndex - re.matchedLength());
+			intStartIndex += val.length();
+			qstrParsedSQL = qstrWork;
+		}
 
-    qstrQuery = qstrParsedSQL;
+		qstrQuery = qstrParsedSQL;
 
-    if(doexec)
-      execute();
-  }
-  else
-  {
-    qstrQuery = qstrParsedSQL;
-    MetaSQLQuery mql(qstrParsedSQL);
-    qryQuery = new XSqlQuery(mql.toQuery(qstrlstParams, _database, doexec));
-    if (doexec)
-      qryQuery->first();
-    //actually look for missing parameters?
-  }
+		if(doexec)
+			execute();
+	}
+	else
+	{
+		qstrQuery = qstrParsedSQL;
+		MetaSQLQuery mql(qstrParsedSQL);
+		qryQuery = new XSqlQuery(mql.toQuery(qstrlstParams, _database, doexec));
+		if (doexec)
+			qryQuery->first();
+		//actually look for missing parameters?
+	}
 }
 
 orQuery::~orQuery()
 {
-  if(qryQuery != 0)
-  {
-    delete qryQuery;
-    qryQuery = 0;
-  }
+	if(qryQuery != 0)
+	{
+		delete qryQuery;
+		qryQuery = 0;
+	}
 }
 
 bool orQuery::execute()
 {
-  if(qryQuery == 0)
-  {
-    qryQuery  = new XSqlQuery(qstrQuery, _database);
-    return qryQuery->first();
-  }
-  return false;
+	if(qryQuery == 0)
+	{
+		qryQuery  = new XSqlQuery(qstrQuery, _database);
+		return qryQuery->first();
+	}
+	return false;
 }
 
 //
@@ -134,32 +134,32 @@ bool orQuery::execute()
 //
 orData::orData()
 {
-  _valid = false;
-  qryThis = 0;
+	_valid = false;
+	qryThis = 0;
 }
 
 void orData::setQuery(orQuery *qryPassed)
 {
-  qryThis = qryPassed;
+	qryThis = qryPassed;
 
-  if (qstrField.length())
-    _valid = true;
+	if (qstrField.length())
+		_valid = true;
 }
 
 void orData::setField(const QString &qstrPPassed)
 {
-  qstrField = qstrPPassed;
+	qstrField = qstrPPassed;
 
-  if (qryThis != 0)
-    _valid = true;
+	if (qryThis != 0)
+		_valid = true;
 }
 
 const QString &orData::getValue()
 {
-  if (_valid)
-    qstrValue = qryThis->getQuery()->value(qstrField).toString();
+	if (_valid)
+		qstrValue = qryThis->getQuery()->value(qstrField).toString();
 
-  return qstrValue;
+	return qstrValue;
 }
 
 

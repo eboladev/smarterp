@@ -28,21 +28,21 @@
 
 class LabelDefinitions : public QDialog, public Ui::LabelDefinitions
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    LabelDefinitions(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~LabelDefinitions();
+	LabelDefinitions(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~LabelDefinitions();
 
 public slots:
-    virtual void editLabelDef( QListWidgetItem * );
-    virtual void btnEdit_clicked();
-    virtual void btnDelete_clicked();
-    virtual void btnAdd_clicked();
-    virtual void init();
+	virtual void editLabelDef( QListWidgetItem * );
+	virtual void btnEdit_clicked();
+	virtual void btnDelete_clicked();
+	virtual void btnAdd_clicked();
+	virtual void init();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

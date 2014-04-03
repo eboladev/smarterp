@@ -47,20 +47,20 @@ QT_BEGIN_NAMESPACE_XLSX
 
 class CellPrivate
 {
-    Q_DECLARE_PUBLIC(Cell)
+	Q_DECLARE_PUBLIC(Cell)
 public:
-    CellPrivate(Cell *p);
+	CellPrivate(Cell *p);
 
-    QVariant value;
-    QString formula;
-    Cell::DataType dataType;
-    Format format;
-    CellRange range; //used for arrayFormula
+	QVariant value;
+	QString formula;
+	Cell::DataType dataType;
+	Format format;
+	CellRange range; //used for arrayFormula
 
-    RichString richString;
+	RichString richString;
 
-    Worksheet *parent;
-    Cell *q_ptr;
+	Worksheet *parent;
+	Cell *q_ptr;
 };
 
 QT_END_NAMESPACE_XLSX

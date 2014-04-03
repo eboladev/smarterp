@@ -27,27 +27,27 @@
 
 class ImageEditor : public QDialog, public Ui::ImageEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ImageEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ImageEditor();
+	ImageEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ImageEditor();
 
 public slots:
-    virtual void cbStatic_toggled(bool yes);
-    virtual QString getImageData();
-    virtual void setImageData(QString dat);
-    virtual QString getMode();
-    virtual bool isInline();
-    virtual void setMode(QString m);
-    virtual void setInline(bool yes);
-    virtual void btnLoad_clicked();
+	virtual void cbStatic_toggled(bool yes);
+	virtual QString getImageData();
+	virtual void setImageData(QString dat);
+	virtual QString getMode();
+	virtual bool isInline();
+	virtual void setMode(QString m);
+	virtual void setInline(bool yes);
+	virtual void btnLoad_clicked();
 
 protected:
-    QString uudata;
+	QString uudata;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

@@ -71,7 +71,7 @@ FieldList Database::tableFields(const QString & table, const QString & schema)
 	QSqlQuery query(sql, QSqlDatabase::database(SESSION_NAME));
 	if (query.lastError().isValid())
 	{
-                //exception(tr("Error while getting the fileds of %1: %2.").arg(table).arg(query.lastError().text()));
+		//exception(tr("Error while getting the fileds of %1: %2.").arg(table).arg(query.lastError().text()));
 		return fields;
 	}
 
@@ -101,7 +101,7 @@ QStringList Database::indexFields(const QString & index, const QString &schema)
 
 	if (query.lastError().isValid())
 	{
-                //exception(tr("Error while getting the fileds of %1: %2.").arg(index).arg(query.lastError().text()));
+		//exception(tr("Error while getting the fileds of %1: %2.").arg(index).arg(query.lastError().text()));
 		return fields;
 	}
 
@@ -137,7 +137,7 @@ QStringList Database::getSysIndexes(const QString & table, const QString & schem
 	// really all indexes
 	QStringList sysIx;
 	QSqlQuery query(QString("PRAGMA \"%1\".index_list(\"%2\");").arg(schema).arg(table),
-					QSqlDatabase::database(SESSION_NAME));
+			QSqlDatabase::database(SESSION_NAME));
 
 	QString curr;
 	while(query.next())
@@ -158,7 +158,7 @@ DbObjects Database::getSysObjects(const QString & schema)
 	DbObjects objs;
 
 	QSqlQuery query(QString("SELECT lower(name), lower(tbl_name) FROM \"%1\".sqlite_master WHERE type = 'table' and name like 'sqlite_%';").arg(schema),
-					QSqlDatabase::database(SESSION_NAME));
+			QSqlDatabase::database(SESSION_NAME));
 
 	objs.insert("sqlite_master", "");
 	while(query.next())
@@ -226,7 +226,7 @@ bool Database::exportSql(const QString & fileName)
 }
 
 QString Database::describeObject(const QString & name,
-								 const QString & schema)
+				 const QString & schema)
 {
 	QString sql("select sql from \"%1\".sqlite_master where lower(name) = \"%2\";");
 	QSqlQuery query(sql.arg(schema).arg(name), QSqlDatabase::database(SESSION_NAME));

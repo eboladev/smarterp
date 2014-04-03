@@ -2,10 +2,10 @@
 #define CORRUGATORMW_H
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include <QtSql>
 
@@ -19,21 +19,21 @@ class CorrugatorMW;
 
 class CorrugatorMW : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit CorrugatorMW(QWidget *parent = 0);
-    ~CorrugatorMW();
-    
+	explicit CorrugatorMW(QWidget *parent = 0);
+	~CorrugatorMW();
+
 private:
-    Ui::CorrugatorMW *ui;
-    QSqlDatabase db;
-    QString currentOcID;
-    QString currentOcNo;
+	Ui::CorrugatorMW *ui;
+	QSqlDatabase db;
+	QString currentOcID;
+	QString currentOcNo;
 private slots:
-    void reloadSchedule();
-    void on_lstSchedule_clicked(const QModelIndex &index);
-    void on_cmdSave_clicked();
+	void reloadSchedule();
+	void on_lstSchedule_clicked(const QModelIndex &index);
+	void on_cmdSave_clicked();
 };
 
 #endif // CORRUGATORMW_H

@@ -10,23 +10,23 @@ class RecalculateAttendance;
 
 class RecalculateAttendance : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit RecalculateAttendance(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~RecalculateAttendance();
-    
+	explicit RecalculateAttendance(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~RecalculateAttendance();
+
 private slots:
-    void on_SelectAll_clicked();
+	void on_SelectAll_clicked();
 
-    void on_SelectNone_clicked();
+	void on_SelectNone_clicked();
 
-    void on_Recalculate_clicked();
+	void on_Recalculate_clicked();
 
 private:
-    Ui::RecalculateAttendance *ui;
-    void loadEmployees();
-    QSqlDatabase db;
+	Ui::RecalculateAttendance *ui;
+	void loadEmployees();
+	QSqlDatabase db;
 };
 
 #endif // RECALCULATEATTENDANCE_H

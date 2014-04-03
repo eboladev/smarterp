@@ -14,19 +14,19 @@ class CashAdvances;
 
 class AllAdvances : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit AllAdvances(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~AllAdvances();
-    
+	explicit AllAdvances(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~AllAdvances();
+
 private:
-    Ui::AllAdvances *ui;
+	Ui::AllAdvances *ui;
 
-    Advances *m_advances;
-    CashAdvances *m_cashAdvances;
+	Advances *m_advances;
+	CashAdvances *m_cashAdvances;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 };
 
 #endif // ALLADVANCES_H

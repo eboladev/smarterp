@@ -26,54 +26,54 @@
 
 class LabelSizeInfo
 {
-  public:
-    LabelSizeInfo(const QString&, const QString&, int, int, int, int, int, int, int, int);
-    LabelSizeInfo();
-    virtual ~LabelSizeInfo();
+public:
+	LabelSizeInfo(const QString&, const QString&, int, int, int, int, int, int, int, int);
+	LabelSizeInfo();
+	virtual ~LabelSizeInfo();
 
-    const QString & name() const;
-    const QString & paper() const;
+	const QString & name() const;
+	const QString & paper() const;
 
-    int columns() const;
-    int rows() const;
+	int columns() const;
+	int rows() const;
 
-    int width() const;
-    int height() const;
+	int width() const;
+	int height() const;
 
-    int startX() const;
-    int startY() const;
+	int startX() const;
+	int startY() const;
 
-    int xGap() const;
-    int yGap() const;
+	int xGap() const;
+	int yGap() const;
 
-    bool isNull() const;
+	bool isNull() const;
 
-    static const LabelSizeInfo & getByName(const QString &);
-    static QStringList getLabelNames();
-    static bool areLabelsEditable();
+	static const LabelSizeInfo & getByName(const QString &);
+	static QStringList getLabelNames();
+	static bool areLabelsEditable();
 
-  protected:
-    // To maintain backwards compatibility, these functions return
-    // the original, hard-coded label defs w/o connecting to db.
-    static const LabelSizeInfo & getByNameNoDatabase(const QString &);
-    static QStringList getLabelNamesNoDatabase();
+protected:
+	// To maintain backwards compatibility, these functions return
+	// the original, hard-coded label defs w/o connecting to db.
+	static const LabelSizeInfo & getByNameNoDatabase(const QString &);
+	static QStringList getLabelNamesNoDatabase();
 
-    QString _name;
-    QString _paper;
+	QString _name;
+	QString _paper;
 
-    int _columns;
-    int _rows;
+	int _columns;
+	int _rows;
 
-    int _width;
-    int _height;
+	int _width;
+	int _height;
 
-    int _startx;
-    int _starty;
+	int _startx;
+	int _starty;
 
-    int _xgap;
-    int _ygap;
+	int _xgap;
+	int _ygap;
 
-    bool _null;
+	bool _null;
 };
 
 #endif

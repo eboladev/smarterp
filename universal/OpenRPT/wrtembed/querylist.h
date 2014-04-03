@@ -30,24 +30,24 @@ class QuerySourceList;
 
 class QueryList : public QDialog, public Ui::QueryList
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    QueryList(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~QueryList();
+	QueryList(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~QueryList();
 
 public slots:
-    virtual void editQuery( QListWidgetItem * );
-    virtual void btnEdit_clicked();
-    virtual void btnDelete_clicked();
-    virtual void btnAdd_clicked();
-    virtual void init( QuerySourceList * );
+	virtual void editQuery( QListWidgetItem * );
+	virtual void btnEdit_clicked();
+	virtual void btnDelete_clicked();
+	virtual void btnAdd_clicked();
+	virtual void init( QuerySourceList * );
 
 protected:
-    QuerySourceList * qsList;
+	QuerySourceList * qsList;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

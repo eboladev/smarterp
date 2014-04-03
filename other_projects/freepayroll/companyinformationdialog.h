@@ -11,23 +11,23 @@ class CompanyInformationDialog;
 
 class CompanyInformationDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit CompanyInformationDialog(QWidget *parent = 0);
-    ~CompanyInformationDialog();
+	explicit CompanyInformationDialog(QWidget *parent = 0);
+	~CompanyInformationDialog();
 
 private slots:
-    void on_pushButton_clicked();
+	void on_pushButton_clicked();
 
 private:
-    Ui::CompanyInformationDialog *ui;
+	Ui::CompanyInformationDialog *ui;
 
-    QSqlTableModel *model;
-    QItemSelectionModel *selectionModel;
-    QDataWidgetMapper *mapper;
+	QSqlTableModel *model;
+	QItemSelectionModel *selectionModel;
+	QDataWidgetMapper *mapper;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 };
 
 #endif // COMPANYINFORMATIONDIALOG_H

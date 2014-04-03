@@ -25,104 +25,104 @@
 #include <QValidator>
 
 LabelEditor::LabelEditor(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
-    connect(rbVAlignBottom, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(tbText, SIGNAL(textChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
-    connect(rbHAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(rbHAlignLeft, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(rbHAlignCenter, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(rbHAlignRight, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(rbVAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(rbVAlignTop, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(rbVAlignMiddle, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	// signals and slots connections
+	connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
+	connect(rbVAlignBottom, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(tbText, SIGNAL(textChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
+	connect(rbHAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(rbHAlignLeft, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(rbHAlignCenter, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(rbHAlignRight, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(rbVAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(rbVAlignTop, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
+	connect(rbVAlignMiddle, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
 
-    leXPos->setValidator(new QDoubleValidator(0.0,100.0,3,leXPos));
-    leYPos->setValidator(new QDoubleValidator(0.0,100.0,3,leYPos));
-    
-    leWidth->setValidator(new QDoubleValidator(0.01,100.0,3,leWidth));
-    leHeight->setValidator(new QDoubleValidator(0.01,100.0,3,leHeight));
+	leXPos->setValidator(new QDoubleValidator(0.0,100.0,3,leXPos));
+	leYPos->setValidator(new QDoubleValidator(0.0,100.0,3,leYPos));
+
+	leWidth->setValidator(new QDoubleValidator(0.01,100.0,3,leWidth));
+	leHeight->setValidator(new QDoubleValidator(0.01,100.0,3,leHeight));
 }
 
 LabelEditor::~LabelEditor()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void LabelEditor::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void LabelEditor::rbAlign_changed()
 {
-    // ok one of the radio buttons was click.    
-    // there are 8 radio buttons to check.
-    // 4 in 2 groups: vertical and horizonatal group
-    Qt::Alignment f = 0;
-    if(rbHAlignLeft->isChecked()) f |= Qt::AlignLeft;
-    if(rbHAlignCenter->isChecked()) f |= Qt::AlignHCenter;
-    if(rbHAlignRight->isChecked()) f |= Qt::AlignRight;
-    if(rbVAlignTop->isChecked()) f |= Qt::AlignTop;
-    if(rbVAlignMiddle->isChecked()) f |= Qt::AlignVCenter;
-    if(rbVAlignBottom->isChecked()) f |= Qt::AlignBottom;
-    labelPreview->setAlignment(f);
+	// ok one of the radio buttons was click.
+	// there are 8 radio buttons to check.
+	// 4 in 2 groups: vertical and horizonatal group
+	Qt::Alignment f = 0;
+	if(rbHAlignLeft->isChecked()) f |= Qt::AlignLeft;
+	if(rbHAlignCenter->isChecked()) f |= Qt::AlignHCenter;
+	if(rbHAlignRight->isChecked()) f |= Qt::AlignRight;
+	if(rbVAlignTop->isChecked()) f |= Qt::AlignTop;
+	if(rbVAlignMiddle->isChecked()) f |= Qt::AlignVCenter;
+	if(rbVAlignBottom->isChecked()) f |= Qt::AlignBottom;
+	labelPreview->setAlignment(f);
 }
 
 void LabelEditor::btnFont_clicked()
 {
-    // pop up a font dialog
-    bool ok;
-    QFont font = QFontDialog::getFont(&ok, labelPreview->font(), this);
-    if(ok) {
-        labelPreview->setFont(font);
-    }
+	// pop up a font dialog
+	bool ok;
+	QFont font = QFontDialog::getFont(&ok, labelPreview->font(), this);
+	if(ok) {
+		labelPreview->setFont(font);
+	}
 }
 
 void LabelEditor::tbText_textChanged( const QString & Str )
 {
-    // ok update the preview
-    labelPreview->setText(Str);
+	// ok update the preview
+	labelPreview->setText(Str);
 }
 
 void LabelEditor::setLabelFlags( int f )
 {
-    // set the label flags
-    //qDebug("LabelEditor::setLabelFlags( 0x%X )",f);
-    labelPreview->setAlignment((Qt::Alignment)f);
-    if((f & Qt::AlignLeft) == Qt::AlignLeft) {
-        //qDebug("HAlignLeft 0x%X", AlignLeft);
-        rbHAlignLeft->setChecked(true);
-    } else if((f & Qt::AlignHCenter) == Qt::AlignHCenter) {
-        //qDebug("HAlignCenter 0x%X", AlignHCenter);
-        rbHAlignCenter->setChecked(true);
-    } else if((f & Qt::AlignRight) == Qt::AlignRight) {
-        //qDebug("HAlignRight 0x%X", AlignRight);
-        rbHAlignRight->setChecked(true);
-    } else {
-        //qDebug("HAlignNone");
-        rbHAlignNone->setChecked(true);
-    }
-    if((f & Qt::AlignTop) == Qt::AlignTop) {
-        //qDebug("VAlignTop 0x%X", AlignTop);
-        rbVAlignTop->setChecked(true);
-    } else if((f & Qt::AlignVCenter) == Qt::AlignVCenter) {
-        //qDebug("VAlignCenter 0x%X", AlignVCenter);
-        rbVAlignMiddle->setChecked(true);
-    } else if((f & Qt::AlignBottom) == Qt::AlignBottom) {
-        //qDebug("VAlignBottom 0x%X", AlignBottom);
-        rbVAlignBottom->setChecked(true);
-    } else {
-        //qDebug("VAlignNone");
-        rbVAlignNone->setChecked(true);
-    }
+	// set the label flags
+	//qDebug("LabelEditor::setLabelFlags( 0x%X )",f);
+	labelPreview->setAlignment((Qt::Alignment)f);
+	if((f & Qt::AlignLeft) == Qt::AlignLeft) {
+		//qDebug("HAlignLeft 0x%X", AlignLeft);
+		rbHAlignLeft->setChecked(true);
+	} else if((f & Qt::AlignHCenter) == Qt::AlignHCenter) {
+		//qDebug("HAlignCenter 0x%X", AlignHCenter);
+		rbHAlignCenter->setChecked(true);
+	} else if((f & Qt::AlignRight) == Qt::AlignRight) {
+		//qDebug("HAlignRight 0x%X", AlignRight);
+		rbHAlignRight->setChecked(true);
+	} else {
+		//qDebug("HAlignNone");
+		rbHAlignNone->setChecked(true);
+	}
+	if((f & Qt::AlignTop) == Qt::AlignTop) {
+		//qDebug("VAlignTop 0x%X", AlignTop);
+		rbVAlignTop->setChecked(true);
+	} else if((f & Qt::AlignVCenter) == Qt::AlignVCenter) {
+		//qDebug("VAlignCenter 0x%X", AlignVCenter);
+		rbVAlignMiddle->setChecked(true);
+	} else if((f & Qt::AlignBottom) == Qt::AlignBottom) {
+		//qDebug("VAlignBottom 0x%X", AlignBottom);
+		rbVAlignBottom->setChecked(true);
+	} else {
+		//qDebug("VAlignNone");
+		rbVAlignNone->setChecked(true);
+	}
 }
 
 

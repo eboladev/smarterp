@@ -25,54 +25,54 @@ class HTMLReportPreview;
 
 class HTMLReportPreview : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit HTMLReportPreview(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
-                               QSqlQuery query = QSqlQuery(),
-                               QString title = QString(""),
-                               bool firstColumnHidden = true,
-                               QString reportQuery = "SELECT (NOW)",
-                               QStringList columnsToSum = QStringList());
+	explicit HTMLReportPreview(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
+				   QSqlQuery query = QSqlQuery(),
+				   QString title = QString(""),
+				   bool firstColumnHidden = true,
+				   QString reportQuery = "SELECT (NOW)",
+				   QStringList columnsToSum = QStringList());
 
-    explicit HTMLReportPreview(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
-                               QString query = QString(),
-                               QString title = QString(""),
-                               bool firstColumnHidden = true,
-                               QString reportQuery = "SELECT (NOW)",
-                               QStringList columnsToSum = QStringList());
+	explicit HTMLReportPreview(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
+				   QString query = QString(),
+				   QString title = QString(""),
+				   bool firstColumnHidden = true,
+				   QString reportQuery = "SELECT (NOW)",
+				   QStringList columnsToSum = QStringList());
 
-    explicit HTMLReportPreview(QWidget *parent = 0, QString html = QString());
+	explicit HTMLReportPreview(QWidget *parent = 0, QString html = QString());
 
-    ~HTMLReportPreview();
-    
+	~HTMLReportPreview();
+
 private:
-    Ui::HTMLReportPreview *ui;
-    void initGui();
-    QSqlDatabase db;
-    QSqlQuery qu;
-    QString s_query;
-    QString s_title;
-    bool rawHtml;
-    QString s_rawHtml;
-    bool hideFirstColumn;
+	Ui::HTMLReportPreview *ui;
+	void initGui();
+	QSqlDatabase db;
+	QSqlQuery qu;
+	QString s_query;
+	QString s_title;
+	bool rawHtml;
+	QString s_rawHtml;
+	bool hideFirstColumn;
 
-    QPrintPreviewWidget *previewWidget;
-    QPrinter *printer;
-    QStringList sumColumns;
+	QPrintPreviewWidget *previewWidget;
+	QPrinter *printer;
+	QStringList sumColumns;
 
-    QActionGroup *orientationGroup;
+	QActionGroup *orientationGroup;
 private slots:
-    void print(QPrinter *printer);
+	void print(QPrinter *printer);
 
-    void actionPrint();
-    void actionPageSetup();
-    void firstPage();
-    void previousPage();
-    void nextPage();
-    void lastPage();
+	void actionPrint();
+	void actionPageSetup();
+	void firstPage();
+	void previousPage();
+	void nextPage();
+	void lastPage();
 
-    void viewChanged();
+	void viewChanged();
 
 
 };

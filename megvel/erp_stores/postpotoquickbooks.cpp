@@ -2,6 +2,6 @@
 #include <QtSql>
 
 PostPOToQuickbooks::PostPOToQuickbooks(QObject *parent) :
-    QObject(parent)
+	QObject(parent)
 {
 }

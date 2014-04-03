@@ -6,19 +6,19 @@
 
 class ThreadedPayrollCalculator : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ThreadedPayrollCalculator(QObject *parent = 0, QSqlDatabase database = QSqlDatabase(),
-                                       QString month = QString());
-    void run();
+	explicit ThreadedPayrollCalculator(QObject *parent = 0, QSqlDatabase database = QSqlDatabase(),
+					   QString month = QString());
+	void run();
 signals:
-    void progress(int);
-    void currentEmployee(QString);
+	void progress(int);
+	void currentEmployee(QString);
 public slots:
-    
+
 private:
-    QSqlDatabase db;
-    QString monthID;
+	QSqlDatabase db;
+	QString monthID;
 };
 
 #endif // THREADEDPAYROLLCALCULATOR_H

@@ -9,14 +9,14 @@ class ChequesMW;
 
 class ChequesMW : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ChequesMW(QWidget *parent = 0);
-    ~ChequesMW();
-    
+	explicit ChequesMW(QWidget *parent = 0);
+	~ChequesMW();
+
 private:
-    Ui::ChequesMW *ui;
+	Ui::ChequesMW *ui;
 };
 
 #endif // CHEQUESMW_H

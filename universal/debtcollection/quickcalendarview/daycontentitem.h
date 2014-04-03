@@ -24,7 +24,7 @@
 #define DAYCONTENTITEM_H
 
 #include "calendaritem.h"
- 
+
 class DayItem;
 
 /**
@@ -36,33 +36,33 @@ class DayContentItem : public CalendarItem
 
 public:
 	///Конструктор
-    DayContentItem(DayItem *dayItem, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
+	DayContentItem(DayItem *dayItem, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                QWidget *widget);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
-    virtual void layoutChanged();
-    virtual void dataChanged();
+	virtual void layoutChanged();
+	virtual void dataChanged();
 
 protected:
 	///Обработчик события двойного клика мышью
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-    ///Обработчик события нажатия клавиши мыши
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+	///Обработчик события нажатия клавиши мыши
+	void mousePressEvent(QGraphicsSceneMouseEvent *event);
 	///Обработчик события перемещения мыши
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 	///Обработчик события отпускания клавиши мыши
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    DayItem *ptrDayItem; ///<Указатель на DayItem 
+	DayItem *ptrDayItem; ///<Указатель на DayItem
 
-    int myColumns; //< Число рядов
+	int myColumns; //< Число рядов
 
-    int dragStart; //<Начало выделенной мышью области
-    int dragEnd; //<Окончание выделенной мышью области
+	int dragStart; //<Начало выделенной мышью области
+	int dragEnd; //<Окончание выделенной мышью области
 
-    bool dragSelection; //<Флаг, показывающий выделена ли мышью какая-либо область
+	bool dragSelection; //<Флаг, показывающий выделена ли мышью какая-либо область
 };
 
 #endif

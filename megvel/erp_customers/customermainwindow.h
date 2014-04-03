@@ -2,10 +2,10 @@
 #define CUSTOMERMAINWINDOW_H
 
 #if QT_VERSION >= 0x050000
-    #include <QtWidgets>
+#include <QtWidgets>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QtGui>
+#include <QtGui>
 #endif
 #include <QtSql>
 #include <QMainWindow>
@@ -23,27 +23,27 @@ class CustomerMainWindow;
 
 class CustomerMainWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit CustomerMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~CustomerMainWindow();
+	explicit CustomerMainWindow(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~CustomerMainWindow();
 private:
-    Ui::CustomerMainWindow *ui;
-    QSqlDatabase db;
-    LGMQueue *queue;
+	Ui::CustomerMainWindow *ui;
+	QSqlDatabase db;
+	LGMQueue *queue;
 
-    Customers *cust;
-    ProductsApproval *prod;
-    PurchaseOrders *lpos;
-    ProformaList *prof;
-    OcRegister *ocs;
+	Customers *cust;
+	ProductsApproval *prod;
+	PurchaseOrders *lpos;
+	ProformaList *prof;
+	OcRegister *ocs;
 
-    bool isQc;
+	bool isQc;
 
 private slots:
-    void receiveDb(QSqlDatabase database);
-    void pageChanged(QString newPage);
+	void receiveDb(QSqlDatabase database);
+	void pageChanged(QString newPage);
 };
 
 #endif // CUSTOMERMAINWINDOW_H

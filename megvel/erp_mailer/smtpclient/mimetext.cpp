@@ -22,10 +22,10 @@
 
 MimeText::MimeText(const QString &txt)
 {
-    this->text = txt;
-    this->cType = "text/plain";
-    this->cCharset = "utf-8";
-    this->cEncoding = _8Bit;
+	this->text = txt;
+	this->cType = "text/plain";
+	this->cCharset = "utf-8";
+	this->cEncoding = _8Bit;
 }
 
 MimeText::~MimeText() { }
@@ -37,12 +37,12 @@ MimeText::~MimeText() { }
 
 void MimeText::setText(const QString & text)
 {
-    this->text = text;
+	this->text = text;
 }
 
 const QString & MimeText::getText() const
 {
-    return text;
+	return text;
 }
 
 /* [2] --- */
@@ -52,11 +52,11 @@ const QString & MimeText::getText() const
 
 void MimeText::prepare()
 {
-    this->content.clear();
-    this->content.append(text);
+	this->content.clear();
+	this->content.append(text);
 
-    /* !!! IMPORTANT !!! */
-    MimePart::prepare();
+	/* !!! IMPORTANT !!! */
+	MimePart::prepare();
 }
 
 /* [3] --- */

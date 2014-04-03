@@ -1,7 +1,7 @@
 #include "productcalculations.h"
 
 ProductCalculations::ProductCalculations(QObject *parent) :
-    QObject(parent)
+	QObject(parent)
 {
 }
 
@@ -11,21 +11,21 @@ void ProductCalculations::Calculations()
 
 QString ProductCalculations::getSellingPrice()
 {
-    QString ret = "";
+	QString ret = "";
 
-    return ret;
+	return ret;
 }
 
 QString ProductCalculations::GetWeightKgs(QString qty)
 {
-    Q_UNUSED(qty);
-    Calculations();
-    return QString::number(BWEIGHT);
+	Q_UNUSED(qty);
+	Calculations();
+	return QString::number(BWEIGHT);
 }
 
 QString ProductCalculations::GetWeightTonnes(QString qty)
 {
-    Q_UNUSED(qty);
-    Calculations();
-    return QString::number(BWEIGHT / 1000);
+	Q_UNUSED(qty);
+	Calculations();
+	return QString::number(BWEIGHT / 1000);
 }

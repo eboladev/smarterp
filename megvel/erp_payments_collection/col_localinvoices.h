@@ -10,22 +10,22 @@ class col_LocalInvoices;
 
 class col_LocalInvoices : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit col_LocalInvoices(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~col_LocalInvoices();
-    
+	explicit col_LocalInvoices(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~col_LocalInvoices();
+
 private:
-    Ui::col_LocalInvoices *ui;
-    QSqlDatabase db;
-    QSqlDatabase odbc_db;
+	Ui::col_LocalInvoices *ui;
+	QSqlDatabase db;
+	QSqlDatabase odbc_db;
 
 private slots:
-    void showInvoices();
-    void refetchQbData();
-    void on_cmdChangeInvoiceDates_clicked();
-    void on_cmdFetchQuickbooksData_clicked();
+	void showInvoices();
+	void refetchQbData();
+	void on_cmdChangeInvoiceDates_clicked();
+	void on_cmdFetchQuickbooksData_clicked();
 };
 
 #endif // COL_LOCALINVOICES_H

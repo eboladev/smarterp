@@ -33,10 +33,10 @@ class ParameterList;
 #include <qstringlist.h>
 #include <qpainter.h>
 #if QT_VERSION >= 0x050000
-    #include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrinter>
 #endif
 #if QT_VERSION < 0x50000
-    #include <QPrinter>
+#include <QPrinter>
 #endif
 
 #include <qimage.h>
@@ -46,63 +46,63 @@ class ParameterList;
 
 
 class orReport {
-  private:
-    void constructor(const QString &);
+private:
+	void constructor(const QString &);
 
-    orReportPrivate *_internal;
-    static QPrinter* multiPrinter;
-    static QPainter* multiPainter;
+	orReportPrivate *_internal;
+	static QPrinter* multiPrinter;
+	static QPainter* multiPainter;
 
-  public:
-    orReport(QSqlDatabase = QSqlDatabase());
-    orReport(const QString &, QSqlDatabase = QSqlDatabase());
-    orReport(const QString &, const QStringList &, QSqlDatabase = QSqlDatabase());
-    orReport(const char *, const ParameterList &, QSqlDatabase = QSqlDatabase());
-    orReport(const QString &, const ParameterList &, QSqlDatabase = QSqlDatabase());
-    ~orReport();
+public:
+	orReport(QSqlDatabase = QSqlDatabase());
+	orReport(const QString &, QSqlDatabase = QSqlDatabase());
+	orReport(const QString &, const QStringList &, QSqlDatabase = QSqlDatabase());
+	orReport(const char *, const ParameterList &, QSqlDatabase = QSqlDatabase());
+	orReport(const QString &, const ParameterList &, QSqlDatabase = QSqlDatabase());
+	~orReport();
 
-    bool    render(QPainter *, QPrinter * = 0);
-    bool    print(QPrinter *prtThis = 0, bool boolSetupPrinter = true, bool showPreview = false);
-    bool    exportToPDF( const QString& fileName );
+	bool    render(QPainter *, QPrinter * = 0);
+	bool    print(QPrinter *prtThis = 0, bool boolSetupPrinter = true, bool showPreview = false);
+	bool    exportToPDF( const QString& fileName );
 
-    static bool    beginMultiPrint(QPrinter *);
-    static bool    beginMultiPrint(QPrinter *, bool & userCanceled);
-    static bool    endMultiPrint(QPrinter *);
+	static bool    beginMultiPrint(QPrinter *);
+	static bool    beginMultiPrint(QPrinter *, bool & userCanceled);
+	static bool    endMultiPrint(QPrinter *);
 
-    void    setWatermarkText(const QString &);
-    void    setWatermarkFont(const QFont &);
-    void    setWatermarkOpacity(unsigned char);      // 0..255 : default 25
+	void    setWatermarkText(const QString &);
+	void    setWatermarkFont(const QFont &);
+	void    setWatermarkOpacity(unsigned char);      // 0..255 : default 25
 
-    QString watermarkText();
-    QFont   watermarkFont();
-    unsigned char watermarkOpacity();
+	QString watermarkText();
+	QFont   watermarkFont();
+	unsigned char watermarkOpacity();
 
-    void    setBackgroundImage(const QImage &);
-    void    setBackgroundRect(const QRect &);
-    void    setBackgroundRect(int, int, int, int); 
-    void    setBackgroundOpacity(unsigned char);     // 0..255 : default 25
-    void    setBackgroundAlignment(int);             // Qt::AlignmentFlags
-    void    setBackgroundScale(bool);
-    void    setBackgroundScaleMode(Qt::AspectRatioMode);
+	void    setBackgroundImage(const QImage &);
+	void    setBackgroundRect(const QRect &);
+	void    setBackgroundRect(int, int, int, int);
+	void    setBackgroundOpacity(unsigned char);     // 0..255 : default 25
+	void    setBackgroundAlignment(int);             // Qt::AlignmentFlags
+	void    setBackgroundScale(bool);
+	void    setBackgroundScaleMode(Qt::AspectRatioMode);
 
-    QImage  backgroundImage();
-    QRect   backgroundRect();
-    unsigned char backgroundOpacity();
-    int     backgroundAlignment();
-    bool    backgroundScale();
-    Qt::AspectRatioMode backgroundScaleMode();
-    
-    void    setDatabase(QSqlDatabase);
+	QImage  backgroundImage();
+	QRect   backgroundRect();
+	unsigned char backgroundOpacity();
+	int     backgroundAlignment();
+	bool    backgroundScale();
+	Qt::AspectRatioMode backgroundScaleMode();
 
-    bool    setDom(const QDomDocument &docPReport);
-    void    setParamList(const QStringList &);
-    void    setParamList(const ParameterList &);
-    ParameterList getParamList();
-    bool    isValid();
-    bool    doesReportExist();
-    bool    doParamsSatisfy();
-    bool    satisfyParams(QWidget *);
-    int     reportError(QWidget *);
+	void    setDatabase(QSqlDatabase);
+
+	bool    setDom(const QDomDocument &docPReport);
+	void    setParamList(const QStringList &);
+	void    setParamList(const ParameterList &);
+	ParameterList getParamList();
+	bool    isValid();
+	bool    doesReportExist();
+	bool    doParamsSatisfy();
+	bool    satisfyParams(QWidget *);
+	int     reportError(QWidget *);
 };
 
 #endif

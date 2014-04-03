@@ -27,67 +27,67 @@ Parameter::Parameter()
 
 Parameter::Parameter(const QString &pName, const QVariant &pValue)
 {
-  _name  = pName;
-  _value = pValue;
+	_name  = pName;
+	_value = pValue;
 }
 
 Parameter::Parameter(const Parameter &pParam)
 {
-  _name  = pParam._name;
-  _value = pParam._value;
+	_name  = pParam._name;
+	_value = pParam._value;
 }
 
 Parameter & Parameter::operator= (const Parameter &pParam)
 {
-  _name  = pParam._name;
-  _value = pParam._value;
+	_name  = pParam._name;
+	_value = pParam._value;
 
-  return *this;
+	return *this;
 }
 
 void ParameterList::append(const QString &pName)
 {
-  append(Parameter(pName, QVariant()));
+	append(Parameter(pName, QVariant()));
 }
 
 void ParameterList::append(const QString &pName, const QVariant &pValue)
 {
-  append(Parameter(pName, pValue));
+	append(Parameter(pName, pValue));
 }
 
 void ParameterList::append(const QString &pName, const QString &pValue)
 {
-  append(Parameter(pName, pValue));
+	append(Parameter(pName, pValue));
 }
 
 void ParameterList::append(const QString &pName, const char *pValue)
 {
-  append(Parameter(pName, QString(pValue)));
+	append(Parameter(pName, QString(pValue)));
 }
 
 void ParameterList::append(const QString &pName, const QDate &pValue)
 {
-  append(Parameter(pName, QVariant(pValue)));
+	append(Parameter(pName, QVariant(pValue)));
 }
 
 void ParameterList::append(const QString &pName, unsigned int pValue)
 {
-  append(Parameter(pName, pValue));
+	append(Parameter(pName, pValue));
 }
 
 void ParameterList::append(const QString &pName, int pValue)
 {
-  append(Parameter(pName, pValue));
+	append(Parameter(pName, pValue));
 }
 
 void ParameterList::append(const QString &pName, double pValue)
 {
-  append(Parameter(pName, pValue));
+	append(Parameter(pName, pValue));
 }
 
 void ParameterList::append(const Parameter &pParam)
 {
-  QList<Parameter>::append(pParam);
+	QList<Parameter>::append(pParam);
 }
 
 void ParameterList::remove( QString &pParamName)
@@ -102,51 +102,51 @@ void ParameterList::remove( QString &pParamName)
 	}
 
 	if (remove > 0)
-	{    
+	{
 		removeAt(remove);
 	}
 }
 
 QString ParameterList::name(int pAt) const
 {
-  return operator[](pAt)._name;
+	return operator[](pAt)._name;
 }
 
 QVariant ParameterList::value(int pAt, bool *pValid) const
 {
-  if (pValid != NULL)
-    *pValid = true;
+	if (pValid != NULL)
+		*pValid = true;
 
-  return operator[](pAt)._value;
+	return operator[](pAt)._value;
 }
 
 QVariant ParameterList::value(const QString &pParamName, bool *pValid) const
 {
-  for (int counter = 0; counter < count(); counter++)
-  {
-    if (operator[](counter)._name == pParamName)
-    {
-      if (pValid != NULL)
-        *pValid = true;
+	for (int counter = 0; counter < count(); counter++)
+	{
+		if (operator[](counter)._name == pParamName)
+		{
+			if (pValid != NULL)
+				*pValid = true;
 
-      return operator[](counter)._value;
-    }
-  }
+			return operator[](counter)._value;
+		}
+	}
 
-  if (pValid != NULL)
-    *pValid = false;
+	if (pValid != NULL)
+		*pValid = false;
 
-  return QVariant();
+	return QVariant();
 }
 
 bool ParameterList::inList(const QString &pParamName) const
 {
-  for (int counter = 0; counter < count(); counter++)
-  {
-    if (operator[](counter)._name == pParamName)
-      return true;
-  }
+	for (int counter = 0; counter < count(); counter++)
+	{
+		if (operator[](counter)._name == pParamName)
+			return true;
+	}
 
-  return false;
+	return false;
 }
 

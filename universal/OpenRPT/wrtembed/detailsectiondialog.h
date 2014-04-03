@@ -29,26 +29,26 @@ class ORGraphicsSectionDetail;
 
 class DetailSectionDialog : public QDialog, public Ui::DetailSectionDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    DetailSectionDialog(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~DetailSectionDialog();
+	DetailSectionDialog(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~DetailSectionDialog();
 
-    void setReportSectionDetail( ORGraphicsSectionDetail * gsd );
+	void setReportSectionDetail( ORGraphicsSectionDetail * gsd );
 
 public slots:
-    virtual void btnAdd_clicked();
-    virtual void btnEdit_clicked();
-    virtual void btnRemove_clicked();
-    virtual void btnMoveUp_clicked();
-    virtual void brnMoveDown_clicked();
+	virtual void btnAdd_clicked();
+	virtual void btnEdit_clicked();
+	virtual void btnRemove_clicked();
+	virtual void btnMoveUp_clicked();
+	virtual void brnMoveDown_clicked();
 
 protected:
-    ORGraphicsSectionDetail * _gsd;
+	ORGraphicsSectionDetail * _gsd;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

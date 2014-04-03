@@ -31,34 +31,34 @@ class QSplashScreen;
 
 class login : public QDialog, public Ui::login
 {
-    Q_OBJECT
+	Q_OBJECT
 
-  public:
-    login(QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0);
-    ~login();
+public:
+	login(QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0);
+	~login();
 
-    QString _databaseURL;
+	QString _databaseURL;
 
-    virtual int set( const ParameterList & pParams, QSplashScreen * pSplash );
-    virtual void populateDatabaseInfo();
-    virtual QString username();
-    virtual QString password();
+	virtual int set( const ParameterList & pParams, QSplashScreen * pSplash );
+	virtual void populateDatabaseInfo();
+	virtual QString username();
+	virtual QString password();
 
-  public slots:
-    virtual int set( const ParameterList & pParams );
+public slots:
+	virtual int set( const ParameterList & pParams );
 
-  protected slots:
-    virtual void languageChange();
+protected slots:
+	virtual void languageChange();
 
-    virtual void sLogin();
-    virtual void sOptions();
+	virtual void sLogin();
+	virtual void sOptions();
 
 
-  private:
-    bool _captive;
-    QSplashScreen *_splash;
-    QString _cUsername;
-    QString _cPassword;
+private:
+	bool _captive;
+	QSplashScreen *_splash;
+	QString _cUsername;
+	QString _cPassword;
 };
 
 #endif

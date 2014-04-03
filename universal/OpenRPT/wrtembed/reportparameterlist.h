@@ -28,24 +28,24 @@
 
 class ReportParameterList : public QDialog, public Ui::ReportParameterList
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ReportParameterList(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ReportParameterList();
+	ReportParameterList(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ReportParameterList();
 
-    virtual void setList( QMap<QString, ORParameter> * m );
+	virtual void setList( QMap<QString, ORParameter> * m );
 
 protected:
-    QMap<QString,ORParameter> *_map;
+	QMap<QString,ORParameter> *_map;
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
-    virtual void sAdd();
-    virtual void sEdit();
-    virtual void sDelete();
-    virtual void sEdit( QListWidgetItem * );
+	virtual void sAdd();
+	virtual void sEdit();
+	virtual void sDelete();
+	virtual void sEdit( QListWidgetItem * );
 
 };
 

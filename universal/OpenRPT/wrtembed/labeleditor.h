@@ -27,21 +27,21 @@
 
 class LabelEditor : public QDialog, public Ui::LabelEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    LabelEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~LabelEditor();
+	LabelEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~LabelEditor();
 
 public slots:
-    virtual void rbAlign_changed();
-    virtual void btnFont_clicked();
-    virtual void tbText_textChanged(const QString & Str);
-    virtual void setLabelFlags(int f);
-    virtual void rbHAlignNone_clicked();
+	virtual void rbAlign_changed();
+	virtual void btnFont_clicked();
+	virtual void tbText_textChanged(const QString & Str);
+	virtual void setLabelFlags(int f);
+	virtual void rbHAlignNone_clicked();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

@@ -2,13 +2,13 @@
 #include "ui_attendance_shiftpicker.h"
 
 Attendance_ShiftPicker::Attendance_ShiftPicker(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Attendance_ShiftPicker)
+	QDialog(parent),
+	ui(new Ui::Attendance_ShiftPicker)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 Attendance_ShiftPicker::~Attendance_ShiftPicker()
 {
-    delete ui;
+	delete ui;
 }

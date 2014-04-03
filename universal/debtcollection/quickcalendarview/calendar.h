@@ -45,12 +45,12 @@
 
     Appointment *app = new Appointment();
     app->setDateTimes(QDateTime(QDate(2008,12,23),QTime(19,0,0)),
-                     QDateTime(QDate(2008,12,23),QTime(23,0,0)));
+		     QDateTime(QDate(2008,12,23),QTime(23,0,0)));
 
     app->setSubject("Holiday party!");
-    app->setPlace("Secret place"); 
+    app->setPlace("Secret place");
     app->setDescription("Secret holiday party at secret place. Everybody is welcome!");
-    cal->insertAppointment(app); 
+    cal->insertAppointment(app);
 @endcode
 Создаем объект класса Calendar с индексом 0. Методом setName() устанавливаем его имя. 
 Метод setColor() позволяет задать нужный цвет календаря, а setSelected() - требуемый статус выделения.
@@ -60,54 +60,54 @@
 class Calendar
 {
 public:
-    Calendar(int key) : mySelected(false), myColor(255,0,0), myCounter(0) { myKey = key; }
-    ~Calendar() { qDeleteAll(myAppointments); }
+	Calendar(int key) : mySelected(false), myColor(255,0,0), myCounter(0) { myKey = key; }
+	~Calendar() { qDeleteAll(myAppointments); }
 
-    int key() const {return myKey;}		///<Метод чтения ключа
-    void setKey(int key) {myKey = key;}	///<Метод записи ключа
+	int key() const {return myKey;}		///<Метод чтения ключа
+	void setKey(int key) {myKey = key;}	///<Метод записи ключа
 
-    QString name() const {return myName;}				///<Метод чтения имени
-    void setName(const QString &name) {myName = name;}	///<Метод записи имени
+	QString name() const {return myName;}				///<Метод чтения имени
+	void setName(const QString &name) {myName = name;}	///<Метод записи имени
 
-    QString description() const {return myDescription;}	///<Метод чтения описания
-    void setDescription(const QString &description) {myDescription = description;}	///<Метод установки описания
+	QString description() const {return myDescription;}	///<Метод чтения описания
+	void setDescription(const QString &description) {myDescription = description;}	///<Метод установки описания
 
-    bool isSelected() const { return mySelected; }				///<Возращает  статус выбора текущего календаря
-    void setSelected(bool selected) { mySelected = selected; }	///<Установить статус выбора текущего календаря
+	bool isSelected() const { return mySelected; }				///<Возращает  статус выбора текущего календаря
+	void setSelected(bool selected) { mySelected = selected; }	///<Установить статус выбора текущего календаря
 
-    QColor color() const { return myColor; }					///<Получить цвет календаря
-    void setColor(const QColor &color) { myColor = color; }		///<Задать цвет для календаря
+	QColor color() const { return myColor; }					///<Получить цвет календаря
+	void setColor(const QColor &color) { myColor = color; }		///<Задать цвет для календаря
 
-/**
+	/**
 *	Получить список встреч на выбранное число.
 *	@param date Дата встречи в формате QDate.
 *	@return Список встреч QList <Appointment *>
 */
-    QList <Appointment *> getAppointments(const QDate &date);
-    bool insertAppointment(Appointment *appointment);			///<Добавить встречу
-/**
+	QList <Appointment *> getAppointments(const QDate &date);
+	bool insertAppointment(Appointment *appointment);			///<Добавить встречу
+	/**
 *	@brief Метод обновления данных о встречи в календаре.
 *	@param appointment Ссылка на данные встречи, которые нужно записать на место старых, соотвествующая встреча определяется по ключу.
 *	@return Всегда возращает false
 */
-    bool updateAppointment(const Appointment &appointment);
-    bool removeAppointment(Appointment *appointment);			///<Удалить встречу
+	bool updateAppointment(const Appointment &appointment);
+	bool removeAppointment(Appointment *appointment);			///<Удалить встречу
 
-    bool operator==(const Calendar &other) const;				///<Булевый оператор сравнения с другим календарем
-    bool operator!=(const Calendar &other) const;				///<Булевый оператор неравенства с другим календарем
+	bool operator==(const Calendar &other) const;				///<Булевый оператор сравнения с другим календарем
+	bool operator!=(const Calendar &other) const;				///<Булевый оператор неравенства с другим календарем
 private:
-    int myKey;	///<Ключ индификатор календаря
+	int myKey;	///<Ключ индификатор календаря
 
-    bool mySelected; ///<Статус выбора
+	bool mySelected; ///<Статус выбора
 
-    QColor myColor;	 ///<Цвет календаря
+	QColor myColor;	 ///<Цвет календаря
 
-    QString myName; ///<Имя календаря
-    QString myDescription; ///<Описание о календаре
+	QString myName; ///<Имя календаря
+	QString myDescription; ///<Описание о календаре
 
-    QList <Appointment *> myAppointments; ///<Список встреч
+	QList <Appointment *> myAppointments; ///<Список встреч
 
-    int myCounter;	///<??
+	int myCounter;	///<??
 };
 
 //Q_DECLARE_METATYPE(Calendar)

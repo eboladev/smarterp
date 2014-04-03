@@ -2,13 +2,13 @@
 #include "ui_newactionwizard.h"
 
 NewActionWizard::NewActionWizard(QWidget *parent) :
-    QWizard(parent),
-    ui(new Ui::NewActionWizard)
+	QWizard(parent),
+	ui(new Ui::NewActionWizard)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 NewActionWizard::~NewActionWizard()
 {
-    delete ui;
+	delete ui;
 }

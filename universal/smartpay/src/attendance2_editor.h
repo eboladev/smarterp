@@ -10,19 +10,19 @@ class attendance2_editor;
 
 class attendance2_editor : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit attendance2_editor(QWidget *parent = 0, QSqlDatabase d = QSqlDatabase());
-    ~attendance2_editor();
-    void setAttendance(QString id);
+	explicit attendance2_editor(QWidget *parent = 0, QSqlDatabase d = QSqlDatabase());
+	~attendance2_editor();
+	void setAttendance(QString id);
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::attendance2_editor *ui;
-    QSqlDatabase db;
-    QString currentID;
+	Ui::attendance2_editor *ui;
+	QSqlDatabase db;
+	QString currentID;
 };
 
 #endif // ATTENDANCE2_EDITOR_H

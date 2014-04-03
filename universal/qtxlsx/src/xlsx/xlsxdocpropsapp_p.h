@@ -49,24 +49,24 @@ namespace QXlsx {
 class XLSX_AUTOTEST_EXPORT DocPropsApp
 {
 public:
-    DocPropsApp();
-    
-    void addPartTitle(const QString &title);
-    void addHeadingPair(const QString &name, int value);
+	DocPropsApp();
 
-    bool setProperty(const QString &name, const QString &value);
-    QString property(const QString &name) const;
-    QStringList propertyNames() const;
+	void addPartTitle(const QString &title);
+	void addHeadingPair(const QString &name, int value);
 
-    QByteArray saveToXmlData();
-    void saveToXmlFile(QIODevice *device);
-    static DocPropsApp loadFromXmlFile(QIODevice *device);
-    static DocPropsApp loadFromXmlData(const QByteArray &data);
+	bool setProperty(const QString &name, const QString &value);
+	QString property(const QString &name) const;
+	QStringList propertyNames() const;
+
+	QByteArray saveToXmlData();
+	void saveToXmlFile(QIODevice *device);
+	static DocPropsApp loadFromXmlFile(QIODevice *device);
+	static DocPropsApp loadFromXmlData(const QByteArray &data);
 
 private:
-    QStringList m_titlesOfPartsList;
-    QList<QPair<QString, int> > m_headingPairsList;
-    QMap<QString, QString> m_properties;
+	QStringList m_titlesOfPartsList;
+	QList<QPair<QString, int> > m_headingPairsList;
+	QMap<QString, QString> m_properties;
 };
 
 }

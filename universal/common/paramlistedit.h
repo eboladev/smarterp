@@ -27,17 +27,17 @@
 
 class ParamListEdit : public QDialog, public Ui::ParamListEdit
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ParamListEdit(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ParamListEdit();
+	ParamListEdit(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ParamListEdit();
 
 public slots:
-    virtual void sSelectionChanged();
+	virtual void sSelectionChanged();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

@@ -9,17 +9,17 @@ class NewPhoneCall;
 
 class NewPhoneCall : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit NewPhoneCall(QWidget *parent = 0);
-    ~NewPhoneCall();
-    
+	explicit NewPhoneCall(QWidget *parent = 0);
+	~NewPhoneCall();
+
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::NewPhoneCall *ui;
+	Ui::NewPhoneCall *ui;
 };
 
 #endif // NEWPHONECALL_H

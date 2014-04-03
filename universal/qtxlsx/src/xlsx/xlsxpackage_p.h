@@ -53,39 +53,39 @@ class DocPropsApp;
 class XLSX_AUTOTEST_EXPORT Package
 {
 public:
-    Package(Document *document);
+	Package(Document *document);
 
-    bool parsePackage(QIODevice *packageDevice);
-    bool createPackage(QIODevice *package);
+	bool parsePackage(QIODevice *packageDevice);
+	bool createPackage(QIODevice *package);
 
 private:
 
-    void writeWorksheetFiles(ZipWriter &zipWriter);
-//    void writeChartsheetFiles(ZipWriter &zipWriter);
-    void writeWorkbookFile(ZipWriter &zipWriter);
-//    void writeChartFiles(ZipWriter &zipWriter);
-    void writeDrawingFiles(ZipWriter &zipWriter);
-//    void writeVmlFiles(ZipWriter &zipWriter);
-//    void writeCommentFiles(ZipWriter &zipWriter);
-//    void writeTableFiles(ZipWriter &zipWriter);
-    void writeSharedStringsFile(ZipWriter &zipWriter);
-    void writeDocPropsAppFile(ZipWriter &zipWriter);
-    void writeDocPropsCoreFile(ZipWriter &zipWriter);
-    void writeContentTypesFile(ZipWriter &zipWriter);
-    void writeStylesFiles(ZipWriter &zipWriter);
-    void writeThemeFile(ZipWriter &zipWriter);
-    void writeRootRelsFile(ZipWriter &zipWriter);
-    void writeWorkbookRelsFile(ZipWriter &zipWriter);
-    void writeWorksheetRelsFiles(ZipWriter &zipWriter);
-//    void writeChartsheetRelsFile(ZipWriter &zipWriter);
-    void writeDrawingRelsFiles(ZipWriter &zipWriter);
-    void writeImageFiles(ZipWriter &zipWriter);
-//    void writeVbaProjectFiles(ZipWriter &zipWriter);
+	void writeWorksheetFiles(ZipWriter &zipWriter);
+	//    void writeChartsheetFiles(ZipWriter &zipWriter);
+	void writeWorkbookFile(ZipWriter &zipWriter);
+	//    void writeChartFiles(ZipWriter &zipWriter);
+	void writeDrawingFiles(ZipWriter &zipWriter);
+	//    void writeVmlFiles(ZipWriter &zipWriter);
+	//    void writeCommentFiles(ZipWriter &zipWriter);
+	//    void writeTableFiles(ZipWriter &zipWriter);
+	void writeSharedStringsFile(ZipWriter &zipWriter);
+	void writeDocPropsAppFile(ZipWriter &zipWriter);
+	void writeDocPropsCoreFile(ZipWriter &zipWriter);
+	void writeContentTypesFile(ZipWriter &zipWriter);
+	void writeStylesFiles(ZipWriter &zipWriter);
+	void writeThemeFile(ZipWriter &zipWriter);
+	void writeRootRelsFile(ZipWriter &zipWriter);
+	void writeWorkbookRelsFile(ZipWriter &zipWriter);
+	void writeWorksheetRelsFiles(ZipWriter &zipWriter);
+	//    void writeChartsheetRelsFile(ZipWriter &zipWriter);
+	void writeDrawingRelsFiles(ZipWriter &zipWriter);
+	void writeImageFiles(ZipWriter &zipWriter);
+	//    void writeVbaProjectFiles(ZipWriter &zipWriter);
 
-    Document *m_document;
-    Workbook *m_workbook;
-    int m_worksheet_count;
-    int m_chartsheet_count;
+	Document *m_document;
+	Workbook *m_workbook;
+	int m_worksheet_count;
+	int m_chartsheet_count;
 };
 
 } // namespace QXlsx

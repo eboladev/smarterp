@@ -26,58 +26,58 @@
 
 class ReportPageOptions : public QObject
 {
-  Q_OBJECT
-  public:
-    ReportPageOptions();
-    ReportPageOptions(const ReportPageOptions &);
+	Q_OBJECT
+public:
+	ReportPageOptions();
+	ReportPageOptions(const ReportPageOptions &);
 
-    ReportPageOptions & operator=(const ReportPageOptions &);
+	ReportPageOptions & operator=(const ReportPageOptions &);
 
-    enum PageOrientation {
-      Landscape = 0, // essentially false
-      Portrait = 1   // and true
-    };
+	enum PageOrientation {
+		Landscape = 0, // essentially false
+		Portrait = 1   // and true
+	};
 
-    double getMarginTop() const;
-    void setMarginTop(double v);
-    double getMarginBottom() const;
-    void setMarginBottom(double v);
-    double getMarginLeft() const;
-    void setMarginLeft(double v);
-    double getMarginRight() const;
-    void setMarginRight(double v);
+	double getMarginTop() const;
+	void setMarginTop(double v);
+	double getMarginBottom() const;
+	void setMarginBottom(double v);
+	double getMarginLeft() const;
+	void setMarginLeft(double v);
+	double getMarginRight() const;
+	void setMarginRight(double v);
 
-    const QString & getPageSize() const;
-    void setPageSize(const QString & s);
-    double getCustomWidth() const;
-    void setCustomWidth(double v);
-    double getCustomHeight() const;
-    void setCustomHeight(double v);
+	const QString & getPageSize() const;
+	void setPageSize(const QString & s);
+	double getCustomWidth() const;
+	void setCustomWidth(double v);
+	double getCustomHeight() const;
+	void setCustomHeight(double v);
 
-    PageOrientation getOrientation() const;
-    bool isPortrait() const;
-    void setOrientation(PageOrientation o);
-    void setPortrait(bool yes);
+	PageOrientation getOrientation() const;
+	bool isPortrait() const;
+	void setOrientation(PageOrientation o);
+	void setPortrait(bool yes);
 
-    void setLabelType(const QString &);
-    const QString & getLabelType() const;
+	void setLabelType(const QString &);
+	const QString & getLabelType() const;
 
-  signals:
-    void pageOptionsChanged();
+signals:
+	void pageOptionsChanged();
 
-  private:
-    double _marginTop;
-    double _marginBottom;
-    double _marginLeft;
-    double _marginRight;
+private:
+	double _marginTop;
+	double _marginBottom;
+	double _marginLeft;
+	double _marginRight;
 
-    QString _pagesize;
-    double _customWidth;
-    double _customHeight;
+	QString _pagesize;
+	double _customWidth;
+	double _customHeight;
 
-    PageOrientation _orientation;
+	PageOrientation _orientation;
 
-    QString _labelType;
+	QString _labelType;
 };
 
 #endif

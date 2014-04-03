@@ -28,15 +28,15 @@
 */
 void Appointment::setDateTimes(const QDateTime &startDateTime, const QDateTime &endDateTime)
 {
-    if(startDateTime <= endDateTime) //Если момент начала раньше момента окончания
-    {
-        myStartDateTime = startDateTime; //установить момент начала
-        myEndDateTime = endDateTime; //установить момент окончания
-    }
-    else //иначе
-    {
-        myEndDateTime = myStartDateTime = startDateTime; //Установить момент начала и окончания равными
-    }
+	if(startDateTime <= endDateTime) //Если момент начала раньше момента окончания
+	{
+		myStartDateTime = startDateTime; //установить момент начала
+		myEndDateTime = endDateTime; //установить момент окончания
+	}
+	else //иначе
+	{
+		myEndDateTime = myStartDateTime = startDateTime; //Установить момент начала и окончания равными
+	}
 }
 /**
 * @param startTime - время начала.
@@ -44,16 +44,16 @@ void Appointment::setDateTimes(const QDateTime &startDateTime, const QDateTime &
 */
 void Appointment::setTimes(const QTime &startTime, const QTime &endTime)
 {
-    if(startTime <= endTime) //Если время начала раньше времени окончания
-    {
-        myStartDateTime.setTime(startTime); //Установить время начала
-        myEndDateTime.setTime(endTime); //Установить время окончания
-    }
-    else //Иначе
-    {
-        myStartDateTime.setTime(startTime); //То же самое!!!
-        myEndDateTime.setTime(endTime);
-    }
+	if(startTime <= endTime) //Если время начала раньше времени окончания
+	{
+		myStartDateTime.setTime(startTime); //Установить время начала
+		myEndDateTime.setTime(endTime); //Установить время окончания
+	}
+	else //Иначе
+	{
+		myStartDateTime.setTime(startTime); //То же самое!!!
+		myEndDateTime.setTime(endTime);
+	}
 }
 
 /**
@@ -64,19 +64,19 @@ void Appointment::setTimes(const QTime &startTime, const QTime &endTime)
 void Appointment::setCustomerID(const QString &customerID)
 {
 
-    myCustomer = customerID;
-    customerName = Publics::getDbValue(Publics::getDatabase(), "SELECT CompanyName FROM customers WHERE CustomerID = '" + myCustomer + "'", "CompanyName");
+	myCustomer = customerID;
+	customerName = Publics::getDbValue(Publics::getDatabase(), "SELECT CompanyName FROM customers WHERE CustomerID = '" + myCustomer + "'", "CompanyName");
 }
 
 void Appointment::setStartDateTime(const QDateTime &startDateTime)
 {
-    if(startDateTime <= myEndDateTime) //Если момент начала встречи раньше момента ее окончания
-    {
-        myStartDateTime = startDateTime; //Установить момент начала встречи
-    }else //иначе
-    {
-        myStartDateTime = myEndDateTime; //Установить момент начала встречи равный моменту ее окончания
-    }
+	if(startDateTime <= myEndDateTime) //Если момент начала встречи раньше момента ее окончания
+	{
+		myStartDateTime = startDateTime; //Установить момент начала встречи
+	}else //иначе
+	{
+		myStartDateTime = myEndDateTime; //Установить момент начала встречи равный моменту ее окончания
+	}
 }
 
 /**
@@ -85,13 +85,13 @@ void Appointment::setStartDateTime(const QDateTime &startDateTime)
 */
 void Appointment::setEndDateTime(const QDateTime &endDateTime)
 {
-    if(endDateTime >= myStartDateTime) //Если момент начала встречи раньше момента ее окончания
-    {
-        myEndDateTime = endDateTime; //Установить момент конца встречи
-    }else //Иначе
-    {
-        myEndDateTime = myStartDateTime; //Установить момент окончания равный моменту начала встречи
-    }
+	if(endDateTime >= myStartDateTime) //Если момент начала встречи раньше момента ее окончания
+	{
+		myEndDateTime = endDateTime; //Установить момент конца встречи
+	}else //Иначе
+	{
+		myEndDateTime = myStartDateTime; //Установить момент окончания равный моменту начала встречи
+	}
 }
 
 /**
@@ -101,14 +101,14 @@ void Appointment::setEndDateTime(const QDateTime &endDateTime)
 */
 int Appointment::startQuater(const QDate &date) const
 {
-    QTime time = myStartDateTime.time(); //Запомним время начала
+	QTime time = myStartDateTime.time(); //Запомним время начала
 
-    if(date == myStartDateTime.date()) //Если date равна дате начала
-        return ((time.hour() * 60) + time.minute()) / 15; //Вернем количество четвертей
-    else if(date <= myEndDateTime.date()) //Иначе, если date меньше даты окончания
-        return 0; //вернем 0
-    else
-        return -1; //Иначе вернем -1
+	if(date == myStartDateTime.date()) //Если date равна дате начала
+		return ((time.hour() * 60) + time.minute()) / 15; //Вернем количество четвертей
+	else if(date <= myEndDateTime.date()) //Иначе, если date меньше даты окончания
+		return 0; //вернем 0
+	else
+		return -1; //Иначе вернем -1
 }
 
 /**
@@ -118,50 +118,50 @@ int Appointment::startQuater(const QDate &date) const
 */
 int Appointment::endQuater(const QDate &date) const
 {
-    QTime time = myEndDateTime.time(); ////Запомним время окончания
+	QTime time = myEndDateTime.time(); ////Запомним время окончания
 
-    if(date == myEndDateTime.date()) //Если date равна дате окончания
-        return ((time.hour() * 60) + time.minute()) / 15; //Вернем количество четвертей
-    else if(myEndDateTime.date() > date) //Иначе, если date меньше даты окончания
-        return (24 * 60) / 15; //Вернем количество четвертей часа в сутках
-    else
-        return -1; //Иначе -1.
+	if(date == myEndDateTime.date()) //Если date равна дате окончания
+		return ((time.hour() * 60) + time.minute()) / 15; //Вернем количество четвертей
+	else if(myEndDateTime.date() > date) //Иначе, если date меньше даты окончания
+		return (24 * 60) / 15; //Вернем количество четвертей часа в сутках
+	else
+		return -1; //Иначе -1.
 }
 
 
 bool Appointment::before(Appointment *app1, Appointment *app2)
 {
-    return app1->startDateTime() < app2->startDateTime(); //Сравниваем время начала встреч
+	return app1->startDateTime() < app2->startDateTime(); //Сравниваем время начала встреч
 }
 
 /**
 	@brief Сравнивает встречи по ключу.
 */
 bool Appointment::operator==(const Appointment &other) const {
-    if(this == &other) //сравниваем адреса
-        return true;
-    else if(other.myKey == myKey) //иначе сравниваем ключи
-        return true;
-    else
-        return false;
+	if(this == &other) //сравниваем адреса
+		return true;
+	else if(other.myKey == myKey) //иначе сравниваем ключи
+		return true;
+	else
+		return false;
 }
 
 /**
 	@brief Сравнивает встречи по ключу.
 */
 bool Appointment::operator!=(const Appointment &other) const {
-    return !(*this == other); //Инверсия равенства
+	return !(*this == other); //Инверсия равенства
 }
 
 /**
 	@brief Сравнивает встречи по времени их начала.
 */
 bool Appointment::operator<(const Appointment &other) const {
-    if(this == &other) //Сравниваем указатели
-        return false;
-    else if(other.myStartDateTime > myStartDateTime) //Сравниваем время начала встреч
-        return true;
-    else
-        return false;
+	if(this == &other) //Сравниваем указатели
+		return false;
+	else if(other.myStartDateTime > myStartDateTime) //Сравниваем время начала встреч
+		return true;
+	else
+		return false;
 }
 

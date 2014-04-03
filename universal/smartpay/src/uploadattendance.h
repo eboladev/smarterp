@@ -13,20 +13,20 @@ class UploadAttendance;
 
 class UploadAttendance : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit UploadAttendance(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~UploadAttendance();
-    
-private slots:
-    void on_Close_clicked();
+	Q_OBJECT
 
-    void on_StartUpload_clicked();
+public:
+	explicit UploadAttendance(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~UploadAttendance();
+
+private slots:
+	void on_Close_clicked();
+
+	void on_StartUpload_clicked();
 
 private:
-    Ui::UploadAttendance *ui;
-    QSqlDatabase db;
+	Ui::UploadAttendance *ui;
+	QSqlDatabase db;
 };
 
 #endif // UPLOADATTENDANCE_H

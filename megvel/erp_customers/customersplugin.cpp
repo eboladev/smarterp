@@ -5,46 +5,46 @@
 #include <QtPlugin>
 
 QMainWindow *CustomersPlugin::pluginMainWindow(QWidget *parent, QSqlDatabase database) {
-    m_customers = new CustomerMainWindow(parent, database);
-    QMainWindow *mw =  qobject_cast<QMainWindow *>(m_customers);
-    return mw;
+	m_customers = new CustomerMainWindow(parent, database);
+	QMainWindow *mw =  qobject_cast<QMainWindow *>(m_customers);
+	return mw;
 }
 
 QString CustomersPlugin::pluginName()
 {
-    return "Customer Management";
+	return "Customer Management";
 }
 
 QString CustomersPlugin::pluginDescription()
 {
-    return "Manage customers, their products, costings, job tickets and other customer related aspects of the database";
+	return "Manage customers, their products, costings, job tickets and other customer related aspects of the database";
 }
 
 QString CustomersPlugin::pluginVersion()
 {
-    return "2.0";
+	return "2.0";
 }
 
 QString CustomersPlugin::releaseDate()
 {
-    return QObject::tr("%1 %2").arg(__DATE__, __TIME__);
+	return QObject::tr("%1 %2").arg(__DATE__, __TIME__);
 }
 
 QString CustomersPlugin::pluginAuthor()
 {
-    return "MCL";
+	return "MCL";
 }
 
 QStringList CustomersPlugin::subWindows()
 {
-    QStringList w;
-//    w << "Cust\tManage Users and User Roles\tMCL"
-//      << "Sales Reps\tManage Sale Representatives\tMCL";
-    return w;
+	QStringList w;
+	//    w << "Cust\tManage Users and User Roles\tMCL"
+	//      << "Sales Reps\tManage Sale Representatives\tMCL";
+	return w;
 }
 
 QString CustomersPlugin::projectName() {
-    return "megvel";
+	return "megvel";
 }
 
 #if QT_VERSION < 0x50000

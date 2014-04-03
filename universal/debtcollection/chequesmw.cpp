@@ -2,13 +2,13 @@
 #include "ui_chequesmw.h"
 
 ChequesMW::ChequesMW(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::ChequesMW)
+	QMainWindow(parent),
+	ui(new Ui::ChequesMW)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 ChequesMW::~ChequesMW()
 {
-    delete ui;
+	delete ui;
 }

@@ -12,48 +12,48 @@ class LevaConnectionWindow;
 
 class LevaConnectionWindow : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit LevaConnectionWindow(QWidget *parent = 0);
-    ~LevaConnectionWindow();
+	explicit LevaConnectionWindow(QWidget *parent = 0);
+	~LevaConnectionWindow();
 
-    QString hostName;
-    QString originalUserName;
-    QString originalPassword;
-    int originalPort;
-    QString originalDb;
+	QString hostName;
+	QString originalUserName;
+	QString originalPassword;
+	int originalPort;
+	QString originalDb;
 
-    void setOriginalVars();
+	void setOriginalVars();
 private slots:
-    void on_cmdConnect_clicked();
-    void reloadDatabaseTree();
-    void createDbFolders(QString dbName, QTreeWidgetItem *dbItem);
-    void on_actionExecute_triggered();
+	void on_cmdConnect_clicked();
+	void reloadDatabaseTree();
+	void createDbFolders(QString dbName, QTreeWidgetItem *dbItem);
+	void on_actionExecute_triggered();
 
-    void on_treeWidget_itemExpanded(QTreeWidgetItem *item);
+	void on_treeWidget_itemExpanded(QTreeWidgetItem *item);
 
-    void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
+	void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
-    void on_treeWidget_customContextMenuRequested(const QPoint &pos);
+	void on_treeWidget_customContextMenuRequested(const QPoint &pos);
 
 
-    void alterTable();
+	void alterTable();
 
-    void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
+	void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
 
 private:
-    Ui::LevaConnectionWindow *ui;
-    QString currentType;
-    QString currentName;
-    QString currentDb;
+	Ui::LevaConnectionWindow *ui;
+	QString currentType;
+	QString currentName;
+	QString currentDb;
 
-    QSqlDatabase db;
+	QSqlDatabase db;
 
-    QMenu *popupMenu;
+	QMenu *popupMenu;
 
-    QAction *act_alterTable;
-    QAction *act_reload;
+	QAction *act_alterTable;
+	QAction *act_reload;
 };
 
 #endif // LEVACONNECTIONWINDOW_H

@@ -30,85 +30,85 @@
 #include <quuencode.h>
 
 ImageEditor::ImageEditor(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(cbStatic, SIGNAL(toggled(bool)), this, SLOT(cbStatic_toggled(bool)));
-    connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(btnLoad, SIGNAL(clicked()), this, SLOT(btnLoad_clicked()));
+	// signals and slots connections
+	connect(cbStatic, SIGNAL(toggled(bool)), this, SLOT(cbStatic_toggled(bool)));
+	connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(btnLoad, SIGNAL(clicked()), this, SLOT(btnLoad_clicked()));
 
-    leXPos->setValidator(new QDoubleValidator(0.0,100.0,3,leXPos));
-    leYPos->setValidator(new QDoubleValidator(0.0,100.0,3,leYPos));
-    
-    leWidth->setValidator(new QDoubleValidator(0.01,100.0,3,leWidth));
-    leHeight->setValidator(new QDoubleValidator(0.01,100.0,3,leHeight));
+	leXPos->setValidator(new QDoubleValidator(0.0,100.0,3,leXPos));
+	leYPos->setValidator(new QDoubleValidator(0.0,100.0,3,leYPos));
+
+	leWidth->setValidator(new QDoubleValidator(0.01,100.0,3,leWidth));
+	leHeight->setValidator(new QDoubleValidator(0.01,100.0,3,leHeight));
 }
 
 ImageEditor::~ImageEditor()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void ImageEditor::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void ImageEditor::cbStatic_toggled( bool yes )
 {
-    gbDynamic->setEnabled(!yes);
-   
-    gbStatic->setEnabled(yes);
+	gbDynamic->setEnabled(!yes);
+
+	gbStatic->setEnabled(yes);
 }
 
 QString ImageEditor::getImageData()
 {
-    return uudata;
+	return uudata;
 }
 
 void ImageEditor::setImageData( QString dat )
 {
-    uudata = dat;
-    QByteArray bytes = QUUDecode(dat);
-    QImage i;
-    i.loadFromData(bytes);
-    frmPreview->setPixmap(QPixmap::fromImage(i));
+	uudata = dat;
+	QByteArray bytes = QUUDecode(dat);
+	QImage i;
+	i.loadFromData(bytes);
+	frmPreview->setPixmap(QPixmap::fromImage(i));
 }
 
 QString ImageEditor::getMode()
 {
-    if(rbClip->isChecked()) return "clip";
-    if(rbStretch->isChecked()) return "stretch";
-    return "clip";
+	if(rbClip->isChecked()) return "clip";
+	if(rbStretch->isChecked()) return "stretch";
+	return "clip";
 }
 
 bool ImageEditor::isInline()
 {
-    return cbStatic->isChecked();
+	return cbStatic->isChecked();
 }
 
 void ImageEditor::setMode( QString m)
 {
-    if(m == "clip") rbClip->setChecked(true);
-    else if(m == "stretch") rbStretch->setChecked(true);
-    else rbClip->setChecked(true);
+	if(m == "clip") rbClip->setChecked(true);
+	else if(m == "stretch") rbStretch->setChecked(true);
+	else rbClip->setChecked(true);
 }
 
 void ImageEditor::setInline( bool yes )
 {
-    cbStatic->setChecked(yes);
+	cbStatic->setChecked(yes);
 }
 
 void ImageEditor::btnLoad_clicked()
 {
-    QString fn = QFileDialog::getOpenFileName(this, tr("Choose a file"), QString::null, tr("Images(*.png *.jpg *.xpm)"));
-    if(!fn.isEmpty()) {
-	QFile file(fn);
-	setImageData(QUUEncode(file));
-    }
+	QString fn = QFileDialog::getOpenFileName(this, tr("Choose a file"), QString::null, tr("Images(*.png *.jpg *.xpm)"));
+	if(!fn.isEmpty()) {
+		QFile file(fn);
+		setImageData(QUUEncode(file));
+	}
 }
 

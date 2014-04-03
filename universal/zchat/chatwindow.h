@@ -14,22 +14,22 @@ class QTimer;
 
 class ChatWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit ChatWindow(QWidget *parent = 0, QSqlDatabase database =  QSqlDatabase());
-    ~ChatWindow();
-    QString recepient;
-    QString sender;
+	explicit ChatWindow(QWidget *parent = 0, QSqlDatabase database =  QSqlDatabase());
+	~ChatWindow();
+	QString recepient;
+	QString sender;
 private slots:
-    void on_cmdSendMessage_clicked();
-    void updateMessages();
-    void on_txtMessage_returnPressed();
+	void on_cmdSendMessage_clicked();
+	void updateMessages();
+	void on_txtMessage_returnPressed();
 
 private:
-    QTimer *messageTimer;
-    Ui::ChatWindow *ui;
-    QSqlDatabase db;
+	QTimer *messageTimer;
+	Ui::ChatWindow *ui;
+	QSqlDatabase db;
 };
 
 #endif // ChatWindow_H

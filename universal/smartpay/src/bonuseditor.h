@@ -10,21 +10,21 @@ class BonusEditor;
 
 class BonusEditor : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit BonusEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~BonusEditor();
-    bool isAdding;
-    QString currentID;
-    void Edit(QString bonusID);
-    void AddNew(QString employeeID);
+	explicit BonusEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~BonusEditor();
+	bool isAdding;
+	QString currentID;
+	void Edit(QString bonusID);
+	void AddNew(QString employeeID);
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::BonusEditor *ui;
-    QSqlDatabase db;
+	Ui::BonusEditor *ui;
+	QSqlDatabase db;
 };
 
 #endif // BONUSEDITOR_H

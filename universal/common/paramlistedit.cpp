@@ -23,28 +23,28 @@
 #include <QVariant>
 
 ParamListEdit::ParamListEdit(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
-    // signals and slots connections
-    connect(_cancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(_select, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(_list, SIGNAL(itemSelectionChanged()), this, SLOT(sSelectionChanged()));
+	// signals and slots connections
+	connect(_cancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(_select, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(_list, SIGNAL(itemSelectionChanged()), this, SLOT(sSelectionChanged()));
 }
 
 ParamListEdit::~ParamListEdit()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void ParamListEdit::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void ParamListEdit::sSelectionChanged()
 {
-  _select->setEnabled(_list->currentRow()!=-1);
+	_select->setEnabled(_list->currentRow()!=-1);
 }
 

@@ -10,17 +10,17 @@ class NewRequisition;
 
 class NewRequisition : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit NewRequisition(QWidget *parent = 0);
-    ~NewRequisition();
-    
+	explicit NewRequisition(QWidget *parent = 0);
+	~NewRequisition();
+
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::NewRequisition *ui;
+	Ui::NewRequisition *ui;
 };
 
 #endif // NEWREQUISITION_H

@@ -9,14 +9,14 @@ class AnnualReports;
 
 class AnnualReports : public QMainWindow
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit AnnualReports(QWidget *parent = 0);
-    ~AnnualReports();
-    
+	explicit AnnualReports(QWidget *parent = 0);
+	~AnnualReports();
+
 private:
-    Ui::AnnualReports *ui;
+	Ui::AnnualReports *ui;
 };
 
 #endif // ANNUALREPORTS_H

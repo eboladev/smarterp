@@ -38,72 +38,72 @@
 #include <document.xpm>
 #include <QScrollBar>
 DocumentView::DocumentView(DocumentScene * ds, QWidget * parent)
-  : QGraphicsView(ds, parent)
+	: QGraphicsView(ds, parent)
 {
-  _ds = ds;
-  verticalScrollBar()->setValue(verticalScrollBar()->minimum());
+	_ds = ds;
+	verticalScrollBar()->setValue(verticalScrollBar()->minimum());
 }
 
 
 void DocumentView::wheelEvent(QWheelEvent * e)
 {
-  if(e->modifiers() & Qt::ControlModifier) {
-      zoom(e->delta());
-      e->accept();
-      return;
-  }
+	if(e->modifiers() & Qt::ControlModifier) {
+		zoom(e->delta());
+		e->accept();
+		return;
+	}
 
-  // adjust event for smoother scrolling
-  QWheelEvent adjustedEvent ( e->pos(), e->delta()/2, e->buttons(), e->modifiers(), e->orientation() );
+	// adjust event for smoother scrolling
+	QWheelEvent adjustedEvent ( e->pos(), e->delta()/2, e->buttons(), e->modifiers(), e->orientation() );
 
-  QGraphicsView::wheelEvent(&adjustedEvent);
-  if(adjustedEvent.isAccepted()) {
-      e->accept();        
-  }
+	QGraphicsView::wheelEvent(&adjustedEvent);
+	if(adjustedEvent.isAccepted()) {
+		e->accept();
+	}
 }
 
 
 void DocumentView::zoom(int delta)
 {
-    if(_ds->scaledTo() > 4 && delta > 0)
-        return;
+	if(_ds->scaledTo() > 4 && delta > 0)
+		return;
 
-    if(delta < 0)
-    {
-        if(_ds->scaledTo() < .25)
-            return;
+	if(delta < 0)
+	{
+		if(_ds->scaledTo() < .25)
+			return;
 
-        if(verticalScrollBar()->maximum() <= verticalScrollBar()->minimum()
-            && horizontalScrollBar()->maximum() <= horizontalScrollBar()->minimum())
-            return; // no need to zoom in further, the document is already fully visible      
-    }
+		if(verticalScrollBar()->maximum() <= verticalScrollBar()->minimum()
+		   && horizontalScrollBar()->maximum() <= horizontalScrollBar()->minimum())
+			return; // no need to zoom in further, the document is already fully visible
+	}
 
-    double zoom = 1.0 + (delta / 1000.0);
+	double zoom = 1.0 + (delta / 1000.0);
 
-    scale(zoom, zoom);
-    _ds->setScaledTo(_ds->scaledTo()* zoom);
+	scale(zoom, zoom);
+	_ds->setScaledTo(_ds->scaledTo()* zoom);
 }
 
 
 void DocumentView::keyPressEvent ( QKeyEvent * event )
 {
-    switch(event->key())
-    {
-    case Qt::Key_Left:
-        moveSelectedItems(-1,0, event->modifiers());
-        break;
-    case Qt::Key_Right:
-        moveSelectedItems(1,0, event->modifiers());
-        break;
-    case Qt::Key_Up:
-        moveSelectedItems(0,-1, event->modifiers());
-        break;
-    case Qt::Key_Down:
-        moveSelectedItems(0,1, event->modifiers());
-        break;
-    default:
-        QGraphicsView::keyPressEvent(event);
-    }
+	switch(event->key())
+	{
+	case Qt::Key_Left:
+		moveSelectedItems(-1,0, event->modifiers());
+		break;
+	case Qt::Key_Right:
+		moveSelectedItems(1,0, event->modifiers());
+		break;
+	case Qt::Key_Up:
+		moveSelectedItems(0,-1, event->modifiers());
+		break;
+	case Qt::Key_Down:
+		moveSelectedItems(0,1, event->modifiers());
+		break;
+	default:
+		QGraphicsView::keyPressEvent(event);
+	}
 }
 
 
@@ -123,22 +123,22 @@ void DocumentView::keyReleaseEvent ( QKeyEvent * event )
 
 void DocumentView::moveSelectedItems (int x, int y, Qt::KeyboardModifiers keyModifiers)
 {
-    double xfactor = 1; 
-    double yfactor = 1; 
+	double xfactor = 1;
+	double yfactor = 1;
 
-    ReportGridOptions *rgo = _ds->gridOptions();
-    if(rgo)
-    {
-        xfactor = 100 * rgo->xInterval();
-        yfactor = 100 * rgo->yInterval();
-    }
+	ReportGridOptions *rgo = _ds->gridOptions();
+	if(rgo)
+	{
+		xfactor = 100 * rgo->xInterval();
+		yfactor = 100 * rgo->yInterval();
+	}
 
 	QGraphicsItem *firstItem = NULL;
 	QPointF lastPos;
 
-    foreach(QGraphicsItem *item, items()) 
-    {
-        if(item->isSelected())
+	foreach(QGraphicsItem *item, items())
+	{
+		if(item->isSelected())
 		{
 			if(!firstItem)
 			{
@@ -147,9 +147,9 @@ void DocumentView::moveSelectedItems (int x, int y, Qt::KeyboardModifiers keyMod
 			}
 			item->moveBy(xfactor * x, yfactor * y);
 		}
-    }
+	}
 
-	if(firstItem) 
+	if(firstItem)
 	{
 		_ds->setModified(true);
 		if(y != 0)

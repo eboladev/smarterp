@@ -9,20 +9,20 @@ class RequisitionManager;
 
 class RequisitionManager : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit RequisitionManager(QWidget *parent = 0);
-    ~RequisitionManager();
-    
-private slots:
-    void on_cmdApproveRequisition_clicked();
+	Q_OBJECT
 
-    void on_cmdPostToQuickbooks_clicked();
+public:
+	explicit RequisitionManager(QWidget *parent = 0);
+	~RequisitionManager();
+
+private slots:
+	void on_cmdApproveRequisition_clicked();
+
+	void on_cmdPostToQuickbooks_clicked();
 
 private:
-    Ui::RequisitionManager *ui;
-    void reloadRequisitions();
+	Ui::RequisitionManager *ui;
+	void reloadRequisitions();
 };
 
 #endif // REQUISITIONMANAGER_H

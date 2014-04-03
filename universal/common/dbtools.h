@@ -25,16 +25,16 @@
 #include <QSqlDatabase>
 
 void parseDatabaseURL(const QString & /* pDatabaseURL */,
-                            QString & /* pProtocol    */,
-                            QString & /* pServer      */,
-                            QString & /* pDatabase    */,
-                            QString & /* pPort        */);
+		      QString & /* pProtocol    */,
+		      QString & /* pServer      */,
+		      QString & /* pDatabase    */,
+		      QString & /* pPort        */);
 
 void buildDatabaseURL(      QString & /* pTarget      */,
-                      const QString & /* pProtocol    */,
-                      const QString & /* pServer      */,
-                      const QString & /* pDatabase    */,
-                      const QString & /* pPort        */);
+			    const QString & /* pProtocol    */,
+			    const QString & /* pServer      */,
+			    const QString & /* pDatabase    */,
+			    const QString & /* pPort        */);
 
 QSqlDatabase databaseFromURL( const QString& databaseURL );
 

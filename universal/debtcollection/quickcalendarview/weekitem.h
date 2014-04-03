@@ -22,7 +22,7 @@
 
 #ifndef WEEKITEM_H
 #define WEEKITEM_H
- 
+
 #include <QGraphicsItemGroup>
 #include <QFont>
 
@@ -37,51 +37,51 @@ class WeekItem : public CalendarItem
 {
 
 public:
-    WeekItem(QuickCalendarView *calendarView,
-             const QDate &date,
-             const QDate &end,
-             QGraphicsItem *parent = 0,
-             QGraphicsScene *scene = 0);
-    ~WeekItem() {}
+	WeekItem(QuickCalendarView *calendarView,
+		 const QDate &date,
+		 const QDate &end,
+		 QGraphicsItem *parent = 0,
+		 QGraphicsScene *scene = 0);
+	~WeekItem() {}
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                QWidget *widget);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
-    virtual void layoutChanged();
-    virtual void dataChanged();
+	virtual void layoutChanged();
+	virtual void dataChanged();
 
-    bool hasDate(const QDate &date);
-    int dayOfWeek(const QDate &date);
+	bool hasDate(const QDate &date);
+	int dayOfWeek(const QDate &date);
 
 protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+	void mousePressEvent(QGraphicsSceneMouseEvent *event);
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    QuickCalendarView *ptrCalendarView;
+	QuickCalendarView *ptrCalendarView;
 
-    CalendarItem *dayHeaderContainer;
-    CalendarItem *dayContentContainer;
+	CalendarItem *dayHeaderContainer;
+	CalendarItem *dayContentContainer;
 
-    CalendarItem *ptrScrollPane;
+	CalendarItem *ptrScrollPane;
 
-    ScrollAreaItem *ptrScrollArea;
+	ScrollAreaItem *ptrScrollArea;
 
-    ClockBar *clockBar;
+	ClockBar *clockBar;
 
-    QDate myDate;
-    QDate myRangeStart;
-    QDate myRangeEnd;
+	QDate myDate;
+	QDate myRangeStart;
+	QDate myRangeEnd;
 
-    QList <DayItem *> myDays;
+	QList <DayItem *> myDays;
 
-    QFont myFont;
+	QFont myFont;
 
-    friend class QuickCalendarView;
-    friend class DayItem;
-    friend class DayContentItem;
-    friend class AppointmentItem;
+	friend class QuickCalendarView;
+	friend class DayItem;
+	friend class DayContentItem;
+	friend class AppointmentItem;
 };
 
 #endif

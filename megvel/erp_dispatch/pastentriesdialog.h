@@ -14,23 +14,23 @@ class PastEntriesDialog;
 
 class PastEntriesDialog : public QDialog
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit PastEntriesDialog(QWidget *parent = 0, QSqlDatabase database
-                               = QSqlDatabase()
-                               );
-    ~PastEntriesDialog();
-    
+	explicit PastEntriesDialog(QWidget *parent = 0, QSqlDatabase database
+				   = QSqlDatabase()
+			);
+	~PastEntriesDialog();
+
 private slots:
-    void on_cmdSearch_clicked();
+	void on_cmdSearch_clicked();
 
 private:
-    Ui::PastEntriesDialog *ui;
-    QSqlDatabase db;
+	Ui::PastEntriesDialog *ui;
+	QSqlDatabase db;
 
-    QSqlQueryModel *model;
-    QSortFilterProxyModel *filterModel;
+	QSqlQueryModel *model;
+	QSortFilterProxyModel *filterModel;
 };
 
 #endif // PASTENTRIESDIALOG_H

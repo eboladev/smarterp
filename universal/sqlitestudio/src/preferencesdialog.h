@@ -6,30 +6,30 @@
 #include <QSettings>
 
 namespace Ui {
-    class PreferencesDialog;
+class PreferencesDialog;
 }
 
 class PreferencesDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit PreferencesDialog(QWidget *parent = 0);
-    ~PreferencesDialog();
-    QFont queryEditorFont;
-    int queryEditorFontSize;
+	explicit PreferencesDialog(QWidget *parent = 0);
+	~PreferencesDialog();
+	QFont queryEditorFont;
+	int queryEditorFontSize;
 
-    QFont queryBrowserFont;
-    int queryBrowserFontSize;
+	QFont queryBrowserFont;
+	int queryBrowserFontSize;
 
-    QFont databaseExplorerFont;
-    int databaseExplorerFontSize;
+	QFont databaseExplorerFont;
+	int databaseExplorerFontSize;
 private:
-    Ui::PreferencesDialog *ui;
-        QSettings *sett;
+	Ui::PreferencesDialog *ui;
+	QSettings *sett;
 
 private slots:
-    void on_buttonBox_accepted();
+	void on_buttonBox_accepted();
 };
 
 #endif // PREFERENCESDIALOG_H

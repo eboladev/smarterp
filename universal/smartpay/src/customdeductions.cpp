@@ -2,13 +2,13 @@
 #include "ui_customdeductions.h"
 
 CustomDeductions::CustomDeductions(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::CustomDeductions)
+	QMainWindow(parent),
+	ui(new Ui::CustomDeductions)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 CustomDeductions::~CustomDeductions()
 {
-    delete ui;
+	delete ui;
 }

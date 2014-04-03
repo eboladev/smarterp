@@ -21,23 +21,23 @@
 #include "detailgroupsectiondialog.h"
 
 DetailGroupSectionDialog::DetailGroupSectionDialog(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(btnOk, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(bntCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	// signals and slots connections
+	connect(btnOk, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(bntCancel, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 DetailGroupSectionDialog::~DetailGroupSectionDialog()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void DetailGroupSectionDialog::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 

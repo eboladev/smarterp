@@ -28,21 +28,21 @@
 
 class ColorEditor : public QDialog, public Ui::ColorEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ColorEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
-    ~ColorEditor();
+	ColorEditor(QWidget* parent = 0, Qt::WindowFlags fl = 0);
+	~ColorEditor();
 
 public slots:
-    virtual void _btnColor_clicked();
-    virtual void setColorName( QString name );
-    virtual void setColor( const QColor & col );
-    virtual QColor getColor();
-    virtual QString getColorName();
+	virtual void _btnColor_clicked();
+	virtual void setColorName( QString name );
+	virtual void setColor( const QColor & col );
+	virtual QColor getColor();
+	virtual QString getColorName();
 
 protected slots:
-    virtual void languageChange();
+	virtual void languageChange();
 
 };
 

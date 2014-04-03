@@ -24,43 +24,43 @@
 #include <QValidator>
 
 BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(cbFormat, SIGNAL(activated(int)), this, SLOT(cbFormat_activated(int)));
-    connect(sliderMaxVal, SIGNAL(valueChanged(int)), labelMaxVal, SLOT(setNum(int)));
-    connect(sliderMaxVal, SIGNAL(sliderMoved(int)), this, SLOT(sliderMaxVal_sliderMoved(int)));
-    connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	// signals and slots connections
+	connect(cbFormat, SIGNAL(activated(int)), this, SLOT(cbFormat_activated(int)));
+	connect(sliderMaxVal, SIGNAL(valueChanged(int)), labelMaxVal, SLOT(setNum(int)));
+	connect(sliderMaxVal, SIGNAL(sliderMoved(int)), this, SLOT(sliderMaxVal_sliderMoved(int)));
+	connect(buttonOk, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
 
-    leXPos->setValidator(new QDoubleValidator(0.0,100.0,3,leXPos));
-    leYPos->setValidator(new QDoubleValidator(0.0,100.0,3,leYPos));
-    
-    leWidth->setValidator(new QDoubleValidator(0.01,100.0,3,leWidth));
-    leHeight->setValidator(new QDoubleValidator(0.01,100.0,3,leHeight));
-    leNarrowBarWidth->setValidator(new QDoubleValidator(0.005,0.1,3,leNarrowBarWidth));
+	leXPos->setValidator(new QDoubleValidator(0.0,100.0,3,leXPos));
+	leYPos->setValidator(new QDoubleValidator(0.0,100.0,3,leYPos));
+
+	leWidth->setValidator(new QDoubleValidator(0.01,100.0,3,leWidth));
+	leHeight->setValidator(new QDoubleValidator(0.01,100.0,3,leHeight));
+	leNarrowBarWidth->setValidator(new QDoubleValidator(0.005,0.1,3,leNarrowBarWidth));
 }
 
 BarcodeEditor::~BarcodeEditor()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void BarcodeEditor::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void BarcodeEditor::cbFormat_activated(int)
 {
-    // the format was changed so we need to recalculate our minimum sizes
+	// the format was changed so we need to recalculate our minimum sizes
 }
 
 void BarcodeEditor::sliderMaxVal_sliderMoved( int )
 {
-    // the slider for the max value length has been changed so we need to recalculate the minimum sizes
+	// the slider for the max value length has been changed so we need to recalculate the minimum sizes
 }
 

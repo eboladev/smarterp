@@ -9,17 +9,17 @@ class StartNewEmployeeDialog;
 
 class StartNewEmployeeDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit StartNewEmployeeDialog(QWidget *parent = 0);
-    ~StartNewEmployeeDialog();
-    QString name;
+	explicit StartNewEmployeeDialog(QWidget *parent = 0);
+	~StartNewEmployeeDialog();
+	QString name;
 private slots:
-    void on_buttonBox_accepted();
+	void on_buttonBox_accepted();
 
 private:
-    Ui::StartNewEmployeeDialog *ui;
+	Ui::StartNewEmployeeDialog *ui;
 };
 
 #endif // STARTNEWEMPLOYEEDIALOG_H

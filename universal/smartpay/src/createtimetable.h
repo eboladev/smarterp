@@ -10,24 +10,24 @@ class CreateTimetable;
 
 class CreateTimetable : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit CreateTimetable(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~CreateTimetable();
-    
-private slots:
-    void on_CreateTimetableButton_clicked();
-    void threadFinished();
-    void on_SelectAll_clicked();
+	Q_OBJECT
 
-    void on_SelectNone_clicked();
+public:
+	explicit CreateTimetable(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~CreateTimetable();
+
+private slots:
+	void on_CreateTimetableButton_clicked();
+	void threadFinished();
+	void on_SelectAll_clicked();
+
+	void on_SelectNone_clicked();
 
 private:
-    Ui::CreateTimetable *ui;
-    QSqlDatabase db;
-    void reloadShifts();
-    void reloadEmployees();
+	Ui::CreateTimetable *ui;
+	QSqlDatabase db;
+	void reloadShifts();
+	void reloadEmployees();
 };
 
 #endif // CREATETIMETABLE_H

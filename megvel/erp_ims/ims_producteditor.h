@@ -9,24 +9,24 @@ class IMS_ProductEditor;
 
 class IMS_ProductEditor : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit IMS_ProductEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~IMS_ProductEditor();
+	Q_OBJECT
 
-    void AddNew(QString fileID);
-    void Edit(QString productID);
-    
+public:
+	explicit IMS_ProductEditor(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~IMS_ProductEditor();
+
+	void AddNew(QString fileID);
+	void Edit(QString productID);
+
 private slots:
-    void on_cmdSave_clicked();
+	void on_cmdSave_clicked();
 
 private:
-    Ui::IMS_ProductEditor *ui;
-    QSqlDatabase db;
-    bool isAdding;
-    QString currentProductId;
-    QString currentFileID;
+	Ui::IMS_ProductEditor *ui;
+	QSqlDatabase db;
+	bool isAdding;
+	QString currentProductId;
+	QString currentFileID;
 };
 
 #endif // IMS_PRODUCTEDITOR_H

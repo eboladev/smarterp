@@ -9,14 +9,14 @@ class customerSearchWidget;
 
 class customerSearchWidget : public QWidget
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit customerSearchWidget(QWidget *parent = 0);
-    ~customerSearchWidget();
-    
+	explicit customerSearchWidget(QWidget *parent = 0);
+	~customerSearchWidget();
+
 private:
-    Ui::customerSearchWidget *ui;
+	Ui::customerSearchWidget *ui;
 };
 
 #endif // CUSTOMERSEARCHWIDGET_H

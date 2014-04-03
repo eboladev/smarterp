@@ -30,7 +30,7 @@
 #include "appointment.h"
 #include "calendaritem.h"
 #include "dayitem.h"
- 
+
 /**
 * @class AppointmentItem
 * @brief Класс для графического представления информации о встречах
@@ -41,19 +41,19 @@ class AppointmentItem : public CalendarItem
 
 public:
 	///Конструктор
-    AppointmentItem(Appointment *appointment,
-                    DayItem *dayItem,
-                    QGraphicsItem *parent = 0,
-                    QGraphicsScene *scene = 0);
+	AppointmentItem(Appointment *appointment,
+			DayItem *dayItem,
+			QGraphicsItem *parent = 0,
+			QGraphicsScene *scene = 0);
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-                QWidget *widget);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
 	/**
     *	@brief Метод вернет номер ряда, в котором расположен элемент.
     *	@return номер ряда, в котором расположен элемент.
     */
-    int column() const { return myColumn; } 
+	int column() const { return myColumn; }
 	/**
     *	@brief Метод установит номер ряда, в котором расположен элемент.
     *	@param column - номер ряда.
@@ -64,31 +64,31 @@ public:
     *	@brief Метод вернет количество рядов, перекрываемых элементом.
     *	@return количество рядов, перекрываемых элементом.
     */
-    int columnSpan() const { return myColumnSpan; }
+	int columnSpan() const { return myColumnSpan; }
 	/**
     *	@brief Метод установит количество рядов, перекрываемых элементом.
     *	@param columnSpan - количество рядов, перекрываемых элементом.
     */
-    void setColumnSpan(int columnSpan) { myColumnSpan = columnSpan; }
+	void setColumnSpan(int columnSpan) { myColumnSpan = columnSpan; }
 
-    void layoutChanged();
+	void layoutChanged();
 
 protected:
 	///Обработчик события двойного клика мышью
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    Appointment *ptrAppointment; ///<Указатель на встречу
-    DayItem *ptrDayItem; ///<Указатель на день
-    QColor myColor; ///<Цвет элемента
-    QFont myFont; ///<Шрифт текста на элементе
-    QString mySubject; ///<Субъект встречи
-    QString myCustomer;
+	Appointment *ptrAppointment; ///<Указатель на встречу
+	DayItem *ptrDayItem; ///<Указатель на день
+	QColor myColor; ///<Цвет элемента
+	QFont myFont; ///<Шрифт текста на элементе
+	QString mySubject; ///<Субъект встречи
+	QString myCustomer;
 
-    int myColumn; ///<Ряд, в котором расположен элемент
-    int myColumnSpan; ///<Количество рядов, перекрываемых элементом
+	int myColumn; ///<Ряд, в котором расположен элемент
+	int myColumnSpan; ///<Количество рядов, перекрываемых элементом
 
-    friend class DayContentItem;
+	friend class DayContentItem;
 };
 
 

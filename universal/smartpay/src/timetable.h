@@ -10,22 +10,22 @@ class Timetable;
 
 class Timetable : public QMainWindow
 {
-    Q_OBJECT
-    
-public:
-    explicit Timetable(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
-    ~Timetable();
-    
-private slots:
-    void on_CreateTimetable_clicked();
+	Q_OBJECT
 
-    void on_ViewEmployees_clicked();
+public:
+	explicit Timetable(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	~Timetable();
+
+private slots:
+	void on_CreateTimetable_clicked();
+
+	void on_ViewEmployees_clicked();
 
 private:
-    Ui::Timetable *ui;
-    QSqlDatabase db;
-    void reloadShifts();
-    void reloadTimeTable();
+	Ui::Timetable *ui;
+	QSqlDatabase db;
+	void reloadShifts();
+	void reloadTimeTable();
 };
 
 #endif // TIMETABLE_H

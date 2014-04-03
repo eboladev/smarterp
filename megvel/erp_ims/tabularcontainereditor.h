@@ -9,14 +9,14 @@ class TabularContainerEditor;
 
 class TabularContainerEditor : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit TabularContainerEditor(QWidget *parent = 0);
-    ~TabularContainerEditor();
+	explicit TabularContainerEditor(QWidget *parent = 0);
+	~TabularContainerEditor();
 
 private:
-    Ui::TabularContainerEditor *ui;
+	Ui::TabularContainerEditor *ui;
 };
 
 #endif // TABULARCONTAINEREDITOR_H

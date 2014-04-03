@@ -9,19 +9,19 @@ class ImportBiometricDataWizard;
 
 class ImportBiometricDataWizard : public QWizard
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit ImportBiometricDataWizard(QWidget *parent = 0);
-    ~ImportBiometricDataWizard();
+	explicit ImportBiometricDataWizard(QWidget *parent = 0);
+	~ImportBiometricDataWizard();
 
 private slots:
-    void on_ImportBiometricDataWizard_customButtonClicked(int which);
+	void on_ImportBiometricDataWizard_customButtonClicked(int which);
 
-    void on_ImportBiometricDataWizard_finished(int result);
+	void on_ImportBiometricDataWizard_finished(int result);
 
 private:
-    Ui::ImportBiometricDataWizard *ui;
+	Ui::ImportBiometricDataWizard *ui;
 };
 
 #endif // IMPORTBIOMETRICDATAWIZARD_H

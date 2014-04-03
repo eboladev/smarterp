@@ -26,13 +26,13 @@
 
 class XVariant
 {
-  private:
-    XVariant();
-    virtual ~XVariant();
+private:
+	XVariant();
+	virtual ~XVariant();
 
-  public:
-    static QString encode(const QVariant &);
-    static QVariant decode(const QString & type, const QString & data);
+public:
+	static QString encode(const QVariant &);
+	static QVariant decode(const QString & type, const QString & data);
 };
 
 #endif

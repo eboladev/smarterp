@@ -27,72 +27,72 @@ static const int __fieldFunction = 2;
 static const int __fieldCount = 3;
 
 static const char* __builtinTable[][__fieldCount] = {
-//{"tag",        "Name",           "sqlFunctionName"}
-  {"qty",        "Quantity",       "formatQty"},
-  {"qtyper",     "Quantity Per",   "formatQtyPer"},
+	//{"tag",        "Name",           "sqlFunctionName"}
+	{"qty",        "Quantity",       "formatQty"},
+	{"qtyper",     "Quantity Per",   "formatQtyPer"},
 
-  {"extprice",   "Ext. Price",     "formatExtPrice"},
-  {"purchprice", "Purchase Price", "formatPurchPrice"},
-  {"salesprice", "Sales Price",    "formatSalesPrice"},
-  {"price",      "Price",          "formatPrice"},
-  {"cost",       "Cost",           "formatCost"},
-  {"money",      "Money",          "formatMoney"},
+	{"extprice",   "Ext. Price",     "formatExtPrice"},
+	{"purchprice", "Purchase Price", "formatPurchPrice"},
+	{"salesprice", "Sales Price",    "formatSalesPrice"},
+	{"price",      "Price",          "formatPrice"},
+	{"cost",       "Cost",           "formatCost"},
+	{"money",      "Money",          "formatMoney"},
 
-  {"percent",    "Percent",        "formatPrcnt"},
-  {"ratio",      "Ratio",          "formatRatio"},
-  {"uomratio",   "UOM Ratio",      "formatUOMRatio"},
-  {"scrap",      "Scrap",          "formatScrap"},
+	{"percent",    "Percent",        "formatPrcnt"},
+	{"ratio",      "Ratio",          "formatRatio"},
+	{"uomratio",   "UOM Ratio",      "formatUOMRatio"},
+	{"scrap",      "Scrap",          "formatScrap"},
 
-  {0,            0,                0} // DO NOT REMOVE -- null record
+	{0,            0,                0} // DO NOT REMOVE -- null record
 };
 
 
 
 QStringList getTagList()
 {
-  QStringList tags;
+	QStringList tags;
 
-  for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
-    tags.append(__builtinTable[i][__fieldTag]);
+	for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
+		tags.append(__builtinTable[i][__fieldTag]);
 
-  return tags;
+	return tags;
 }
 
 QStringList getNameList()
 {
-  QStringList names;
+	QStringList names;
 
-  for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
-    names.append(__builtinTable[i][__fieldName]);
+	for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
+		names.append(__builtinTable[i][__fieldName]);
 
-  return names;
+	return names;
 }
 
 
 QString getNameFromTag(const QString & str)
 {
-  for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
-    if (__builtinTable[i][__fieldTag] == str)
-      return __builtinTable[i][__fieldName];
+	for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
+		if (__builtinTable[i][__fieldTag] == str)
+			return __builtinTable[i][__fieldName];
 
-  return QString::null;
+	return QString::null;
 }
 
 QString getFunctionFromTag(const QString & str)
 {
-  for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
-    if (__builtinTable[i][__fieldTag] == str)
-      return __builtinTable[i][__fieldFunction];
+	for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
+		if (__builtinTable[i][__fieldTag] == str)
+			return __builtinTable[i][__fieldFunction];
 
-  return QString::null;
+	return QString::null;
 }
 
 QString getTagFromName(const QString & str)
 {
-  for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
-    if (__builtinTable[i][__fieldName] == str)
-      return __builtinTable[i][__fieldTag];
+	for (int i = 0; __builtinTable[i][__fieldTag] != 0; i++)
+		if (__builtinTable[i][__fieldName] == str)
+			return __builtinTable[i][__fieldTag];
 
-  return QString::null;
+	return QString::null;
 }
 

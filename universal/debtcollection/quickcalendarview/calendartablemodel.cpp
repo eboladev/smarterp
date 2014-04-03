@@ -29,7 +29,7 @@
 * @param parent - указатель на предка.
 */
 CalendarTableModel::CalendarTableModel(QObject *parent) :
-        QAbstractTableModel(parent)
+	QAbstractTableModel(parent)
 {
 }
 
@@ -38,8 +38,8 @@ CalendarTableModel::CalendarTableModel(QObject *parent) :
 */
 void CalendarTableModel::setCalendars(QList <Calendar *> *calendars)
 {
-    ptrCalendars = calendars; //Запоминаем список календарей
-    //reset(new QTextStream());  //Возвращает стандартный вид модели
+	ptrCalendars = calendars; //Запоминаем список календарей
+	//reset(new QTextStream());  //Возвращает стандартный вид модели
 }
 
 /**
@@ -48,7 +48,7 @@ void CalendarTableModel::setCalendars(QList <Calendar *> *calendars)
 */
 int CalendarTableModel::rowCount(const QModelIndex &parent) const
 {
-    return ptrCalendars->count();
+	return ptrCalendars->count();
 }
 
 /**
@@ -57,7 +57,7 @@ int CalendarTableModel::rowCount(const QModelIndex &parent) const
 */
 int CalendarTableModel::columnCount(const QModelIndex &parent) const
 {
-    return 2;
+	return 2;
 }
 
 /**
@@ -72,36 +72,36 @@ Qt::DisplayRole, Qt::CheckStateRole,Qt::EditRole,Qt::UserRole.
 */
 QVariant CalendarTableModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) //Если индекс не принадлежит модели
-        return QVariant();  //вернуть пустой результат.
+	if(!index.isValid()) //Если индекс не принадлежит модели
+		return QVariant();  //вернуть пустой результат.
 
-    if(role == Qt::TextAlignmentRole) //Если спрашиваем выравнивание
-    {
-        return int(Qt::AlignLeft | Qt::AlignVCenter); //Вернуть информацию о выравнивании
-    }else if(role == Qt::BackgroundColorRole && index.column() == 0) //Если спрашиваем цвет
-    {
-        QColor color; //Запоминаем цвет
-        if(index.row() < ptrCalendars->count()) //Если номер строки меньше количества календарей
-            color = ptrCalendars->at(index.row())->color(); //запомнить цвет нужного календаря
+	if(role == Qt::TextAlignmentRole) //Если спрашиваем выравнивание
+	{
+		return int(Qt::AlignLeft | Qt::AlignVCenter); //Вернуть информацию о выравнивании
+	}else if(role == Qt::BackgroundColorRole && index.column() == 0) //Если спрашиваем цвет
+	{
+		QColor color; //Запоминаем цвет
+		if(index.row() < ptrCalendars->count()) //Если номер строки меньше количества календарей
+			color = ptrCalendars->at(index.row())->color(); //запомнить цвет нужного календаря
 
-        return color; //вернуть его
-    }else if(role == Qt::DisplayRole) //Если спрашиваем имя календаря
-    {
-        if(index.row() < ptrCalendars->count()) //Если индекс меньше количества календарей
-        {
-            if(index.column() == 1) //и если номер столбца равен 1
-                return ptrCalendars->at(index.row())->name(); //вернем имя календаря
-        }
-    }else if(role == Qt::EditRole && index.column() == 0)
-    { 
-    }else if(role == Qt::UserRole)
-    {
-    }else if(role == Qt::CheckStateRole && index.column() == 0) //Если спрашивается статус выделения
-    {
-        return QVariant(ptrCalendars->at(index.row())->isSelected()); //вернем статус выделения строки
-    }
+		return color; //вернуть его
+	}else if(role == Qt::DisplayRole) //Если спрашиваем имя календаря
+	{
+		if(index.row() < ptrCalendars->count()) //Если индекс меньше количества календарей
+		{
+			if(index.column() == 1) //и если номер столбца равен 1
+				return ptrCalendars->at(index.row())->name(); //вернем имя календаря
+		}
+	}else if(role == Qt::EditRole && index.column() == 0)
+	{
+	}else if(role == Qt::UserRole)
+	{
+	}else if(role == Qt::CheckStateRole && index.column() == 0) //Если спрашивается статус выделения
+	{
+		return QVariant(ptrCalendars->at(index.row())->isSelected()); //вернем статус выделения строки
+	}
 
-    return QVariant();
+	return QVariant();
 }
 
 /**
@@ -112,7 +112,7 @@ QVariant CalendarTableModel::data(const QModelIndex &index, int role) const
 */
 QVariant CalendarTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    return QVariant();
+	return QVariant();
 }
 
 /**
@@ -124,19 +124,19 @@ QVariant CalendarTableModel::headerData(int section, Qt::Orientation orientation
 bool CalendarTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
 	//если индекс верен и изменяем выделение
-    if(index.isValid() && index.column() == 0 && role == Qt::CheckStateRole)
-    {
-        Calendar *calendar = ptrCalendars->at(index.row()); //получим нужный календарь
-        if(calendar->isSelected()) //если он выбран
-            calendar->setSelected(false); //снимем выделение
-        else //иначе
-            calendar->setSelected(true); //установим его
+	if(index.isValid() && index.column() == 0 && role == Qt::CheckStateRole)
+	{
+		Calendar *calendar = ptrCalendars->at(index.row()); //получим нужный календарь
+		if(calendar->isSelected()) //если он выбран
+			calendar->setSelected(false); //снимем выделение
+		else //иначе
+			calendar->setSelected(true); //установим его
 
-        //ptrCalendars->replace(index.row(), calendar);
-        emit dataChanged(index, index); //высылаем сигнал изменения данных
-        return true;
-    }
-    return false;
+		//ptrCalendars->replace(index.row(), calendar);
+		emit dataChanged(index, index); //высылаем сигнал изменения данных
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -145,10 +145,10 @@ bool CalendarTableModel::setData(const QModelIndex &index, const QVariant &value
 */
 Qt::ItemFlags CalendarTableModel::flags(const QModelIndex &index) const
 {
-    Qt::ItemFlags flags = QAbstractItemModel::flags(index);
-    if(index.column() == 0) //если номер столбца равен 0
-    {
-        flags |= Qt::ItemIsUserCheckable;  //Возможность выбора календаря пользователем
-    }
-    return flags;
+	Qt::ItemFlags flags = QAbstractItemModel::flags(index);
+	if(index.column() == 0) //если номер столбца равен 0
+	{
+		flags |= Qt::ItemIsUserCheckable;  //Возможность выбора календаря пользователем
+	}
+	return flags;
 }

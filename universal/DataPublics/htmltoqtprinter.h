@@ -20,45 +20,45 @@
 #include <QActionGroup>
 class HtmlToQtPrinter : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    HtmlToQtPrinter(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
-                    QSqlQuery query = QSqlQuery(),
-                    QString title = QString(""),
-                    bool firstColumnHidden = true,
-                    QString reportQuery = "SELECT (NOW)",
-                    QStringList columnsToSum = QStringList());
+	HtmlToQtPrinter(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
+			QSqlQuery query = QSqlQuery(),
+			QString title = QString(""),
+			bool firstColumnHidden = true,
+			QString reportQuery = "SELECT (NOW)",
+			QStringList columnsToSum = QStringList());
 
-    HtmlToQtPrinter(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
-                    QString query = QString(),
-                    QString title = QString(""),
-                    bool firstColumnHidden = true,
-                    QString reportQuery = "SELECT (NOW)",
-                    QStringList columnsToSum = QStringList());
+	HtmlToQtPrinter(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(),
+			QString query = QString(),
+			QString title = QString(""),
+			bool firstColumnHidden = true,
+			QString reportQuery = "SELECT (NOW)",
+			QStringList columnsToSum = QStringList());
 
-    HtmlToQtPrinter(QWidget *parent = 0, QString html = QString());
+	HtmlToQtPrinter(QWidget *parent = 0, QString html = QString());
 public slots:
-    void printRequested(QPrinter *prnt);
+	void printRequested(QPrinter *prnt);
 
 private:
-    void print();
+	void print();
 
-    QString fileName;
-    QSqlDatabase db;
-    QSqlQuery qu;
-    QString s_query;
-    QString s_title;
-    bool rawHtml;
-    QString s_rawHtml;
-    bool hideFirstColumn;
+	QString fileName;
+	QSqlDatabase db;
+	QSqlQuery qu;
+	QString s_query;
+	QString s_title;
+	bool rawHtml;
+	QString s_rawHtml;
+	bool hideFirstColumn;
 
-    QPrintPreviewWidget *previewWidget;
-    QPrinter *printer;
-    QStringList sumColumns;
+	QPrintPreviewWidget *previewWidget;
+	QPrinter *printer;
+	QStringList sumColumns;
 
-    QActionGroup *orientationGroup;
+	QActionGroup *orientationGroup;
 
-    QWidget *m_parent;
+	QWidget *m_parent;
 };
 
 #endif // HTMLTOQTPRINTER_H

@@ -35,39 +35,39 @@ class ScrollAreaItem : public CalendarItem
 
 public:
 	///Конструктор
-    ScrollAreaItem(QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
+	ScrollAreaItem(QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
 
 	///Связывает элемент колендаря и область прокрутки
-    void setItem(CalendarItem *item);
+	void setItem(CalendarItem *item);
 
 	///Метод прорисовки области прокрутки
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+		   QWidget *widget);
 
-    virtual void layoutChanged();
+	virtual void layoutChanged();
 
 	///Установить новое значение для полоски прокрутки
-    void scrollTo(qreal value);
+	void scrollTo(qreal value);
 	
 	///Задает область видимости для полосы прокрутки
-    void ensureVisibility(qreal x, qreal y);
+	void ensureVisibility(qreal x, qreal y);
 
-    qreal scrollBarWidth() const; ///<Получить ширину полоски прокрутки
+	qreal scrollBarWidth() const; ///<Получить ширину полоски прокрутки
 
-    virtual void onResize(const QSizeF &size, const QSizeF &oldSize);
+	virtual void onResize(const QSizeF &size, const QSizeF &oldSize);
 
-//    int length;
-//    int pos;
+	//    int length;
+	//    int pos;
 
 protected:
 	///Обработчик колесика мыши для управления ползунком скроллинга
-    void wheelEvent(QGraphicsSceneWheelEvent *event);
+	void wheelEvent(QGraphicsSceneWheelEvent *event);
 private:
-    ScrollBar myVertical; ///<Вертикальная полоска прокрутки
-    CalendarItem myContent; ///<Задает параметры области содержимого (размер области скроллинга без размера полосок прокрутки)
-    CalendarItem *ptrItem; ///<Элемент календаря связанный с областью прокрутки
+	ScrollBar myVertical; ///<Вертикальная полоска прокрутки
+	CalendarItem myContent; ///<Задает параметры области содержимого (размер области скроллинга без размера полосок прокрутки)
+	CalendarItem *ptrItem; ///<Элемент календаря связанный с областью прокрутки
 
-    friend class ScrollBar;
+	friend class ScrollBar;
 };
 
 #endif

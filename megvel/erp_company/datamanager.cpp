@@ -4,14 +4,14 @@
 #include <QDir>
 
 DataManager::DataManager(QWidget *parent, QSqlDatabase database) :
-    QMainWindow(parent),
-    ui(new Ui::DataManager)
+	QMainWindow(parent),
+	ui(new Ui::DataManager)
 {
-    ui->setupUi(this);
-    db = database;
+	ui->setupUi(this);
+	db = database;
 }
 
 DataManager::~DataManager()
 {
-    delete ui;
+	delete ui;
 }

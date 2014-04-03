@@ -25,63 +25,63 @@
 #include <QValidator>
 
 ColorEditor::ColorEditor(QWidget* parent, Qt::WindowFlags fl)
-    : QDialog(parent, fl)
+	: QDialog(parent, fl)
 {
-    setupUi(this);
+	setupUi(this);
 
 
-    // signals and slots connections
-    connect(_btnAccept, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(_btnCancel, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(_btnColor, SIGNAL(clicked()), this, SLOT(_btnColor_clicked()));
+	// signals and slots connections
+	connect(_btnAccept, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(_btnCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(_btnColor, SIGNAL(clicked()), this, SLOT(_btnColor_clicked()));
 
-    QIntValidator * intv = new QIntValidator(0, 255, this);
-    _editRed->setValidator(intv);
-    _editRed->setText(tr("0"));
-    _editGreen->setValidator(intv);
-    _editGreen->setText(tr("0"));
-    _editBlue->setValidator(intv);
-    _editBlue->setText(tr("0"));
+	QIntValidator * intv = new QIntValidator(0, 255, this);
+	_editRed->setValidator(intv);
+	_editRed->setText(tr("0"));
+	_editGreen->setValidator(intv);
+	_editGreen->setText(tr("0"));
+	_editBlue->setValidator(intv);
+	_editBlue->setText(tr("0"));
 }
 
 ColorEditor::~ColorEditor()
 {
-    // no need to delete child widgets, Qt does it all for us
+	// no need to delete child widgets, Qt does it all for us
 }
 
 void ColorEditor::languageChange()
 {
-    retranslateUi(this);
+	retranslateUi(this);
 }
 
 void ColorEditor::_btnColor_clicked()
 {
-    QColor col = QColorDialog::getColor(getColor(), this);
-    if(col.isValid()) {
-	setColor(col);
-    }
+	QColor col = QColorDialog::getColor(getColor(), this);
+	if(col.isValid()) {
+		setColor(col);
+	}
 }
 
 void ColorEditor::setColorName( QString name )
 {
-    _editName->setText(name);
+	_editName->setText(name);
 }
 
 void ColorEditor::setColor( const QColor & col )
 {
-    _editRed->setText(QString::number(col.red()));
-    _editGreen->setText(QString::number(col.green()));
-    _editBlue->setText(QString::number(col.blue()));
+	_editRed->setText(QString::number(col.red()));
+	_editGreen->setText(QString::number(col.green()));
+	_editBlue->setText(QString::number(col.blue()));
 }
 
 QColor ColorEditor::getColor()
 {
-    return QColor(_editRed->text().toInt(),
-	            _editGreen->text().toInt(),
-	            _editBlue->text().toInt());
+	return QColor(_editRed->text().toInt(),
+		      _editGreen->text().toInt(),
+		      _editBlue->text().toInt());
 }
 
 QString ColorEditor::getColorName()
 {
-    return _editName->text();
+	return _editName->text();
 }
