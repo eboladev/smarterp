@@ -21,7 +21,7 @@ private:
 	QSqlDatabase db;
 
 private slots:
-	//void reloadEmployees()
+	void reloadEmployees();
 };
 
 #endif // HR_LEAVES_H
