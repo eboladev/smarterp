@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     smtpclient/mimepart.cpp \
     smtpclient/mimetext.cpp \
     smtpclient/quotedprintable.cpp \
-    smtpclient/smtpclient.cpp
+    smtpclient/smtpclient.cpp \
+    generatehtmllpo.cpp
 
 HEADERS += \
     mailerparent.h \
@@ -45,4 +46,5 @@ HEADERS += \
     smtpclient/mimetext.h \
     smtpclient/quotedprintable.h \
     smtpclient/smtpclient.h \
-    smtpclient/SmtpMime
+    smtpclient/SmtpMime \
+    generatehtmllpo.h
