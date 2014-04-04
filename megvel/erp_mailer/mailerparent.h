@@ -23,6 +23,7 @@ private:
 	QDateTime startTime;
 	QString table_name;
 	bool sendOc(QString ocNo);
+	bool sendRequisition(QString rqnNo);
 	bool sendEmail(QString subject, QString messageText,
 		       QStringList recepients, QStringList attachments = QStringList());
 	EmailAddress *getEmailFromString(QString email);
