@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1107</width>
-    <height>590</height>
+    <height>673</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2061,6 +2061,9 @@ font: 75 16pt &quot;Verdana&quot;;
      </property>
      <property name="text">
       <string>Changes Saved</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::RichText</enum>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
