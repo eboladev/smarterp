@@ -4,10 +4,10 @@
 #
 #-------------------------------------------------
 
-QT       += core sql network
+QT       += core sql network webkitwidgets gui xml
 DESTDIR = ../../build/
-
-QT       -= gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport widgets
+#QT       -= gui
 LIBS += -L../../build -ldatapublics
 TARGET = erp_mailer
 CONFIG   += console
