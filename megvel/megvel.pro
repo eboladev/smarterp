@@ -20,4 +20,5 @@ SUBDIRS += \
     erp_dispatch \
     erp_payments_collection \
     erp_updater \
-    erp_mailer
+    erp_mailer \
+    queue_server

@@ -3,9 +3,7 @@
 #include <QTextDocument>
 #include <QDebug>
 #include <QFile>
-#include <QWebPage>
-#include <QWebFrame>
-#include <QTextBrowser>
+#include <QPrinter>
 GenerateHtmlLpo::GenerateHtmlLpo(QObject *parent) :
 	QObject(parent)
 {
@@ -198,41 +196,14 @@ QString GenerateHtmlLpo::getHtmlString(QString requisitionNo)
 
 
 	QTextDocument doc;
-//	doc->setHtml(
-//				"<html>"
-//				"<head><h1>TEST</h1>"
-//				"</head><body>"
-//				"<h3>This is a test</h3>"
-//				"</body></html>"
-//				);
-
-	QFile f("/home/joshua/programming/html_lpo/lpo.html");
-	f.open(QIODevice::ReadOnly);
-	QString htm = f.readAll();
-	f.close();
-
 	doc.setHtml(html);
 
-	//qDebug() << "Generated HTML\n\n" + htm;
 
-	QPrinter printer(QPrinter::HighResolution);
-	printer.setPageSize(QPrinter::A4);
+	QPrinter printer;
 	printer.setOutputFormat(QPrinter::PdfFormat);
+	printer.setOutputFileName("/home/joshua/lpo2.pdf");
 
-	printer.setOutputFileName("/home/joshua/lpo.pdf");
-
-	qDebug() << "printing starting...";
-	//doc.print(&printer);
-
-	QWebPage p;
-	p.mainFrame()->setHtml(html);
-	p.mainFrame()->print(&printer);
-
-
-	qDebug() << "printing finished";
-
+	doc.print(&printer);
 
 	return html;
-
-
 }

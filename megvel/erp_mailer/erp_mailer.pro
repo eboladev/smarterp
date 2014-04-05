@@ -4,11 +4,18 @@
 #
 #-------------------------------------------------
 
-QT       += core sql network webkitwidgets gui xml
+QT       += core sql network xml
 DESTDIR = ../../build/
-greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport widgets
-#QT       -= gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
+QT       -= gui
+
+INCLUDEPATH +=  . ../../universal/DataPublics
+INCLUDEPATH += ../../universal/common ../../universal/OpenRPT/renderer ../../universal/OpenRPT/common ../../universal/common/tmp
+
+
 LIBS += -L../../build -ldatapublics
+LIBS += -L../../build -lrenderer  -lcommon
+
 TARGET = erp_mailer
 CONFIG   += console
 CONFIG   -= app_bundle
