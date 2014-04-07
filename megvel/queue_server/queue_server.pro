@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 TARGET = queue_server
 TEMPLATE = app
 
-INCLUDEPATH +=  ../../universal/ManhattanStyle ../../universal/DataPublics ../../universal/CustomModels
+INCLUDEPATH +=  . ../../universal/ManhattanStyle ../../universal/DataPublics ../../universal/CustomModels
 LIBS += -L../../build -lcustommodels -lxlslib -ldatapublics
 LIBS += -L../../build -lmanhattanstyle -lrenderer  -lcommon
 

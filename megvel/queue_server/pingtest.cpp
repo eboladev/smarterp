@@ -9,10 +9,16 @@ PingTest::PingTest(QObject *parent, QString IpAddress) :
 		 , this, SLOT(processError()));
 	connect (process, SIGNAL(readyReadStandardOutput())
 		 , this, SLOT(processMessage()));
+#ifdef Q_OS_WIN32
 	if(process)
 		process->start("ping.exe", QStringList() << address << "-n" << "2", QIODevice::ReadWrite);
-
 	emit message("Pinging " + address);
+#endif
+#ifdef Q_OS_LINUX
+	if(process)
+		process->start("ping", QStringList() << address << "-c" << "3", QIODevice::ReadWrite);
+	emit message("Pinging " + address);
+#endif
 }
 
 void PingTest::run()
