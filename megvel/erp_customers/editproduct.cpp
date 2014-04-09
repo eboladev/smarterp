@@ -168,13 +168,12 @@ void EditProduct::reloadDetails()
 	ui->txtLayerPadsQTy->setText(m_product->getLayerPadsQty());
 
 	ui->cboCurrency->setCurrentText(m_product->currency());
+	plyChanged();
+	calculating = true;
 
 	if (m_product->directorApproved() == "Yes")
 	{
 		disableInputs();
-	} else {
-		plyChanged();
-		calculating = true;
 	}
 
 	ui->NoOfInks->setValue(m_product->noOfColors().toInt());
