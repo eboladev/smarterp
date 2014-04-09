@@ -9,8 +9,8 @@ MailAssistant::MailAssistant(QObject *parent) :
 
 void MailAssistant::run()
 {
-	QString host = "smtpout.accesskenya.com";//DataPublics::getIniSetting("smtpHostName");
-	int port = 587;//DataPublics::getIniSetting("smtpPort").toInt();
+	QString host = "192.168.0.246";//DataPublics::getIniSetting("smtpHostName");
+	int port = 25;//DataPublics::getIniSetting("smtpPort").toInt();
 	bool ssl = false;
 	//    if (DataPublics::getIniSetting("smtpSSL") == "true")
 	//        ssl = true;

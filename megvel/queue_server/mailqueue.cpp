@@ -62,7 +62,7 @@ void MailQueue::onMailTimer()
 
 				QStringList recepients;
 				recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
-				recepients.append("Joseph W Joshua<joejoshw@gmail.com>");
+				//recepients.append("Joseph W Joshua<joejoshw@gmail.com>");
 				//recepients.append("Paras Shah<@gmail.com>");
 
 
@@ -122,7 +122,8 @@ void MailQueue::onMailTimer()
 
 				QStringList recepients;
 				recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
-				recepients.append("Paras Shah<dodhia.paras@gmail.com>");
+				//recepients.append("Paras Shah<dodhia.paras@gmail.com>");
+				recepients.append("Prasul Shah<megvelcartons@gmail.com>");
 
 
 				MailAssistant *ma = new MailAssistant(this);
@@ -139,7 +140,7 @@ void MailQueue::onMailTimer()
 			QString rqnID = fk;
 			QStringList recepients;
 			recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
-			//recepients.append("Prasul Shah<megvelcartons@gmail.com>");
+			recepients.append("Prasul Shah<megvelcartons@gmail.com>");
 			QString html = "<h3><a href=http://www.megvel.me.ke/stores/approve_requisition.php?id=" + rqnID + ">Approve Requisition No: " + rqnID +"</a></h3>";
 			QString rqQuery = "SELECT "
 					" store_requisition_master.EntryID "

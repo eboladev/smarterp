@@ -49,7 +49,9 @@ void PingTest::processMessage()
 			emit message("Ping Failed...");
 			emit failed();
 		}else if (s.contains("bytes") || s.contains("(0% loss)")) {
-			emit message("Server responding...");
+			if (!s.contains("100% packet loss, ")) {
+				emit message("Server responding...");
+			}
 			emit succeeded();
 		} else {
 			emit message ("Ping in progress...");
