@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql xml network
-DESTDIR = ../../build/
+DESTDIR = ../../build
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 
@@ -13,7 +13,7 @@ TARGET = queue_server
 TEMPLATE = app
 
 INCLUDEPATH +=  . ../../universal/ManhattanStyle ../../universal/DataPublics ../../universal/CustomModels
-LIBS += -L../../build -lcustommodels -lxlslib -ldatapublics
+LIBS += -L../../build  -ldatapublics -lcustommodels -lxlslib
 LIBS += -L../../build -lmanhattanstyle -lrenderer  -lcommon
 
 SOURCES += main.cpp\
