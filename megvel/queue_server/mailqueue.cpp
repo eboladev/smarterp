@@ -141,7 +141,7 @@ void MailQueue::onMailTimer()
 			QStringList recepients;
 			recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
 			recepients.append("Prasul Shah<megvelcartons@gmail.com>");
-			QString html = "<h3><a href=http://www.megvel.me.ke/stores/approve_requisition.php?id=" + rqnID + ">Approve Requisition No: " + rqnID +"</a></h3>";
+			QString html = "<HTML><HEAD></HEAD><BODY><h3><a href=http://www.megvel.me.ke/stores/approve_requisition.php?id=" + rqnID + ">Approve Requisition No: " + rqnID +"</a></h3>";
 			QString rqQuery = "SELECT "
 					" store_requisition_master.EntryID "
 					" , suppliers.SupplierName "
@@ -187,7 +187,7 @@ void MailQueue::onMailTimer()
 						html += qu3.record().value("SubTotal").toString() + "</td>";
 						html += "</tr>";
 					}
-					html += "</table>";
+					html += "</table></BODY></HTML>";
 					QString msg = DataPublics::buildHtmlEmail("Requisition", html);
 					MailAssistant *ma = new MailAssistant(this);
 					connect (ma, SIGNAL(errorOccurred(QString)), SLOT(smtpError(QString)));
