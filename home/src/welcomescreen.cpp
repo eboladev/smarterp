@@ -58,47 +58,51 @@ void WelcomeScreen::findPlugins()
 
 				QTreeWidgetItem *it = new QTreeWidgetItem(ui->treeWidget);
 				if (mW) {
-					if (!loadedOnes.contains(mW->pluginName())) {
-						if (mW->projectName() == projectName || mW->projectName() == "universal") {
+					if (mW->pluginName() == "Automatic Introduction") {
+						emitPlugin(plugin);
+					} else {
+						if (!loadedOnes.contains(mW->pluginName())) {
+							if (mW->projectName() == projectName || mW->projectName() == "universal") {
 
-							qDebug() << "PLUGIN " << mW->pluginName();
-							it->setText(0, mW->pluginName());
-							it->setText(1, mW->pluginVersion());
-							it->setText(2, mW->releaseDate());
-							it->setText(3, mW->pluginDescription());
-							it->setText(4, mW->pluginAuthor());
-							loadedOnes.append(mW->pluginName());
-							QStringList sw = mW->subWindows();
-							for (int s = 0; s < sw.count(); s++) {
-								QString subWin = sw.at(s);
-								QStringList s_details = subWin.split("\t");
-								QTreeWidgetItem *sItem = new QTreeWidgetItem(it);
-								for (int j = 0; j < s_details.count(); j++)
-								{
-									if (j == 0)
-										sItem->setText(0, s_details.at(j));
+								qDebug() << "PLUGIN " << mW->pluginName();
+								it->setText(0, mW->pluginName());
+								it->setText(1, mW->pluginVersion());
+								it->setText(2, mW->releaseDate());
+								it->setText(3, mW->pluginDescription());
+								it->setText(4, mW->pluginAuthor());
+								loadedOnes.append(mW->pluginName());
+								QStringList sw = mW->subWindows();
+								for (int s = 0; s < sw.count(); s++) {
+									QString subWin = sw.at(s);
+									QStringList s_details = subWin.split("\t");
+									QTreeWidgetItem *sItem = new QTreeWidgetItem(it);
+									for (int j = 0; j < s_details.count(); j++)
+									{
+										if (j == 0)
+											sItem->setText(0, s_details.at(j));
 
-									if (j == 1)
-										sItem->setText(3, s_details.at(j));
+										if (j == 1)
+											sItem->setText(3, s_details.at(j));
 
-									if (j == 2)
-										sItem->setText(4, s_details.at(j));
+										if (j == 2)
+											sItem->setText(4, s_details.at(j));
+									}
 								}
+							} else {
+								it->setText(665, "Error");
+							}
+							if (checkUserInPlugin(mW->pluginName(), userID)) {
+								//mW->setDatabase(db);
+								emitPlugin(plugin);
+								it->setText(5, "Latest version loaded");
+								it->setText(666, "IDLE");
+							} else {
+								it->setText(5, "Access Denied. Plugin Not Loaded");
 							}
 						} else {
+							loader.unload();
 							it->setText(665, "Error");
 						}
-						if (checkUserInPlugin(mW->pluginName(), userID)) {
-							//mW->setDatabase(db);
-							emitPlugin(plugin);
-							it->setText(5, "Latest version loaded");
-							it->setText(666, "IDLE");
-						} else {
-							it->setText(5, "Access Denied. Plugin Not Loaded");
-						}
-					} else {
-						loader.unload();
-						it->setText(665, "Error");
 					}
 
 					if (it->text(665) == "Error") {

@@ -21,4 +21,5 @@ SUBDIRS += \
     erp_payments_collection \
     erp_updater \
     erp_mailer \
-    queue_server
+    queue_server \
+    auto_intro

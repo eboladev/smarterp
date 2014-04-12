@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>auto_resources/letter-M-PNG.png</file>
+    </qresource>
+</RCC>

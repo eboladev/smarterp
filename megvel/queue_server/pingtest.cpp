@@ -45,6 +45,7 @@ void PingTest::processMessage()
 		QByteArray s = process->readAllStandardOutput();
 		QString str(s);
 		qDebug() << str;
+
 		if (s.contains("unreachable")) {
 			emit message("Ping Failed...");
 			emit failed();

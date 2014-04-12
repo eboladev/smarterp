@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 
 TARGET = queue_server
 TEMPLATE = app
-
+QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/\''
 INCLUDEPATH +=  . ../../universal/ManhattanStyle ../../universal/DataPublics ../../universal/CustomModels
 LIBS += -L../../build  -ldatapublics -lcustommodels -lxlslib
 LIBS += -L../../build -lmanhattanstyle -lrenderer  -lcommon
