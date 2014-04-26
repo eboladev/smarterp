@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     #cheque_printer \
-    freepayroll
+    freepayroll \
+    mass-mailer

@@ -21,6 +21,7 @@ class Attendance;
 class Timetable;
 class Admin;
 class MyAccount;
+class Attendance2;
 
 class HR_Leaves;
 
@@ -44,6 +45,7 @@ private:
 	Timetable *m_timeTable;
 	Admin *m_admin;
 	MyAccount *m_acc;
+	Attendance2 *att;
 
 	HR_Leaves *m_leaves;
 
@@ -55,6 +57,8 @@ public slots:
 	void logIn();
 private slots:
 	void keepAlive();
+
+	void pageChanged(QString newPage);
 };
 
 #endif // MAINWINDOW_H

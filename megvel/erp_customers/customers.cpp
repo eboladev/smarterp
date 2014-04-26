@@ -69,7 +69,7 @@ void Customers::reloadCustomers()
 	QString query = "SELECT * FROM vw_cust ORDER BY `Company Name` Asc";
 
 	if (!DataPublics::checkUserAccess("View All Customers", db)) {
-		qDebug() << "Not allowed to view all customers.";
+		//qDebug() << "Not allowed to view all customers.";
 		query = "SELECT CustomerID, `Company Name`, `Account No`  FROM vw_cust WHERE `Sales Rep` = '" + salesRep + "' OR `Secondary Sales Rep` = '" + salesRep + "' ORDER BY `Company Name`";
 	}
 
@@ -329,7 +329,7 @@ void Customers::on_tblCustomers_doubleClicked(const QModelIndex &index)
 
 void Customers::on_txtProductsSearch_textChanged(const QString &arg1)
 {
-	qDebug() << arg1;
+	//qDebug() << arg1;
 	m_productsSorter->setFilterRegExp(arg1);
 }
 

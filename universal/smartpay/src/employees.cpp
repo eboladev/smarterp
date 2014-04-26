@@ -22,10 +22,8 @@ Employees::Employees(QWidget *parent, QSqlDatabase database, bool AccessPayroll)
 				   );
 
 	db = database;
-	reload();
 
 	clearTexts();
-	loadCombos();
 
 	//on_actionAdd_New_triggered();
 
@@ -54,12 +52,18 @@ void Employees::hideFinance()
 	ui->label_5->setVisible(false);
 	ui->HouseAllowance->setVisible(false);
 	ui->label_6->setVisible(false);
-
 }
 
 void Employees::hideHR()
 {
 	ui->HrTab->setVisible(false);
+}
+
+void Employees::reloadData()
+{
+	reload();
+	clearTexts();
+	loadCombos();
 }
 
 #include "startnewemployee.h"
@@ -121,8 +125,8 @@ void Employees::reloadAttendance()
 		QSqlQuery attQu = db.exec("SELECT * FROM wv_full_att WHERE employeeID = '" + currentID +
 					  "' AND (DateIN BETWEEN '" + startDate + "' AND '" + endDate + "')");
 
-		if (attQu.lastError().isValid())
-			qDebug() << attQu.lastError().text();
+		//if (attQu.lastError().isValid())
+			//qDebug() << attQu.lastError().text();
 
 		QSqlQueryModel *model = new QSqlQueryModel(this);
 		model->setQuery(attQu);
@@ -143,8 +147,8 @@ void Employees::reloadAttendance()
 		QSqlQuery bioQu = db.exec("SELECT `Date`, `Time`, `InOut` FROM biometric_attendance WHERE StaffNo = '"
 					  + empNp.trimmed()
 					  + "' AND (Date BETWEEN '" + startDate + "' AND '" + endDate + "')");
-		if (bioQu.lastError().isValid())
-			qDebug() << bioQu.lastError().text();
+		//if (bioQu.lastError().isValid())
+			//qDebug() << bioQu.lastError().text();
 
 		QSqlQueryModel *bioModel = new QSqlQueryModel(this);
 		bioModel->setQuery(bioQu);

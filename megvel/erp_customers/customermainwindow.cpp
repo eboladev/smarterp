@@ -69,7 +69,7 @@ void CustomerMainWindow::receiveDb(QSqlDatabase database)
 
 void CustomerMainWindow::pageChanged(QString newPage)
 {
-	qDebug() << newPage + " has been selected.";
+	//qDebug() << newPage + " has been selected.";
 	if (newPage == "Customers") {
 		cust->reloadCustomers();
 	} else if (newPage == "OC Register") {

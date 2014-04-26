@@ -59,7 +59,7 @@ void WelcomeScreen::findPlugins()
 				QTreeWidgetItem *it = new QTreeWidgetItem(ui->treeWidget);
 				if (mW) {
 					if (mW->pluginName() == "Automatic Introduction") {
-						emitPlugin(plugin);
+						//emitPlugin(plugin);
 					} else {
 						if (!loadedOnes.contains(mW->pluginName())) {
 							if (mW->projectName() == projectName || mW->projectName() == "universal") {
@@ -140,7 +140,7 @@ bool WelcomeScreen::checkUserInPlugin(QString pluginName, QString userID)
 	while (qu.next()) {
 		cnt ++;
 	}
-	qDebug() << userID << pluginID << cnt;
+	//qDebug() << userID << pluginID << cnt;
 	return cnt > 0;
 }
 
@@ -180,7 +180,7 @@ void WelcomeScreen::on_cmdCheckForUpdates_clicked()
 
 void WelcomeScreen::pluginUpdateAction(int pID, QString action)
 {
-	qDebug() << "Action:" << pID << action;
+	//qDebug() << "Action:" << pID << action;
 	ui->treeWidget->invisibleRootItem()->child(pID)->setText(5, action);
 }
 
@@ -218,14 +218,14 @@ void WelcomeScreen::checkForUpdates()
 
 void WelcomeScreen::readyRead()
 {
-	qDebug() << "Socket communication..." << sock->readAll();
+	//qDebug() << "Socket communication..." << sock->readAll();
 }
 
 void WelcomeScreen::socketStateChanged(QAbstractSocket::SocketState newState)
 {
 	if (newState == QAbstractSocket::ConnectedState) {
 		sock->write(socketData.toUtf8());
-		qDebug() << "Plugin information sent...";
+		//qDebug() << "Plugin information sent...";
 	} else if (newState == QAbstractSocket::HostLookupState) {
 
 	}

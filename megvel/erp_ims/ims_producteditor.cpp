@@ -40,10 +40,10 @@ void IMS_ProductEditor::Edit(QString productID)
 
 			}
 		} else {
-			qDebug() << qu.lastError().text();
+			//qDebug() << qu.lastError().text();
 		}
 	} else {
-		qDebug() << "Invalid Product Code";
+		//qDebug() << "Invalid Product Code";
 	}
 }
 

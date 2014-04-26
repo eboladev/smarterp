@@ -7,7 +7,7 @@ QT       += sql core gui xml
 
 DESTDIR = ../../build
 TARGET = custom_widgets
-##CONFIG += qt warn_on staticlib
+#CONFIG += qt warn_on staticlib
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 TEMPLATE = lib

@@ -303,7 +303,7 @@ void PurchaseOrders::on_lstLPOs_clicked(const QModelIndex &index)
 	customerID = it->text(100);
 	orderID = it->text(101);
 
-	qDebug() << customerID << orderID;
+	//qDebug() << customerID << orderID;
 
 	reloadOrders();
 	reloadOrderDetails();

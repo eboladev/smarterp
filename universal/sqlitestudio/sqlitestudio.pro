@@ -9,7 +9,7 @@ DESTDIR = ../../build
 DEPENDPATH += . src src/translations
 INCLUDEPATH += src
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-#greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
+greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 # Input
 HEADERS += src/aboutdialog.h \
            src/addcolumndialog.h \

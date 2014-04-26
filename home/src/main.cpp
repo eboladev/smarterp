@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	db.setPassword("pledge");
 	db.setDatabaseName("cartons");
 
-	a.setStyle("Fusion");
+	//a.setStyle("Fusion");
 
 	if (db.open()) {
 		UserLogin *log = new UserLogin(0, db);

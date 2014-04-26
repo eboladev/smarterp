@@ -17,6 +17,8 @@ public:
 	~Employees();
 	void hideFinance();
 	void hideHR();
+
+	void reloadData();
 private slots:
 	void on_actionAdd_New_triggered();
 	void on_actionSave_triggered();

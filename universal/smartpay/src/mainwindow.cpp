@@ -31,8 +31,11 @@ MainWindow::MainWindow(QWidget *parent, QSqlDatabase database, bool demo) :
 	ui->setupUi(this);
 	Utils::StyleHelper::setBaseColor(QColor(128,128,128));
 	db = database;
-	isDemo = demo;
-	//logIn();
+	isDemo = demo;	//logIn();
+
+
+
+	connect (ui->widget, SIGNAL(currentTextChanged(QString)), SLOT(pageChanged(QString)));
 
 	QTimer *tmr = new QTimer(this);
 	connect (tmr, SIGNAL(timeout(QPrivateSignal)), SLOT(keepAlive()));
@@ -101,7 +104,7 @@ void MainWindow::logIn()
 	attendanceDb.setPassword(dbToUse.password());
 	attendanceDb.setDatabaseName(dbToUse.databaseName());
 	attendanceDb.open();
-	Attendance2 *att = new Attendance2(this, attendanceDb);
+	att = new Attendance2(this, attendanceDb);
 
 
 	ui->widget->insertTab(m_employees);
@@ -111,6 +114,8 @@ void MainWindow::logIn()
 	ui->widget->insertTab(m_payrollContainer);
 
 	ui->widget->setCurrentIndex(0);
+
+	m_employees->reloadData();
 }
 
 void MainWindow::keepAlive()
@@ -120,4 +125,10 @@ void MainWindow::keepAlive()
 
 	if (companyDb.isOpen())
 		companyDb.exec("SELECT NOW()");
+}
+
+void MainWindow::pageChanged(QString newPage)
+{
+	if (newPage == "Attendance")
+		att->reloadData();
 }

@@ -8,7 +8,7 @@ GenerateJobTickets::GenerateJobTickets(QWidget *parent, QSqlDatabase database, Q
 {
 	ui->setupUi(this);
 	count = 0;
-	qDebug() << "Starting job ticket generation...";
+	//qDebug() << "Starting job ticket generation...";
 	db = database;
 	prodID = productID;
 
@@ -276,25 +276,25 @@ void GenerateJobTickets::CalculateDetails()
 			S = qu.record().value("BW").toString();
 			ui->txtWeight->setText(qu.record().value("Divided").toString());
 		} else {
-			qDebug() << "H1";
+			//qDebug() << "H1";
 			double dF1 =  0, dF2 = 0, dF3 = 0;
-			qDebug() << "H2";
+			//qDebug() << "H2";
 			dF1 = F1.toDouble();
 			dF2 = F2.toDouble();
 			dF3 = F3.toDouble();
-			qDebug() << "H3";
+			//qDebug() << "H3";
 			double dTot = dF1 + dF2 + dF3;
 			round_nplaces(dTot, 2);
 			S = QString::number(dTot);
 			//L = round2(Val(2 * (Val(leng) + Val(wid))) + Val(0));
 			L = qu.record().value("BL").toString();
-			qDebug() << "(H) Debug" << S << L;
+			//qDebug() << "(H) Debug" << S << L;
 		}
 
 		F1 = QString::number(round2(ui->txtF1->text().toDouble()));
 		F2 = QString::number(round2(ui->txtF2->text().toDouble()));
 		F3 = QString::number(round2(ui->txtF3->text().toDouble()));
-		qDebug() << "Done with die cut";
+		//qDebug() << "Done with die cut";
 	} else if (qu.record().value("PL").toString().contains("SFK")) {
 		//
 		F1  = "0";
@@ -305,20 +305,20 @@ void GenerateJobTickets::CalculateDetails()
 		S = QString::number(round2(F1.toDouble() + F2.toDouble() + F3.toDouble()));
 		L = QString::number(round2((2 * ((leng.toDouble()) + (wid.toDouble())) + 40)));
 	}
-	qDebug() << "1";
+	//qDebug() << "1";
 	bool corr = false;
 	T = "5";
-	qDebug() << "2";
+	//qDebug() << "2";
 	while ((corr == false)) {
-		qDebug() << "TLoop 1";
+		//qDebug() << "TLoop 1";
 		T = QString::number(T.toDouble() - 1);
 		if (T.toDouble() < 1) {
-			qDebug() << "TLoop 2";
+			//qDebug() << "TLoop 2";
 			T = "1";
 			W = "1800";
 			break;
 		} else {
-			qDebug() << "TLoop 3";
+			//qDebug() << "TLoop 3";
 			if (qu.record().value("PL").toString().contains("3 Ply")) {
 				W = QString::number(S.toDouble() * T.toDouble());
 				W = QString::number(W.toDouble() + 20);
@@ -327,7 +327,7 @@ void GenerateJobTickets::CalculateDetails()
 				W = QString::number(S.toDouble() * T.toDouble());
 				W = QString::number(W.toDouble() + 30);
 			}
-			qDebug() << "TLoop 4" << W << S << T;
+			//qDebug() << "TLoop 4" << W << S << T;
 			if (W.toDouble() > 949 && W.toDouble() < 1801)  {
 				corr = true;
 				if (W.toDouble() < 950 )
@@ -367,13 +367,13 @@ void GenerateJobTickets::CalculateDetails()
 				} else if(Wx < 1050)  {
 					W = "950";
 				}
-				qDebug() << "TLoop 5";
+				//qDebug() << "TLoop 5";
 			}
-			qDebug() << "TLoop 6";
+			//qDebug() << "TLoop 6";
 		}
-		qDebug() << "TLoop 7";
+		//qDebug() << "TLoop 7";
 	} //End of for loop
-	qDebug() << "3";
+	//qDebug() << "3";
 	if (W.toDouble() > 1800) {
 		W = "1800";
 		T = "1";
@@ -382,18 +382,18 @@ void GenerateJobTickets::CalculateDetails()
 		W = "950";
 		T = "4";
 	}
-	qDebug() << "4";
+	//qDebug() << "4";
 	T = QString::number(round2(T.toDouble()));
 	if (T.toDouble() > 4)
 		T = "4";
 	if (T.toDouble() < 0)
 		T = "1";
-	qDebug() << "5";
+	//qDebug() << "5";
 	ui->txtT->setText(T);
 	ui->txtID->setText(ID);
 	ui->txtOD->setText(OD);
 
-	qDebug() << "6";
+	//qDebug() << "6";
 	double newQty = ui->txtQty->text().toDouble();
 
 	if (newQty < 3001) {
@@ -401,7 +401,7 @@ void GenerateJobTickets::CalculateDetails()
 	} else if (newQty > 3000) {
 		newQty = newQty + 100;
 	}
-	qDebug() << "7";
+	//qDebug() << "7";
 	A = QString::number(round2(newQty / T.toDouble()));
 
 	if (PL.contains("Die")) {
@@ -411,14 +411,14 @@ void GenerateJobTickets::CalculateDetails()
 
 		A = QString::number(newQty / (T.toDouble() * outs));
 	}
-	qDebug() << "8";
+	//qDebug() << "8";
 	QString trim = "0";
 	trim = QString::number(W.toDouble() - (T.toDouble() * S.toDouble()));
 
 	double waste = 0;
 	double weight = 0;
 	double tonnes = 0;
-	qDebug() << "9";
+	//qDebug() << "9";
 	weight = qu.record().value("WT").toDouble();
 
 	if (weight < 0)
@@ -428,10 +428,10 @@ void GenerateJobTickets::CalculateDetails()
 	if (qu.record().value("PL").toString().contains("SFK")) {
 		weight = 1;
 	}
-	qDebug() << "10";
+	//qDebug() << "10";
 	tonnes = (weight * ui->txtQty->text().toDouble()) / 1000;
 
-	qDebug() << weight << tonnes;
+	//qDebug() << weight << tonnes;
 
 	QString trimTotal1 = "0";
 	QString trimTotal2 = "0";
@@ -469,7 +469,7 @@ void GenerateJobTickets::CalculateDetails()
 	dApproxQty3 = ((appL * appW * Gram3.toDouble()) / _CONST_BILL) * A.toDouble();
 	dTrimTotal3 = ((appT * appL * Gram3.toDouble()) / _CONST_BILL) * A.toDouble();
 
-	qDebug() << "11";
+	//qDebug() << "11";
 
 	if (Type2 == "B") {
 		dApproxQty2 = ((appL * appW * Gram2.toDouble() * intB) / _CONST_BILL) * A.toDouble();
@@ -502,7 +502,7 @@ void GenerateJobTickets::CalculateDetails()
 	ApproxQty = approxQty1 + " / " + approxQty2 + " / " + approxQty3;
 	TrimText = trimTotal1 + " / " + trimTotal2 + " / " + trimTotal3;
 
-	qDebug() << "12";
+	//qDebug() << "12";
 	if (qu.record().value("PL").toString() == "5 Ply") {
 		dApproxQty5 = ((appL * appW * Gram5.toDouble()) / _CONST_BILL) * A.toDouble();
 		dTrimTotal5 = ((appT * appL * Gram5.toDouble()) / _CONST_BILL) * A.toDouble();
@@ -534,7 +534,7 @@ void GenerateJobTickets::CalculateDetails()
 		ApproxQty = ApproxQty + " / " + approxQty4 + " / " + approxQty5;
 		TrimText = TrimText + " / " + trimTotal4 + " / " + trimTotal5;
 	}
-	qDebug() << "13";
+	//qDebug() << "13";
 	double dTrimTotal = dTrimTotal1 + dTrimTotal2 + dTrimTotal3 + dTrimTotal4 + dTrimTotal5;
 	double dApproxQtyTotal = dApproxQty1 + dApproxQty2 + dApproxQty3 + dApproxQty4 + dApproxQty5;
 
@@ -552,7 +552,7 @@ void GenerateJobTickets::CalculateDetails()
 	tonnes = (weight / 1000) * ui->txtQty->text().toDouble();
 	ui->txtTons->setText(QString::number(tonnes));
 
-	qDebug() << "14";
+	//qDebug() << "14";
 
 	ui->txtApproxQty->setText(ApproxQty);
 	ui->txtFL->setText(bce);
@@ -567,7 +567,7 @@ void GenerateJobTickets::CalculateDetails()
 	ui->txtF2->setText(F2);
 	ui->txtS->setText(S);
 	ui->txtF3->setText(F3);
-	qDebug() << "15";
+	//qDebug() << "15";
 }
 
 
@@ -666,7 +666,7 @@ void GenerateJobTickets::on_cmdGenerate_clicked()
 			ApproxQty + "', '" +
 			approxQtyTotal + "')";
 
-	qDebug() << query;
+	//qDebug() << query;
 
 	QSqlQuery qu = db.exec(query);
 	if (qu.lastError().isValid()) {
@@ -699,7 +699,7 @@ void GenerateJobTickets::on_cmdGenerate_clicked()
 
 void GenerateJobTickets::on_txtQty_editingFinished()
 {
-	qDebug() << "Refreshing...";
+	//qDebug() << "Refreshing...";
 	RefreshTexts();
 	ui->txtBoards->setText(ui->txtQty->text());
 }

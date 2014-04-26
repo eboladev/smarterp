@@ -5,6 +5,7 @@ QMAKE_DOCS = $$PWD/doc/qtxlsx.qdocconf
 load(qt_module)
 
 CONFIG += build_xlsx_lib
+CONFIG += qt warn_on staticlib
 include(qtxlsx.pri)
 
 #Define this macro if you want to run tests, so more AIPs will get exported.

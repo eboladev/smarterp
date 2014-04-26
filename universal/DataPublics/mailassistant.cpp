@@ -12,6 +12,7 @@ void MailAssistant::run()
 	QString host = "192.168.0.246";//DataPublics::getIniSetting("smtpHostName");
 	int port = 25;//DataPublics::getIniSetting("smtpPort").toInt();
 	bool ssl = false;
+
 	//    if (DataPublics::getIniSetting("smtpSSL") == "true")
 	//        ssl = true;
 	//bool auth =false;
@@ -45,7 +46,9 @@ void MailAssistant::run()
 
 	if (!smtp.connectToHost()) {
 		errorMessage = "SMTP error";
-		emit errorOccurred(tr("Unable to connect to the mail server at %1 .").arg(host));
+		QString err = tr("Unable to connect to the mail server at %1 .").arg(host);
+		qDebug() << err;
+		emit errorOccurred(err);
 		return;
 	}
 
@@ -57,12 +60,15 @@ void MailAssistant::run()
 	//        }
 	//    }
 
-	if (!smtp.sendMail(message)) {
+	if (!smtp.sendMail(message))  {
 		errorMessage = "Sendmail failed.";
-		emit errorOccurred("An error occurrent while sending the email " + smtp.getResponseText());
+		QString err = "An error occurrent while sending the email " + smtp.getResponseText();
+		qDebug() << err;
+		emit errorOccurred(err);
 		return;
 	} else {
 		//Email sent
+		qDebug() << "Email Sent " << subject;
 		emit messageStatus("Message successfully sent");
 	}
 

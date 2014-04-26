@@ -13,7 +13,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 TEMPLATE = lib
 CONFIG += plugin
 TARGET = reportmaster
-
+#CONFIG += qt warn_on staticlib
 DESTDIR = ../../build/plugins
 MOC_DIR = tmp
 UI_DIR = tmp

@@ -104,7 +104,7 @@ void HTMLReportPreview::print(QPrinter *printer)
 	} else {
 		//QSqlQuery qu = db.exec("SELECT * FROM report_ocregister LIMIT 0,200");
 		qu = db.exec(s_query);
-		qDebug() << s_query;
+		//qDebug() << s_query;
 		printer->setOrientation(QPrinter::Landscape);
 		//Add Heading
 		html += "<h1>" + s_title + "</h1>";
@@ -163,7 +163,7 @@ void HTMLReportPreview::print(QPrinter *printer)
 					sum = sum + thisSum;
 					//
 				}
-				qDebug() << qRound64(sum);
+				//qDebug() << qRound64(sum);
 				//sumText = QString::number(qRound64(sum), 'f', 0);  //QString::number(sum); //QLocale(QLocale::English).toString((double)sum);
 				sumText = QLocale(QLocale::English).toString(sum, 'f', 0);
 			}

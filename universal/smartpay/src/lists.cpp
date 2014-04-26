@@ -40,6 +40,11 @@ Lists::~Lists()
 	delete ui;
 }
 
+void Lists::reloadData()
+{
+
+}
+
 void Lists::on_actionDepartments_triggered()
 {
 	ui->stackedWidget->setCurrentWidget(m_dept);

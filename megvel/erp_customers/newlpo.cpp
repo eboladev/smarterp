@@ -23,7 +23,7 @@ NewLPO::NewLPO(QWidget *parent, QSqlDatabase database, QString cID) :
 	}
 
 	prodIDs = productIDs;
-	qDebug() << prodIDs;
+	//qDebug() << prodIDs;
 
 	setCustomer();
 	setProducts();

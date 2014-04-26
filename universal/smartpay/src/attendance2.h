@@ -35,7 +35,8 @@ class Attendance2 : public QMainWindow
 public:
 	explicit Attendance2(QWidget *parent = 0, QSqlDatabase d = QSqlDatabase());
 	~Attendance2();
-
+	void reloadData();
+	bool reloaded;
 private slots:
 	void reloadProcessedandMain();
 	void reloadAttendance(bool mainAttendance = true,

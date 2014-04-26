@@ -55,7 +55,7 @@ void finishing_report::refresh()
 	query.append(" AND Shift LIKE '%" + shift + "%' ");
 	query.append(sectionWhere);
 
-	qDebug() << query;
+	//qDebug() << query;
 
 	QString html = gen->getReportHTMLFromQuery(query, db, "Finishing Data");
 	ui->txtData->setHtml(html);

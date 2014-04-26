@@ -56,7 +56,7 @@ void PayrollContainer::logIn()
 					cDb.setDatabaseName(dbName);
 				}
 
-				qDebug() << selectedCompanies << companyName;
+				//qDebug() << selectedCompanies << companyName;
 				if (selectedCompanies.contains(companyName)) {
 					MainWindow *mw = new MainWindow(ui->mdiArea, db);
 					mw->setCompanyName(qu.record().value("FullName").toString());

@@ -19,7 +19,7 @@ StartNewProduct::~StartNewProduct()
 void StartNewProduct::setCustomer(QString customerName)
 {
 	for (int i = 0;i < ui->cboCustomer->count(); i++) {
-		qDebug() << ui->cboCustomer->itemText(i) << customerName;
+		//qDebug() << ui->cboCustomer->itemText(i) << customerName;
 		if (ui->cboCustomer->itemText(i) == customerName) {
 			ui->cboCustomer->setCurrentIndex(i);
 			return;

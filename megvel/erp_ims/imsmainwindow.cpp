@@ -140,7 +140,7 @@ void ImsMainWindow::loadLPODetails()
 
 		reloadProductList();
 
-		qDebug() << "Clearing";
+		//qDebug() << "Clearing";
 		DataPublics::clearInputs(ui->grp_LPO);
 		//DataPublics::setInputsEnabled(ui->grpLPO_ProductLineDetails, false);
 
@@ -307,14 +307,14 @@ void ImsMainWindow::loadContainers()
 
 void ImsMainWindow::on_lstLPODetails_clicked(const QModelIndex &index)
 {
-	qDebug() << "Clicked";
+	//qDebug() << "Clicked";
 	Q_UNUSED(index);
 	//loadProductDetails(ui->lstLPODetails->getCurrentID());
 }
 
 void ImsMainWindow::on_lstLPODetails_doubleClicked(const QModelIndex &index)
 {
-	qDebug() << "Double Clicked";
+	//qDebug() << "Double Clicked";
 	Q_UNUSED(index);
 	loadProductDetails(ui->lstLPODetails->getCurrentID());
 }

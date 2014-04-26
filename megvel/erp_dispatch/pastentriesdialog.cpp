@@ -40,7 +40,7 @@ void PastEntriesDialog::on_cmdSearch_clicked()
 			"Comments LIKE '%" + ui->txtSearch->text() + "%' OR "
 			"Confirmed LIKE '%" + ui->txtSearch->text() + "%' Order by DispatchID DESC";
 
-	qDebug() << query;
+	//qDebug() << query;
 
 	filterModel = new QSortFilterProxyModel(this);
 	model->setQuery(query, db);

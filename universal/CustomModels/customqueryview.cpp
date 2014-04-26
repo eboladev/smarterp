@@ -182,7 +182,7 @@ void CustomQueryView::on_txtSearch_textChanged(const QString &arg1)
 	}
 	//DataPublics::showInformation(newQuery);
 	queryString = newQuery;
-	qDebug() << newQuery;
+	//qDebug() << newQuery;
 }
 
 void CustomQueryView::on_cmdShowAll_clicked()

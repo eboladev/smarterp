@@ -51,10 +51,10 @@ void UserLogin::tryLogin() {
 		while (cQu.next()) {
 			companies.append(cQu.record().value("CompanyName").toString());
 		}
-		SelectCompanyDialog *cmp = new SelectCompanyDialog(this, companies);
-		if (cmp->exec()) {
-			companies = cmp->selectedCompanies();
-		}
+//		SelectCompanyDialog *cmp = new SelectCompanyDialog(this, companies);
+//		if (cmp->exec()) {
+//			companies = cmp->selectedCompanies();
+//		}
 		this->accept();
 	}
 }

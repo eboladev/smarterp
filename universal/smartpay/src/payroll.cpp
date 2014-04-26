@@ -157,7 +157,7 @@ void Payroll::on_cmdShowP10A_clicked()
 
 		db.exec(insQu);
 		if (db.lastError().isValid()) {
-			qDebug() << db.lastError().text();
+			//qDebug() << db.lastError().text();
 		}
 	}
 
@@ -230,7 +230,7 @@ void Payroll::on_cmdShowP10D_clicked()
 
 		db.exec(insQu);
 		if (db.lastError().isValid()) {
-			qDebug() << db.lastError().text();
+			//qDebug() << db.lastError().text();
 		}
 	}
 
@@ -261,6 +261,7 @@ void Payroll::on_cmdShowP9A_clicked()
 		empName = rec.value("Name").toString().trimmed();
 		QString fName, lName;
 		lName = empName;
+
 		if (empName.contains(" ")) {
 			fName = empName.split(" ").at(0);
 			lName = empName.right(empName.length() - fName.length()).trimmed();
@@ -272,14 +273,13 @@ void Payroll::on_cmdShowP9A_clicked()
 			   ).arg(empID, empNo, lName, empPin, year, fName));
 
 		if (db.lastError().isValid()) {
-			qDebug() << db.lastError().text();
+			//qDebug() << db.lastError().text();
 		}
-	}
+	}  //
 	db.exec("UPDATE p9 SET LastModified = NOW()");
 
 	QString p9AXML = getReportXML("P9A", "param_where",
 				      " WHERE Year = '" + year + "'");
-
 	ui->widgetP9A->setDb(db);
 	ui->widgetP9A->setXml(p9AXML);
 	ui->widgetP9A->showPreview();

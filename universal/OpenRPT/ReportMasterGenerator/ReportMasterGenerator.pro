@@ -10,6 +10,7 @@ TEMPLATE = lib
 TARGET = reportgenerator
 QT       += core gui sql xml network
 CONFIG += plugin
+#CONFIG += qt warn_on staticlib
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 DESTDIR     = ../../../build/plugins

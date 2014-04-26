@@ -6,7 +6,7 @@
 TARGET = datapublics
 TEMPLATE = lib
 DEFINES += MAKELIB
-CONFIG += qt warn_on staticlib shared
+#CONFIG += qt warn_on staticlib shared
 DESTDIR += ../../build
 QT += gui sql xml network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

@@ -7,16 +7,11 @@ Attendance2::Attendance2(QWidget *parent, QSqlDatabase d) :
 {
 	ui->setupUi(this);
 	db = d;
-
-	DataPublics::loadQueryToComboBox("SELECT * FROM vw_months_ex  ORDER BY MonthID DESC", "Month", db, ui->cboMonths);
-	DataPublics::loadQueryToComboBox("SELECT * FROM vw_months_ex  ORDER BY MonthID DESC", "Month", db, ui->cboEmpMonth);
-	DataPublics::loadQueryToComboBox("SELECT * FROM vw_employeenames_ex", "Name", db, ui->cboEmpName);
+	reloaded = false;
 
 	ui->dtpProcessed->setDate(QDate::currentDate().addDays(-1));
 
-	db.exec("UPDATE `biometric_attendance` SET `Reason` = 'Clock-In Missing' WHERE DELETED = 'No' AND `Status` = 'Pending' AND `InOut` = 'O'");
-	db.exec("UPDATE biometric_attendance SET `Reason` = 'Clock-Out Missing' WHERE DELETED = 'No' AND `Status` = 'Pending' AND `InOut` = 'I'");
-	reloadAttendance();
+
 	ui->treeView->setVisible(false);
 
 	connect (ui->cboEmpName, SIGNAL(currentIndexChanged(int)), SLOT(generateEmployeeMonthlyAttendanceReport()));
@@ -26,7 +21,7 @@ Attendance2::Attendance2(QWidget *parent, QSqlDatabase d) :
 
 	dbTimer = new QTimer(this);
 	connect (dbTimer, SIGNAL(timeout()), SLOT(on_dbTimer()));
-	dbTimer->start(2000);
+
 
 	//timer = new QTimer(this);
 	//connect (timer, SIGNAL(timeout()), SLOT(on_cmdProcessUnprocessed_clicked()));
@@ -34,12 +29,28 @@ Attendance2::Attendance2(QWidget *parent, QSqlDatabase d) :
 
 	//ui->cmdProcessUnprocessed->setVisible(false);
 
-	DataPublics::loadQueryToComboBox("SELECT Name FROM vw_employeenames_all", "Name", db, ui->cboAttendanceEmployee);
 }
 
 Attendance2::~Attendance2()
 {
 	delete ui;
+}
+
+void Attendance2::reloadData()
+{
+	if (reloaded)
+		return;
+
+	DataPublics::loadQueryToComboBox("SELECT * FROM vw_months_ex  ORDER BY MonthID DESC", "Month", db, ui->cboMonths);
+	DataPublics::loadQueryToComboBox("SELECT * FROM vw_months_ex  ORDER BY MonthID DESC", "Month", db, ui->cboEmpMonth);
+	DataPublics::loadQueryToComboBox("SELECT * FROM vw_employeenames_ex", "Name", db, ui->cboEmpName);
+	db.exec("UPDATE `biometric_attendance` SET `Reason` = 'Clock-In Missing' WHERE DELETED = 'No' AND `Status` = 'Pending' AND `InOut` = 'O'");
+	db.exec("UPDATE biometric_attendance SET `Reason` = 'Clock-Out Missing' WHERE DELETED = 'No' AND `Status` = 'Pending' AND `InOut` = 'I'");
+	reloadAttendance();
+	dbTimer->start(2000);
+	DataPublics::loadQueryToComboBox("SELECT Name FROM vw_employeenames_all", "Name", db, ui->cboAttendanceEmployee);
+
+	reloaded = true;
 }
 
 void Attendance2::reloadProcessedandMain()

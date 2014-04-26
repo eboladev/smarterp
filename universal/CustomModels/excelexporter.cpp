@@ -13,7 +13,8 @@ ExcelExporter::ExcelExporter(QObject *parent, QSqlQueryModel *model) :
 	m_model = model;
 
 
-	QString fName = QFileDialog::getSaveFileName(0, "Select the location to save the file", QDir::homePath(), "Excel Files (*.xlsx)");
+	QString fName = QFileDialog::getSaveFileName(0, "Select the location to save the file",
+						     QDir::homePath(), "Excel Files (*.xlsx)");
 	if (fName.length() > 0) {
 		pdg = new QProgressDialog(0);
 		pdg->setMinimum(0);

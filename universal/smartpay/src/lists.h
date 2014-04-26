@@ -25,6 +25,7 @@ public:
 	explicit Lists(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
 	~Lists();
 	bool payrollAccess;
+	void reloadData();
 private slots:
 	void on_actionDepartments_triggered();
 	void on_actionJob_Titles_triggered();

@@ -235,7 +235,7 @@ void AttendanceCalculator::startProcessing()
 
 			if (note.trimmed().toLower() == "half") {
 
-				qDebug() << note << e_workedHours << e_absentHours;
+				//qDebug() << note << e_workedHours << e_absentHours;
 				if (e_absentHours > 0) {
 					comments = "Half";
 					e_absentHours = e_absentHours / 2;
@@ -247,7 +247,7 @@ void AttendanceCalculator::startProcessing()
 			if (note.trimmed().toLower() == "off") {
 				e_absentHours = 0;
 				e_workedHours = shiftHours;
-				qDebug() << "Off found";
+				//qDebug() << "Off found";
 				comments = "Off";
 			}
 

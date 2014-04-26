@@ -38,3 +38,12 @@ unix:exists(unix.pri) {
   include(unix.pri)
 }
 
+FORMS += \
+    ../../smartpay/src/payrollintroductionscreen.ui
+
+HEADERS += \
+    ../../smartpay/src/payrollintroductionscreen.h
+
+SOURCES += \
+    ../../smartpay/src/payrollintroductionscreen.cpp
+

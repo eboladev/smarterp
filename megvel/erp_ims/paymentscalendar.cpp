@@ -80,7 +80,7 @@ void PaymentsCalendar::redrawCalendar()
 	while (!valid) {
 		monthEndDate = QDate(ui->cboYear->currentText().toInt(), ui->cboMonth->currentIndex() + 1, end);
 		valid = monthEndDate.isValid();
-		qDebug() << monthEndDate << valid;
+		//qDebug() << monthEndDate << valid;
 		end = end - 1;
 	}
 

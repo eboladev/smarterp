@@ -7,7 +7,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 DEFINES += QCUSTOMPLOT_COMPILE_LIBRARY
 TEMPLATE = lib
-#CONFIG += shared debug_and_release build_all
+#CONFIG += qt warn_on staticlib
 CONFIG  += qt warn_on staticlib
 VERSION = 1.1.0
 DESTDIR = ../../build

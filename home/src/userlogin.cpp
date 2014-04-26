@@ -66,13 +66,13 @@ void UserLogin::on_cmdLogin_clicked()
 void UserLogin::smtpError(QString msg)
 {
 	//QMessageBox::critical(this, "Error", msg);
-	qDebug() << "Smtp Error: " + msg;
+	//qDebug() << "Smtp Error: " + msg;
 }
 
 void UserLogin::smtpMessage(QString msg)
 {
 	//QMessageBox::information(this, "Success", msg);
-	qDebug() << "Smtp Message: " + msg;
+	//qDebug() << "Smtp Message: " + msg;
 }
 
 void UserLogin::sendFakeThing()
