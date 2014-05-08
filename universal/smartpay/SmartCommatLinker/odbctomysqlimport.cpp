@@ -112,6 +112,7 @@ void ODBCToMysqlImport::on_timer()
 					odbcDb.exec("UPDATE tblRacData SET Posted = 1 WHERE RacDataTrnCode = '" + entryID + "'");
 					count ++;
 				}
+
 			}
 			emit message(QString::number(count) + " records inserted.");
 		}

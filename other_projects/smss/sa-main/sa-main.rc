@@ -1,0 +1,3 @@
+#define ICO "sa-main.ico"
+1           24          DISCARDABLE     "app.manifest"
+IDI_ICON1               ICON    DISCARDABLE     ICO

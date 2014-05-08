@@ -12,6 +12,7 @@
 #include "payroll.h"
 #include "payslips.h"
 #include "payslips2.h"
+#include "../src/payrollreports.h"
 PayrollSubContainer::PayrollSubContainer(QWidget *parent, QSqlDatabase database, bool payroll) :
 	QMainWindow(parent),
 	ui(new Ui::PayrollSubContainer)
@@ -28,6 +29,7 @@ PayrollSubContainer::PayrollSubContainer(QWidget *parent, QSqlDatabase database,
 	SaccosMainWindow *sacc = new SaccosMainWindow(this, db);
 	OtherDeductionsMW *otherDeds = new OtherDeductionsMW(this, db);
 	TaMW *travellingAllowance = new TaMW(this, db);
+	//PayrollReports *payr = new PayrollReports(this, db);
 	ui->widget->insertTab(m_leave_days);
 	ui->widget->insertTab(travellingAllowance);
 	ui->widget->insertTab(otherDeds);
@@ -35,11 +37,11 @@ PayrollSubContainer::PayrollSubContainer(QWidget *parent, QSqlDatabase database,
 	ui->widget->insertTab(sacc);
 
 
-
 	if (canAccessPayroll) {
 		ui->widget->insertTab(m_payroll);
 		ui->widget->insertTab(m_payslips);
 		connect (m_payroll, SIGNAL(recalculated()), m_payslips, SLOT(reloadTree()));
+		//ui->widget->insertTab(payr);
 	}
 }
 

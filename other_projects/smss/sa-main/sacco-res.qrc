@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/sacco">
+        <file>sacco-res/sa-main.png</file>
+        <file>sacco-res/Warning.png</file>
+        <file>sacco-res/Users1.png</file>
+        <file>sacco-res/TableProperties_32x32.png</file>
+        <file>sacco-res/SecurityLock.png</file>
+        <file>sacco-res/search.png</file>
+        <file>sacco-res/Printer.png</file>
+        <file>sacco-res/preferences.png</file>
+        <file>sacco-res/Keys.png</file>
+        <file>sacco-res/Key_Right.png</file>
+        <file>sacco-res/Key_Left.png</file>
+        <file>sacco-res/Key.png</file>
+        <file>sacco-res/Journal.png</file>
+        <file>sacco-res/info.png</file>
+        <file>sacco-res/history.png</file>
+        <file>sacco-res/help.png</file>
+        <file>sacco-res/DoubleRightArrowHS.png</file>
+        <file>sacco-res/DoubleLeftArrowHS.png</file>
+        <file>sacco-res/Calculator.png</file>
+        <file>sacco-res/base_cog_32.png</file>
+        <file>sacco-res/base_checkmark_32.png</file>
+    </qresource>
+</RCC>
