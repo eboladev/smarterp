@@ -85,6 +85,13 @@ QString DataPublics::mysqlDate(QDate dat)
 	return dat.toString("yyyy-MM-dd");
 }
 
+void DataPublics::setComboBoxTextBasedOnID(QString tableName, QString idCol, QString id, QString return_col, QComboBox *cbo)
+{
+	QString txt = getDbValue("SELECT " + return_col + " FROM " + tableName + " WHERE " + idCol + " = '" + id + "'"
+				 , QSqlDatabase::database("closures"), return_col).toString();
+	cbo->setCurrentText(txt);
+}
+
 /*!
  * \brief DataPublics::ExecuteQuery Execute an SQl query in the specified QSqlDatabase
  * \param query

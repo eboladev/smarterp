@@ -38,6 +38,7 @@ public:
 	static void showInformation(QString msg = "", QString title = "Message");
 	static void showWarning(QString msg = "", QString title = "Warning");
 	static QString mysqlDate(QDate dat);
+	static void setComboBoxTextBasedOnID(QString tableName, QString idCol, QString id, QString return_col, QComboBox *cbo);
 	static bool ExecuteQuery(QString query = "SELECT NOW()",
 				 QSqlDatabase db = QSqlDatabase(), QString error = "");
 	static bool checkUserAccess(QString userID = "", QString roleName = "",

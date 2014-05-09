@@ -7,5 +7,6 @@ SUBDIRS += \
     universal \
     home \
     megvel \
-    other_projects
+    other_projects \
+    closures
 

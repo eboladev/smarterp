@@ -118,11 +118,11 @@ void CustomQueryView::actionExport()
 void CustomQueryView::actionPrint()
 {
 	if (hasModel) {
-		//DataPublics::showReportPreview(DataPublics::getReportXML(queryString, str_ReportTitle, db, true, true, true, hideReportFirstColumn), db);
+		DataPublics::showReportPreview(DataPublics::getReportXML(queryString, str_ReportTitle, db, true, true, true, hideReportFirstColumn), db);
 		//qDebug() << "query: " << queryString;
 		//HTMLReportPreview *pv = new HTMLReportPreview(this, db, myQuery, str_ReportTitle, hideReportFirstColumn, queryString, columnsToSum);
 		//pv->show();
-		DataPublics::htmlToQtPrinter(this, db, myQuery, str_ReportTitle, hideReportFirstColumn, queryString, columnsToSum);
+		//DataPublics::htmlToQtPrinter(this, db, myQuery, str_ReportTitle, hideReportFirstColumn, queryString, columnsToSum);
 		//HtmlPrinter(this, db, queryString, str_ReportTitle);
 	}
 }

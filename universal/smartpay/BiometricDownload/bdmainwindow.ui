@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>749</width>
-    <height>526</height>
+    <width>764</width>
+    <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtIP"/>
+       <widget class="QLineEdit" name="txtIP">
+        <property name="text">
+         <string>192.168.0.61</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_3">
@@ -51,7 +55,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtPort"/>
+       <widget class="QLineEdit" name="txtPort">
+        <property name="text">
+         <string>4660</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="cmdDownload">
@@ -121,7 +129,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>749</width>
+     <width>764</width>
      <height>19</height>
     </rect>
    </property>

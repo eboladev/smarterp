@@ -32,8 +32,9 @@ void MailAssistant::run()
 	message.setSender(sender);
 	message.setSubject(subject);
 
-	for (int i = 0; i < recepients.size(); ++i)
+	for (int i = 0; i < recepients.size(); ++i) {
 		message.addRecipient(DataPublics::stringToEmail(recepients.at(i)));
+	}
 
 	MimeHtml content;
 	content.setHtml(messageBody);

@@ -1,0 +1,166 @@
+#
+# SmartERP NSIS installer script
+#
+# This installer creator needs to be run with:
+# makensis erp.nsi
+#
+
+#--------------------------------
+# Include Modern UI
+
+    !include "MUI2.nsh"
+
+#--------------------------------
+# General
+
+    # Program version
+    !define SMARTERP_VERSION "2.5-beta2"
+
+    # VIProductVersion requires version in x.x.x.x format
+    !define SMARTERP_VIPRODUCTVERSION "2.5.0.0"
+
+    # Installer name and filename
+    Name "Megvel Cartons Ltd ERP"
+    Caption "Megvel Cartons Ltd ERP ${SMARTERP_VERSION} Setup"
+    OutFile "Megvel Cartons Ltd ERP-${SMARTERP_VERSION}.exe"
+
+    # Icon to use for the installer
+    !define MUI_ICON "icon.ico"
+
+    # Default installation folder
+    InstallDir "$PROGRAMFILES\Megvel"
+
+    # Get installation folder from registry if available
+    InstallDirRegKey HKCU "Software\Megvel" ""
+
+    # Request application privileges
+    RequestExecutionLevel admin
+
+    #Disable compression
+    SetCompress on
+
+#--------------------------------
+# Version information
+
+    VIProductVersion "${SMARTERP_VIPRODUCTVERSION}"
+    VIAddVersionKey "ProductName" "Megvel Cartons Ltd ERP"
+    VIAddVersionKey "FileDescription" "Company ERP system."
+    VIAddVersionKey "FileVersion" "${SMARTERP_VERSION}"
+    VIAddVersionKey "LegalCopyright" "GPL v.3"
+    VIAddVersionKey "ProductVersion" "${SMARTERP_VERSION}"
+
+#--------------------------------
+# Settings
+
+    # Show a warn on aborting installation
+    !define MUI_ABORTWARNING
+
+    # Defines the target start menu folder
+    !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
+    !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Megvel"
+    !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+
+#--------------------------------
+# Variables
+
+    Var StartMenuFolder
+
+#--------------------------------
+# Pages
+
+    # Installer pages
+    !insertmacro MUI_PAGE_LICENSE "licence.txt"
+    !insertmacro MUI_PAGE_DIRECTORY
+    !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
+    !insertmacro MUI_PAGE_INSTFILES
+
+    # Uninstaller pages
+    !insertmacro MUI_UNPAGE_CONFIRM
+    !insertmacro MUI_UNPAGE_INSTFILES
+
+# Languages
+
+    !insertmacro MUI_LANGUAGE "English"
+
+#--------------------------------
+# Default installer section
+
+Section
+    SetShellVarContext all
+
+    # Installation path
+    SetOutPath "$INSTDIR"
+
+    # Delete any already installed DLLs to avoid buildup of various
+    # versions of the same library when upgrading
+    Delete "$INSTDIR\*.dll"
+
+    # Files to include in installer
+    #File /r build\imageformats
+    File /r build\platforms
+    File /r build\plugins
+    File /r build\printsupport
+    File /r build\sqldrivers
+    File build\*.dll
+    File build\SmartERP.exe
+    File licence.txt
+    File icon.ico
+
+    # Store installation folder in registry
+    WriteRegStr HKCU "Software/Megvel" "" $INSTDIR
+
+# Create shortcuts
+    !insertMacro MUI_STARTMENU_WRITE_BEGIN Application
+	CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
+	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\Megvel Cartons Ltd.lnk" \
+		"$INSTDIR\SmartERP.exe" "" "$INSTDIR\icon.ico"
+	CreateShortcut "$DESKTOP\Megvel Cartons Ltd.lnk" \
+		"$INSTDIR\SmartERP.exe" "" "$INSTDIR\icon.ico"
+	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" \
+		"$INSTDIR\Uninstall.exe"
+    !insertMacro MUI_STARTMENU_WRITE_END
+
+    # Create the uninstaller
+    WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+    WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Megvel" \
+        "DisplayName" "Megvel"
+    WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Megvel" \
+        "DisplayIcon" "$INSTDIR\letter-m.ico"
+    WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Megvel" \
+        "UninstallString" "$INSTDIR\Uninstall.exe"
+    WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Megvel" \
+        "DisplayVersion" ${SMARTERP_VERSION}
+
+SectionEnd
+#--------------------------------
+# Uninstaller section
+
+Section "Uninstall"
+    SetShellVarContext all
+
+    # Delete installed files
+    Delete "$INSTDIR\*.*"
+    RMDir /r "$INSTDIR\imageformats"
+    RMDir /r "$INSTDIR\platforms"
+    RMDir /r "$INSTDIR\plugins"
+    RMDir /r "$INSTDIR\translations"
+    RMDir /r "$INSTDIR\printsupport"
+    RMDir /r "$INSTDIR\sqldrivers"
+    RMDir "$INSTDIR"
+
+    # Remove shortcuts
+    !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
+    Delete "$SMPROGRAMS\$StartMenuFolder\Megvel Cartons Ltd.lnk"
+    Delete "$SMPROGRAMS\$StartMenuFolder\Uninstall Megvel Cartons Ltd.lnk"
+    RMDir "$SMPROGRAMS\$StartMenuFolder"
+    Delete "$DESKTOP\Megvel Cartons Ltd.lnk"
+
+    # Remove registry entries
+    DeleteRegKey /ifempty HKCU "Software\Megvel"
+    DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\megvel"
+
+SectionEnd
+
+
+

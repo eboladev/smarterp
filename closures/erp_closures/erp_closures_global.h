@@ -1,0 +1,12 @@
+#ifndef ERP_CLOSURES_GLOBAL_H
+#define ERP_CLOSURES_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(ERP_CLOSURES_LIBRARY)
+#  define ERP_CLOSURESSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define ERP_CLOSURESSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // ERP_CLOSURES_GLOBAL_H
