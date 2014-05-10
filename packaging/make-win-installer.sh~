@@ -8,51 +8,52 @@ BUILD_DIR=/home/joshua/programming/qt/smarterp-github/build-smarterp-521_windows
 MINGW=/usr/i686-w64-mingw32/bin
 QT_LIBS_DIR=/usr/i686-w64-mingw32/lib/qt/plugins
 
-
+OUT_PATH=./build
 #Clear temp files
-rm build -r -f
+rm $OUT_PATH -r -f
 
-mkdir build
-mkdir build/plugins
-mkdir build/sqldrivers
-mkdir build/platforms
-mkdir build/printsupport
+mkdir $OUT_PATH
+mkdir $OUT_PATH/plugins
+mkdir $OUT_PATH/sqldrivers
+mkdir $OUT_PATH/platforms
+mkdir $OUT_PATH/printsupport
 
 #Get my latest exes and dlls
-cp $BUILD_DIR/*.dll build
-cp $BUILD_DIR/SmartERP.exe build
-cp $BUILD_DIR/plugins/*.dll build/plugins
+cp $BUILD_DIR/*.dll $OUT_PATH
+cp $BUILD_DIR/SmartERP.exe $OUT_PATH
+cp $BUILD_DIR/plugins/*.dll $OUT_PATH/plugins
 
 #Get Qt plugins
-cp $QT_LIBS_DIR/printsupport/*.dll build/printsupport
-cp $QT_LIBS_DIR/sqldrivers/*.dll build/sqldrivers
-cp $QT_LIBS_DIR/platforms/*.dll build/platforms
+cp $QT_LIBS_DIR/printsupport/*.dll $OUT_PATH/printsupport
+cp $QT_LIBS_DIR/sqldrivers/*.dll $OUT_PATH/sqldrivers
+cp $QT_LIBS_DIR/platforms/*.dll $OUT_PATH/platforms
 
 #Get Mingw and Qt dlls
-cp $MINGW/libeay32.dll build
-cp $MINGW/libEGL.dll build
-cp $MINGW/libgcc_s_sjlj-1.dll build
-cp $MINGW/libGLESv2.dll build
-cp $MINGW/libmysql.dll build
-cp $MINGW/libpcre16-0.dll build
-cp $MINGW/libpng16-16.dll build
-cp $MINGW/libsqlite3-0.dll build
-cp $MINGW/libstdc++-6.dll build
-cp $MINGW/libwinpthread-1.dll build
-cp $MINGW/Qt5Core.dll build
-cp $MINGW/Qt5Gui.dll build
-cp $MINGW/Qt5Network.dll build
-cp $MINGW/Qt5PrintSupport.dll build
-cp $MINGW/Qt5Sql.dll build
-cp $MINGW/Qt5Widgets.dll build
-cp $MINGW/Qt5Xml.dll build
-cp $MINGW/ssleay32.dll build
-cp $MINGW/zlib1.dll build
+cp $MINGW/libeay32.dll $OUT_PATH
+cp $MINGW/libEGL.dll $OUT_PATH
+cp $MINGW/libgcc_s_sjlj-1.dll $OUT_PATH
+cp $MINGW/libGLESv2.dll $OUT_PATH
+cp $MINGW/libmysql.dll $OUT_PATH
+cp $MINGW/libpcre16-0.dll $OUT_PATH
+cp $MINGW/libpng16-16.dll $OUT_PATH
+cp $MINGW/libsqlite3-0.dll $OUT_PATH
+cp $MINGW/libstdc++-6.dll $OUT_PATH
+cp $MINGW/libwinpthread-1.dll $OUT_PATH
+cp $MINGW/Qt5Core.dll $OUT_PATH
+cp $MINGW/Qt5Gui.dll $OUT_PATH
+cp $MINGW/Qt5Network.dll $OUT_PATH
+cp $MINGW/Qt5PrintSupport.dll $OUT_PATH
+cp $MINGW/Qt5Sql.dll $OUT_PATH
+cp $MINGW/Qt5Widgets.dll $OUT_PATH
+cp $MINGW/Qt5Xml.dll $OUT_PATH
+cp $MINGW/ssleay32.dll $OUT_PATH
+cp $MINGW/zlib1.dll $OUT_PATH
 
 #make NSIS package
-#makensis smarterp.nsi
+makensis smarterp.nsi
 
-#makensis smarterp.nsi
-
+#Move setup package to out path
+mv *.exe ../../
+rm $OUT_PATH -r -f
 
 

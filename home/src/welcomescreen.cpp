@@ -64,7 +64,7 @@ void WelcomeScreen::findPlugins()
 						if (!loadedOnes.contains(mW->pluginName())) {
 							if (mW->projectName() == projectName || mW->projectName() == "universal") {
 
-								qDebug() << "PLUGIN " << mW->pluginName();
+								//qDebug() << "PLUGIN " << mW->pluginName();
 								it->setText(0, mW->pluginName());
 								it->setText(1, mW->pluginVersion());
 								it->setText(2, mW->releaseDate());
@@ -96,7 +96,11 @@ void WelcomeScreen::findPlugins()
 								emitPlugin(plugin);
 								it->setText(5, "Latest version loaded");
 								it->setText(666, "IDLE");
+								//qDebug() << "Plugin allowed " << mW->pluginName();
 							} else {
+								/*Debug() << "Plugin not allowed " << mW->pluginName()
+									    << " user ID: " << userID*/
+									    ;
 								it->setText(5, "Access Denied. Plugin Not Loaded");
 							}
 						} else {
@@ -132,8 +136,19 @@ void WelcomeScreen::findPlugins()
 }
 bool WelcomeScreen::checkUserInPlugin(QString pluginName, QString userID)
 {
+	QString sql = "SELECT * FROM `plugins` WHERE `PluginName` = '" + pluginName + "'";
 
-	QString pluginID = DataPublics::getDbValue("SELECT * FROM plugins WHERE PluginName = '" + pluginName + "'", db, "PluginID").toString();
+	QSqlQuery qqq = db.exec("SELECT * FROM plugins");
+
+	if (qqq.lastError().isValid()) {
+		qDebug() << qqq.lastError().text();
+	}
+
+	while (qqq.next()) {
+		qDebug() << qqq.record().value(0).toString();
+	}
+
+	QString pluginID = DataPublics::getDbValue(sql, db, "PluginID").toString();
 	QSqlQuery qu = db.exec(tr("SELECT * FROM pluginusers WHERE UserID = '%1' AND PluginID = '%2'")
 			       .arg(userID, pluginID));
 	int cnt = 0;

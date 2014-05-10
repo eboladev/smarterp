@@ -35,7 +35,8 @@ SOURCES += datapublics.cpp \
     qtprinter.cpp \
     htmltoqtprinter.cpp \
     smartpreviewwidget.cpp \
-    smartpreviewdialog.cpp
+    smartpreviewdialog.cpp \
+    settingsmanager.cpp
 
 HEADERS += datapublics.h\
         DataPublics_global.h \
@@ -61,7 +62,8 @@ HEADERS += datapublics.h\
     qtprinter.h \
     htmltoqtprinter.h \
     smartpreviewwidget.h \
-    smartpreviewdialog.h
+    smartpreviewdialog.h \
+    settingsmanager.h
 
 
 FORMS += \

@@ -148,7 +148,7 @@ QVariant DataPublics::getDbValue(QString query, QSqlDatabase db, QString returnV
 	if (qu.lastError().isValid()) {
 		return 0;
 	} else {
-		qu.next();
+		qu.first();
 		return qu.record().value(returnVal);
 	}
 }

@@ -32,7 +32,7 @@ void SchedulerMW::on_calDate_clicked(const QDate &date)
 
 void SchedulerMW::reloadSchedule()
 {
-    ui->trvCurrentSchedule->setQuery("SELECT * FROM vw_schedule_theoretical WHERE `Schedule Date` = '" + ui->dtpDateToAddTo->date().toString("yyyy-MM-dd") + "'", QSqlDatabase::database(), "Production Schedule for " + ui->dtpDateToAddTo->date().toString("dd MMM yyyy"), true);
+    ui->trvCurrentSchedule->setQuery("SELECT * FROM vw_schedule_theoretical WHERE `Schedule Date` = '" + ui->dtpDateToAddTo->date().toString("yyyy-MM-dd") + "'", QSqlDatabase::database("closures"), "Production Schedule for " + ui->dtpDateToAddTo->date().toString("dd MMM yyyy"), true);
     ui->trvCurrentSchedule->setColumnHidden(0, true);
 }
 

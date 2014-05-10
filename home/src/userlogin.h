@@ -19,7 +19,7 @@ class UserLogin : public QDialog
 	Q_OBJECT
 
 public:
-	explicit UserLogin(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase());
+	explicit UserLogin(QWidget *parent = 0);
 	~UserLogin();
 	QString userID;
 	QString userName;
@@ -28,9 +28,13 @@ private slots:
 	void on_cmdLogin_clicked();
 	void smtpError(QString msg);
 	void smtpMessage(QString msg);
+	void on_cmdDbSetup_clicked();
+
 private:
 	Ui::UserLogin *ui;
-	void sendFakeThing();
+	QString dbHostName;
+	QString dbUserName;
+	QString dbPassword;
 };
 
 #endif // USERLOGIN_H

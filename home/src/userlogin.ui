@@ -14,7 +14,7 @@
    <string>User Login</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
+   <iconset>
     <normaloff>:/letter-M-PNG</normaloff>:/letter-M-PNG</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -106,12 +106,23 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QToolButton" name="cmdDbSetup">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../universal/debtcollection/res.qrc">
+         <normaloff>:/images/wheel.ico</normaloff>:/images/wheel.ico</iconset>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../../universal/debtcollection/res.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -121,8 +132,8 @@ p, li { white-space: pre-wrap; }
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>257</x>
-     <y>117</y>
+     <x>384</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>266</x>

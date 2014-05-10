@@ -25,19 +25,22 @@ SOURCES += src/main.cpp\
     src/welcomescreen.cpp \
     src/userlogin.cpp \
     src/erp_dbsettings.cpp \
-    src/updatethread.cpp
+    src/updatethread.cpp \
+    src/databasesetupdialog.cpp
 
 HEADERS  += src/erpmainwindow.h \
     src/welcomescreen.h \
     src/userlogin.h \
     src/erp_dbsettings.h \
     src/main.h \
-    src/updatethread.h
+    src/updatethread.h \
+    src/databasesetupdialog.h
 
 FORMS    += src/erpmainwindow.ui \
     src/welcomescreen.ui \
     src/userlogin.ui \
-    src/erp_dbsettings.ui
+    src/erp_dbsettings.ui \
+    src/databasesetupdialog.ui
 
 RESOURCES += \
     src/res.qrc

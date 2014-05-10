@@ -21,6 +21,7 @@ ERPMainWindow::ERPMainWindow(QWidget *parent, QString pName, QString dbName, QSt
 	ui->setupUi(this);
 	userID = user_id;
 	db = database;
+
 	//Fetch latest plugins first:
 	updateSocket = new QTcpSocket(this);
 	connect (updateSocket, SIGNAL(connected()), SLOT(socketConnected()));
@@ -119,10 +120,9 @@ void ERPMainWindow::addNewTab(QMainWindow *tab)
 #include "userlogin.h"
 void ERPMainWindow::logOff()
 {
-	//this->hide();
-	UserLogin *log = new UserLogin(0, db);
+	UserLogin *log = new UserLogin(0);
 	if (log->exec() == QDialog::Accepted) {
-		ERPMainWindow *mW = new ERPMainWindow(0, "megvel", "cartons", log->userID, db);
+		ERPMainWindow *mW = new ERPMainWindow(0, "megvel", "cartons", log->userID, log->db);
 		mW->userChanged(log->userName);
 		mW->showMaximized();
 		this->close();

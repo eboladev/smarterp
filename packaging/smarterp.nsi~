@@ -37,7 +37,7 @@
     RequestExecutionLevel admin
 
     #Disable compression
-    SetCompress on
+    SetCompress auto
 
 #--------------------------------
 # Version information
