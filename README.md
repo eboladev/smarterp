@@ -1,8 +1,8 @@
-Megvel Cartons Ltd ERP
+SmartERP
 ===============================
 
-This is the ERP for Megvel Cartons Ltd.
+My own SmartERP.
 
-Based on Qt and mySql.
 
+Built using Qt and mySQL
 
