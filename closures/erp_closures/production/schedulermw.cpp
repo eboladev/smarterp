@@ -71,10 +71,9 @@ void SchedulerMW::on_cmdDeleteFromSchedule_clicked()
     }
 }
 
-//#include "../gui-commons/reportshower.h"
+#include "publicprinter.h"
 void SchedulerMW::on_cmdPrintSchedule_clicked()
 {
-    //ReportShower *rpt = new ReportShower(this, true);
-    //rpt->prepareReport("ProductionPlanning", false, true, " WHERE `Schedule Date` = '" + ui->dtpDateToAddTo->date().toString("yyyy-MM-dd") + "'");
-
+    QString where =  " WHERE `Schedule Date` = '" + ui->dtpDateToAddTo->date().toString("yyyy-MM-dd") + "'";
+	PublicPrinter(this, QSqlDatabase::database("closures"), where, "ProductionPlanning");
 }

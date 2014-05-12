@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1107</width>
-    <height>673</height>
+    <width>1131</width>
+    <height>646</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2102,6 +2102,13 @@ font: 75 16pt &quot;Verdana&quot;;
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -2201,12 +2208,12 @@ font: 75 16pt &quot;Verdana&quot;;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>416</x>
-     <y>265</y>
+     <x>532</x>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
-     <x>365</x>
-     <y>265</y>
+     <x>507</x>
+     <y>346</y>
     </hint>
    </hints>
   </connection>
@@ -2217,12 +2224,12 @@ font: 75 16pt &quot;Verdana&quot;;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>418</x>
-     <y>291</y>
+     <x>532</x>
+     <y>374</y>
     </hint>
     <hint type="destinationlabel">
-     <x>383</x>
-     <y>291</y>
+     <x>507</x>
+     <y>376</y>
     </hint>
    </hints>
   </connection>
@@ -2233,12 +2240,12 @@ font: 75 16pt &quot;Verdana&quot;;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>416</x>
-     <y>313</y>
+     <x>532</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>385</x>
-     <y>313</y>
+     <x>507</x>
+     <y>406</y>
     </hint>
    </hints>
   </connection>
@@ -2249,12 +2256,28 @@ font: 75 16pt &quot;Verdana&quot;;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>413</x>
-     <y>339</y>
+     <x>532</x>
+     <y>434</y>
     </hint>
     <hint type="destinationlabel">
-     <x>359</x>
-     <y>341</y>
+     <x>507</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>EditProduct</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1088</x>
+     <y>617</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1018</x>
+     <y>624</y>
     </hint>
    </hints>
   </connection>

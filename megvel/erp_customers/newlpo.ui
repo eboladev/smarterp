@@ -251,10 +251,34 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>NewLPO</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>446</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>726</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

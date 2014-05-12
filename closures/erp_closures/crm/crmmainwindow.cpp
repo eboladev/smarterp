@@ -197,14 +197,13 @@ void CRMMainWindow::on_tblProducts_itemClicked(QTableWidgetItem *item)
 	productID = ui->tblProducts->item(row, 8)->text();
 }
 
-//#include "../gui-commons/reportshower.h"
+#include "../reportpreview.h"
 void CRMMainWindow::on_trvOrders_doubleClicked(const QModelIndex &index)
 {
 	Q_UNUSED(index);
 	QString orderID = ui->trvOrders->getCurrentID();
 	if (orderID.length() > 0) {
-		//        ReportShower *rpt = new ReportShower(this, true);
-		//        rpt->addDateParam("Select Date", true);
-		//        rpt->prepareReport("OC", false, true, " WHERE entry_id = '" + orderID + "'");
+		ReportPreview(this, db, "oc", " WHERE entry_id = '" + orderID + "'");
+
 	}
 }

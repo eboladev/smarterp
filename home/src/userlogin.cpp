@@ -94,6 +94,9 @@ void UserLogin::smtpMessage(QString msg)
 #include "databasesetupdialog.h"
 void UserLogin::on_cmdDbSetup_clicked()
 {
-	DatabaseSetupDialog *dg = new DatabaseSetupDialog(this);
-	dg->exec();
+	QString passw = QInputDialog::getText(this, "Password", "Enter Admin password to change settings", QLineEdit::Password);
+	if (passw == "pledge") {
+		DatabaseSetupDialog *dg = new DatabaseSetupDialog(this);
+		dg->exec();
+	}
 }

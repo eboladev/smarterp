@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>354</width>
-    <height>417</height>
+    <width>453</width>
+    <height>439</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,6 +50,13 @@
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -57,5 +64,22 @@
  <resources>
   <include location="../../home/src/res.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SpecialPrintDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>437</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>450</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

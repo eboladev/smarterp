@@ -2,7 +2,7 @@
 #include "ui_productiondataentrymw.h"
 #include <QDate>
 #include <QSqlDatabase>
-//#include "../gui-commons/reportshower.h"
+#include "publicprinter.h"
 ProductionDataEntryMW::ProductionDataEntryMW(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ProductionDataEntryMW)
@@ -98,7 +98,6 @@ void LockedEditDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptio
 
 void ProductionDataEntryMW::on_actionPrint_Report_triggered()
 {
-    //ReportShower *rpt = new ReportShower(this, true);
-    //rpt->addDateParam("Select Date", true);
-    //rpt->prepareReport("ProductionRecords", false, true, " WHERE `Schedule Date` = '" + ui->dtpScheduleDate->date().toString("yyyy-MM-dd") + "'");
+	QString where = " WHERE `Schedule Date` = '" + ui->dtpScheduleDate->date().toString("yyyy-MM-dd") + "'";
+	PublicPrinter(this, QSqlDatabase::database("closures"), where, "ProductionRecords");
 }

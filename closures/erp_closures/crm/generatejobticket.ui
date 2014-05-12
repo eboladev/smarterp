@@ -370,10 +370,34 @@
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GenerateJobTicket</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>918</x>
+     <y>571</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>814</x>
+     <y>579</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

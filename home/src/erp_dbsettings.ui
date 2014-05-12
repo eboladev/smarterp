@@ -125,6 +125,13 @@
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -132,5 +139,22 @@
  <resources>
   <include location="res.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ERP_DbSettings</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

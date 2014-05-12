@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>415</width>
-    <height>152</height>
+    <width>467</width>
+    <height>198</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Add New Product</string>
+   <string>New Product</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -119,10 +119,34 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>StartNewProduct</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>398</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>427</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

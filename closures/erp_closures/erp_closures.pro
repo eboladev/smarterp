@@ -34,7 +34,8 @@ SOURCES += closuresplugin.cpp \
     production/productiondataentrymw.cpp \
     production/machines.cpp \
     production/productionmw.cpp \
-    production/productiondataentrywizard.cpp
+    production/productiondataentrywizard.cpp \
+    reportpreview.cpp
 
 HEADERS += closuresplugin.h\
         erp_closures_global.h \
@@ -52,7 +53,8 @@ HEADERS += closuresplugin.h\
     production/productiondataentrymw.h \
     production/machines.h \
     production/productiondataentrywizard.h \
-    production/productionmw.h
+    production/productionmw.h \
+    reportpreview.h
 
 unix {
     target.path = /usr/lib

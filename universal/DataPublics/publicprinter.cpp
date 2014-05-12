@@ -70,13 +70,13 @@ PublicPrinter::PublicPrinter(QWidget *parent, QSqlDatabase database, QString whe
 		}
 		_doc = doc;
 	}
-	dg->resize(parent->width() * 1.6, parent->height() * 1.6);
 
-	dg->showMaximized();
+	dg->exec();
 }
 
-void PublicPrinter::printRequested(QPrinter *printer)
+void PublicPrinter::printRequested(QPrinter *p)
 {
+	Q_UNUSED(p);
 	ORPreRender pre;
 	pre.setDatabase(db);
 	pre.setDom(_doc);
