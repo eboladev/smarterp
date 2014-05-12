@@ -12,6 +12,8 @@
 #include "paramlistedit.h"
 #include "../OpenRPT/renderer/previewdialog.h"
 #include "../OpenRPT/common/builtinSqlFunctions.h"
+#include "xlsxdocument.h"
+
 Payroll::Payroll(QWidget *parent, QSqlDatabase database) :
 	QMainWindow(parent),
 	ui(new Ui::Payroll)
@@ -66,7 +68,7 @@ QString Payroll::getReportXML(QString reportName, QString stringToReplace, QStri
 	return "";
 }
 
-QString Payroll::getNumericalMonthNYear()
+QString Payroll::getNumericalMonthNYearNSSF()
 {
 	QString in = ui->comboBox->currentText();
 	QString year = in.right(4);
@@ -100,6 +102,42 @@ QString Payroll::getNumericalMonthNYear()
 		no = "12";
 
 	return no + year;
+}
+
+QString Payroll::getNumericalMonthNYearNHIF()
+{
+	QString in = ui->comboBox->currentText();
+	QString year = in.right(4);
+	QString mn = in.left(in.size()-5);
+
+	QString no = "01";
+
+	if (mn == "January")
+		no = "01";
+	if (mn == "February")
+		no = "02";
+	if (mn == "March")
+		no = "03";
+	if (mn == "April")
+		no = "04";
+	if (mn == "May")
+		no = "05";
+	if (mn == "June")
+		no = "06";
+	if (mn == "July")
+		no = "07";
+	if (mn == "August")
+		no = "08";
+	if (mn == "September")
+		no = "09";
+	if (mn == "October")
+		no = "10";
+	if (mn == "November")
+		no = "11";
+	if (mn == "December")
+		no = "12";
+
+	return year + "-" + mn;
 }
 
 void Payroll::on_comboBox_currentIndexChanged(const QString &arg1)
@@ -326,7 +364,72 @@ void Payroll::on_cmdShowP9A_clicked()
 
 void Payroll::on_cmdExportNSSF_clicked()
 {
+	QString fileName = QFileDialog::getSaveFileName(this, "Save NSSF File", QDir::homePath(), "Excel Files (*.xlsx)");
+	if (fileName.length() > 0) {
+		if (!fileName.endsWith(".xlsx"))
+			fileName.append(".xlsx");
 
+
+		QXlsx::Document xlsx;
+		//Start with company info
+		xlsx.write(1, 1, "Employer No:");
+		xlsx.write(1, 3, "01078895");
+
+		xlsx.write(2, 1, "Employer Name:");
+		xlsx.write(2, 3, "MEGVEL CARTONS LIMITED");
+
+		xlsx.write(3, 1, "Month Of Contribution:");
+		xlsx.write(3, 3, getNumericalMonthNYearNSSF());
+
+
+
+		//skip the 4th row
+		//
+		//The 5th row has the column headers
+		xlsx.write(5, 1, "PAYROLL NO");
+		xlsx.write(5, 2, "FIRST NAME");
+		xlsx.write(5, 3, "NSSF NO");
+		xlsx.write(5, 4, "STD");
+		xlsx.write(5, 5, "VOL");
+		xlsx.write(5, 6, "TOTAL");
+		xlsx.write(5, 7, "ID NO");
+
+		//Starting at row no. 6, fill in the data details.
+		int row = 6;
+		QSqlQuery nssf_qu = db.exec("SELECT * FROM payroll WHERE MonthID = '" + monthID + "'");
+		double total = 0;
+		while (nssf_qu.next()) {
+			QString payNo = nssf_qu.record().value("EmployeeNo").toString();
+			QString Name = nssf_qu.record().value("EmployeeName").toString().trimmed();
+			QString NSSF_No = nssf_qu.record().value("NSSFNo").toString();
+			double NSSF_AMT = nssf_qu.record().value("NSSF").toDouble();
+			QString ID_NO = nssf_qu.record().value("IDNo").toString();
+
+
+
+			xlsx.write(row, 1, payNo);
+			xlsx.write(row, 2, Name.toUpper());
+			xlsx.write(row, 3, NSSF_No);
+			xlsx.write(row, 4, NSSF_AMT * 2);
+			xlsx.write(row, 5, 0);
+			xlsx.write(row, 6, NSSF_AMT * 2);
+			xlsx.write(row, 7, ID_NO);
+
+			total += NSSF_AMT * 2;
+			row ++;
+		}
+
+		//On the row below tha last entry, fill in the total
+		xlsx.write(row, 4, total);
+		xlsx.write(row, 6, total);
+
+		//Save the excel file
+		if (xlsx.saveAs(fileName)) {
+			DataPublics::showInformation("NSSF File saved at: <br/>" + fileName);
+		} else {
+			DataPublics::showWarning("NSSF File Save Error:<br/>");
+		}
+	}
 }
 
 void Payroll::nssfPreview()
@@ -344,7 +447,7 @@ void Payroll::nssfPreview()
 	html += "</tr>";
 
 	html += "<tr>";
-	html += "<td><b>Month Of Contribution:</b></td><td>" + getNumericalMonthNYear() + "</td>";
+	html += "<td><b>Month Of Contribution:</b></td><td>" + getNumericalMonthNYearNSSF() + "</td>";
 	html += "</tr>";
 
 	html += "</table>";
@@ -418,7 +521,7 @@ void Payroll::nhifPreview()
 	html += "</tr>";
 
 	html += "<tr>";
-	html += "<td><b>Month Of Contribution:</b></td><td>" + getNumericalMonthNYear() + "</td>";
+	html += "<td><b>Month Of Contribution:</b></td><td>" + getNumericalMonthNYearNHIF() + "</td>";
 	html += "</tr>";
 
 	html += "</table>";
@@ -436,14 +539,14 @@ void Payroll::nhifPreview()
 	html += "<td><b>Amount</b></td>";
 	html += "</tr>";
 
-	QSqlQuery nssf_qu = db.exec("SELECT * FROM payroll WHERE MonthID = '" + monthID + "'");
+	QSqlQuery nhif_qu = db.exec("SELECT * FROM payroll WHERE MonthID = '" + monthID + "'");
 	double total = 0;
-	while (nssf_qu.next()) {
-		QString payNo = nssf_qu.record().value("EmployeeNo").toString();
-		QString Name = nssf_qu.record().value("EmployeeName").toString().trimmed();
-		QString NHIF_No = nssf_qu.record().value("NHIFNo").toString();
-		double NHIF_AMT = nssf_qu.record().value("NHIF").toDouble();
-		QString ID_NO = nssf_qu.record().value("IDNo").toString();
+	while (nhif_qu.next()) {
+		QString payNo = nhif_qu.record().value("EmployeeNo").toString();
+		QString Name = nhif_qu.record().value("EmployeeName").toString().trimmed();
+		QString NHIF_No = nhif_qu.record().value("NHIFNo").toString();
+		double NHIF_AMT = nhif_qu.record().value("NHIF").toDouble();
+		QString ID_NO = nhif_qu.record().value("IDNo").toString();
 
 		QString firstName;
 		QString lastName;
@@ -481,5 +584,76 @@ void Payroll::nhifPreview()
 
 void Payroll::on_cmdExportNHIF_clicked()
 {
+	QString fileName = QFileDialog::getSaveFileName(this, "Save NHIF File", QDir::homePath(), "Excel Files (*.xlsx)");
+	if (fileName.length() > 0) {
+		if (!fileName.endsWith(".xlsx"))
+			fileName.append(".xlsx");
 
+
+		QXlsx::Document xlsx;
+		//Start with the company information
+		xlsx.write(1, 1, "Employer No:");
+		xlsx.write(1, 3, "60506");
+
+		xlsx.write(2, 1, "Employer Name:");
+		xlsx.write(2, 3, "MEGVEL CARTONS LIMITED");
+
+		xlsx.write(3, 1, "Month Of Contribution:");
+		xlsx.write(3, 3, getNumericalMonthNYearNHIF());
+
+		//skip the 4th row
+		//
+		//The 5th row has the column headers
+		xlsx.write(5, 1, "PAYROLL NO");
+		xlsx.write(5, 2, "LAST NAME");
+		xlsx.write(5, 3, "FIRST NAME");
+		xlsx.write(5, 4, "ID NO");
+		xlsx.write(5, 5, "NHIF NO");
+		xlsx.write(5, 6, "AMOUNT");
+
+		//Starting at row no. 6, fill in the data details.
+		int row = 6;
+		QSqlQuery nhif_qu = db.exec("SELECT * FROM payroll WHERE MonthID = '" + monthID + "'");
+		double total = 0;
+		while (nhif_qu.next()) {
+			QString payNo = nhif_qu.record().value("EmployeeNo").toString();
+			QString Name = nhif_qu.record().value("EmployeeName").toString().trimmed();
+			QString NHIF_No = nhif_qu.record().value("NHIFNo").toString();
+			double NHIF_AMT = nhif_qu.record().value("NHIF").toDouble();
+			QString ID_NO = nhif_qu.record().value("IDNo").toString();
+
+			QString firstName;
+			QString lastName;
+			QStringList splitName = Name.split(" ");
+			lastName = splitName.at(splitName.count() - 1).toUpper();
+
+			int last = splitName.count() - 1;
+
+			for ( int i  = 0; i < last; i++) {
+				firstName += splitName.at(i) + " ";
+			}
+
+			firstName = firstName.toUpper();
+
+			xlsx.write(row, 1, payNo);
+			xlsx.write(row, 2, lastName);
+			xlsx.write(row, 3, firstName);
+			xlsx.write(row, 4, ID_NO);
+			xlsx.write(row, 5, NHIF_No);
+			xlsx.write(row, 6, NHIF_AMT);
+
+			total += NHIF_AMT;
+			row ++;
+		}
+
+		//On the row below tha last entry, fill in the total
+		xlsx.write(row, 6, total);
+
+		//Save the excel file
+		if (xlsx.saveAs(fileName)) {
+			DataPublics::showInformation("NHIF File saved at: <br/>" + fileName);
+		} else {
+			DataPublics::showWarning("NHIF File Save Error:<br/>");
+		}
+	}
 }

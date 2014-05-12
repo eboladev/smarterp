@@ -52,7 +52,8 @@ private:
 			     QString replaceMent = ""
 			);
 
-	QString getNumericalMonthNYear();
+	QString getNumericalMonthNYearNSSF();
+	QString getNumericalMonthNYearNHIF();
 };
 
 #endif // PAYROLL_H
