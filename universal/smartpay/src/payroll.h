@@ -32,6 +32,12 @@ private slots:
 	void on_cmdShowP10A_clicked();
 	void on_cmdShowP10D_clicked();
 	void on_cmdShowP9A_clicked();
+	void on_cmdExportNSSF_clicked();
+
+	void nssfPreview();
+	void nhifPreview();
+	void on_cmdExportNHIF_clicked();
+
 signals:
 	void recalculated();
 private:
@@ -45,6 +51,9 @@ private:
 	QString getReportXML(QString reportName, QString stringToReplace = "",
 			     QString replaceMent = ""
 			);
+
+	QString getNumericalMonthNYearNSSF();
+	QString getNumericalMonthNYearNHIF();
 };
 
 #endif // PAYROLL_H
