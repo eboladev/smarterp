@@ -47,6 +47,9 @@ void Payroll::loadPayroll()
 	DataPublics::loadQueryToComboBox("SELECT DISTINCT(`Year`) AS 'Yr' FROM months ORDER BY Year", "Yr", db, ui->cboP1AYears);
 	DataPublics::loadQueryToComboBox("SELECT DISTINCT(`Year`) AS 'Yr' FROM months ORDER BY Year", "Yr", db, ui->cboP1DYears);
 	DataPublics::loadQueryToComboBox("SELECT DISTINCT(`Year`) AS 'Yr' FROM months ORDER BY Year", "Yr", db, ui->cboP9AYears);
+
+	nssfPreview();
+	nhifPreview();
 }
 
 
@@ -61,6 +64,42 @@ QString Payroll::getReportXML(QString reportName, QString stringToReplace, QStri
 		return xml;
 	}
 	return "";
+}
+
+QString Payroll::getNumericalMonthNYear()
+{
+	QString in = ui->comboBox->currentText();
+	QString year = in.right(4);
+	QString mn = in.left(in.size()-5);
+
+	QString no = "01";
+
+	if (mn == "January")
+		no = "01";
+	if (mn == "February")
+		no = "02";
+	if (mn == "March")
+		no = "03";
+	if (mn == "April")
+		no = "04";
+	if (mn == "May")
+		no = "05";
+	if (mn == "June")
+		no = "06";
+	if (mn == "July")
+		no = "07";
+	if (mn == "August")
+		no = "08";
+	if (mn == "September")
+		no = "09";
+	if (mn == "October")
+		no = "10";
+	if (mn == "November")
+		no = "11";
+	if (mn == "December")
+		no = "12";
+
+	return no + year;
 }
 
 void Payroll::on_comboBox_currentIndexChanged(const QString &arg1)
@@ -161,11 +200,11 @@ void Payroll::on_cmdShowP10A_clicked()
 		}
 	}
 
-	QString xml = getReportXML("P10A", "param_where",
-				   ui->cboP1AYears->currentText());
-	ui->widgetP10A->setDb(db);
-	ui->widgetP10A->setXml(xml);
-	ui->widgetP10A->showPreview();
+	//QString xml = getReportXML("P10A", "param_where",
+	//			   ui->cboP1AYears->currentText());
+	//ui->widgetP10A->setDb(db);
+	//ui->widgetP10A->setXml(xml);
+	//ui->widgetP10A->showPreview();
 }
 
 void Payroll::on_cmdShowP10D_clicked()
@@ -235,14 +274,14 @@ void Payroll::on_cmdShowP10D_clicked()
 	}
 
 
-	QString xml;
-	xml = getReportXML("P10D",
-			   "param_where", " WHERE Year = '"
-			   + year + "' AND Quarter = '" + quarterName + "'");
-
-	ui->widgetP10D->setDb(db);
-	ui->widgetP10D->setXml(xml);
-	ui->widgetP10D->showPreview();
+	//QString xml;
+	//xml = getReportXML("P10D",
+	//		   "param_where", " WHERE Year = '"
+	//		   + year + "' AND Quarter = '" + quarterName + "'");
+//
+	//ui->widgetP10D->setDb(db);
+	//ui->widgetP10D->setXml(xml);
+	//ui->widgetP10D->showPreview();
 }
 
 void Payroll::on_cmdShowP9A_clicked()
@@ -278,9 +317,169 @@ void Payroll::on_cmdShowP9A_clicked()
 	}  //
 	db.exec("UPDATE p9 SET LastModified = NOW()");
 
-	QString p9AXML = getReportXML("P9A", "param_where",
-				      " WHERE Year = '" + year + "'");
-	ui->widgetP9A->setDb(db);
-	ui->widgetP9A->setXml(p9AXML);
-	ui->widgetP9A->showPreview();
+	//QString p9AXML = getReportXML("P9A", "param_where",
+	//			      " WHERE Year = '" + year + "'");
+	//ui->widgetP9A->setDb(db);
+	//ui->widgetP9A->setXml(p9AXML);
+	//ui->widgetP9A->showPreview();
+}
+
+void Payroll::on_cmdExportNSSF_clicked()
+{
+
+}
+
+void Payroll::nssfPreview()
+{
+	QString html = "<html>";
+
+	html += "<table border=0>";
+
+	html += "<tr>";
+	html += "<td><b>Employer No:</b></td><td>01078895</td>";
+	html += "</tr>";
+
+	html += "<tr>";
+	html += "<td><b>Employer Name:</b></td><td>MEGVEL CARTONS LTD</td>";
+	html += "</tr>";
+
+	html += "<tr>";
+	html += "<td><b>Month Of Contribution:</b></td><td>" + getNumericalMonthNYear() + "</td>";
+	html += "</tr>";
+
+	html += "</table>";
+
+	html += "<br/>";
+
+	html += "<table border=1 cellspacing=1 cellpadding=1>";
+
+	html += "<tr>";
+	html += "<td><b>Payroll No.</b></td>";
+	html += "<td><b>First Name</b></td>";
+	html += "<td><b>NSSF No</b></td>";
+	html += "<td><b>STD</b></td>";
+	html += "<td><b>VOL</b></td>";
+	html += "<td><b>Total</b></td>";
+	html += "<td><b>ID No.</b></td>";
+	html += "</tr>";
+
+	QSqlQuery nssf_qu = db.exec("SELECT * FROM payroll WHERE MonthID = '" + monthID + "'");
+	double total = 0;
+	while (nssf_qu.next()) {
+		QString payNo = nssf_qu.record().value("EmployeeNo").toString();
+		QString Name = nssf_qu.record().value("EmployeeName").toString().trimmed();
+		QString NSSF_No = nssf_qu.record().value("NSSFNo").toString();
+		double NSSF_AMT = nssf_qu.record().value("NSSF").toDouble();
+		QString ID_NO = nssf_qu.record().value("IDNo").toString();
+
+		html += "<tr>";
+
+		html += "<td>" + payNo + "</td>";
+		html += "<td>" + Name + "</td>";
+		html += "<td>" + NSSF_No + "</td>";
+		html += "<td>" + QString::number(NSSF_AMT * 2) + "</td>";
+		html += "<td>0.00</td>";
+		html += "<td>" + QString::number(NSSF_AMT * 2) + "</td>";
+		html += "<td>" + ID_NO + "</td>";
+
+		html += "</tr>";
+
+		total += NSSF_AMT * 2;
+	}
+	html += "<tr>";
+	html += "<td></td><td></td><td></td>";
+	//std
+	html += "<td><b>" + QString::number(total) + "</b></td>";
+
+	html += "<td></td>";
+	//total
+	html += "<td><b>" + QString::number(total) + "</b></td>";
+
+	html += "<td></td>";
+	html += "</tr>";
+	html += "</table>";
+
+	html += "</html>";
+	ui->txtNSSFView->setHtml(html);
+}
+
+void Payroll::nhifPreview()
+{
+	QString html = "<html>";
+
+	html += "<table border=0>";
+
+	html += "<tr>";
+	html += "<td><b>Employer No:</b></td><td>60506</td>";
+	html += "</tr>";
+
+	html += "<tr>";
+	html += "<td><b>Employer Name:</b></td><td>MEGVEL CARTONS LTD</td>";
+	html += "</tr>";
+
+	html += "<tr>";
+	html += "<td><b>Month Of Contribution:</b></td><td>" + getNumericalMonthNYear() + "</td>";
+	html += "</tr>";
+
+	html += "</table>";
+
+	html += "<br/>";
+
+	html += "<table border=1 cellspacing=1 cellpadding=1>";
+
+	html += "<tr>";
+	html += "<td><b>Payroll No.</b></td>";
+	html += "<td><b>Last Name</b></td>";
+	html += "<td><b>First Name</b></td>";
+	html += "<td><b>ID No.</b></td>";
+	html += "<td><b>NHIF No</b></td>";
+	html += "<td><b>Amount</b></td>";
+	html += "</tr>";
+
+	QSqlQuery nssf_qu = db.exec("SELECT * FROM payroll WHERE MonthID = '" + monthID + "'");
+	double total = 0;
+	while (nssf_qu.next()) {
+		QString payNo = nssf_qu.record().value("EmployeeNo").toString();
+		QString Name = nssf_qu.record().value("EmployeeName").toString().trimmed();
+		QString NHIF_No = nssf_qu.record().value("NHIFNo").toString();
+		double NHIF_AMT = nssf_qu.record().value("NHIF").toDouble();
+		QString ID_NO = nssf_qu.record().value("IDNo").toString();
+
+		QString firstName;
+		QString lastName;
+		QStringList splitName = Name.split(" ");
+		lastName = splitName.at(splitName.count() - 1);
+
+		int last = splitName.count() - 1;
+
+		for ( int i  = 0; i < last; i++) {
+			firstName += splitName.at(i) + " ";
+		}
+
+		html += "<tr>";
+
+		html += "<td>" + payNo + "</td>";
+		html += "<td>" + lastName.trimmed() + "</td>";		//last name
+		html += "<td>" + firstName.trimmed() + "</td>";		//first name
+		html += "<td>" + ID_NO + "</td>";
+		html += "<td>" + NHIF_No + "</td>";
+		html += "<td>" + QString::number(NHIF_AMT) + "</td>";
+
+		html += "</tr>";
+
+		total += NHIF_AMT;
+	}
+	html += "<tr>";
+	html += "<td></td><td></td><td></td><td></td><td></td>";
+	html += "<td><b>" + QString::number(total) + "</b></td>";
+	html += "</tr>";
+	html += "</table>";
+
+	html += "</html>";
+	ui->txtNHIFView->setHtml(html);
+}
+
+void Payroll::on_cmdExportNHIF_clicked()
+{
+
 }

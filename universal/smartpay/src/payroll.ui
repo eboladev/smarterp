@@ -134,7 +134,7 @@
              </layout>
             </item>
             <item>
-             <widget class="QTreeView" name="trvNSSF"/>
+             <widget class="QTextBrowser" name="txtNSSFView"/>
             </item>
            </layout>
           </widget>
@@ -168,7 +168,7 @@
              </layout>
             </item>
             <item>
-             <widget class="QTreeView" name="trvNHIF"/>
+             <widget class="QTextBrowser" name="txtNHIFView"/>
             </item>
            </layout>
           </widget>
@@ -422,6 +422,7 @@
   </customwidget>
  </customwidgets>
  <resources>
+  <include location="rc.qrc"/>
   <include location="pngs.qrc"/>
   <include location="rc.qrc"/>
  </resources>
