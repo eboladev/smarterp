@@ -21,6 +21,7 @@ mkdir $OUT_PATH/printsupport
 #Get my latest exes and dlls
 cp $BUILD_DIR/*.dll $OUT_PATH
 cp $BUILD_DIR/SmartERP.exe $OUT_PATH
+cp $BUILD_DIR/SmartPay.exe $OUT_PATH
 cp $BUILD_DIR/plugins/*.dll $OUT_PATH/plugins
 
 #Get Qt plugins
@@ -51,7 +52,7 @@ cp $MINGW/zlib1.dll $OUT_PATH
 
 #make NSIS package
 makensis smarterp.nsi
-
+makensis smartpay.nsi
 #Move setup package to out path
 mv *.exe ../../
 rm $OUT_PATH -r -f

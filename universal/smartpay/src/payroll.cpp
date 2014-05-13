@@ -137,7 +137,7 @@ QString Payroll::getNumericalMonthNYearNHIF()
 	if (mn == "December")
 		no = "12";
 
-	return year + "-" + mn;
+	return year + "-" + no;
 }
 
 void Payroll::on_comboBox_currentIndexChanged(const QString &arg1)
