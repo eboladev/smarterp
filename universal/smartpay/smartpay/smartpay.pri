@@ -90,7 +90,8 @@ SOURCES +=\
     ../src/payrollreportpreview.cpp \
     ../src/calculateattendancedialog.cpp \
     startnewemployee.cpp \
-    ../src/selectcompanydialog.cpp
+    ../src/selectcompanydialog.cpp \
+    ../src/payrolldbsettingsdialog.cpp
 
 HEADERS  += \
 ../src/mainwindow.h \
@@ -184,7 +185,8 @@ HEADERS  += \
     ../src/payrollreportpreview.h \
     ../src/calculateattendancedialog.h \
     startnewemployee.h \
-    ../src/selectcompanydialog.h
+    ../src/selectcompanydialog.h \
+    ../src/payrolldbsettingsdialog.h
 
 FORMS += \
 ../src/mainwindow.ui \
@@ -263,7 +265,8 @@ FORMS += \
     ../src/payrollreportpreview.ui \
     ../src/calculateattendancedialog.ui \
     startnewemployee.ui \
-    ../src/selectcompanydialog.ui
+    ../src/selectcompanydialog.ui \
+    ../src/payrolldbsettingsdialog.ui
 
 RESOURCES += \
 ../src/rc.qrc \

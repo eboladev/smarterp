@@ -40,13 +40,16 @@ unix:exists(unix.pri) {
 
 FORMS += \
     ../../smartpay/src/payrollintroductionscreen.ui \
-    ../../smartpay/src/payrollreports.ui
+    ../../smartpay/src/payrollreports.ui \
+    ../../smartpay/src/payrolldbsettingsdialog.ui
 
 HEADERS += \
     ../../smartpay/src/payrollintroductionscreen.h \
-    ../../smartpay/src/payrollreports.h
+    ../../smartpay/src/payrollreports.h \
+    ../../smartpay/src/payrolldbsettingsdialog.h
 
 SOURCES += \
     ../../smartpay/src/payrollintroductionscreen.cpp \
-    ../../smartpay/src/payrollreports.cpp
+    ../../smartpay/src/payrollreports.cpp \
+    ../../smartpay/src/payrolldbsettingsdialog.cpp
 

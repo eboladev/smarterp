@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>364</width>
-    <height>219</height>
+    <width>380</width>
+    <height>215</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>User Login</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="../smartpay/main_res.qrc">
     <normaloff>:/main/Letter-S-icon.png</normaloff>:/main/Letter-S-icon.png</iconset>
   </property>
   <property name="sizeGripEnabled">
@@ -47,7 +47,7 @@ background-color: rgb(255, 0, 0);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/images/SecurityLock.png</pixmap>
+        <pixmap resource="../../../home/src/res.qrc">:/images/SecurityLock.png</pixmap>
        </property>
       </widget>
      </item>
@@ -108,7 +108,7 @@ background-color: rgb(255, 0, 0);</string>
         <string>Login</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../../../home/src/res.qrc">
          <normaloff>:/images/preferences.png</normaloff>:/images/preferences.png</iconset>
        </property>
       </widget>
@@ -132,8 +132,19 @@ background-color: rgb(255, 0, 0);</string>
         <string>Cancel</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="rc.qrc">
          <normaloff>:/images/delete.png</normaloff>:/images/delete.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="cmdAuthConfig">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="payroll_resources.qrc">
+         <normaloff>:/payroll/images/UAC_shield.png</normaloff>:/payroll/images/UAC_shield.png</iconset>
        </property>
       </widget>
      </item>
@@ -141,6 +152,12 @@ background-color: rgb(255, 0, 0);</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../home/src/res.qrc"/>
+  <include location="rc.qrc"/>
+  <include location="../smartpay/main_res.qrc"/>
+  <include location="rc.qrc"/>
+  <include location="payroll_resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

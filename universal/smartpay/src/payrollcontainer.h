@@ -13,9 +13,13 @@ class PayrollContainer : public QMainWindow
 	Q_OBJECT
 
 public:
-	explicit PayrollContainer(QWidget *parent = 0, QSqlDatabase database = QSqlDatabase(), bool embedded = false);
+	explicit PayrollContainer(QWidget *parent = 0, bool embedded = false,
+				  QStringList companies = QStringList(),
+				  QString user_id = QString()
+				  );
 	~PayrollContainer();
-
+	QStringList selectedCompanies;
+	QString userID;
 private:
 	Ui::PayrollContainer *ui;
 	QSqlDatabase db;
