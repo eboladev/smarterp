@@ -24,6 +24,8 @@ unix:!symbian {
     INSTALLS += target
 }
 
+QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/\''
+
 TARGET = erp_corrugator
 TEMPLATE = app
 
