@@ -52,7 +52,7 @@ public:
 			QString databaseName = "megvel");
 	static QSqlDatabase getDatabaseAndOpen(
 			QString connectionName = "NewConnection" + QDateTime::currentDateTime().toString(), QString databaseName = "megvel");
-	static QVariant getSettingValue(QString settingName = "");
+	static QVariant getSettingValue(QString settingName = "", QVariant defaultValue = QVariant());
 	static void setSettingValue(QString settingName = "", QVariant value = 0);
 	static void loadQueryToComboBox(QString query = "SELECT NOW()", QString col = "NOW()", QSqlDatabase db = QSqlDatabase(), QComboBox *cbo = new QComboBox(0));
 	static QString getReportXML(QString query = "SELECT NOW()", QString title="Report", QSqlDatabase db = QSqlDatabase(), bool lines=false, bool landscape = true, bool pagenumbers = true,
