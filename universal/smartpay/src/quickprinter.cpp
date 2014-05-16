@@ -53,7 +53,6 @@ QuickPrinter::QuickPrinter(QObject *parent, QString reportName, QString where, Q
 		ORPreRender pre;
 		pre.setDatabase(db);
 		pre.setDom(_doc);
-		ORODocument *oDoc = pre.generate();
 		QPrintPreviewDialog *pvr = new QPrintPreviewDialog(printer, 0);
 		connect (pvr, SIGNAL(paintRequested(QPrinter*)), SLOT(paintRequested(QPrinter*)));
 		pvr->exec();
@@ -74,6 +73,7 @@ void QuickPrinter::setIsPdf(bool isPdf)
 
 void QuickPrinter::paintRequested(QPrinter *p)
 {
+	Q_UNUSED(p);
 	ORPreRender pre;
 	pre.setDatabase(db);
 	pre.setDom(_doc);
