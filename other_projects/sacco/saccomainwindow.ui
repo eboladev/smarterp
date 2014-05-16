@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SaccoMainWindow</class>
+ <widget class="QMainWindow" name="SaccoMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>482</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Sacco System</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QMdiArea" name="mdiArea"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>750</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Members">
+    <property name="title">
+     <string>&amp;Members</string>
+    </property>
+    <addaction name="actionMember_s_List"/>
+    <addaction name="actionFOSA"/>
+    <addaction name="actionBOSA"/>
+    <addaction name="actionFixed_Deposit"/>
+    <addaction name="actionStanding_Orders"/>
+    <addaction name="actionShares"/>
+    <addaction name="actionAdvance"/>
+    <addaction name="actionOther_Payments"/>
+    <addaction name="actionRemittance"/>
+    <addaction name="actionUpload_Members"/>
+    <addaction name="separator"/>
+    <addaction name="actionSavings_Account"/>
+    <addaction name="actionFixed_Deposit_2"/>
+    <addaction name="actionShares_2"/>
+    <addaction name="actionBosa_Account"/>
+    <addaction name="actionRemittance_Groups"/>
+    <addaction name="actionResidence"/>
+    <addaction name="actionUpload_Format"/>
+    <addaction name="actionRemittance_Format"/>
+    <addaction name="actionReports"/>
+   </widget>
+   <widget class="QMenu" name="menu_Loans">
+    <property name="title">
+     <string>&amp;Loans</string>
+    </property>
+    <addaction name="actionApplied_Loans"/>
+    <addaction name="actionReceived_Applications"/>
+    <addaction name="actionApproved_Application"/>
+    <addaction name="actionRejected_Application"/>
+    <addaction name="actionRisk_Classification"/>
+    <addaction name="actionLoan_Insurance"/>
+    <addaction name="actionGuarantors"/>
+    <addaction name="actionDefaulters"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoan_Type"/>
+    <addaction name="actionLoan_Security"/>
+    <addaction name="actionLoan_Constraints"/>
+    <addaction name="actionApplication_Form"/>
+    <addaction name="actionLoan_Charges"/>
+    <addaction name="actionRejection_Reasons"/>
+   </widget>
+   <widget class="QMenu" name="menu_Assets">
+    <property name="title">
+     <string>&amp;Assets</string>
+    </property>
+    <addaction name="actionAssets_List"/>
+    <addaction name="actionDisposed_Assets"/>
+    <addaction name="actionAsset_Type"/>
+   </widget>
+   <widget class="QMenu" name="menu_Inventory">
+    <property name="title">
+     <string>&amp;Inventory</string>
+    </property>
+    <addaction name="actionSupplier_List"/>
+    <addaction name="actionCustomer_List"/>
+    <addaction name="actionItem_List"/>
+    <addaction name="actionPurchase_Order"/>
+    <addaction name="actionSales_Order"/>
+    <addaction name="actionConsumed_Items"/>
+    <addaction name="actionMembers_Order"/>
+   </widget>
+   <widget class="QMenu" name="menu_HR">
+    <property name="title">
+     <string>&amp;HR</string>
+    </property>
+    <addaction name="actionEmployee_List"/>
+    <addaction name="actionTransactions"/>
+    <addaction name="actionTax_Rules"/>
+    <addaction name="separator"/>
+    <addaction name="actionTitles"/>
+    <addaction name="actionDepartments"/>
+    <addaction name="actionBenefits"/>
+    <addaction name="actionAllowances"/>
+    <addaction name="actionAdvance_2"/>
+    <addaction name="actionOvertime"/>
+    <addaction name="actionOther_Earnings"/>
+    <addaction name="actionDeductions"/>
+    <addaction name="actionUnions"/>
+    <addaction name="actionLenders"/>
+   </widget>
+   <widget class="QMenu" name="menu_Finance">
+    <property name="title">
+     <string>&amp;Finance</string>
+    </property>
+    <addaction name="actionCash_Accounts"/>
+    <addaction name="actionMy_Account"/>
+    <addaction name="actionTellers"/>
+    <addaction name="separator"/>
+    <addaction name="actionUser_Transactions"/>
+    <addaction name="actionInvestments"/>
+    <addaction name="actionDonations_And_Grants"/>
+    <addaction name="actionExpenses"/>
+    <addaction name="actionHR_Transactions"/>
+    <addaction name="actionHR_Pension"/>
+    <addaction name="actionLedger_fee"/>
+    <addaction name="separator"/>
+    <addaction name="actionBanks"/>
+    <addaction name="actionAnnual_Settings"/>
+    <addaction name="actionInvestment_Type"/>
+    <addaction name="actionIncome_Type"/>
+    <addaction name="actionExpense_Type"/>
+    <addaction name="actionTeller"/>
+    <addaction name="actionSacco_Logo"/>
+   </widget>
+   <widget class="QMenu" name="menu_Transactions">
+    <property name="title">
+     <string>&amp;Transactions</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Reports">
+    <property name="title">
+     <string>&amp;Reports</string>
+    </property>
+    <addaction name="actionMembers_Listing"/>
+    <addaction name="actionShare_Listing"/>
+    <addaction name="actionSavings"/>
+    <addaction name="actionLoans_Issued"/>
+    <addaction name="actionLoan_Payment"/>
+    <addaction name="actionLoan_Guarantors"/>
+    <addaction name="actionLoan_Defaulters"/>
+    <addaction name="actionDefaulter_Analysis"/>
+    <addaction name="actionGeneral_Ledger"/>
+    <addaction name="actionCharts_of_Accounts"/>
+    <addaction name="actionIncome_Statement"/>
+    <addaction name="actionCash_Flow"/>
+    <addaction name="actionFinancial_Position"/>
+    <addaction name="actionTrial_Balance"/>
+    <addaction name="actionSASRA_Reports"/>
+    <addaction name="actionMember_Summary"/>
+    <addaction name="actionOther_Payments_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_Settings">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+   </widget>
+   <addaction name="menu_Members"/>
+   <addaction name="menu_Loans"/>
+   <addaction name="menu_Assets"/>
+   <addaction name="menu_Inventory"/>
+   <addaction name="menu_HR"/>
+   <addaction name="menu_Finance"/>
+   <addaction name="menu_Transactions"/>
+   <addaction name="menu_Reports"/>
+   <addaction name="menu_Settings"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionMember_s_List">
+   <property name="text">
+    <string>Member's List</string>
+   </property>
+  </action>
+  <action name="actionFOSA">
+   <property name="text">
+    <string>FOSA</string>
+   </property>
+  </action>
+  <action name="actionBOSA">
+   <property name="text">
+    <string>BOSA</string>
+   </property>
+  </action>
+  <action name="actionFixed_Deposit">
+   <property name="text">
+    <string>Fixed Deposit</string>
+   </property>
+  </action>
+  <action name="actionStanding_Orders">
+   <property name="text">
+    <string>Standing Orders</string>
+   </property>
+  </action>
+  <action name="actionShares">
+   <property name="text">
+    <string>Shares</string>
+   </property>
+  </action>
+  <action name="actionAdvance">
+   <property name="text">
+    <string>Advance</string>
+   </property>
+  </action>
+  <action name="actionOther_Payments">
+   <property name="text">
+    <string>Other Payments</string>
+   </property>
+  </action>
+  <action name="actionRemittance">
+   <property name="text">
+    <string>Remittance</string>
+   </property>
+  </action>
+  <action name="actionUpload_Members">
+   <property name="text">
+    <string>Upload Members</string>
+   </property>
+  </action>
+  <action name="actionSavings_Account">
+   <property name="text">
+    <string>Savings Account</string>
+   </property>
+  </action>
+  <action name="actionFixed_Deposit_2">
+   <property name="text">
+    <string>Fixed Deposit</string>
+   </property>
+  </action>
+  <action name="actionShares_2">
+   <property name="text">
+    <string>Shares</string>
+   </property>
+  </action>
+  <action name="actionBosa_Account">
+   <property name="text">
+    <string>Bosa Account</string>
+   </property>
+  </action>
+  <action name="actionRemittance_Groups">
+   <property name="text">
+    <string>Remittance Groups</string>
+   </property>
+  </action>
+  <action name="actionResidence">
+   <property name="text">
+    <string>Residence</string>
+   </property>
+  </action>
+  <action name="actionUpload_Format">
+   <property name="text">
+    <string>Upload Format</string>
+   </property>
+  </action>
+  <action name="actionRemittance_Format">
+   <property name="text">
+    <string>Remittance Format</string>
+   </property>
+  </action>
+  <action name="actionReports">
+   <property name="text">
+    <string>Reports</string>
+   </property>
+  </action>
+  <action name="actionApplied_Loans">
+   <property name="text">
+    <string>Applied Loans</string>
+   </property>
+  </action>
+  <action name="actionReceived_Applications">
+   <property name="text">
+    <string>Received Applications</string>
+   </property>
+  </action>
+  <action name="actionApproved_Application">
+   <property name="text">
+    <string>Approved Application</string>
+   </property>
+  </action>
+  <action name="actionRejected_Application">
+   <property name="text">
+    <string>Rejected Application</string>
+   </property>
+  </action>
+  <action name="actionRisk_Classification">
+   <property name="text">
+    <string>Risk Classification</string>
+   </property>
+  </action>
+  <action name="actionLoan_Insurance">
+   <property name="text">
+    <string>Loan Insurance</string>
+   </property>
+  </action>
+  <action name="actionGuarantors">
+   <property name="text">
+    <string>Guarantors</string>
+   </property>
+  </action>
+  <action name="actionDefaulters">
+   <property name="text">
+    <string>Defaulters</string>
+   </property>
+  </action>
+  <action name="actionLoan_Type">
+   <property name="text">
+    <string>Loan Type</string>
+   </property>
+  </action>
+  <action name="actionLoan_Security">
+   <property name="text">
+    <string>Loan Security</string>
+   </property>
+  </action>
+  <action name="actionLoan_Constraints">
+   <property name="text">
+    <string>Loan Constraints</string>
+   </property>
+  </action>
+  <action name="actionApplication_Form">
+   <property name="text">
+    <string>Application Form</string>
+   </property>
+  </action>
+  <action name="actionLoan_Charges">
+   <property name="text">
+    <string>Loan Charges</string>
+   </property>
+  </action>
+  <action name="actionRejection_Reasons">
+   <property name="text">
+    <string>Rejection Reasons</string>
+   </property>
+  </action>
+  <action name="actionAssets_List">
+   <property name="text">
+    <string>Assets List</string>
+   </property>
+  </action>
+  <action name="actionDisposed_Assets">
+   <property name="text">
+    <string>Disposed Assets</string>
+   </property>
+  </action>
+  <action name="actionAsset_Type">
+   <property name="text">
+    <string>Asset Type</string>
+   </property>
+  </action>
+  <action name="actionSupplier_List">
+   <property name="text">
+    <string>Supplier List</string>
+   </property>
+  </action>
+  <action name="actionCustomer_List">
+   <property name="text">
+    <string>Customer List</string>
+   </property>
+  </action>
+  <action name="actionItem_List">
+   <property name="text">
+    <string>Item List</string>
+   </property>
+  </action>
+  <action name="actionPurchase_Order">
+   <property name="text">
+    <string>Purchase Order</string>
+   </property>
+  </action>
+  <action name="actionSales_Order">
+   <property name="text">
+    <string>Sales Order</string>
+   </property>
+  </action>
+  <action name="actionConsumed_Items">
+   <property name="text">
+    <string>Consumed Items</string>
+   </property>
+  </action>
+  <action name="actionMembers_Order">
+   <property name="text">
+    <string>Members Order</string>
+   </property>
+  </action>
+  <action name="actionEmployee_List">
+   <property name="text">
+    <string>Employee List</string>
+   </property>
+  </action>
+  <action name="actionTransactions">
+   <property name="text">
+    <string>Transactions</string>
+   </property>
+  </action>
+  <action name="actionTax_Rules">
+   <property name="text">
+    <string>Tax Rules</string>
+   </property>
+  </action>
+  <action name="actionTitles">
+   <property name="text">
+    <string>Titles</string>
+   </property>
+  </action>
+  <action name="actionDepartments">
+   <property name="text">
+    <string>Departments</string>
+   </property>
+  </action>
+  <action name="actionBenefits">
+   <property name="text">
+    <string>Benefits</string>
+   </property>
+  </action>
+  <action name="actionAllowances">
+   <property name="text">
+    <string>Allowances</string>
+   </property>
+  </action>
+  <action name="actionAdvance_2">
+   <property name="text">
+    <string>Advance</string>
+   </property>
+  </action>
+  <action name="actionOvertime">
+   <property name="text">
+    <string>Overtime</string>
+   </property>
+  </action>
+  <action name="actionOther_Earnings">
+   <property name="text">
+    <string>Other Earnings</string>
+   </property>
+  </action>
+  <action name="actionDeductions">
+   <property name="text">
+    <string>Deductions</string>
+   </property>
+  </action>
+  <action name="actionUnions">
+   <property name="text">
+    <string>Unions</string>
+   </property>
+  </action>
+  <action name="actionLenders">
+   <property name="text">
+    <string>Lenders</string>
+   </property>
+  </action>
+  <action name="actionCash_Accounts">
+   <property name="text">
+    <string>Cash Accounts</string>
+   </property>
+  </action>
+  <action name="actionMy_Account">
+   <property name="text">
+    <string>My Account</string>
+   </property>
+  </action>
+  <action name="actionTellers">
+   <property name="text">
+    <string>Tellers</string>
+   </property>
+  </action>
+  <action name="actionUser_Transactions">
+   <property name="text">
+    <string>User Transactions</string>
+   </property>
+  </action>
+  <action name="actionInvestments">
+   <property name="text">
+    <string>Investments</string>
+   </property>
+  </action>
+  <action name="actionDonations_And_Grants">
+   <property name="text">
+    <string>Donations And Grants</string>
+   </property>
+  </action>
+  <action name="actionExpenses">
+   <property name="text">
+    <string>Expenses</string>
+   </property>
+  </action>
+  <action name="actionHR_Transactions">
+   <property name="text">
+    <string>HR Transactions</string>
+   </property>
+  </action>
+  <action name="actionHR_Pension">
+   <property name="text">
+    <string>HR Pension</string>
+   </property>
+  </action>
+  <action name="actionLedger_fee">
+   <property name="text">
+    <string>Ledger fee</string>
+   </property>
+  </action>
+  <action name="actionBanks">
+   <property name="text">
+    <string>Banks</string>
+   </property>
+  </action>
+  <action name="actionAnnual_Settings">
+   <property name="text">
+    <string>Annual Settings</string>
+   </property>
+  </action>
+  <action name="actionInvestment_Type">
+   <property name="text">
+    <string>Investment Type</string>
+   </property>
+  </action>
+  <action name="actionIncome_Type">
+   <property name="text">
+    <string>Income Type</string>
+   </property>
+  </action>
+  <action name="actionExpense_Type">
+   <property name="text">
+    <string>Expense Type</string>
+   </property>
+  </action>
+  <action name="actionTeller">
+   <property name="text">
+    <string>Teller</string>
+   </property>
+  </action>
+  <action name="actionSacco_Logo">
+   <property name="text">
+    <string>Sacco Logo</string>
+   </property>
+  </action>
+  <action name="actionMembers_Listing">
+   <property name="text">
+    <string>Members Listing</string>
+   </property>
+  </action>
+  <action name="actionShare_Listing">
+   <property name="text">
+    <string>Share Listing</string>
+   </property>
+  </action>
+  <action name="actionSavings">
+   <property name="text">
+    <string>Savings</string>
+   </property>
+  </action>
+  <action name="actionLoans_Issued">
+   <property name="text">
+    <string>Loans Issued</string>
+   </property>
+  </action>
+  <action name="actionLoan_Payment">
+   <property name="text">
+    <string>Loan Payment</string>
+   </property>
+  </action>
+  <action name="actionLoan_Guarantors">
+   <property name="text">
+    <string>Loan Guarantors</string>
+   </property>
+  </action>
+  <action name="actionLoan_Defaulters">
+   <property name="text">
+    <string>Loan Defaulters</string>
+   </property>
+  </action>
+  <action name="actionDefaulter_Analysis">
+   <property name="text">
+    <string>Defaulter Analysis</string>
+   </property>
+  </action>
+  <action name="actionGeneral_Ledger">
+   <property name="text">
+    <string>General Ledger</string>
+   </property>
+  </action>
+  <action name="actionCharts_of_Accounts">
+   <property name="text">
+    <string>Charts of Accounts</string>
+   </property>
+  </action>
+  <action name="actionIncome_Statement">
+   <property name="text">
+    <string>Income Statement</string>
+   </property>
+  </action>
+  <action name="actionCash_Flow">
+   <property name="text">
+    <string>Cash Flow</string>
+   </property>
+  </action>
+  <action name="actionFinancial_Position">
+   <property name="text">
+    <string>Financial Position</string>
+   </property>
+  </action>
+  <action name="actionTrial_Balance">
+   <property name="text">
+    <string>Trial Balance</string>
+   </property>
+  </action>
+  <action name="actionSASRA_Reports">
+   <property name="text">
+    <string>SASRA Reports</string>
+   </property>
+  </action>
+  <action name="actionMember_Summary">
+   <property name="text">
+    <string>Member Summary</string>
+   </property>
+  </action>
+  <action name="actionOther_Payments_2">
+   <property name="text">
+    <string>Other Payments</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

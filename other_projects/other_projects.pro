@@ -4,4 +4,4 @@ SUBDIRS += \
     #cheque_printer \
     freepayroll \
     mass-mailer \
-    smss
+    sacco

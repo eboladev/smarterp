@@ -46,10 +46,12 @@ FORMS += \
 HEADERS += \
     ../../smartpay/src/payrollintroductionscreen.h \
     ../../smartpay/src/payrollreports.h \
-    ../../smartpay/src/payrolldbsettingsdialog.h
+    ../../smartpay/src/payrolldbsettingsdialog.h \
+    ../../smartpay/src/quickprinter.h
 
 SOURCES += \
     ../../smartpay/src/payrollintroductionscreen.cpp \
     ../../smartpay/src/payrollreports.cpp \
-    ../../smartpay/src/payrolldbsettingsdialog.cpp
+    ../../smartpay/src/payrolldbsettingsdialog.cpp \
+    ../../smartpay/src/quickprinter.cpp
 

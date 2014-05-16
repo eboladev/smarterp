@@ -1,6 +1,7 @@
 #include "payslips2.h"
 #include "ui_payslips2.h"
 #include "./qtprinter.h"
+#include "quickprinter.h"
 Payslips2::Payslips2(QWidget *parent, QSqlDatabase database) :
 	QMainWindow(parent),
 	ui(new Ui::Payslips2)
@@ -31,9 +32,10 @@ void Payslips2::on_cmdGenerate_clicked()
 	paramWhere = paramWhere.left(paramWhere.length() - 3);
 	////qDebug() << paramWhere;
 
-	QtPrinter *qp = new QtPrinter(this, db, paramWhere, "Payslips4x1", ui->chkPdf->isChecked());
+	//QtPrinter *qp = new QtPrinter(this, db, paramWhere, "Payslips4x1", ui->chkPdf->isChecked());
+	QuickPrinter(this, "Payslips4x1", paramWhere, db, ui->chkPdf->isChecked());
 
-	Q_UNUSED(qp);
+	//Q_UNUSED(qp);
 }
 
 void Payslips2::reloadTree()

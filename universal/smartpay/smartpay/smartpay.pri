@@ -91,7 +91,8 @@ SOURCES +=\
     ../src/calculateattendancedialog.cpp \
     startnewemployee.cpp \
     ../src/selectcompanydialog.cpp \
-    ../src/payrolldbsettingsdialog.cpp
+    ../src/payrolldbsettingsdialog.cpp \
+    ../src/quickprinter.cpp
 
 HEADERS  += \
 ../src/mainwindow.h \
@@ -186,7 +187,8 @@ HEADERS  += \
     ../src/calculateattendancedialog.h \
     startnewemployee.h \
     ../src/selectcompanydialog.h \
-    ../src/payrolldbsettingsdialog.h
+    ../src/payrolldbsettingsdialog.h \
+    ../src/quickprinter.h
 
 FORMS += \
 ../src/mainwindow.ui \

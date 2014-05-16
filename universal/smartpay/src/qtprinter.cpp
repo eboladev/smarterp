@@ -31,6 +31,7 @@ QtPrinter::QtPrinter(QWidget *parent, QSqlDatabase database, QString where, QStr
 		qu.last();
 		QString xml = qu.record().value("report_source").toString();
 		xml.replace("param_where", where);
+		xml.replace("Helvetica", "Tahoma");
 		_xml = xml;
 		QDomDocument doc;
 		QString errMsg;
