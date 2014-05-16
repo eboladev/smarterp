@@ -13,7 +13,7 @@
 #include "../OpenRPT/renderer/previewdialog.h"
 #include "../OpenRPT/common/builtinSqlFunctions.h"
 #include "xlsxdocument.h"
-
+#include "quickprinter.h"
 Payroll::Payroll(QWidget *parent, QSqlDatabase database) :
 	QMainWindow(parent),
 	ui(new Ui::Payroll)
@@ -234,15 +234,11 @@ void Payroll::on_cmdShowP10A_clicked()
 
 		db.exec(insQu);
 		if (db.lastError().isValid()) {
-			//qDebug() << db.lastError().text();
+			qDebug() << db.lastError().text();
 		}
 	}
-
-	//QString xml = getReportXML("P10A", "param_where",
-	//			   ui->cboP1AYears->currentText());
-	//ui->widgetP10A->setDb(db);
-	//ui->widgetP10A->setXml(xml);
-	//ui->widgetP10A->showPreview();
+	qDebug() << "Showing P10A report FOR " << ui->cboP1AYears->currentText();
+	QuickPrinter(this, "P10A", ui->cboP1AYears->currentText(), db, false);
 }
 
 void Payroll::on_cmdShowP10D_clicked()
@@ -307,19 +303,12 @@ void Payroll::on_cmdShowP10D_clicked()
 
 		db.exec(insQu);
 		if (db.lastError().isValid()) {
-			//qDebug() << db.lastError().text();
+			qDebug() << db.lastError().text();
 		}
 	}
 
-
-	//QString xml;
-	//xml = getReportXML("P10D",
-	//		   "param_where", " WHERE Year = '"
-	//		   + year + "' AND Quarter = '" + quarterName + "'");
-//
-	//ui->widgetP10D->setDb(db);
-	//ui->widgetP10D->setXml(xml);
-	//ui->widgetP10D->showPreview();
+	QuickPrinter(this, "P10D", " WHERE Year = '"
+				   + year + "' AND Quarter = '" + quarterName + "'", db, false);
 }
 
 void Payroll::on_cmdShowP9A_clicked()
@@ -350,16 +339,12 @@ void Payroll::on_cmdShowP9A_clicked()
 			   ).arg(empID, empNo, lName, empPin, year, fName));
 
 		if (db.lastError().isValid()) {
-			//qDebug() << db.lastError().text();
+			qDebug() << db.lastError().text();
 		}
-	}  //
+	}
 	db.exec("UPDATE p9 SET LastModified = NOW()");
 
-	//QString p9AXML = getReportXML("P9A", "param_where",
-	//			      " WHERE Year = '" + year + "'");
-	//ui->widgetP9A->setDb(db);
-	//ui->widgetP9A->setXml(p9AXML);
-	//ui->widgetP9A->showPreview();
+	QuickPrinter(this, "P9A","  WHERE Year = '" + year + "'", db, false);
 }
 
 void Payroll::on_cmdExportNSSF_clicked()
