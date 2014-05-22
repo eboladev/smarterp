@@ -12,6 +12,9 @@ ImsMainWindow::ImsMainWindow(QWidget *parent, QSqlDatabase database) :
 	//ui->lstContainers->setVisible(false);
 	ui->tblShipmentContainers->setVisible(false);
 	ui->dtpShipmentDateDue->setDate(QDate::currentDate());
+	ui->dtpETA->setDate(QDate::currentDate().addDays(30));
+	ui->dtpIDFProformaInvoiceDate->setDate(QDate::currentDate());
+	ui->dtpSailing->setDate(QDate::currentDate());
 	connect (ui->actionNew, SIGNAL(triggered()), this,  SLOT(newFile()));
 	connect (ui->actionSave, SIGNAL(triggered()), this, SLOT(saveFileChanges()));
 	ui->dtpIDFProformaInvoiceDate->setDate(QDate::currentDate());
