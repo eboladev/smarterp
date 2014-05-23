@@ -45,7 +45,8 @@ void Payroll::loadPayroll()
 	ui->lstPayroll->setColumnHidden(0, true);
 	emit recalculated();
 
-	ui->trvBankLists->setQuery("SELECT `Roll No`, `Name`, `Bank`, `Branch`, `Account No`, `AmountDue`  FROM vw_payroll2 WHERE MonthID = '" + monthID + "' Order BY `Bank`, `Roll No`", db, "Payroll For " + ui->comboBox->currentText(), true);
+	ui->trvBankLists->setQuery("SELECT `Roll No` as 'ID', `Roll No`, `Name`, `Bank`, `Branch`, `Account No`, `AmountDue`  FROM vw_payroll2 WHERE MonthID = '" + monthID + "' Order BY `Bank`, `Roll No`", db, "Payroll For " + ui->comboBox->currentText(), true);
+	ui->trvBankLists->setColumnHidden(0, true);
 	DataPublics::loadQueryToComboBox("SELECT DISTINCT(`Year`) AS 'Yr' FROM months ORDER BY Year", "Yr", db, ui->cboP1AYears);
 	DataPublics::loadQueryToComboBox("SELECT DISTINCT(`Year`) AS 'Yr' FROM months ORDER BY Year", "Yr", db, ui->cboP1DYears);
 	DataPublics::loadQueryToComboBox("SELECT DISTINCT(`Year`) AS 'Yr' FROM months ORDER BY Year", "Yr", db, ui->cboP9AYears);
