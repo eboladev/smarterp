@@ -7,7 +7,11 @@
 MailQueue::MailQueue(QObject *parent) :
 	QThread(parent)
 {
-	db = DataPublics::getDatabase("QueueConnectuib", "cartons");
+	db = QSqlDatabase::addDatabase("QMYSQL", "QueueConnectuib");//DataPublics::getDatabase("QueueConnectuib", "cartons");
+	db.setHostName("192.168.0.8");
+	db.setUserName("root");
+	db.setPassword("pledge");
+	db.setDatabaseName("cartons");
 	emit message("Starting mail queue...");
 	db.setDatabaseName("cartons");
 
@@ -123,8 +127,13 @@ void MailQueue::onMailTimer()
 				QStringList recepients;
 				recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
 				//recepients.append("Paras Shah<dodhia.paras@gmail.com>");
-				recepients.append("Prasul Shah<megvelcartons@gmail.com>");
-
+				//recepients.append("Prasul Shah<megvelcartons@gmail.com>");
+				QSqlQuery rece_qu = db.exec("SELECT * FROM email_recepients WHERE Enabled = '1' AND ReportName = 'LPO'");
+				while (rece_qu.next()) {
+					recepients.append(QString("%1<%2>")
+							  .arg(qu.record().value("RecepientName").toString()
+							       , qu.record().value("EmailAddress").toString()));
+				}
 
 				MailAssistant *ma = new MailAssistant(this);
 
@@ -140,7 +149,14 @@ void MailQueue::onMailTimer()
 			QString rqnID = fk;
 			QStringList recepients;
 			recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
-			recepients.append("Prasul Shah<megvelcartons@gmail.com>");
+			//recepients.append("Prasul Shah<megvelcartons@gmail.com>");
+			QSqlQuery rece_qu = db.exec("SELECT * FROM email_recepients WHERE Enabled = '1' AND ReportName = 'Requisition'");
+			while (rece_qu.next()) {
+				recepients.append(QString("%1<%2>")
+						  .arg(qu.record().value("RecepientName").toString()
+						       , qu.record().value("EmailAddress").toString()));
+			}
+
 			QString html = "<HTML><HEAD></HEAD><BODY><h3><a href=http://www.megvel.me.ke/stores/approve_requisition.php?id=" + rqnID + ">Approve Requisition No: " + rqnID +"</a></h3>";
 			QString rqQuery = "SELECT "
 					" store_requisition_master.EntryID "
