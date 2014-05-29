@@ -129,10 +129,15 @@ void MailQueue::onMailTimer()
 				//recepients.append("Paras Shah<dodhia.paras@gmail.com>");
 				//recepients.append("Prasul Shah<megvelcartons@gmail.com>");
 				QSqlQuery rece_qu = db.exec("SELECT * FROM email_recepients WHERE Enabled = '1' AND ReportName = 'LPO'");
-				while (rece_qu.next()) {
-					recepients.append(QString("%1<%2>")
-							  .arg(qu.record().value("RecepientName").toString()
-							       , qu.record().value("EmailAddress").toString()));
+				if (rece_qu.lastError().isValid()) {
+					emit message("Recepient Error: -" + rece_qu.lastError().text());
+				} else {
+					while (rece_qu.next()) {
+						QString str_rec = rece_qu.record().value("RecepientName").toString() + "<"
+								+ rece_qu.record().value("EmailAddress").toString() + ">";
+						recepients.append(str_rec);
+						emit message("Found Recepient: " + str_rec);
+					}
 				}
 
 				MailAssistant *ma = new MailAssistant(this);
@@ -147,14 +152,20 @@ void MailQueue::onMailTimer()
 		}
 		else if (type == "Requisition") {
 			QString rqnID = fk;
+			emit message("Sending requisition " + rqnID);
 			QStringList recepients;
 			recepients.append("Joseph W Joshua<joshua@megvel.me.ke>");
 			//recepients.append("Prasul Shah<megvelcartons@gmail.com>");
 			QSqlQuery rece_qu = db.exec("SELECT * FROM email_recepients WHERE Enabled = '1' AND ReportName = 'Requisition'");
-			while (rece_qu.next()) {
-				recepients.append(QString("%1<%2>")
-						  .arg(qu.record().value("RecepientName").toString()
-						       , qu.record().value("EmailAddress").toString()));
+			if (rece_qu.lastError().isValid()) {
+				emit message("Recepient Error: -" + rece_qu.lastError().text());
+			} else {
+				while (rece_qu.next()) {
+					QString str_rec = rece_qu.record().value("RecepientName").toString() + "<"
+							+ rece_qu.record().value("EmailAddress").toString() + ">";
+					recepients.append(str_rec);
+					emit message("Found Recepient: " + str_rec);
+				}
 			}
 
 			QString html = "<HTML><HEAD></HEAD><BODY><h3><a href=http://www.megvel.me.ke/stores/approve_requisition.php?id=" + rqnID + ">Approve Requisition No: " + rqnID +"</a></h3>";
@@ -210,7 +221,7 @@ void MailQueue::onMailTimer()
 					connect (ma, SIGNAL(messageStatus(QString)), SLOT(smtpSuccess(QString)));
 					ma->setVars("Requisition " + rqnID + " (" + qu2.record().value("SupplierName").toString() + ")", msg, recepients, QStringList(), "Megvel Cartons Ltd ERP<erp@megvel.me.ke>");
 					ma->start();
-					emit message("Sending requisition " + rqnID);
+
 
 
 				}
