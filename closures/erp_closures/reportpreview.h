@@ -20,7 +20,7 @@ public:
 signals:
 
 public slots:
-	void printRequested(QPrinter *);
+	void printRequested(QPrinter *p);
 private:
 	QSqlDatabase db;
 	QPrinter *printer;

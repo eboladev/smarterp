@@ -57,16 +57,16 @@ ReportPreview::ReportPreview(QObject *parent,
 		pre.setDom(_doc);
 		qDebug() << "5";
 		ORODocument *oDoc = pre.generate();
-		//QPrintPreviewDialog *pvr = new QPrintPreviewDialog(printer, 0);
-		//connect (pvr, SIGNAL(paintRequested(QPrinter*)), SLOT(paintRequested(QPrinter*)));
-		//pvr->exec();
+		QPrintPreviewDialog *pvr = new QPrintPreviewDialog(printer, 0);
+		connect (pvr, SIGNAL(paintRequested(QPrinter*)), this, SLOT(printRequested(QPrinter*)));
+		pvr->exec();
 		qDebug() << "6";
 	} else {
 		DataPublics::showWarning("Fatal error: Could not generate report.\n\n" + qu.lastError().text());
 	}
 }
 
-void ReportPreview::printRequested(QPrinter */*p*/)
+void ReportPreview::printRequested(QPrinter *p)
 {
 	qDebug() << "a";
 	ORPreRender pre;
@@ -80,11 +80,11 @@ void ReportPreview::printRequested(QPrinter */*p*/)
 		qDebug() << "d";
 		ORPrintRender render;
 		qDebug() << "e";
-		render.setPrinter(printer);
+		render.setPrinter(p);
 		qDebug() << "f";
 		render.render(oDoc);
 		qDebug() << "g";
-		render.setupPrinter(oDoc, printer);
+		render.setupPrinter(oDoc, p);
 		qDebug() << "h";
 	} else {
 		DataPublics::showWarning("Printer Error");
