@@ -169,6 +169,7 @@ void MailQueue::onMailTimer()
 			}
 
 			QString html = "<HTML><HEAD></HEAD><BODY><h3><a href=http://www.megvel.me.ke/stores/approve_requisition.php?id=" + rqnID + ">Approve Requisition No: " + rqnID +"</a></h3>";
+			html += "<br/><h3><a href=http://www.megvel.me.ke/stores/?id=" + rqnID + ">Edit Requisition</a></h3>";
 			QString rqQuery = "SELECT "
 					" store_requisition_master.EntryID "
 					" , suppliers.SupplierName "
